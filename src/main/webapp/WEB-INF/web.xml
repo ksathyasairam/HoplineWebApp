@@ -7,9 +7,22 @@
    id="WebApp_ID" version="3.0">
    
    <display-name>Struts 2</display-name>
+   
+   <context-param>
+    <description>Spring Configuration files location</description>
+    <param-name>spring-config-location</param-name>
+    <param-value>spring/spring-context.xml</param-value>
+  </context-param>
+   
+   
    <welcome-file-list>
       <welcome-file>index.jsp</welcome-file>
    </welcome-file-list>
+   
+   <listener>
+    <listener-class>com.hopline.WebApp.rest.framework.MyContextInitilizer</listener-class>
+  </listener>
+  
    <filter>
       <filter-name>struts2</filter-name>
        <filter-class>

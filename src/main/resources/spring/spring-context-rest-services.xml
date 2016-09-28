@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://www.springframework.org/schema/jee
+	http://www.springframework.org/schema/jee/spring-jee-4.1.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+	http://www.springframework.org/schema/task
+	http://www.springframework.org/schema/task/spring-task-4.1.xsd">
+
+		
+	<task:annotation-driven executor="asyncExecutor"
+		scheduler="asyncScheduler" />
+	<task:executor id="asyncExecutor" pool-size="1-5"
+		queue-capacity="10" />
+	<task:scheduler id="asyncScheduler" pool-size="10" />
+	
+	
+	
+	<!-- <aop:config>
+		<aop:advisor pointcut="execution(* com.bmw.facility.service.impl..*.*(..))"
+			advice-ref="bmwFacilityLocalTxAdvice" />
+	</aop:config>
+	
+
+	<tx:advice id="bmwFacilityLocalTxAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="retrieve*" read-only="true" propagation="REQUIRED"
+				isolation="READ_UNCOMMITTED" />
+			<tx:method name="save*" propagation="REQUIRED"
+				rollback-for="com.hixapi.framework.common.exception.BusinessServiceException" />
+			<tx:method name="update*" propagation="REQUIRED"
+				rollback-for="com.hixapi.framework.common.exception.BusinessServiceException" />
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+	
+
+	<bean id="bmwFacilityService" class="com.bmw.facility.service.impl.BmwFacilityServiceImpl">
+		<property name="bmwFacilityDao" ref="bmwFacilityDao"></property>
+		<property name="userManagementDao" ref="userManagementDao"></property>
+		<property name="commonDAO" ref="commonDAO"></property>
+		<property name="userModelTranslator" ref="userModelTranslator"></property>
+		<property name="facilityTranslator" ref="facilityTranslator"></property>
+		<property name="addressModelTranslator" ref="addressModelTranslator"></property>
+		<property name="addressManagementService" ref="addressManagementService"></property>
+		<property name="healthcareEstablishmentTranslater" ref="healthcareEstablishmentTranslater"></property>
+		<property name="healthcareEstablishmentServiceDAO" ref="healthcareEstablishmentServiceDAO"></property>
+		<property name="userManagementService" ref="userManagementService"></property>
+		<property name="operationalAreasTranslator" ref="facilityOperationsAreaTranslator"></property>
+	</bean>
+ -->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ <bean id="globalServiceLocator" class="com.hopline.WebApp.rest.framework.ServiceLocator"
+		factory-method="getInstance">
+		<property name="services">
+			<map key-type="java.lang.Class" value-type="com.hixapi.rest.framework.service.IService">
+				<entry key="com.hopline.WebApp.CategoryServiceImpl"
+					value-ref="categoryServcie" />
+			</map>
+		</property>
+</bean>
+ 
+ 
+  <aop:config>
+		<aop:advisor pointcut="execution(* com.hopline.WebApp.CategoryServiceImpl.*(..))"
+			advice-ref="categoryServiceTxAdvice" />
+	</aop:config>
+	
+
+	<tx:advice id="categoryServiceTxAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="retrieve*" read-only="true" propagation="REQUIRED"
+				isolation="READ_UNCOMMITTED" />
+			<tx:method name="save*" propagation="REQUIRED"
+				rollback-for="com.hixapi.framework.common.exception.BusinessServiceException" />
+			<tx:method name="update*" propagation="REQUIRED"
+				rollback-for="com.hixapi.framework.common.exception.BusinessServiceException" />
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice> 
+ 
+ 
+ 
+ <bean id="categoryServcie" class="com.hopline.WebApp.CategoryServiceImpl">
+		<property name="categoryDao" ref="categoryDAO"></property>
+</bean>
+	
+	
+
+
+
+
+
+</beans>
