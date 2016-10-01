@@ -1,5 +1,5 @@
 package com.hopline.WebApp.model.dao;
-// Generated 28 Sep, 2016 12:38:57 AM by Hibernate Tools 5.2.0.Beta1
+// Generated 1 Oct, 2016 11:23:02 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +17,7 @@ public class Product implements java.io.Serializable {
 	private String vegYn;
 	private String stockYn;
 	private Set<AddOn> addOns = new HashSet<AddOn>();
+	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>();
 	private Set<Category> categories = new HashSet<Category>();
 
 	public Product() {
@@ -29,16 +30,17 @@ public class Product implements java.io.Serializable {
 		this.stockYn = stockYn;
 	}
 
-	public Product(String name, String shortDesc, String longDesc, long price, String vegYn, String stockYn, Set addOns,
-			Set categories) {
+	public Product(String name, String shortDesc, String longDesc, long price, String vegYn, String stockYn, Set<AddOn> addOns,
+			Set<OrderProduct> orderProducts, Set<Category> categories) {
 		this.name = name;
 		this.shortDesc = shortDesc;
 		this.longDesc = longDesc;
 		this.price = price;
 		this.vegYn = vegYn;
 		this.stockYn = stockYn;
-		this.setAddOns(addOns);
-		this.setCategories(categories);
+		this.addOns = addOns;
+		this.orderProducts = orderProducts;
+		this.categories = categories;
 	}
 
 	public Integer getProductId() {
@@ -103,6 +105,14 @@ public class Product implements java.io.Serializable {
 
 	public void setAddOns(Set<AddOn> addOns) {
 		this.addOns = addOns;
+	}
+
+	public Set<OrderProduct> getOrderProducts() {
+		return orderProducts;
+	}
+
+	public void setOrderProducts(Set<OrderProduct> orderProducts) {
+		this.orderProducts = orderProducts;
 	}
 
 	public Set<Category> getCategories() {

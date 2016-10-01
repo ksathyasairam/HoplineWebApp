@@ -1,5 +1,5 @@
 package com.hopline.WebApp.model.dao;
-// Generated 28 Sep, 2016 12:38:57 AM by Hibernate Tools 5.2.0.Beta1
+// Generated 1 Oct, 2016 11:23:02 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,10 +22,10 @@ public class Category implements java.io.Serializable {
 		this.sortId = sortId;
 	}
 
-	public Category(String name, int sortId, Set products) {
+	public Category(String name, int sortId, Set<Product> products) {
 		this.name = name;
 		this.sortId = sortId;
-		this.setProducts(products);
+		this.products = products;
 	}
 
 	public Integer getIdcategory() {
@@ -53,13 +53,11 @@ public class Category implements java.io.Serializable {
 	}
 
 	public Set<Product> getProducts() {
-		return products;
+		return this.products;
 	}
 
 	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
-
-
 
 }

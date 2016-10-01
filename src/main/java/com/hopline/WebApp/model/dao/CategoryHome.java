@@ -1,13 +1,12 @@
 package com.hopline.WebApp.model.dao;
-// Generated 28 Sep, 2016 12:38:57 AM by Hibernate Tools 5.2.0.Beta1
+// Generated 1 Oct, 2016 11:23:02 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.List;
-
+import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Example;
 
 /**
@@ -23,8 +22,7 @@ public class CategoryHome {
 
 	protected SessionFactory getSessionFactory() {
 		try {
-			return new Configuration().configure().buildSessionFactory();
-
+			return (SessionFactory) new InitialContext().lookup("SessionFactory");
 		} catch (Exception e) {
 			log.error("Could not locate SessionFactory in JNDI", e);
 			throw new IllegalStateException("Could not locate SessionFactory in JNDI");

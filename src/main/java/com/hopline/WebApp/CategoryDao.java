@@ -38,7 +38,7 @@ public class CategoryDao {
 //
 //		return (List<BmwAgreement>) criteria.list();
 //	}
-	
+//	
 	
 
 }

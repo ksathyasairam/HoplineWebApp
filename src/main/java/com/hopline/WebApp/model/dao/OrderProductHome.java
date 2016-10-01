@@ -10,13 +10,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 /**
- * Home object for domain model class Product.
- * @see com.hopline.WebApp.model.dao.Product
+ * Home object for domain model class OrderProduct.
+ * @see com.hopline.WebApp.model.dao.OrderProduct
  * @author Hibernate Tools
  */
-public class ProductHome {
+public class OrderProductHome {
 
-	private static final Log log = LogFactory.getLog(ProductHome.class);
+	private static final Log log = LogFactory.getLog(OrderProductHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -29,8 +29,8 @@ public class ProductHome {
 		}
 	}
 
-	public void persist(Product transientInstance) {
-		log.debug("persisting Product instance");
+	public void persist(OrderProduct transientInstance) {
+		log.debug("persisting OrderProduct instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
@@ -40,8 +40,8 @@ public class ProductHome {
 		}
 	}
 
-	public void attachDirty(Product instance) {
-		log.debug("attaching dirty Product instance");
+	public void attachDirty(OrderProduct instance) {
+		log.debug("attaching dirty OrderProduct instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -51,8 +51,8 @@ public class ProductHome {
 		}
 	}
 
-	public void attachClean(Product instance) {
-		log.debug("attaching clean Product instance");
+	public void attachClean(OrderProduct instance) {
+		log.debug("attaching clean OrderProduct instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -62,8 +62,8 @@ public class ProductHome {
 		}
 	}
 
-	public void delete(Product persistentInstance) {
-		log.debug("deleting Product instance");
+	public void delete(OrderProduct persistentInstance) {
+		log.debug("deleting OrderProduct instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -73,10 +73,10 @@ public class ProductHome {
 		}
 	}
 
-	public Product merge(Product detachedInstance) {
-		log.debug("merging Product instance");
+	public OrderProduct merge(OrderProduct detachedInstance) {
+		log.debug("merging OrderProduct instance");
 		try {
-			Product result = (Product) sessionFactory.getCurrentSession().merge(detachedInstance);
+			OrderProduct result = (OrderProduct) sessionFactory.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -85,11 +85,11 @@ public class ProductHome {
 		}
 	}
 
-	public Product findById(java.lang.Integer id) {
-		log.debug("getting Product instance with id: " + id);
+	public OrderProduct findById(int id) {
+		log.debug("getting OrderProduct instance with id: " + id);
 		try {
-			Product instance = (Product) sessionFactory.getCurrentSession().get("com.hopline.WebApp.model.dao.Product",
-					id);
+			OrderProduct instance = (OrderProduct) sessionFactory.getCurrentSession()
+					.get("com.hopline.WebApp.model.dao.OrderProduct", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -102,11 +102,11 @@ public class ProductHome {
 		}
 	}
 
-	public List findByExample(Product instance) {
-		log.debug("finding Product instance by example");
+	public List findByExample(OrderProduct instance) {
+		log.debug("finding OrderProduct instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("com.hopline.WebApp.model.dao.Product")
-					.add(Example.create(instance)).list();
+			List results = sessionFactory.getCurrentSession()
+					.createCriteria("com.hopline.WebApp.model.dao.OrderProduct").add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;
 		} catch (RuntimeException re) {

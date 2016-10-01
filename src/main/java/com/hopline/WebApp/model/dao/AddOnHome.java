@@ -1,5 +1,5 @@
 package com.hopline.WebApp.model.dao;
-// Generated 28 Sep, 2016 12:38:57 AM by Hibernate Tools 5.2.0.Beta1
+// Generated 1 Oct, 2016 11:23:02 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.List;
 import javax.naming.InitialContext;

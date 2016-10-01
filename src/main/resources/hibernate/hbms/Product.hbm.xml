@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 28 Sep, 2016 12:38:57 AM by Hibernate Tools 5.2.0.Beta1 -->
+<!-- Generated 1 Oct, 2016 11:23:02 PM by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
     <class name="com.hopline.WebApp.model.dao.Product" table="product" catalog="hopline" optimistic-lock="version">
         <id name="productId" type="java.lang.Integer">
@@ -33,6 +33,12 @@
             <many-to-many entity-name="com.hopline.WebApp.model.dao.AddOn">
                 <column name="addonId" not-null="true" />
             </many-to-many>
+        </set>
+        <set name="orderProducts" table="orderProduct" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="productId" not-null="true" />
+            </key>
+            <one-to-many class="com.hopline.WebApp.model.dao.OrderProduct" />
         </set>
         <set name="categories" table="categoryProduct" inverse="false" lazy="true" fetch="select">
             <key>

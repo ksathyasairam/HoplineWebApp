@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 Oct, 2016 11:23:02 PM by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.hopline.WebApp.model.dao.User" table="user" catalog="hopline" optimistic-lock="version">
+        <id name="iduser" type="int">
+            <column name="iduser" />
+            <generator class="assigned" />
+        </id>
+        <property name="phone" type="string">
+            <column name="phone" length="45" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <set name="orders" table="order" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" not-null="true" />
+            </key>
+            <one-to-many class="com.hopline.WebApp.model.dao.Order" />
+        </set>
+    </class>
+</hibernate-mapping>

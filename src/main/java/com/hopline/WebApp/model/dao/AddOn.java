@@ -1,5 +1,5 @@
 package com.hopline.WebApp.model.dao;
-// Generated 28 Sep, 2016 12:38:57 AM by Hibernate Tools 5.2.0.Beta1
+// Generated 1 Oct, 2016 11:23:02 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +13,8 @@ public class AddOn implements java.io.Serializable {
 	private String name;
 	private long price;
 	private String stockYn;
-	private Set products = new HashSet(0);
+	private Set<OrderProduct>  orderProducts = new HashSet<OrderProduct>();
+	private Set<Product>  products = new HashSet<Product>();
 
 	public AddOn() {
 	}
@@ -24,10 +25,11 @@ public class AddOn implements java.io.Serializable {
 		this.stockYn = stockYn;
 	}
 
-	public AddOn(String name, long price, String stockYn, Set products) {
+	public AddOn(String name, long price, String stockYn, Set<OrderProduct>  orderProducts, Set<Product>  products) {
 		this.name = name;
 		this.price = price;
 		this.stockYn = stockYn;
+		this.orderProducts = orderProducts;
 		this.products = products;
 	}
 
@@ -63,11 +65,19 @@ public class AddOn implements java.io.Serializable {
 		this.stockYn = stockYn;
 	}
 
-	public Set getProducts() {
+	public Set<OrderProduct>  getOrderProducts() {
+		return this.orderProducts;
+	}
+
+	public void setOrderProducts(Set<OrderProduct>  orderProducts) {
+		this.orderProducts = orderProducts;
+	}
+
+	public Set<Product>  getProducts() {
 		return this.products;
 	}
 
-	public void setProducts(Set products) {
+	public void setProducts(Set<Product>  products) {
 		this.products = products;
 	}
 
