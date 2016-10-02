@@ -15,7 +15,7 @@ public class Order implements java.io.Serializable {
 	private String orderState;
 	private String paidYn;
 	private Date orderTime;
-	private Set<OrderProduct> orderProducts = new HashSet(0);
+	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>();
 
 	public Order() {
 	}
