@@ -7,11 +7,9 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.hopline.WebApp.model.dao.Category;
 
-public class HelloWorldAction implements SessionAware {
+public class HelloWorldAction extends BaseAction {
 
 	private static final String HELLO_COUNT = "hc";
-
-	private Map<String, Object> userSession;
 
 	private String name;
 	private List<Category> categories;
@@ -20,22 +18,23 @@ public class HelloWorldAction implements SessionAware {
 	private Integer helloCount;
 
 	public String execute() throws Exception {
+		super.execute();
 		// categories =
 		// ServiceLocator.getInstance().getService(CategoryServiceImpl.class).retrieveAllCategory();
 
-		setHelloCount((Integer) userSession.get(HELLO_COUNT));
-
-		if (getHelloCount() == null) {
-
-			setHelloCount(1);
-
-		} else {
-
-			setHelloCount(getHelloCount() + 1);
-
-		}
-
-		userSession.put(HELLO_COUNT, getHelloCount());
+//		setHelloCount((Integer) getSession().get(HELLO_COUNT));
+//
+//		if (getHelloCount() == null) {
+//
+//			setHelloCount(1);
+//
+//		} else {
+//
+//			setHelloCount(getHelloCount() + 1);
+//
+//		}
+//
+//		getSession().put(HELLO_COUNT, getHelloCount());
 
 		return "success";
 	}
@@ -64,10 +63,7 @@ public class HelloWorldAction implements SessionAware {
 		this.tmp = tmp;
 	}
 
-	@Override
-	public void setSession(Map<String, Object> session) {
-		userSession = session;
-	}
+	
 
 	public Integer getHelloCount() {
 		return helloCount;
