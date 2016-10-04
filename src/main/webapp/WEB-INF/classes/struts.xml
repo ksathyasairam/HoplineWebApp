@@ -3,28 +3,61 @@
    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
    "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+
+	<!-- <package name="default" extends="struts-default"> <interceptors> <interceptor 
+		name="security" class="com.hopline.WebApp.interceptors.SecurityInterceptor" 
+		/> </interceptors> <action name="hello" class="com.hopline.WebApp.HelloWorldAction" 
+		method="execute"> <interceptor-ref name="params" /> <interceptor-ref name="security" 
+		/> <interceptor-ref name="defaultStack"></interceptor-ref> <result name="success">/HelloWorld.jsp</result> 
+		</action> <action name="loginOnLoad" class="com.hopline.WebApp.login.LoginAction" 
+		method="executeLoginOnLoad"> <interceptor-ref name="params" /> <interceptor-ref 
+		name="security" /> <interceptor-ref name="defaultStack"></interceptor-ref> 
+		<result name="success">/login.jsp</result> </action> <action name="loginNext" 
+		class="com.hopline.WebApp.login.LoginAction" method="execute"> <interceptor-ref 
+		name="params" /> <interceptor-ref name="security" /> <interceptor-ref name="defaultStack"></interceptor-ref> 
+		<result name="success" type="chain">orderSummaryOnLoad</result> </action> 
+		<action name="orderSummaryOnLoad" class="com.hopline.WebApp.ordersummary.OrderSummaryAction" 
+		method="executeOrderSummaryOnLoad"> <interceptor-ref name="params" /> <interceptor-ref 
+		name="security" /> <interceptor-ref name="defaultStack"></interceptor-ref> 
+		<result name="success">/orderSummary.jsp</result> </action> </package> -->
+
 	<package name="hopline-basic" extends="struts-default"
 		abstract="yes">
-
 		<interceptors>
 			<interceptor name="security"
 				class="com.hopline.WebApp.interceptors.SecurityInterceptor" />
-
 			<interceptor-stack name="hoplineStack">
+				<interceptor-ref name="params" />
 				<interceptor-ref name="security" />
+				<interceptor-ref name="defaultStack" />
+
 			</interceptor-stack>
 		</interceptors>
-
 		<default-interceptor-ref name="hoplineStack" />
+		<global-results>
+			<result name="login" type="redirectAction">loginOnLoad</result>
+		</global-results>
 	</package>
 
-
-
 	<package name="helloworld" extends="hopline-basic">
-
-		<action name="hello" class="com.hopline.WebApp.HelloWorldAction"
+		<action name="hello" class="com.hopline.WebApp.action.HelloWorldAction"
 			method="execute">
 			<result name="success">/HelloWorld.jsp</result>
+		</action>
+		<action name="loginOnLoad" class="com.hopline.WebApp.action.LoginAction"
+			method="executeLoginOnLoad">
+			<result name="success">/login.jsp</result>
+		</action>
+		
+		<action name="loginNext" class="com.hopline.WebApp.action.LoginAction"
+			method="executeLoginNext">
+			<result name="input">loginOnLoad</result>
+			<result name="success" type="chain">orderSummaryOnLoad</result>
+		</action>
+		
+		<action name="orderSummaryOnLoad"
+			class="com.hopline.WebApp.action.OrderSummaryAction" method="executeOrderSummaryOnLoad">
+			<result name="success">/orderSummary.jsp</result>
 		</action>
 	</package>
 </struts>

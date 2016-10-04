@@ -6,7 +6,7 @@
     <class name="com.hopline.WebApp.model.dao.Order" table="order" catalog="hopline" optimistic-lock="version">
         <id name="idorder" type="int">
             <column name="idorder" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <many-to-one name="user" class="com.hopline.WebApp.model.dao.User" fetch="select">
             <column name="userid" not-null="true" />

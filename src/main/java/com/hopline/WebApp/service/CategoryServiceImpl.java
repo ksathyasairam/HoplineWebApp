@@ -1,8 +1,9 @@
-package com.hopline.WebApp;
+package com.hopline.WebApp.service;
 
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.hopline.WebApp.dao.CategoryDao;
 import com.hopline.WebApp.model.dao.Category;
 import com.hopline.WebApp.model.dao.Product;
 import com.hopline.WebApp.rest.framework.IService;

@@ -9,10 +9,10 @@
             <generator class="identity" />
         </id>
         <property name="name" type="string">
-            <column name="name" length="45" not-null="true" />
+            <column name="name" length="400" not-null="true" />
         </property>
         <property name="price" type="long">
-            <column name="price" precision="10" scale="0" not-null="true" />
+            <column name="price" precision="10" scale="3" not-null="true" />
         </property>
         <property name="stockYn" type="string">
             <column name="stockYN" length="45" not-null="true" />

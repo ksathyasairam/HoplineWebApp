@@ -7,7 +7,7 @@ import java.util.List;
 import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.User;
 
-public class OrderVO {
+public class OrderVo {
 	
 	private Integer idorder;
 	private String paidYn;

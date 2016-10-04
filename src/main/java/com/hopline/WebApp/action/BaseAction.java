@@ -1,4 +1,4 @@
-package com.hopline.WebApp;
+package com.hopline.WebApp.action;
 
 import java.util.Map;
 
@@ -16,9 +16,7 @@ public abstract class BaseAction extends ActionSupport implements SessionAware {
 	
 	private Map<String, Object> session;
 	
-	public boolean loginRequired() {
-		return false;
-	}
+	public abstract boolean loginRequired();
 
 	@Override
 	public void setSession(Map<String, Object> session) {

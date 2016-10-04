@@ -6,7 +6,7 @@
     <class name="com.hopline.WebApp.model.dao.User" table="user" catalog="hopline" optimistic-lock="version">
         <id name="iduser" type="int">
             <column name="iduser" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="phone" type="string">
             <column name="phone" length="45" not-null="true" />
@@ -20,5 +20,12 @@
             </key>
             <one-to-many class="com.hopline.WebApp.model.dao.Order" />
         </set>
+         <set name="securityTokens" table="securityToken" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userId" not-null="true" />
+            </key>
+            <one-to-many class="com.hopline.WebApp.model.dao.SecurityToken" />
+        </set>
+        
     </class>
 </hibernate-mapping>

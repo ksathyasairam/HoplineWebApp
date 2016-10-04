@@ -1,4 +1,4 @@
-package com.hopline.WebApp;
+package com.hopline.WebApp.action;
 
 import java.util.List;
 import java.util.Map;
@@ -71,5 +71,11 @@ public class HelloWorldAction extends BaseAction {
 
 	public void setHelloCount(Integer helloCount) {
 		this.helloCount = helloCount;
+	}
+
+	@Override
+	public boolean loginRequired() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

@@ -9,16 +9,16 @@
             <generator class="identity" />
         </id>
         <property name="name" type="string">
-            <column name="name" length="45" not-null="true" />
+            <column name="name" length="400" not-null="true" />
         </property>
         <property name="shortDesc" type="string">
-            <column name="shortDesc" length="45" />
+            <column name="shortDesc" length="1000" />
         </property>
         <property name="longDesc" type="string">
-            <column name="longDesc" length="45" />
+            <column name="longDesc" length="2000" />
         </property>
         <property name="price" type="long">
-            <column name="price" precision="10" scale="0" not-null="true" />
+            <column name="price" precision="10" scale="3" not-null="true" />
         </property>
         <property name="vegYn" type="string">
             <column name="vegYN" length="45" not-null="true" />

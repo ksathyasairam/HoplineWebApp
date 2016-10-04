@@ -14,6 +14,10 @@
    <mapping resource="hibernate/hbms/AddOn.hbm.xml"/>
    <mapping resource="hibernate/hbms/Category.hbm.xml"/>
    <mapping resource="hibernate/hbms/Product.hbm.xml"/>
+   <mapping resource="hibernate/hbms/Order.hbm.xml"/>
+   <mapping resource="hibernate/hbms/OrderProduct.hbm.xml"/>
+   <mapping resource="hibernate/hbms/User.hbm.xml"/>
+   <mapping resource="hibernate/hbms/SecurityToken.hbm.xml"/>
 
 </session-factory>
 </hibernate-configuration>

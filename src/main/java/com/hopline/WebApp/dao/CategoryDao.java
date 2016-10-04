@@ -1,4 +1,4 @@
-package com.hopline.WebApp;
+package com.hopline.WebApp.dao;
 
 import java.util.List;
 

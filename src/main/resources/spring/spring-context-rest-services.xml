@@ -14,91 +14,109 @@
 	http://www.springframework.org/schema/task
 	http://www.springframework.org/schema/task/spring-task-4.1.xsd">
 
-		
+
 	<task:annotation-driven executor="asyncExecutor"
 		scheduler="asyncScheduler" />
 	<task:executor id="asyncExecutor" pool-size="1-5"
 		queue-capacity="10" />
 	<task:scheduler id="asyncScheduler" pool-size="10" />
-	
-	
-	
-	<!-- <aop:config>
-		<aop:advisor pointcut="execution(* com.bmw.facility.service.impl..*.*(..))"
-			advice-ref="bmwFacilityLocalTxAdvice" />
-	</aop:config>
-	
 
-	<tx:advice id="bmwFacilityLocalTxAdvice" transaction-manager="transactionManager">
-		<tx:attributes>
-			<tx:method name="retrieve*" read-only="true" propagation="REQUIRED"
-				isolation="READ_UNCOMMITTED" />
-			<tx:method name="save*" propagation="REQUIRED"
-				rollback-for="com.hixapi.framework.common.exception.BusinessServiceException" />
-			<tx:method name="update*" propagation="REQUIRED"
-				rollback-for="com.hixapi.framework.common.exception.BusinessServiceException" />
-			<tx:method name="*" />
-		</tx:attributes>
-	</tx:advice>
-	
 
-	<bean id="bmwFacilityService" class="com.bmw.facility.service.impl.BmwFacilityServiceImpl">
-		<property name="bmwFacilityDao" ref="bmwFacilityDao"></property>
-		<property name="userManagementDao" ref="userManagementDao"></property>
-		<property name="commonDAO" ref="commonDAO"></property>
-		<property name="userModelTranslator" ref="userModelTranslator"></property>
-		<property name="facilityTranslator" ref="facilityTranslator"></property>
-		<property name="addressModelTranslator" ref="addressModelTranslator"></property>
-		<property name="addressManagementService" ref="addressManagementService"></property>
-		<property name="healthcareEstablishmentTranslater" ref="healthcareEstablishmentTranslater"></property>
-		<property name="healthcareEstablishmentServiceDAO" ref="healthcareEstablishmentServiceDAO"></property>
-		<property name="userManagementService" ref="userManagementService"></property>
-		<property name="operationalAreasTranslator" ref="facilityOperationsAreaTranslator"></property>
-	</bean>
- -->
- 
- 
- 
- 
- 
- 
- 
-  
- <bean id="globalServiceLocator" class="com.hopline.WebApp.rest.framework.ServiceLocator"
+
+	<!-- <aop:config> <aop:advisor pointcut="execution(* com.bmw.facility.service.impl..*.*(..))" 
+		advice-ref="bmwFacilityLocalTxAdvice" /> </aop:config> <tx:advice id="bmwFacilityLocalTxAdvice" 
+		transaction-manager="transactionManager"> <tx:attributes> <tx:method name="retrieve*" 
+		read-only="true" propagation="REQUIRED" isolation="READ_UNCOMMITTED" /> <tx:method 
+		name="save*" propagation="REQUIRED" rollback-for="com.hixapi.framework.common.exception.BusinessServiceException" 
+		/> <tx:method name="update*" propagation="REQUIRED" rollback-for="com.hixapi.framework.common.exception.BusinessServiceException" 
+		/> <tx:method name="*" /> </tx:attributes> </tx:advice> <bean id="bmwFacilityService" 
+		class="com.bmw.facility.service.impl.BmwFacilityServiceImpl"> <property name="bmwFacilityDao" 
+		ref="bmwFacilityDao"></property> <property name="userManagementDao" ref="userManagementDao"></property> 
+		<property name="commonDAO" ref="commonDAO"></property> <property name="userModelTranslator" 
+		ref="userModelTranslator"></property> <property name="facilityTranslator" 
+		ref="facilityTranslator"></property> <property name="addressModelTranslator" 
+		ref="addressModelTranslator"></property> <property name="addressManagementService" 
+		ref="addressManagementService"></property> <property name="healthcareEstablishmentTranslater" 
+		ref="healthcareEstablishmentTranslater"></property> <property name="healthcareEstablishmentServiceDAO" 
+		ref="healthcareEstablishmentServiceDAO"></property> <property name="userManagementService" 
+		ref="userManagementService"></property> <property name="operationalAreasTranslator" 
+		ref="facilityOperationsAreaTranslator"></property> </bean> -->
+
+
+
+
+
+
+
+
+	<bean id="globalServiceLocator" class="com.hopline.WebApp.rest.framework.ServiceLocator"
 		factory-method="getInstance">
 		<property name="services">
 			<map key-type="java.lang.Class" value-type="com.hixapi.rest.framework.service.IService">
-				<entry key="com.hopline.WebApp.CategoryServiceImpl"
-					value-ref="categoryServcie" />
+				<entry key="com.hopline.WebApp.service.CategoryServiceImpl" value-ref="categoryServcie" />
+				<entry key="com.hopline.WebApp.service.LoginServiceImpl" value-ref="loginService" />
+				<entry key="com.hopline.WebApp.service.SecurityService"	value-ref="securityService" />
+				
+				 	
 			</map>
 		</property>
-</bean>
- 
- 
-  <aop:config>
-		<aop:advisor pointcut="execution(* com.hopline.WebApp.CategoryServiceImpl.*(..))"
+	</bean>
+
+
+	<aop:config>
+		<aop:advisor
+			pointcut="execution(* com.hopline.WebApp.service.CategoryServiceImpl.*(..))"
 			advice-ref="categoryServiceTxAdvice" />
+		<aop:advisor
+			pointcut="execution(* com.hopline.WebApp.service.LoginServiceImpl.*(..))"
+			advice-ref="loginServicetxAdvice" />
+		<aop:advisor
+			pointcut="execution(* com.hopline.WebApp.service.SecurityService.*(..))"
+			advice-ref="securityServicetxAdvice" />
 	</aop:config>
-	
+
 
 	<tx:advice id="categoryServiceTxAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="retrieve*" read-only="true" propagation="REQUIRED"
 				isolation="READ_UNCOMMITTED" />
-			<tx:method name="save*" propagation="REQUIRED"
-				rollback-for="com.hixapi.framework.common.exception.BusinessServiceException" />
-			<tx:method name="update*" propagation="REQUIRED"
-				rollback-for="com.hixapi.framework.common.exception.BusinessServiceException" />
-			<tx:method name="*" />
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED" />
 		</tx:attributes>
-	</tx:advice> 
- 
- 
- 
- <bean id="categoryServcie" class="com.hopline.WebApp.CategoryServiceImpl">
-		<property name="categoryDao" ref="categoryDAO"></property>
-</bean>
+	</tx:advice>
+
+	<tx:advice id="loginServicetxAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="retrieve*" read-only="true" propagation="REQUIRED"
+				isolation="READ_UNCOMMITTED" />
+			<tx:method name="login*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
 	
+	<tx:advice id="securityServicetxAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="retrieve*" read-only="true" propagation="REQUIRED"
+				isolation="READ_UNCOMMITTED" />
+			<tx:method name="create*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+
+
+	<bean id="categoryServcie" class="com.hopline.WebApp.service.CategoryServiceImpl">
+		<property name="categoryDao" ref="categoryDAO"></property>
+	</bean>
+	
+	<bean id="loginService" class="com.hopline.WebApp.service.LoginServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	
+	<bean id="securityService" class="com.hopline.WebApp.service.SecurityService">
+		<property name="securityDao" ref="securityDao"></property>
+	</bean>
 	
 
 
