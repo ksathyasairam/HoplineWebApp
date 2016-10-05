@@ -1,5 +1,5 @@
 package com.hopline.WebApp.model.dao;
-// Generated 4 Oct, 2016 1:44:13 AM by Hibernate Tools 5.2.0.Beta1
+// Generated 5 Oct, 2016 11:03:23 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,32 +9,31 @@ import java.util.Set;
  */
 public class User implements java.io.Serializable {
 
-	private int iduser;
+	private Integer iduser;
 	private String phone;
 	private String name;
-	private Set<Order> orders = new HashSet<Order>();
-	private Set<SecurityToken> securityTokens = new HashSet<SecurityToken>();
+	private Set<Order> orders = new HashSet<Order>(0);
+	private Set<SecurityToken> securityTokens = new HashSet<SecurityToken>(0);
 
 	public User() {
 	}
 
-	public User(int iduser, String phone) {
-		this.iduser = iduser;
+	public User(String phone) {
 		this.phone = phone;
 	}
 
-	public User(int iduser, String phone, String name, Set<SecurityToken> securityTokens) {
-		this.iduser = iduser;
+	public User(String phone, String name, Set<Order> orders, Set<SecurityToken> securityTokens) {
 		this.phone = phone;
 		this.name = name;
+		this.orders = orders;
 		this.securityTokens = securityTokens;
 	}
 
-	public int getIduser() {
+	public Integer getIduser() {
 		return this.iduser;
 	}
 
-	public void setIduser(int iduser) {
+	public void setIduser(Integer iduser) {
 		this.iduser = iduser;
 	}
 
@@ -53,7 +52,7 @@ public class User implements java.io.Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public Set<Order> getOrders() {
 		return this.orders;
 	}
@@ -61,7 +60,6 @@ public class User implements java.io.Serializable {
 	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
 	}
-
 
 	public Set<SecurityToken> getSecurityTokens() {
 		return this.securityTokens;

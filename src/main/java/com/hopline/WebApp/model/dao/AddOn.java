@@ -1,6 +1,7 @@
 package com.hopline.WebApp.model.dao;
-// Generated 1 Oct, 2016 11:23:02 PM by Hibernate Tools 5.2.0.Beta1
+// Generated 5 Oct, 2016 11:03:23 PM by Hibernate Tools 5.2.0.Beta1
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,21 +12,22 @@ public class AddOn implements java.io.Serializable {
 
 	private Integer idaddOn;
 	private String name;
-	private long price;
+	private BigDecimal price;
 	private String stockYn;
-	private Set<OrderProduct>  orderProducts = new HashSet<OrderProduct>();
-	private Set<Product>  products = new HashSet<Product>();
+	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>(0);
+	private Set<Product> products = new HashSet<Product>(0);
 
 	public AddOn() {
 	}
 
-	public AddOn(String name, long price, String stockYn) {
+	public AddOn(String name, BigDecimal price, String stockYn) {
 		this.name = name;
 		this.price = price;
 		this.stockYn = stockYn;
 	}
 
-	public AddOn(String name, long price, String stockYn, Set<OrderProduct>  orderProducts, Set<Product>  products) {
+	public AddOn(String name, BigDecimal price, String stockYn, Set<OrderProduct> orderProducts,
+			Set<Product> products) {
 		this.name = name;
 		this.price = price;
 		this.stockYn = stockYn;
@@ -49,11 +51,11 @@ public class AddOn implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public long getPrice() {
+	public BigDecimal getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(long price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
@@ -65,19 +67,19 @@ public class AddOn implements java.io.Serializable {
 		this.stockYn = stockYn;
 	}
 
-	public Set<OrderProduct>  getOrderProducts() {
+	public Set<OrderProduct> getOrderProducts() {
 		return this.orderProducts;
 	}
 
-	public void setOrderProducts(Set<OrderProduct>  orderProducts) {
+	public void setOrderProducts(Set<OrderProduct> orderProducts) {
 		this.orderProducts = orderProducts;
 	}
 
-	public Set<Product>  getProducts() {
+	public Set<Product> getProducts() {
 		return this.products;
 	}
 
-	public void setProducts(Set<Product>  products) {
+	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
 

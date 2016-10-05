@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 4 Oct, 2016 1:44:13 AM by Hibernate Tools 5.2.0.Beta1 -->
+<!-- Generated 5 Oct, 2016 11:03:23 PM by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
     <class name="com.hopline.WebApp.model.dao.SecurityToken" table="securityToken" catalog="hopline" optimistic-lock="version">
-        <id name="idSecurityToken" type="int">
+        <id name="idSecurityToken" type="java.lang.Integer">
             <column name="idSecurityToken" />
             <generator class="identity" />
         </id>
         <many-to-one name="user" class="com.hopline.WebApp.model.dao.User" fetch="select">
-            <column name="userId" not-null="true" />
+            <column name="userId" not-null="true" unique="true" />
         </many-to-one>
         <property name="securityToken" type="string">
-            <column name="securityToken" length="400" not-null="true" />
+            <column name="securityToken" length="400" not-null="true" unique="true" />
         </property>
         <property name="createTs" type="timestamp">
             <column name="createTS" length="19" not-null="true" />

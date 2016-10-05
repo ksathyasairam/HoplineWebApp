@@ -1,5 +1,5 @@
 package com.hopline.WebApp.model.dao;
-// Generated 1 Oct, 2016 11:23:02 PM by Hibernate Tools 5.2.0.Beta1
+// Generated 5 Oct, 2016 11:03:23 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,35 +9,33 @@ import java.util.Set;
  */
 public class OrderProduct implements java.io.Serializable {
 
-	private int idorderProduct;
+	private Integer idorderProduct;
 	private Order order;
 	private Product product;
 	private int count;
-	private Set<AddOn> addOns = new HashSet<AddOn>();
+	private Set<AddOn> addOns = new HashSet<AddOn>(0);
 
 	public OrderProduct() {
 	}
 
-	public OrderProduct(int idorderProduct, Order order, Product product, int count) {
-		this.idorderProduct = idorderProduct;
+	public OrderProduct(Order order, Product product, int count) {
 		this.order = order;
 		this.product = product;
 		this.count = count;
 	}
 
-	public OrderProduct(int idorderProduct, Order order, Product product, int count, Set<AddOn> addOns) {
-		this.idorderProduct = idorderProduct;
+	public OrderProduct(Order order, Product product, int count, Set<AddOn> addOns) {
 		this.order = order;
 		this.product = product;
 		this.count = count;
 		this.addOns = addOns;
 	}
 
-	public int getIdorderProduct() {
+	public Integer getIdorderProduct() {
 		return this.idorderProduct;
 	}
 
-	public void setIdorderProduct(int idorderProduct) {
+	public void setIdorderProduct(Integer idorderProduct) {
 		this.idorderProduct = idorderProduct;
 	}
 

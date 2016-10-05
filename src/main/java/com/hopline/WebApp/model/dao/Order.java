@@ -1,5 +1,5 @@
 package com.hopline.WebApp.model.dao;
-// Generated 1 Oct, 2016 11:23:02 PM by Hibernate Tools 5.2.0.Beta1
+// Generated 5 Oct, 2016 11:03:23 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -10,39 +10,51 @@ import java.util.Set;
  */
 public class Order implements java.io.Serializable {
 
-	private int idorder;
+	private Integer idorder;
+	private Shop shop;
 	private User user;
 	private String orderState;
 	private String paidYn;
 	private Date orderTime;
 	private String cancelReason;
-	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>();
+	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>(0);
 
 	public Order() {
 	}
 
-	public Order(int idorder, User user, String orderState, String paidYn) {
-		this.idorder = idorder;
-		this.user = user;
-		this.orderState = orderState;
-		this.paidYn = paidYn;
-	}
-
-	public Order(int idorder, User user, String orderState, String paidYn, Date orderTime, Set<OrderProduct> orderProducts) {
-		this.idorder = idorder;
+	public Order(Shop shop, User user, String orderState, String paidYn, Date orderTime) {
+		this.shop = shop;
 		this.user = user;
 		this.orderState = orderState;
 		this.paidYn = paidYn;
 		this.orderTime = orderTime;
+	}
+
+	public Order(Shop shop, User user, String orderState, String paidYn, Date orderTime, String cancelReason,
+			Set<OrderProduct> orderProducts) {
+		this.shop = shop;
+		this.user = user;
+		this.orderState = orderState;
+		this.paidYn = paidYn;
+		this.orderTime = orderTime;
+		this.cancelReason = cancelReason;
 		this.orderProducts = orderProducts;
 	}
 
-	public int getIdorder() {
+	public Integer getIdorder() {
 		return this.idorder;
 	}
 
-	public void setIdorder(int idorder) {
+	public void setIdorder(Integer idorder) {
 		this.idorder = idorder;
+	}
+
+	public Shop getShop() {
+		return this.shop;
+	}
+
+	public void setShop(Shop shop) {
+		this.shop = shop;
 	}
 
 	public User getUser() {
@@ -77,20 +89,20 @@ public class Order implements java.io.Serializable {
 		this.orderTime = orderTime;
 	}
 
+	public String getCancelReason() {
+		return this.cancelReason;
+	}
+
+	public void setCancelReason(String cancelReason) {
+		this.cancelReason = cancelReason;
+	}
+
 	public Set<OrderProduct> getOrderProducts() {
 		return this.orderProducts;
 	}
 
 	public void setOrderProducts(Set<OrderProduct> orderProducts) {
 		this.orderProducts = orderProducts;
-	}
-
-	public String getCancelReason() {
-		return cancelReason;
-	}
-
-	public void setCancelReason(String cancelReason) {
-		this.cancelReason = cancelReason;
 	}
 
 }

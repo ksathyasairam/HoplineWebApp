@@ -1,5 +1,5 @@
 package com.hopline.WebApp.model.dao;
-// Generated 1 Oct, 2016 11:23:02 PM by Hibernate Tools 5.2.0.Beta1
+// Generated 5 Oct, 2016 11:03:23 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,20 +10,25 @@ import java.util.Set;
 public class Category implements java.io.Serializable {
 
 	private Integer idcategory;
+	private Shop shop;
 	private String name;
+	private String subCategoryName;
 	private int sortId;
-	private Set<Product> products = new HashSet<Product>();
+	private Set<Product> products = new HashSet<Product>(0);
 
 	public Category() {
 	}
 
-	public Category(String name, int sortId) {
+	public Category(Shop shop, String name, int sortId) {
+		this.shop = shop;
 		this.name = name;
 		this.sortId = sortId;
 	}
 
-	public Category(String name, int sortId, Set<Product> products) {
+	public Category(Shop shop, String name, String subCategoryName, int sortId, Set<Product> products) {
+		this.shop = shop;
 		this.name = name;
+		this.subCategoryName = subCategoryName;
 		this.sortId = sortId;
 		this.products = products;
 	}
@@ -36,12 +41,28 @@ public class Category implements java.io.Serializable {
 		this.idcategory = idcategory;
 	}
 
+	public Shop getShop() {
+		return this.shop;
+	}
+
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+
 	public String getName() {
 		return this.name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getSubCategoryName() {
+		return this.subCategoryName;
+	}
+
+	public void setSubCategoryName(String subCategoryName) {
+		this.subCategoryName = subCategoryName;
 	}
 
 	public int getSortId() {

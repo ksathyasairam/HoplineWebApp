@@ -1,6 +1,7 @@
 package com.hopline.WebApp.model.dao;
-// Generated 1 Oct, 2016 11:23:02 PM by Hibernate Tools 5.2.0.Beta1
+// Generated 5 Oct, 2016 11:03:23 PM by Hibernate Tools 5.2.0.Beta1
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,25 +14,25 @@ public class Product implements java.io.Serializable {
 	private String name;
 	private String shortDesc;
 	private String longDesc;
-	private long price;
+	private BigDecimal price;
 	private String vegYn;
 	private String stockYn;
-	private Set<AddOn> addOns = new HashSet<AddOn>();
-	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>();
-	private Set<Category> categories = new HashSet<Category>();
+	private Set<AddOn> addOns = new HashSet<AddOn>(0);
+	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>(0);
+	private Set<Category> categories = new HashSet<Category>(0);
 
 	public Product() {
 	}
 
-	public Product(String name, long price, String vegYn, String stockYn) {
+	public Product(String name, BigDecimal price, String vegYn, String stockYn) {
 		this.name = name;
 		this.price = price;
 		this.vegYn = vegYn;
 		this.stockYn = stockYn;
 	}
 
-	public Product(String name, String shortDesc, String longDesc, long price, String vegYn, String stockYn, Set<AddOn> addOns,
-			Set<OrderProduct> orderProducts, Set<Category> categories) {
+	public Product(String name, String shortDesc, String longDesc, BigDecimal price, String vegYn, String stockYn,
+			Set<AddOn> addOns, Set<OrderProduct> orderProducts, Set<Category> categories) {
 		this.name = name;
 		this.shortDesc = shortDesc;
 		this.longDesc = longDesc;
@@ -75,11 +76,11 @@ public class Product implements java.io.Serializable {
 		this.longDesc = longDesc;
 	}
 
-	public long getPrice() {
+	public BigDecimal getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(long price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
@@ -100,7 +101,7 @@ public class Product implements java.io.Serializable {
 	}
 
 	public Set<AddOn> getAddOns() {
-		return addOns;
+		return this.addOns;
 	}
 
 	public void setAddOns(Set<AddOn> addOns) {
@@ -108,7 +109,7 @@ public class Product implements java.io.Serializable {
 	}
 
 	public Set<OrderProduct> getOrderProducts() {
-		return orderProducts;
+		return this.orderProducts;
 	}
 
 	public void setOrderProducts(Set<OrderProduct> orderProducts) {
@@ -116,13 +117,11 @@ public class Product implements java.io.Serializable {
 	}
 
 	public Set<Category> getCategories() {
-		return categories;
+		return this.categories;
 	}
 
 	public void setCategories(Set<Category> categories) {
 		this.categories = categories;
 	}
-
-
 
 }

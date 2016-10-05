@@ -1,5 +1,5 @@
 package com.hopline.WebApp.model.dao;
-// Generated 4 Oct, 2016 1:44:13 AM by Hibernate Tools 5.2.0.Beta1
+// Generated 5 Oct, 2016 11:03:23 PM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class SecurityToken implements java.io.Serializable {
 
-	private int idSecurityToken;
+	private Integer idSecurityToken;
 	private User user;
 	private String securityToken;
 	private Date createTs;
@@ -16,18 +16,17 @@ public class SecurityToken implements java.io.Serializable {
 	public SecurityToken() {
 	}
 
-	public SecurityToken(int idSecurityToken, User user, String securityToken, Date createTs) {
-		this.idSecurityToken = idSecurityToken;
+	public SecurityToken(User user, String securityToken, Date createTs) {
 		this.user = user;
 		this.securityToken = securityToken;
 		this.createTs = createTs;
 	}
 
-	public int getIdSecurityToken() {
+	public Integer getIdSecurityToken() {
 		return this.idSecurityToken;
 	}
 
-	public void setIdSecurityToken(int idSecurityToken) {
+	public void setIdSecurityToken(Integer idSecurityToken) {
 		this.idSecurityToken = idSecurityToken;
 	}
 
