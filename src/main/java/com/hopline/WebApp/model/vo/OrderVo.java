@@ -10,8 +10,10 @@ import com.hopline.WebApp.model.dao.User;
 public class OrderVo {
 	
 	private Integer idorder;
+	private Integer shopId;
+	private Integer userId;
 	private String paidYn;
-	private Date orderTime;
+	private Date orderSubmittedTime;
 	private Integer totalItem;
 	private Integer totalPrice;
 	private List<OrderProduct> orderProducts = new ArrayList<OrderProduct>();
@@ -29,12 +31,7 @@ public class OrderVo {
 	public void setPaidYn(String paidYn) {
 		this.paidYn = paidYn;
 	}
-	public Date getOrderTime() {
-		return orderTime;
-	}
-	public void setOrderTime(Date orderTime) {
-		this.orderTime = orderTime;
-	}
+	
 	public Integer getTotalItem() {
 		return totalItem;
 	}
@@ -52,6 +49,25 @@ public class OrderVo {
 	}
 	public void setOrderProducts(List<OrderProduct> orderProducts) {
 		this.orderProducts = orderProducts;
+	}
+	public Integer getShopId() {
+		return shopId;
+	}
+	public void setShopId(Integer shopId) {
+		this.shopId = shopId;
+	}
+	
+	public Date getOrderSubmittedTime() {
+		return orderSubmittedTime;
+	}
+	public void setOrderSubmittedTime(Date orderSubmittedTime) {
+		this.orderSubmittedTime = orderSubmittedTime;
+	}
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 	
 	

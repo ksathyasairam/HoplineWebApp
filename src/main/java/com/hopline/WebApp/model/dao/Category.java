@@ -1,5 +1,5 @@
 package com.hopline.WebApp.model.dao;
-// Generated 5 Oct, 2016 11:03:23 PM by Hibernate Tools 5.2.0.Beta1
+// Generated 6 Oct, 2016 1:14:11 AM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.HashSet;
 import java.util.Set;

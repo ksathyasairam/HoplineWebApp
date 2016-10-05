@@ -5,7 +5,7 @@ import com.opensymphony.xwork2.Action;
 
 public class OrderSummaryAction extends BaseAction {
 	
-	private OrderVo orderVO;
+	private OrderVo orderVo;
 	
 	@Override
 	public boolean loginRequired() {
@@ -15,13 +15,15 @@ public class OrderSummaryAction extends BaseAction {
 	public String executeOrderSummaryOnLoad() {
 		return Action.SUCCESS;
 	}
-	
-	public OrderVo getOrderVO() {
-		return orderVO;
+
+	public OrderVo getOrderVo() {
+		return orderVo;
 	}
 
-	public void setOrderVO(OrderVo orderVO) {
-		this.orderVO = orderVO;
+	public void setOrderVo(OrderVo orderVo) {
+		this.orderVo = orderVo;
 	}
+	
+
 
 }

@@ -1,5 +1,5 @@
 package com.hopline.WebApp.model.dao;
-// Generated 5 Oct, 2016 11:03:23 PM by Hibernate Tools 5.2.0.Beta1
+// Generated 6 Oct, 2016 1:14:11 AM by Hibernate Tools 5.2.0.Beta1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -13,6 +13,7 @@ public class Order implements java.io.Serializable {
 	private Integer idorder;
 	private Shop shop;
 	private User user;
+	private int customerOrderId;
 	private String orderState;
 	private String paidYn;
 	private Date orderTime;
@@ -22,18 +23,20 @@ public class Order implements java.io.Serializable {
 	public Order() {
 	}
 
-	public Order(Shop shop, User user, String orderState, String paidYn, Date orderTime) {
+	public Order(Shop shop, User user, int customerOrderId, String orderState, String paidYn, Date orderTime) {
 		this.shop = shop;
 		this.user = user;
+		this.customerOrderId = customerOrderId;
 		this.orderState = orderState;
 		this.paidYn = paidYn;
 		this.orderTime = orderTime;
 	}
 
-	public Order(Shop shop, User user, String orderState, String paidYn, Date orderTime, String cancelReason,
-			Set<OrderProduct> orderProducts) {
+	public Order(Shop shop, User user, int customerOrderId, String orderState, String paidYn, Date orderTime,
+			String cancelReason, Set<OrderProduct> orderProducts) {
 		this.shop = shop;
 		this.user = user;
+		this.customerOrderId = customerOrderId;
 		this.orderState = orderState;
 		this.paidYn = paidYn;
 		this.orderTime = orderTime;
@@ -63,6 +66,14 @@ public class Order implements java.io.Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public int getCustomerOrderId() {
+		return this.customerOrderId;
+	}
+
+	public void setCustomerOrderId(int customerOrderId) {
+		this.customerOrderId = customerOrderId;
 	}
 
 	public String getOrderState() {
