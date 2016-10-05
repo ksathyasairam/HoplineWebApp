@@ -34,7 +34,7 @@ public class SecurityDao {
 	
 	public SecurityToken getTokenbyTokenString(String tokenString) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(SecurityToken.class, "sc");
-		criteria.add(Restrictions.eq("user.securityToken", tokenString));
+		criteria.add(Restrictions.eq("sc.securityToken", tokenString));
 
 		return (SecurityToken) criteria.uniqueResult();
 	}

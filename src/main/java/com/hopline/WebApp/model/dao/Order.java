@@ -15,6 +15,7 @@ public class Order implements java.io.Serializable {
 	private String orderState;
 	private String paidYn;
 	private Date orderTime;
+	private String cancelReason;
 	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>();
 
 	public Order() {
@@ -82,6 +83,14 @@ public class Order implements java.io.Serializable {
 
 	public void setOrderProducts(Set<OrderProduct> orderProducts) {
 		this.orderProducts = orderProducts;
+	}
+
+	public String getCancelReason() {
+		return cancelReason;
+	}
+
+	public void setCancelReason(String cancelReason) {
+		this.cancelReason = cancelReason;
 	}
 
 }

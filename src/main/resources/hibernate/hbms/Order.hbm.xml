@@ -20,6 +20,9 @@
         <property name="orderTime" type="timestamp">
             <column name="orderTime" length="19" />
         </property>
+        <property name="cancelReason" type="string">
+            <column name="cancelReason" length="1000" />
+        </property>
         <set name="orderProducts" table="orderProduct" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="orderId" not-null="true" />
