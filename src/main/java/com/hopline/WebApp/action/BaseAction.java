@@ -21,6 +21,8 @@ public abstract class BaseAction extends ActionSupport implements SessionAware {
 	@Override
 	public void setSession(Map<String, Object> session) {
 		//testing 9 eclipse base
+		
+		//testing 10 niks
 		this.session = session;
 	}
 	
