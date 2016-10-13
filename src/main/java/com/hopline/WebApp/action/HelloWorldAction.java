@@ -18,6 +18,7 @@ public class HelloWorldAction extends BaseAction {
 	private Integer helloCount;
 
 	public String execute() throws Exception {
+		//Baby ko base pasand hai
 		super.execute();
 		// categories =
 		// ServiceLocator.getInstance().getService(CategoryServiceImpl.class).retrieveAllCategory();
