@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 6 Oct, 2016 1:14:12 AM by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.hopline.WebApp.model.dao.Order" table="order" catalog="hopline" optimistic-lock="version">
+        <id name="idorder" type="java.lang.Integer">
+            <column name="idorder" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="shop" class="com.hopline.WebApp.model.dao.Shop" fetch="select">
+            <column name="shopId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="com.hopline.WebApp.model.dao.User" fetch="select">
+            <column name="userid" not-null="true" />
+        </many-to-one>
+        <property name="customerOrderId" type="int">
+            <column name="customerOrderId" not-null="true" />
+        </property>
+        <property name="orderState" type="string">
+            <column name="orderState" length="45" not-null="true" />
+        </property>
+        <property name="paidYn" type="string">
+            <column name="paidYN" length="45" not-null="true" />
+        </property>
+        <property name="orderTime" type="timestamp">
+            <column name="orderTime" length="19" not-null="true" />
+        </property>
+        <property name="cancelReason" type="string">
+            <column name="cancelReason" length="1000" />
+        </property>
+        <set name="orderProducts" table="orderProduct" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="orderId" not-null="true" />
+            </key>
+            <one-to-many class="com.hopline.WebApp.model.dao.OrderProduct" />
+        </set>
+    </class>
+</hibernate-mapping>

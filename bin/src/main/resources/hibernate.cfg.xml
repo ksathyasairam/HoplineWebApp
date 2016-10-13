@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">newyearnewlife</property>
+        <property name="hibernate.connection.url">jdbc:mysql://hopline.cftgzg2h6jdu.us-east-1.rds.amazonaws.com:3306/hopline</property>
+        <property name="hibernate.connection.username">hopline</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+   <!-- List of XML mapping files -->
+   <mapping resource="hibernate/hbms/AddOn.hbm.xml"/>
+   <mapping resource="hibernate/hbms/Category.hbm.xml"/>
+   <mapping resource="hibernate/hbms/Order.hbm.xml"/>
+   <mapping resource="hibernate/hbms/OrderProduct.hbm.xml"/>
+   <mapping resource="hibernate/hbms/OrderStatusLog.hbm.xml"/>
+   <mapping resource="hibernate/hbms/Product.hbm.xml"/>
+   <mapping resource="hibernate/hbms/SecurityToken.hbm.xml"/>
+   <mapping resource="hibernate/hbms/Shop.hbm.xml"/>
+   <mapping resource="hibernate/hbms/User.hbm.xml"/>
+
+
+</session-factory>
+</hibernate-configuration>

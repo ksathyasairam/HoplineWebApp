@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 6 Oct, 2016 1:14:12 AM by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.hopline.WebApp.model.dao.Shop" table="shop" catalog="hopline" optimistic-lock="version">
+        <id name="idshop" type="java.lang.Integer">
+            <column name="idshop" />
+            <generator class="identity" />
+        </id>
+        <property name="shopName" type="string">
+            <column name="shopName" length="400" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="45" />
+        </property>
+        <property name="imgUrl" type="string">
+            <column name="imgUrl" length="1000" />
+        </property>
+        <property name="activeYn" type="string">
+            <column name="activeYN" length="45" not-null="true" />
+        </property>
+        <set name="categories" table="category" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="shopId" not-null="true" />
+            </key>
+            <one-to-many class="com.hopline.WebApp.model.dao.Category" />
+        </set>
+        <set name="orders" table="order" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="shopId" not-null="true" />
+            </key>
+            <one-to-many class="com.hopline.WebApp.model.dao.Order" />
+        </set>
+    </class>
+</hibernate-mapping>
