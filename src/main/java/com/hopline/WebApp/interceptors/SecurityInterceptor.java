@@ -7,15 +7,18 @@ import javax.servlet.http.Cookie;
 import org.apache.struts2.ServletActionContext;
 
 import com.hopline.WebApp.action.BaseAction;
+import com.hopline.WebApp.action.OrderSummaryAction;
 import com.hopline.WebApp.model.dao.SecurityToken;
 import com.hopline.WebApp.model.vo.UserVo;
 import com.hopline.WebApp.rest.framework.ServiceLocator;
 import com.hopline.WebApp.service.SecurityService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 
 public class SecurityInterceptor implements Interceptor {
 
+	public static final String SESSION_ORDER_STORE = "orderStore";
 	public static final String SESSION_USER = "user";
 	public static final String REMEMBER_ME = "rememberMe";
 
@@ -23,11 +26,14 @@ public class SecurityInterceptor implements Interceptor {
 	public String intercept(ActionInvocation invocation) throws Exception {
 		Map<String, Object> session = invocation.getInvocationContext().getSession();
 
+		
+		if (invocation.getProxy().getMethod().equals("executeOrderSummaryOnLoad")) orderSummaryRedirectDataStore(invocation, session);
+		
 		Cookie rememberMeCookie = getRememberMeCookie();
 		UserVo sessionUser = (UserVo) session.get(SESSION_USER);
 		
 		if (rememberMeCookie == null &&  sessionUser != null) {
-			SecurityToken securityToken  = ServiceLocator.getInstance().getService(SecurityService.class).createSecurityToken(sessionUser.getUserId());
+			SecurityToken securityToken  = ServiceLocator.getInstance().getService(SecurityService.class).createSecurityToken(sessionUser.getIduser());
 			
 			Cookie div = new Cookie(SecurityInterceptor.REMEMBER_ME, securityToken.getSecurityToken());
 			div.setMaxAge(60 * 60 * 24 * 365); // Make the cookie last a year
@@ -35,6 +41,7 @@ public class SecurityInterceptor implements Interceptor {
 
 			return invocation.invoke();
 		}
+				
 				
 		
 		if (rememberMeCookie != null && sessionUser == null) {
@@ -53,6 +60,19 @@ public class SecurityInterceptor implements Interceptor {
 			return "login";
 		
 		return invocation.invoke();
+	}
+
+	private void orderSummaryRedirectDataStore(ActionInvocation invocation, Map<String, Object> session) {
+		Map<String, Object> currOrder = ActionContext.getContext().getParameters();
+		Map<String, Object> storedOrder = (Map<String, Object>) session.get(SESSION_ORDER_STORE);
+
+		if (currOrder != null && currOrder.size() > 0) {
+			session.put(SESSION_ORDER_STORE, currOrder);
+		} else if (storedOrder != null) {
+			ActionContext.getContext().setParameters(storedOrder);
+			session.put(SESSION_ORDER_STORE, null);
+		}
+
 	}
 
 	private void deleteCookie(Cookie cookie) {

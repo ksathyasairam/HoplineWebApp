@@ -5,27 +5,91 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Hopline Login</title>
-</head>
-<body>
-   <h1>Hopline Login</h1>
-  <!--  <form action="loginNext">
-      <label for="name">Name</label><br/>
-      <input type="text" name="user.userName"/>
-      
-      <label for="name">Phone : </label><br/>
-      <input type="text" name="user.phone"/>
+<title>Hopline</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 
-      <input type="submit" value="Submit"/>
-   </form> -->
-   
-   <s:form action="loginNext">
- 
-      <s:textfield name="user.userName" label="Name" />
-      <s:textfield  name="user.phone" label="Phone" />
-       
-      <s:submit/>
-       
-</s:form> 
-</body>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+ <!-- Custom Theme files -->
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta name="keywords" content="" />
+<!-- webfonts -->
+	<link href='//fonts.googleapis.com/css?family=Asap:400,700,400italic' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+<!-- webfonts -->
+
+</head>
+	<body ng-app="mainApp" ng-controller="EventCtrl as event"> 
+
+	<a id="return-to-top" style="z-index:11; "><i><img src="images/up.png" alt=" " / ></i></a>
+		
+	<a  class="addedtoast" style=" z-index:9;" ><b>Item Added</b></a>
+				
+		<!-- container -->
+			<!-- header -->
+			<div id="home" class="header" >
+
+				<!-- top-hedader -->
+				<div class="top-header" style="margin-top:15px;" >
+					<!-- /logo -->
+					<!--top-nav---->
+
+				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #cf3721 ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
+				<div class="navigation">
+					<div class="logo" style="position:fixed;left:1em;">
+						<h1 ><a href="index.html">HOPLINE</a></h1>
+					</div>
+					<div class="navigation-right" style="margin-right:1em;" >
+						<span class="menu"><img src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
+					</div>
+
+				</div>
+				</div>
+
+			
+			
+
+<div style="position:fixed; top:25%; left:50%; background: #eeeeee; padding-top:18px; padding-bottom:18px; padding-left:10px; padding-right:10px; border-radius:  3px; margin-left:-160px; box-shadow:0px 0px  6px #888888; border: 1px solid #AFAFAF;">
+    <div style=" position:absolute;left:50%;height:90px; width:90px; -webkit-border-radius: 60px;-moz-border-radius: 60px; border-radius: 60px; background: #b2301d; margin-top:-60px; margin-left:-45px;box-shadow:0px -1px  2px #888888;">
+      
+    </div>
+    <br>
+    <br>
+    <form action="/loginNext.action">
+    	<div style="text-align:center;">
+      		<h3>Hopline Login</h3>
+    	</div>
+    	<div  style="padding-bottom:5%;">
+      		<img src="images/user.png">
+      		<input name="user.name"  type="text" placeholder="Username" style="float:right;width:275px; background: #d3d3d3; border:none ; border-radius:  2px; height:35px;" required/>
+
+    	</div>
+    	<div style="padding-bottom:5%;" >
+      		<img src="images/mobile.png">
+      		<input name="user.phone" type="text" placeholder="Phone No." pattern="^\d{10}$"  oninvalid="setCustomValidity('Enter a valid phone number.')" style=" float:right;width:275px; background:#d3d3d3; border:none ; border-radius:  2px; height:35px;" required />
+
+    	</div>
+    	<div >
+      		<input type="submit" value="Login"  style=" color:white;width:300px; background:#4fb66d; border:none ; border-radius:  2px; height:35px;"/>
+
+    	</div>
+    </form>
+</div>
+
+		</div>
+	</div>
+
+<script src="./app/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.js"></script>
+<script src="./app/mainApp.js"></script>
+<script src="./app/ui.router.js"></script>
+<script src="./app/event/eventModule.js"></script>
+<script type="text/javascript">
+    console.log("angular object",angular);
+</script>
+
+	</body>
 </html>

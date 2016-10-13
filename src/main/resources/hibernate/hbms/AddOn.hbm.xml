@@ -17,13 +17,11 @@
         <property name="stockYn" type="string">
             <column name="stockYN" length="45" not-null="true" />
         </property>
-        <set name="orderProducts" table="orderProductAddon" inverse="false" lazy="true" fetch="select">
+       <set name="orderProductAddons" table="orderProductAddon" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="addonId" not-null="true" />
             </key>
-            <many-to-many entity-name="com.hopline.WebApp.model.dao.OrderProduct">
-                <column name="orderProductId" not-null="true" />
-            </many-to-many>
+            <one-to-many class="com.hopline.WebApp.model.dao.OrderProductAddon" />
         </set>
         <set name="products" table="productAddon" inverse="true" lazy="true" fetch="select">
             <key>

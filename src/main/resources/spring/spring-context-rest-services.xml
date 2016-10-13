@@ -56,6 +56,7 @@
 				<entry key="com.hopline.WebApp.service.CategoryServiceImpl" value-ref="categoryServcie" />
 				<entry key="com.hopline.WebApp.service.LoginServiceImpl" value-ref="loginService" />
 				<entry key="com.hopline.WebApp.service.SecurityService"	value-ref="securityService" />
+				<entry key="com.hopline.WebApp.service.OrderService"	value-ref="orderService" />
 				
 				 	
 			</map>
@@ -73,6 +74,9 @@
 		<aop:advisor
 			pointcut="execution(* com.hopline.WebApp.service.SecurityService.*(..))"
 			advice-ref="securityServicetxAdvice" />
+		<aop:advisor
+			pointcut="execution(* com.hopline.WebApp.service.OrderService.*(..))"
+			advice-ref="orderServicetxAdvice" />
 	</aop:config>
 
 
@@ -103,6 +107,19 @@
 			<tx:method name="update*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
+	
+	<tx:advice id="orderServicetxAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="retrieve*" read-only="true" propagation="REQUIRED"
+				isolation="READ_UNCOMMITTED" />
+			<tx:method name="load*" read-only="true" propagation="REQUIRED"
+				isolation="READ_UNCOMMITTED" />
+			<tx:method name="create*" propagation="REQUIRED"/>
+			<tx:method name="submit*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
 
 
 
@@ -116,6 +133,10 @@
 	
 	<bean id="securityService" class="com.hopline.WebApp.service.SecurityService">
 		<property name="securityDao" ref="securityDao"></property>
+	</bean>
+	
+	<bean id="orderService" class="com.hopline.WebApp.service.OrderService">
+		<property name="orderDao" ref="orderDao"></property>
 	</bean>
 	
 

@@ -77,7 +77,7 @@
 		</constructor-arg>
 	</bean>
 	
-	<bean id="securityDao" class="com.hopline.WebApp.dao.OrderDao">
+	<bean id="orderDao" class="com.hopline.WebApp.dao.OrderDao">
 		<constructor-arg>
 			<ref bean="sessionFactory" />
 		</constructor-arg>

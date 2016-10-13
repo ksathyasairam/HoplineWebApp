@@ -10,4 +10,6 @@ public class OrderStates {
 	public static String COMPLETED = "COMPLETED";
 	public static String UNPICKED = "UNPICKED";
 	public static String CANCELLED = "CANCELLED";
+	public static String TEMP_SUBMIT = "TEMP_SUBMIT";
+
 }

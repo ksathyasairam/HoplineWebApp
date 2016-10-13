@@ -13,62 +13,37 @@ public class OrderProduct implements java.io.Serializable {
 	private Order order;
 	private Product product;
 	private int count;
-	private Set<AddOn> addOns = new HashSet<AddOn>(0);
-
-	public OrderProduct() {
-	}
-
-	public OrderProduct(Order order, Product product, int count) {
-		this.order = order;
-		this.product = product;
-		this.count = count;
-	}
-
-	public OrderProduct(Order order, Product product, int count, Set<AddOn> addOns) {
-		this.order = order;
-		this.product = product;
-		this.count = count;
-		this.addOns = addOns;
-	}
-
+	private Set<OrderProductAddon> orderProductAddons = new HashSet<OrderProductAddon>(0);
 	public Integer getIdorderProduct() {
-		return this.idorderProduct;
+		return idorderProduct;
 	}
-
 	public void setIdorderProduct(Integer idorderProduct) {
 		this.idorderProduct = idorderProduct;
 	}
-
 	public Order getOrder() {
-		return this.order;
+		return order;
 	}
-
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-
 	public Product getProduct() {
-		return this.product;
+		return product;
 	}
-
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-
 	public int getCount() {
-		return this.count;
+		return count;
 	}
-
 	public void setCount(int count) {
 		this.count = count;
 	}
-
-	public Set<AddOn> getAddOns() {
-		return this.addOns;
+	public Set<OrderProductAddon> getOrderProductAddons() {
+		return orderProductAddons;
+	}
+	public void setOrderProductAddons(Set<OrderProductAddon> orderProductAddons) {
+		this.orderProductAddons = orderProductAddons;
 	}
 
-	public void setAddOns(Set<AddOn> addOns) {
-		this.addOns = addOns;
-	}
-
+	
 }

@@ -1,0 +1,57 @@
+
+<div style="position:fixed; left:1%; bottom:5px; background:#67baca; opacity:0.9; height:40px; text-align:center;width:98%;padding-top:2%;padding-bottom:3%;border-radius:3px 3px 3px 3px;color:white;width:39%;z-index:11"  ui-sref="home" >
+	Back
+</div>
+<div style="position:fixed; right:1%; bottom:5px; background:#4fb66d; opacity:0.9; height:40px; text-align:center;width:98%;padding-top:2%;padding-bottom:3%;border-radius:3px 3px 3px 3px;color:white;width:58%;z-index:11" ng-click="event.post1();" >
+	Proceed to Checkout
+</div>
+<div style="padding-top:20px;">
+</div>
+<div class="banner-info" style="margin-left:7px;margin-right:7px;" >
+				<div class=" header-right">
+					<h6  style="text-align:center;">Cart Summary</h6>
+					<ul class="address">
+						 <li ng-repeat="food in event.checkList" id="cartItem-{{$index}}" style="border-bottom: 1.5px dotted #AFAFAF;margin-top:5%;padding-bottom:5%;">
+						 	<div style="color:#525a54;float:left;">
+						 		{{food.name}}
+						 	</div>
+						 	<div style="color:#525a54;float:right;">
+						 		x {{food.quantity}} 
+						 		
+						 		<div style="width:18px; height:18px; background:#cf3721; border-radius:9px; float:right; margin-right:6px;  margin-left:11px;text-align:center; color:white; font-size:18px; margin-top:2px;" id="remove-{{$index}}" ng-click="event.removeCartItem($index);">
+						 			<div style="margin-top:-5px;">x</div>
+						 		</div>
+						 	</div>
+						 	<br>
+						 	<div ng-repeat="addons in food.addOns" style="font-size: 13px;">
+						 		<div style="color:#525a54;float:left;">
+						 			{{addons.name}}
+						 		</div>
+						 		<div style="color:#525a54;float:right;margin-right:37px">
+						 			{{addons.selected}}
+						 		</div>
+						 		<br>
+						 	</div>
+						 </li>
+						 <br>
+						 <div style="border-bottom: 1px double #AFAFAF;">
+						 </div>
+						 <br>
+						 <div>
+						 	<div style=" float:right; color:#525a54; padding-right:12%; font-size:14px;">
+						 		Total: ₹.{{event.totalCost}}
+						 	</div>
+						 	<div style=" float:left; color:#525a54;  font-size:14px;">
+						 		Quantity: {{event.totalQuantity}}
+						 	</div>
+						 	<br>
+						 </div>
+						 <br>
+						 <div style="border-bottom: 1px double #AFAFAF;">
+						 </div>
+						 <br>
+
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+</div>

@@ -1,27 +1,27 @@
 package com.hopline.WebApp.model.vo;
 
-public class UserVo {
-	private Integer userId;
-	private String userName;
-	private String phone;
+public class UserVo implements java.io.Serializable {
 
+	private Integer iduser;
+	private String phone;
+	private String name;
+	public Integer getIduser() {
+		return iduser;
+	}
+	public void setIduser(Integer iduser) {
+		this.iduser = iduser;
+	}
 	public String getPhone() {
 		return phone;
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public Integer getUserId() {
-		return userId;
-	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
+	
 }

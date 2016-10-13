@@ -17,13 +17,11 @@
         <property name="count" type="int">
             <column name="count" not-null="true" />
         </property>
-        <set name="addOns" table="orderProductAddon" inverse="false" lazy="true" fetch="select">
+        <set name="orderProductAddons" table="orderProductAddon" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="orderProductId" not-null="true" />
             </key>
-            <many-to-many entity-name="com.hopline.WebApp.model.dao.AddOn">
-                <column name="addonId" not-null="true" />
-            </many-to-many>
+            <one-to-many class="com.hopline.WebApp.model.dao.OrderProductAddon" />
         </set>
     </class>
 </hibernate-mapping>

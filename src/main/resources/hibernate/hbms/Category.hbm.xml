@@ -20,6 +20,9 @@
         <property name="sortId" type="int">
             <column name="sortId" not-null="true" />
         </property>
+         <property name="imgUrl" type="string">
+            <column name="imgUrl" length="45" />
+        </property>
         <set name="products" table="categoryProduct" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="categoryId" not-null="true" />

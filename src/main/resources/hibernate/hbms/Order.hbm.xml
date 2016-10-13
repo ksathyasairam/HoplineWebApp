@@ -29,7 +29,13 @@
         <property name="cancelReason" type="string">
             <column name="cancelReason" length="1000" />
         </property>
-        <set name="orderProducts" table="orderProduct" inverse="true" lazy="true" fetch="select">
+        <property name="totalItemCount" type="int">
+            <column name="totalItemCount" not-null="true" />
+        </property>
+        <property name="totalPrice" type="big_decimal">
+            <column name="totalPrice" precision="10" scale="3" not-null="true" />
+        </property>
+        <set name="orderProducts"  table="orderProduct" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="orderId" not-null="true" />
             </key>

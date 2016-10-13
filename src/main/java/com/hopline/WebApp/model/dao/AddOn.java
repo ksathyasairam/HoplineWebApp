@@ -14,73 +14,44 @@ public class AddOn implements java.io.Serializable {
 	private String name;
 	private BigDecimal price;
 	private String stockYn;
-	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>(0);
+	private Set<OrderProductAddon> orderProductAddons = new HashSet<OrderProductAddon>(0);
 	private Set<Product> products = new HashSet<Product>(0);
-
-	public AddOn() {
-	}
-
-	public AddOn(String name, BigDecimal price, String stockYn) {
-		this.name = name;
-		this.price = price;
-		this.stockYn = stockYn;
-	}
-
-	public AddOn(String name, BigDecimal price, String stockYn, Set<OrderProduct> orderProducts,
-			Set<Product> products) {
-		this.name = name;
-		this.price = price;
-		this.stockYn = stockYn;
-		this.orderProducts = orderProducts;
-		this.products = products;
-	}
-
 	public Integer getIdaddOn() {
-		return this.idaddOn;
+		return idaddOn;
 	}
-
 	public void setIdaddOn(Integer idaddOn) {
 		this.idaddOn = idaddOn;
 	}
-
 	public String getName() {
-		return this.name;
+		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public BigDecimal getPrice() {
-		return this.price;
+		return price;
 	}
-
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
-
 	public String getStockYn() {
-		return this.stockYn;
+		return stockYn;
 	}
-
 	public void setStockYn(String stockYn) {
 		this.stockYn = stockYn;
 	}
-
-	public Set<OrderProduct> getOrderProducts() {
-		return this.orderProducts;
+	public Set<OrderProductAddon> getOrderProductAddons() {
+		return orderProductAddons;
 	}
-
-	public void setOrderProducts(Set<OrderProduct> orderProducts) {
-		this.orderProducts = orderProducts;
+	public void setOrderProductAddons(Set<OrderProductAddon> orderProductAddons) {
+		this.orderProductAddons = orderProductAddons;
 	}
-
 	public Set<Product> getProducts() {
-		return this.products;
+		return products;
 	}
-
 	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
+
 
 }

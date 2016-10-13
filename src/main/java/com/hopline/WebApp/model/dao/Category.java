@@ -14,6 +14,7 @@ public class Category implements java.io.Serializable {
 	private String name;
 	private String subCategoryName;
 	private int sortId;
+	private String imgUrl;
 	private Set<Product> products = new HashSet<Product>(0);
 
 	public Category() {
@@ -79,6 +80,14 @@ public class Category implements java.io.Serializable {
 
 	public void setProducts(Set<Product> products) {
 		this.products = products;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 }

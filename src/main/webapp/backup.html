@@ -1,0 +1,112 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Hopline</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+ <!-- Custom Theme files -->
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta name="keywords" content="Preface Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<!-- webfonts -->
+	<link href='//fonts.googleapis.com/css?family=Asap:400,700,400italic' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+<!-- webfonts -->
+ <!---- start-smoth-scrolling---->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+ <!---- start-smoth-scrolling---->
+</head>
+	<body ng-app="mainApp" ng-controller="EventCtrl as event"> 
+		<!-- container -->
+			<!-- header -->
+			<div id="home" class="header">
+				<div class="container">
+				<!-- top-hedader -->
+				<div class="top-header"  >
+					<!-- /logo -->
+					<!--top-nav---->
+
+				<div class="top-nav" style="position:fixed; width:100% ; ">
+				<div class="navigation">
+					<div class="logo"  >
+						<h1><a href="index.html"><span>H</span>OPLINE</a></h1>
+					</div>
+					<div class="navigation-right" >
+						<span class="menu"><img src="images/menu.png" alt=" " / ></span>
+						<nav class="link-effect-3" id="link-effect-3">
+							<ul class="nav1 nav nav-wil"  >
+								<li class="active" ng-repeat="item in event.category" ng-click="event.value=item.name;event.title=item.name"><a>{{item.name}}</a></li>
+
+
+							</ul>
+						</nav>
+							<!-- script-for-menu -->
+								<script>
+								   $( "span.menu" ).click(function() {
+									 $( "ul.nav1" ).slideToggle( 300, function() {
+									 // Animation complete.
+									  });
+									 });
+									 $( "ul.nav1" ).click(function() {
+									 $( "ul.nav1" ).slideToggle( 300, function() {
+									 // Animation complete.
+									  });
+									 });
+								</script>
+							<!-- /script-for-menu -->
+					</div>
+
+				</div>
+				</div>
+
+			<div class="banner-info">
+				<div class="col-md-7 header-right">
+					<h6 style="text-align:center;">{{event.title}}</h6>
+					<ul class="address">
+					
+					    <li ng-repeat="fooditem in event.foodItems | filter:{category: event.value}">
+					    		
+								<div class="banner-info">
+
+								<div style="color:white; padding-left:2%; padding-top:2%; padding-bottom:3%;padding-right:2%; opacity:0.9;"><img src="images/dropdown.png" style="padding-bottom:1%;opacity:0.7;" ng-click="fooditem.isExpanded=!fooditem.isExpanded"alt=" " /> {{fooditem.name}} <img src="images/button.png" align="right" align="middle" alt=" " /></div>
+								<div style="color:white;padding-left:2%;background-color: grey;opacity: 0.6;padding-top:2%;padding-bottom:2%" ng-show="fooditem.isExpanded==true">blah blah blah blah blah </div>
+
+
+								</div>
+
+						</li>
+					</ul>
+				</div>
+				
+				<div class="clearfix"> </div>
+						
+		      </div>
+			</div>
+		</div>
+	</div>
+
+	<script src="./app/angular.min.js"></script>
+<script src="./app/mainApp.js"></script>
+
+<script src="./app/event/eventModule.js"></script>
+<script type="text/javascript">
+    console.log("angular object",angular);
+</script>
+
+	</body>
+</html>
+

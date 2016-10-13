@@ -52,12 +52,30 @@
 		<action name="loginNext" class="com.hopline.WebApp.action.LoginAction"
 			method="executeLoginNext">
 			<result name="input">loginOnLoad</result>
-			<result name="success" type="chain">orderSummaryOnLoad</result>
+			<result name="success" type="redirectAction">orderSummaryOnLoad</result>
 		</action>
 		
 		<action name="orderSummaryOnLoad"
 			class="com.hopline.WebApp.action.OrderSummaryAction" method="executeOrderSummaryOnLoad">
 			<result name="success">/orderSummary.jsp</result>
+			<result name="input">orderSummaryOnLoad</result>
+			<result name="invalidInput">/invalidInput.jsp</result>
+		</action>
+		
+		<action name="orderSummaryNext"
+			class="com.hopline.WebApp.action.OrderSummaryAction" method="executeOrderSummaryNext">
+			<result name="yourOrder" type="redirectAction">yourOrders</result>
+			<result name="bigOrderPay">/bigOrderPay.jsp</result>
+		</action>
+		
+		<action name="yourOrders"
+			class="com.hopline.WebApp.action.YourOrdersAction" method="execute">
+			<result name="success">/yourOrder.jsp</result>
+		</action>
+		
+		<action name="singlePageApp"
+			class="com.hopline.WebApp.action.SinglePageAppAction" method="execute">
+			<result name="success">/singlePageApp.jsp</result>
 		</action>
 	</package>
 </struts>

@@ -1,6 +1,7 @@
 package com.hopline.WebApp.model.dao;
 // Generated 6 Oct, 2016 1:14:11 AM by Hibernate Tools 5.2.0.Beta1
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +19,8 @@ public class Order implements java.io.Serializable {
 	private String paidYn;
 	private Date orderTime;
 	private String cancelReason;
+	private int totalItemCount;
+	private BigDecimal totalPrice;
 	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>(0);
 
 	public Order() {
@@ -114,6 +117,22 @@ public class Order implements java.io.Serializable {
 
 	public void setOrderProducts(Set<OrderProduct> orderProducts) {
 		this.orderProducts = orderProducts;
+	}
+
+	public int getTotalItemCount() {
+		return totalItemCount;
+	}
+
+	public void setTotalItemCount(int totalItemCount) {
+		this.totalItemCount = totalItemCount;
+	}
+
+	public BigDecimal getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(BigDecimal totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 }

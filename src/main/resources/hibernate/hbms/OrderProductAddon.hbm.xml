@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 8, 2016 12:01:47 AM by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.hopline.WebApp.model.dao.OrderProductAddon" table="orderProductAddon" catalog="hopline" optimistic-lock="version">
+        <id name="orderProductAddonId" type="java.lang.Integer">
+            <column name="orderProductAddonId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="addOn" class="com.hopline.WebApp.model.dao.AddOn" fetch="select">
+            <column name="addonId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="orderProduct" class="com.hopline.WebApp.model.dao.OrderProduct" fetch="select">
+            <column name="orderProductId" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

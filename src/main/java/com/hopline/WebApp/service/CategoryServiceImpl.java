@@ -1,43 +1,39 @@
 package com.hopline.WebApp.service;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 
 import com.google.gson.Gson;
 import com.hopline.WebApp.dao.CategoryDao;
 import com.hopline.WebApp.model.dao.Category;
-import com.hopline.WebApp.model.dao.Product;
+import com.hopline.WebApp.model.dao.Order;
+import com.hopline.WebApp.model.vo.CategoryVo;
 import com.hopline.WebApp.rest.framework.IService;
+import com.mysql.fabric.xmlrpc.base.Array;
 
 public class CategoryServiceImpl extends IService{
 	private CategoryDao categoryDao;
 	
-	public List<Category> retrieveAllCategory() {
+	public String retrieveAllCategoryJson() {
 		List<Category> categories =  getCategoryDao().retriveAllCategory();
 		
+		List<CategoryVo> categoryVos = new ArrayList<CategoryVo>();
 		
 		for(Category category : categories) {
-			if (category.getProducts() == null) continue;
-			for (Product product : category.getProducts()) {
-				product.setCategories(null);
-				product.setAddOns(null);
-			}
+			Mapper mapper = new DozerBeanMapper();
+			CategoryVo destObject =  
+			    mapper.map(category, CategoryVo.class);
+			categoryVos.add(destObject);
 		}
-		
 
 		Gson gson = new Gson();
 
-		String s = gson.toJson(categories);
-
+		String s = gson.toJson(categoryVos);
 		
-		
-//		for (Product product : categories.get(0).getProducts()) {
-//			product.getName();
-//			product.getPrice();
-//		}
-		
-		return categories;
-		
-		
+		return s;
 	}
 
 	public CategoryDao getCategoryDao() {

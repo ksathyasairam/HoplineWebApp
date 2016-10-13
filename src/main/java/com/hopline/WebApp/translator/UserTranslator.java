@@ -8,19 +8,19 @@ public class UserTranslator {
 	public static UserVo toVO(User user) {
 		UserVo userVO = new UserVo();
 		userVO.setPhone(user.getPhone());
-		userVO.setUserName(user.getName());
-		userVO.setUserId(user.getIduser());
+		userVO.setName(user.getName());
+		userVO.setIduser(user.getIduser());
 		return userVO;
 	}
 
 	
 	public static User toDao(UserVo userVO) {
 		User user = new User();
-		if (userVO.getUserId() != null)
-			user.setIduser(userVO.getUserId());
+		if (userVO.getIduser() != null)
+			user.setIduser(userVO.getIduser());
 		
 		user.setPhone(userVO.getPhone());
-		user.setName(userVO.getUserName());
+		user.setName(userVO.getName());
 		return user;
 	}
 }

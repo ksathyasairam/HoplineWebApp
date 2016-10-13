@@ -1,11 +1,10 @@
 package com.hopline.WebApp.action;
 
 import java.util.List;
-import java.util.Map;
-
-import org.apache.struts2.interceptor.SessionAware;
 
 import com.hopline.WebApp.model.dao.Category;
+import com.hopline.WebApp.rest.framework.ServiceLocator;
+import com.hopline.WebApp.service.CategoryServiceImpl;
 
 public class HelloWorldAction extends BaseAction {
 
@@ -18,10 +17,9 @@ public class HelloWorldAction extends BaseAction {
 	private Integer helloCount;
 
 	public String execute() throws Exception {
-		//Baby ko base pasand hai
 		super.execute();
 		// categories =
-		// ServiceLocator.getInstance().getService(CategoryServiceImpl.class).retrieveAllCategory();
+		 ServiceLocator.getInstance().getService(CategoryServiceImpl.class).retrieveAllCategoryJson();
 
 //		setHelloCount((Integer) getSession().get(HELLO_COUNT));
 //
