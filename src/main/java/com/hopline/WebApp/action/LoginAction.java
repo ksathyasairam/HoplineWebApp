@@ -16,6 +16,7 @@ public class LoginAction extends BaseAction {
 	}
 
 	public String executeLoginNext() throws Exception {
+		//Testing 1
 		if (!validateData()) return "input";
 	
 		user = ServiceLocator.getInstance().getService(LoginServiceImpl.class).login(user);
