@@ -12,7 +12,7 @@ import com.hopline.WebApp.model.vo.UserVo;
 import com.hopline.WebApp.rest.framework.ServiceLocator;
 import com.hopline.WebApp.service.OrderService;
 
-public class YourOrderStatesAction extends BaseAction {
+public class YourOrderStatusAction extends BaseAction {
 
 
 	public String execute() throws Exception {

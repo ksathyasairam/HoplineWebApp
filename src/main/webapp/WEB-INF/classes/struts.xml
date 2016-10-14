@@ -79,7 +79,7 @@
 		</action>
 
 		<action name="yourOrderStates"
-			class="com.hopline.WebApp.endpoint.YourOrderStatesAction" method="execute">
+			class="com.hopline.WebApp.endpoint.YourOrderStatusAction" method="execute">
 		</action>
 	</package>
 </struts>
