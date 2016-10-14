@@ -7,6 +7,8 @@ import java.util.List;
 
 import com.hopline.WebApp.constants.OrderStates;
 import com.hopline.WebApp.dao.OrderDao;
+import com.hopline.WebApp.endpoint.model.OrderStatus;
+import com.hopline.WebApp.endpoint.model.OrderStatusList;
 import com.hopline.WebApp.model.dao.AddOn;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.OrderProduct;
@@ -66,12 +68,12 @@ public class OrderService extends IService {
 		return (lastOrder.getOrderState().equals(OrderStates.UNPICKED)
 				|| lastOrder.getOrderState().equals(OrderStates.DEFAULTER_CALL)
 				|| (lastOrder.getOrderState().equals(OrderStates.READY_FOR_PICKUP)
-						&& lastOrder.getOrderTime().compareTo(Util.getTime5HrAgo()) < 0));
+						&& lastOrder.getOrderTime().compareTo(Util.getUserSessionStartTime()) < 0));
 	}
 
 	private Double activeOrderPrice(int userId) {
 
-		List<Order> orders = orderDao.getActiveOrders(userId);
+		List<Order> orders = orderDao.getActiveUnpaidOrders(userId);
 
 		Double sum = 0.0;
 		for (Order order : orders) {
@@ -152,7 +154,7 @@ public class OrderService extends IService {
 	}
 	
 	public List<OrderVo> retrieveActiveOrders(UserVo userVo) {
-		List<Order> orders = orderDao.getActiveOrders(userVo.getIduser());
+		List<Order> orders = orderDao.getActiveUnpaidOrders(userVo.getIduser());
 		
 		List<OrderVo> orderVos = new ArrayList<OrderVo>();
 		if (orders == null) return orderVos;
@@ -162,6 +164,24 @@ public class OrderService extends IService {
 		}
 		return orderVos;
 	}
+	
+	public OrderStatusList retrieveOrdersStatus(Integer userId) {
+		List<Order> orders = orderDao.getAllOrders(userId);
+		
+		OrderStatusList result = new OrderStatusList();
+		List<OrderStatus> orderStatusList = new ArrayList<OrderStatus>();
+		result.setOrderStatus(orderStatusList);
+		
+		if (orders == null) return result;
+		
+		for (Order order : orders){
+			orderStatusList.add(OrderTranslator.toOrderStatus(order));
+		}
+		
+		return result;
+	}
+	
+	
 
 
 

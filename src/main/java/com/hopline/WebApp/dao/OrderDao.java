@@ -48,7 +48,7 @@ public class OrderDao {
 		return order.getIdorder();
 	}
 
-	public List<Order> getActiveOrders(int userId) {
+	public List<Order> getActiveUnpaidOrders(int userId) {
 		String queryString = "from com.hopline.WebApp.model.dao.Order r where r.user.iduser = ? and (r.orderState = ? or r.orderState = ? or r.orderState = ?"
 				+ "or r.orderState = ? or ( r.orderState = ? and r.orderTime > ?)) and r.paidYn='N' ";
 
@@ -60,7 +60,18 @@ public class OrderDao {
 		query.setParameter(3, OrderStates.DEFAULTER_CALL);
 		query.setParameter(4, OrderStates.SUBMIT);
 		query.setParameter(5, OrderStates.READY_FOR_PICKUP);
-		query.setParameter(6, Util.getTime5HrAgo());
+		query.setParameter(6, Util.getUserSessionStartTime());
+
+		return (List<Order>) query.list();
+	}
+	
+	public List<Order> getAllOrders(int userId) {
+		String queryString = "from com.hopline.WebApp.model.dao.Order r where r.user.iduser = ? and r.orderTime > ?";
+
+		Query query = sessionFactory.getCurrentSession().createQuery(queryString);
+
+		query.setParameter(0, userId);
+		query.setParameter(1, Util.getUserSessionStartTime());
 
 		return (List<Order>) query.list();
 	}
