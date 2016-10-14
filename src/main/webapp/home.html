@@ -1,5 +1,6 @@
 <a id="fullcart" style="z-index:12;" ui-sref="login" ng-click="event.toast=!event.toast;"><i><img src="images/totalcart.png" alt=" " / ></i></a>
 
+<a id="return-to-top" style="z-index:11; "><i><img src="images/up.png" alt=" " / ></i></a>
 
 <a id="checkcart" style="z-index:11;" ui-sref="cart" ><i><img src="images/cart5.png" alt=" " / ></i></a>
 
@@ -20,7 +21,23 @@
 								<div  style="border-bottom: 1px dotted #AFAFAF;" >
 
 									<div id="div-{{cat.name}}-{{$index}}" style="color:#525a54; padding-left:2%; padding-top:2%; padding-bottom:3%;padding-right:3%;">
-										<div style="float:left; width:60%;">
+										<div style="float:left;opacity:0.8; margin-top:6px;" ng-show="fooditem.vegYn=='Y'" >
+											<div style="width:12px; height:12px;border:1px solid #4fb66d; border-radius: 1px 1px 1px 1px; text-align:center;">
+												<div style="position:relative; left:50%; margin-left:-3px;top:50%; margin-top:-3px; width:6px; height:6px; border-radius: 6px 6px 6px 6px; background:#4fb66d;">
+													
+												</div>
+											
+											</div>
+										</div>
+										<div style="float:left;opacity:0.8; margin-top:6px;" ng-show="fooditem.vegYn=='N'" >
+											<div style="width:12px; height:12px;border:1px solid #cf3721; border-radius: 1px 1px 1px 1px; text-align:center;">
+												<div style="position:relative; left:50%; margin-left:-3px;top:50%; margin-top:-3px; width:6px; height:6px; border-radius: 6px 6px 6px 6px; background:#cf3721;">
+													
+												</div>
+											
+											</div>
+										</div>
+										<div style="float:left; width:60%; margin-left:6px;">
 											{{fooditem.name}} 
 										</div>
 										<div ng-show="fooditem.stockYn=='N'">
@@ -43,27 +60,12 @@
 											</div>
 										</div>
 										<br>
-										<div style="font-size:15px;clear:both;width:60%;">
+										<div style="font-size:14px;clear:both;width:60%;margin-left:18px;">
 											&#8377.{{fooditem.price}}
 										</div>
-										<div style="float:right;opacity:0.8;" ng-show="fooditem.vegYn=='Y'">
-											<div style="width:26px; height:26px;font-size:14px;border:1px solid #4fb66d; border-radius: 5px 5px 5px 5px; text-align:center;">
-												<div style="position:relative; left:50%; margin-left:-6px;top:50%; margin-top:-6px; width:12px; height:12px; border-radius: 10px 10px 10px 10px; background:#4fb66d;">
-													
-												</div>
-											
-											</div>
-										</div>
-										<div style="float:right;opacity:0.8;"  ng-show="fooditem.vegYn=='N'">
-											<div style="width:26px; height:26px;font-size:14px;border:1px solid #cf3721; border-radius: 5px 5px 5px 5px; text-align:center;">
-												<div style="position:relative; left:50%; margin-left:-6px;top:50%; margin-top:-6px; width:12px; height:12px; border-radius: 10px 10px 10px 10px; background:#cf3721;">
-													
-												</div>
-											
-											</div>
-										</div>
-										<div style="width:70%;">
-											<i style="font-size:15px;">
+										
+										<div style="margin-left:18px;">
+											<i style="font-size:12px;">
 												"{{fooditem.shortDesc}}"
 											</i>
 										</div>
@@ -81,7 +83,7 @@
 											</label>
 											<br>
 											<div style="font-size:13px;">
-												Rs.{{customize.price}}
+												&#8377.{{customize.price}}
 											</div>
 										</div>
 
@@ -107,3 +109,41 @@
 				<div class="clearfix"> </div>
 			
 </div>
+
+
+<script>
+$(window).scroll(function() {
+    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+        $('#return-to-top').fadeIn(200);   // Fade in the arrow
+    } else {
+        $('#return-to-top').fadeOut(200);  // Else fade out the arrow
+    }
+});
+
+$('#return-to-top').on('mousedown',function(){
+
+$(this).find('i').animate({top: '-=6'},1);
+
+
+});
+$('#return-to-top').on('mouseup',function(){
+
+$(this).find('i').delay( 800 ).animate({top: '+=6'},1);
+
+});
+$('#return-to-top').click(function() {      // When arrow is clicked
+    $('body,html').animate({
+        scrollTop : 0                       // Scroll to top of body
+    }, 500);
+
+
+});
+
+
+</script>
+<script>
+	$(document).ready(function()
+		{
+			$("#menubutton").css({"opacity":"1","pointer-events": "auto","cursor": "pointer"});
+		})
+</script>

@@ -1,3 +1,9 @@
+<a id="return-to-top" style="z-index:11; ">
+	<i>
+		<img src="images/up.png" alt=" " / >
+	</i>
+</a>
+
 
 <div style="padding-top:27px;">
 </div>
@@ -12,3 +18,42 @@
 	</div>
 					
 </div>
+
+
+<script>
+$(window).scroll(function() {
+    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+        $('#return-to-top').fadeIn(200);   // Fade in the arrow
+    } else {
+        $('#return-to-top').fadeOut(200);  // Else fade out the arrow
+    }
+});
+
+$('#return-to-top').on('mousedown',function(){
+
+$(this).find('i').animate({top: '-=6'},1);
+
+
+});
+$('#return-to-top').on('mouseup',function(){
+
+$(this).find('i').delay( 800 ).animate({top: '+=6'},1);
+
+});
+$('#return-to-top').click(function() {      // When arrow is clicked
+    $('body,html').animate({
+        scrollTop : 0                       // Scroll to top of body
+    }, 500);
+
+
+});
+
+
+</script>
+
+<script>
+	$(document).ready(function()
+		{
+			$("#menubutton").css({"opacity":"1","pointer-events": "auto","cursor": "pointer"});
+		})
+</script>

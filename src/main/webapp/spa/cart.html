@@ -1,8 +1,8 @@
 
-<div style="position:fixed; left:1%; bottom:5px; background:#67baca; opacity:0.9; height:40px; text-align:center;padding-top:2%;padding-bottom:3%;border-radius:3px 3px 3px 3px;color:white;width:39%;z-index:11"  ui-sref="home" >
+<div style="position:fixed; left:1%; bottom:5px; background:#67baca; opacity:0.9; height:40px; text-align:center;width:98%;padding-top:2%;padding-bottom:3%;border-radius:3px 3px 3px 3px;color:white;width:39%;z-index:11"  ui-sref="home" >
 	Back
 </div>
-<div style="position:fixed; right:1%; bottom:5px; background:#4fb66d; opacity:0.9; height:40px; text-align:center;padding-top:2%;padding-bottom:3%;border-radius:3px 3px 3px 3px;color:white;width:58%;z-index:11" ng-click="event.post1();" >
+<div style="position:fixed; right:1%; bottom:5px; background:#4fb66d; opacity:0.9; height:40px; text-align:center;width:98%;padding-top:2%;padding-bottom:3%;border-radius:3px 3px 3px 3px;color:white;width:58%;z-index:11" ng-click="event.post1();" >
 	Proceed to Checkout
 </div>
 <div style="padding-top:20px;">
@@ -18,10 +18,8 @@
 						 	<div style="color:#525a54;float:right;">
 						 		x {{food.quantity}} 
 						 		
-						 		<div style="width:48px; height:18px; border-radius:3px;border:1px solid #cf3721;float:right;line-height:normal; margin-right:6px;  margin-left:11px;text-align:center; color:#cf3721; font-size:12px; margin-top:3px;" id="remove-{{$index}}" ng-click="event.removeCartItem($index);">
-						 			<div style="margin-top:-1px;">
-						 				Cancel
-						 			</div>
+						 		<div style="width:18px; height:18px; background:#cf3721; border-radius:9px; float:right; margin-right:6px;  margin-left:11px;text-align:center; color:white; font-size:18px; margin-top:2px;" id="remove-{{$index}}" ng-click="event.removeCartItem($index);">
+						 			<div style="margin-top:-5px;">x</div>
 						 		</div>
 						 	</div>
 						 	<br>
@@ -30,7 +28,7 @@
 						 			{{addons.name}}
 						 		</div>
 						 		<div style="color:#525a54;float:right;margin-right:37px">
-						 			{{addons.selected}}
+						 			{{addons.val}}
 						 		</div>
 						 		<br>
 						 	</div>
@@ -40,11 +38,11 @@
 						 </div>
 						 <br>
 						 <div>
-						 	<div style=" float:right; color:#525a54; font-size:14px;">
-						 		Total Amount: ₹.{{event.totalCost}}
+						 	<div style=" float:right; color:#525a54; padding-right:12%; font-size:14px;">
+						 		Total: ₹.{{event.totalCost}}
 						 	</div>
 						 	<div style=" float:left; color:#525a54;  font-size:14px;">
-						 		Total Quantity: {{event.totalQuantity}}
+						 		Quantity: {{event.totalQuantity}}
 						 	</div>
 						 	<br>
 						 </div>
@@ -57,10 +55,3 @@
 				</div>
 				<div class="clearfix"> </div>
 </div>
-
-<script>
-$(document).ready(function(){
-	
-	$("#menubutton").css({"opacity":"0","pointer-events": "none","cursor": "default"});
-})
-</script>

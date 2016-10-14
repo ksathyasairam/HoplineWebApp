@@ -43,7 +43,7 @@
 						<h1 ><a href="index.html">HOPLINE</a></h1>
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
-						<span class="menu"><img src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
+						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
 						
 					</div>
 
@@ -51,7 +51,7 @@
 				</div>
 
 			
-			<div style="padding-top:27px;">
+<div style="padding-top:27px;">
 </div>
 
 
@@ -113,7 +113,12 @@
 		</div>
 	</div>
 
-
+<script>
+$(document).ready(function(){
+	
+	$("#menubutton").css({"opacity":"0","pointer-events": "none","cursor": "default"});
+})
+</script>
 
 <script src="./app/angular.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.js"></script>

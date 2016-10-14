@@ -1,0 +1,60 @@
+
+<div style="padding-top:27px;">
+</div>
+<div style="margin-left:7px;margin-top:7px; margin-right:7px; padding-left:2%;padding-right:2%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); float:left; width:96%;" ng-click="event.orderSummary=!event.orderSummary;">
+	<div style="float:left; width:55%; ">
+		<h4>Order No: #343949</h4>
+		<p style="font-size:12px;">1 Jan 2016<br> 2:30 PM</p>
+	</div>
+	<div style="float:right;width:40%; text-align:right;margin-top:7px;" >
+		{{min}}:{{sec}}
+
+	</div>
+					
+</div>
+<div class="banner-info" style="margin-left:7px;margin-right:7px;" ng-show="event.orderSummary" >
+				<div class=" header-right">
+
+					<ul class="address">
+						 <li ng-repeat="food in event.checkList" id="cartItem-{{$index}}" style="border-bottom: 1.5px dotted #AFAFAF;">
+						 	<div style="color:#525a54;float:left;">
+						 		{{food.name}}
+						 	</div>
+						 	<div style="color:#525a54;float:right;">
+						 		x {{food.quantity}} 
+						 		
+						 		
+						 	</div>
+						 	<br>
+						 	<div ng-repeat="addons in food.addOns" style="font-size: 13px;">
+						 		<div style="color:#525a54;float:left;">
+						 			{{addons.name}}
+						 		</div>
+						 		<div style="color:#525a54;float:right;">
+						 			{{addons.val}}
+						 		</div>
+						 		<br>
+						 	</div>
+						 </li>
+						 <br>
+						 <div style="border-bottom: 1px double #AFAFAF;">
+						 </div>
+						 <br>
+						 <div>
+						 	<div style=" float:right; color:#525a54;  font-size:14px;">
+						 		Total: ₹.{{event.totalCost}}
+						 	</div>
+						 	<div style=" float:left; color:#525a54;  font-size:14px;">
+						 		Quantity: {{event.totalQuantity}}
+						 	</div>
+						 	<br>
+						 </div>
+						 <br>
+						 <div style="border-bottom: 1px double #AFAFAF;">
+						 </div>
+						 <br>
+
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+</div>

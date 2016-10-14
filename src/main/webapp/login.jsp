@@ -60,16 +60,16 @@
     <br>
     <form action="/loginNext.action">
     	<div style="text-align:center;">
-      		<h3>Hopline Login</h3>
+      		<h3>Hopline Register</h3>
     	</div>
     	<div  style="padding-bottom:5%;">
-      		<img src="images/user.png">
-      		<input name="user.name"  type="text" placeholder="Username" style="float:right;width:275px; background: #d3d3d3; border:none ; border-radius:  2px; height:35px;" required/>
+      		<img src="images/user.png" style=" z-index:20; margin-left:-99%;height:31px;padding-top:3px;">
+      		<input name="user.name"  type="text" placeholder="Username" style="float:left;width:100%; background: #d3d3d3; border:none ; padding-left:25px; border-radius:  2px; height:35px;" required/>
 
     	</div>
     	<div style="padding-bottom:5%;" >
-      		<img src="images/mobile.png">
-      		<input name="user.phone" type="text" placeholder="Phone No." pattern="^\d{10}$"  oninvalid="setCustomValidity('Enter a valid phone number.')" style=" float:right;width:275px; background:#d3d3d3; border:none ; border-radius:  2px; height:35px;" required />
+      		<img src="images/mobile.png" style=" z-index:20; margin-left:-99%;height:31px;padding-top:3px;">
+      		<input name="user.phone" type="text" placeholder="Phone No." pattern="^\d{10}$"  oninvalid="setCustomValidity('Enter a valid phone number.')" style="float:left; width:100%; background:#d3d3d3; border:none ; padding-left: 25px; border-radius:  2px; height:35px;" required />
 
     	</div>
     	<div >

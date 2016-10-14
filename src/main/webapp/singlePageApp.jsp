@@ -24,7 +24,7 @@
 </head>
 	<body ng-app="mainApp" ng-controller="EventCtrl as event"> 
 
-	<a id="return-to-top" style="z-index:11; "><i><img src="images/up.png" alt=" " / ></i></a>
+	
 		
 	<a  class="addedtoast" style=" z-index:9;" ><b>Item Added</b></a>
 				
@@ -40,13 +40,13 @@
 				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #cf3721 ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
 				<div class="navigation">
 					<div class="logo" style="position:fixed;left:1em;">
-						<h1 ><a href="index.html">HOPLINE</a></h1>
+						<h1 ><a ui-sref='restaurant'>HOPLINE</a></h1>
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
-						<span class="menu"><img src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
+						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
 						<nav class="link-effect-3" id="link-effect-3" >
-							<ul class="nav1 nav nav-wil" style="background:white; padding:1% 1% 1% 1%;  box-shadow:0px 0px  6px #888888;"  >
-								<li class="active" ng-repeat="item in event.category" ng-click="event.takeMeTo(item.name)" style=" background:grey;width:48%;margin:1% 1% 1% 1%;  height: 100px; float:left; border: 1px solid #AFAFAF; border-radius:3px 3px 3px 3px; "><img src="{{item.img}}" style="position:absolute; 
+							<ul class="nav1 nav nav-wil" style="background:#a79e9d; padding:1% 1% 1% 1%;  box-shadow:0px 0px  6px #888888;"  >
+								<li class="active" ng-repeat="item in event.category" ng-click="event.takeMeTo(item.name)" style=" background:#b22e1b;width:48%;margin:1% 1% 1% 1%;  height: 100px; float:left; border-radius:3px 3px 3px 3px; "><img src="{{item.img}}" style="position:absolute; 
 								left:50%;height:60px;margin-left:-30px;"><br><br><a>{{item.name}}</a></li>
 
 
@@ -74,36 +74,6 @@
 		</div>
 	</div>
 
-<script>
-$(window).scroll(function() {
-    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
-        $('#return-to-top').fadeIn(200);   // Fade in the arrow
-    } else {
-        $('#return-to-top').fadeOut(200);  // Else fade out the arrow
-    }
-});
-
-$('#return-to-top').on('mousedown',function(){
-
-$(this).find('i').animate({top: '-=6'},1);
-
-
-});
-$('#return-to-top').on('mouseup',function(){
-
-$(this).find('i').delay( 800 ).animate({top: '+=6'},1);
-
-});
-$('#return-to-top').click(function() {      // When arrow is clicked
-    $('body,html').animate({
-        scrollTop : 0                       // Scroll to top of body
-    }, 500);
-
-
-});
-
-
-</script>
 
 
 
@@ -184,6 +154,10 @@ $('#return-to-top').click(function() {      // When arrow is clicked
 	  {
 	      name:"Street Chineese ",
 	      img:"images/streetchinese.png"
+	  },
+	  {
+	      name:"Pasta",
+	      img:"images/pasta.png"
 	  },
 	      
 	  ]
@@ -308,54 +282,6 @@ $('#return-to-top').click(function() {      // When arrow is clicked
 	};
 
 
-	/*this.timerr=function()
-	{
-	        var updateCounter = function() {
-	            if($scope.sec==0 && $scope.min==0)
-	        {
-	          $scope.min="Order Complete";
-	          $scope.sec="";
-	          return;
-	        }
-	        else if($scope.sec==0)
-	        {
-	          $scope.min=$scope.min-1;
-	          $scope.sec=60;
-	        }
-	        $scope.sec=$scope.sec-1;
-	            $timeout(updateCounter, 1000);
-	        };
-	        updateCounter();
-	};*/
-	/*this.posthttp=function()
-	{
-	  var formData = new FormData();
-
-	formData.append("order.shop.idshop", 1);
-	formData.append("order.user.iduser", 2);
-	for(var i = 0; i < this.checkList.length; i++){ 
-	formData.append("order.orderProducts["+i+"].product.productId", this.checkList[i].productId);
-	formData.append("order.orderProducts["+i+"].count", this.checkList[i].quantity);
-
-	}
-
-
-
-	console.log(formData);
-	$http({
-	          method  : "POST",
-	          url     : "http://localhost:8080/HoplineWebApp/orderSummaryOnLoad",
-	          transformRequest: angular.identity,
-	          data    : formData, //forms user object
-	          headers : {'Content-Type': undefined} 
-	         })
-	         .success(function (response) {
-	          return response.data;
-
-	        });
-
-
-	};*/
 
 	this.post1=function() {
 	  var path="/orderSummaryOnLoad";

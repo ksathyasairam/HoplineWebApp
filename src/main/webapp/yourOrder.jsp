@@ -24,9 +24,20 @@
 </head>
 	<body ng-app="mainApp" ng-controller="EventCtrl as event"> 
 
-	<a id="return-to-top" style="z-index:11; "><i><img src="images/up.png" alt=" " / ></i></a>
+	<a id="return-to-top" style="z-index:11; ">
+		<i>
+			<img src="images/up.png" alt=" " / >
+		</i>
+	</a>
+	<div style="position:fixed; left:1%; bottom:5px; background:#67baca; opacity:0.9; height:40px; text-align:center;padding-top:2%;padding-bottom:3%;border-radius:3px 3px 3px 3px;color:white;width:98%;z-index:11"  ui-sref="home" >
+		Back to Menu
+	</div>
 		
-	<a  class="addedtoast" style=" z-index:9;" ><b>Item Added</b></a>
+	<a  class="addedtoast" style=" z-index:9;" >
+		<b>
+			Item Added
+		</b>
+	</a>
 				
 		<!-- container -->
 			<!-- header -->
@@ -43,7 +54,7 @@
 						<h1 ><a href="index.html">HOPLINE</a></h1>
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
-						<span class="menu"><img src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
+						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
 						
 					</div>
 
@@ -126,6 +137,12 @@ $('#<s:property value="customerOrderId"/>').click(function() {
 		</div>
 	</div>
 
+<script>
+$(document).ready(function(){
+	
+	$("#menubutton").css({"opacity":"0","pointer-events": "none","cursor": "default"});
+})
+</script>
 
 <script src="./app/angular.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.js"></script>
