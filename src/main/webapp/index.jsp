@@ -5,9 +5,10 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Hello World</title>
+<title>Hello World!!</title>
 </head>
 <body>
+	hello
    <h1>Hello World From Struts2</h1>
    <form action="hello">
       <label for="name">Please enter your name</label><br/>
