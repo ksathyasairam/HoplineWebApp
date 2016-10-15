@@ -21,6 +21,11 @@ body h1,h2,h3,h4,h5,h6{
 }
 /*-- header --*/
 
+@font-face {
+  font-family: 'roboto',sans-serif;
+  src: url('fonts/Roboto-Light.ttf') format('truetype');
+}
+
 #return-to-top {
     position: fixed;
     bottom: 5px;
@@ -162,7 +167,45 @@ body h1,h2,h3,h4,h5,h6{
     background: rgba(0, 0, 0, 0.9);
 }
 
+#returnBackTo {
+    position: fixed;
+    top: 50%;
+    left: 0%;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    margin-top:-25px;
+    width: 35px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 0px 10px 10px 0px;
+    -moz-border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 10px 10px 0px;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#returnBackTo i {
+    color: #fff;
+    display: block;
+    position: relative;
+    top: 35%;
+    left: 50%;
+    
+    margin-left: -12px;
+    margin-top:-5px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
 
+#returnBackTo:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
 
 #backbutton {
     position: fixed;

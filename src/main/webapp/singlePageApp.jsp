@@ -19,6 +19,7 @@
 <!-- webfonts -->
 	<link href='//fonts.googleapis.com/css?family=Asap:400,700,400italic' rel='stylesheet' type='text/css'>
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
 <!-- webfonts -->
 
 </head>
@@ -121,8 +122,6 @@
 	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || [];
 	  this.totalCost=localStorage.getItem('totalCost')|| 0;
 	  this.totalQuantity=localStorage.getItem('totalQuantity')|| 0;
-	  this.totalCost1=0;
-	  this.totalQuantity1=0;
 	  this.master=[];
 	  this.toast=false;
 	  this.orderSummary=false;
@@ -217,26 +216,6 @@
 
 	  };
 
-	this.addCheckList=function(id,name,value)
-	  {
-	  var check = JSON.parse(localStorage.getItem('checkList')) || [];
-	  obj = angular.copy(value);
-	  check.push(obj);
-	  localStorage.setItem('checkList', JSON.stringify(check));
-	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || [];
-	  
-	  console.log(this.checkList);
-	  value.quantity=1;
-	  
-	  for(var i=0;i<value.addOns.length;i++){
-	    value.addOns[i].selected=false;
-	  }
-	  
-	  $('.addedtoast').animate({top: '80'},1000);
-	  $('.addedtoast').fadeOut(1500);
-	  $('.addedtoast').css({top: '4%'});
-	  $('.addedtoast').show();    
-	};
 
 	this.cancelOrder=function(value)
 	{
@@ -267,6 +246,28 @@
 	  }
 	  localStorage.setItem('totalCost',this.totalCost);
 	  localStorage.setItem('totalQuantity',this.totalQuantity);
+	};
+	
+	this.addCheckList=function(id,name,value)
+	  {
+	  var check = JSON.parse(localStorage.getItem('checkList')) || [];
+	  obj = angular.copy(value);
+	  check.push(obj);
+	  localStorage.setItem('checkList', JSON.stringify(check));
+	  this.checkList= JSON.parse(localStorage.getItem('checkList'));
+	  
+	  console.log(this.checkList);
+	  value.quantity=1;
+	  
+	  for(var i=0;i<value.addOns.length;i++){
+	    value.addOns[i].selected=false;
+	  }
+	  
+	  $('.addedtoast').animate({top: '80'},1000);
+	  $('.addedtoast').fadeOut(1500);
+	  $('.addedtoast').css({top: '4%'});
+	  $('.addedtoast').show();   
+	  this.totalOrder();
 	};
 
 
