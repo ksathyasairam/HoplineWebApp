@@ -6,6 +6,7 @@
 
 <a id="totalorder" style="z-index:3; " ><div style="float:left;"><b>Qty:{{event.totalQuantity}}</b></div><div style="float:right;"><b>₹:{{event.totalCost}}.00</b></div></a>
 
+<a id="returnBackTo" style="z-index:12;" ui-sref="restaurant"><i><img src="images/returnbackto.png" alt=" " / ></i></a>
 
 
 <div style="padding-top:20px;">
@@ -37,7 +38,7 @@
 											
 											</div>
 										</div>
-										<div style="float:left; width:60%; margin-left:6px;">
+										<div style="float:left; width:60%; margin-left:6px; ">
 											{{fooditem.name}} 
 										</div>
 										<div ng-show="fooditem.stockYn=='N'">
@@ -92,7 +93,7 @@
 											<div style="border-radius: 3px 3px 3px 3px; background:#cf3721; width:39%;text-align:center;color:white ;padding-top:2%;padding-bottom:2%;display: inline-block" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.cancelOrder(fooditem);">
 												Cancel
 											</div>
-											<div style="border-radius: 3px 3px 3px 3px; background:#f2c057; width:59%;text-align:center;color:white;padding-top:2%;padding-bottom:2%;display: inline-block" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.addCheckList($index,cat.name,fooditem);event.totalOrder();">
+											<div style="border-radius: 3px 3px 3px 3px; background:#f2c057; width:59%;text-align:center;color:white;padding-top:2%;padding-bottom:2%;display: inline-block" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.addCheckList($index,cat.name,fooditem);">
 												Add to Cart
 											</div>
 										</div>
