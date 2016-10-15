@@ -38,7 +38,7 @@
 			<img src="images/up.png" alt=" " / >
 		</i>
 	</a>
-	<a   href="http://localhost:8080/singlePageApp#/home">
+	<a   href="/singlePageApp#/home">
 		<div style="position:fixed; left:1%; bottom:5px; background:#67baca; opacity:0.9; height:40px; text-align:center;padding-top:2%;padding-bottom:3%;border-radius:3px 3px 3px 3px;color:white;width:98%;z-index:11" >
 			Back to Menu
 		</div>
