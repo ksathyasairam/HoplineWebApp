@@ -22,8 +22,17 @@
 <!-- webfonts -->
 
 </head>
-	<body ng-app="mainApp" ng-controller="EventCtrl as event"> 
-
+	<body> 
+		<script>
+			$.ajax({
+			url: 'http://localhost:8080/yourOrderStates',
+			type: "GET",
+			dataType: "json",
+			success: function (data) {
+ 			console.log(data);
+			}
+			});
+		</script>
 	<a id="return-to-top" style="z-index:11; ">
 		<i>
 			<img src="images/up.png" alt=" " / >
@@ -72,10 +81,7 @@
 		<h4>Order No: #<s:property value="customerOrderId"/></h4>
 		<p style="font-size:12px;">1 Jan 2016<br> 2:30 PM</p>
 	</div>
-	<div style="float:right;width:40%; text-align:right;margin-top:7px;" >
-		{{min}}:{{sec}}
 
-	</div>
 					
 </div>
 
@@ -146,14 +152,9 @@ $(document).ready(function(){
 })
 </script>
 
-<script src="./app/angular.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.js"></script>
-<script src="./app/mainApp.js"></script>
-<script src="./app/ui.router.js"></script>
-<script src="./app/event/eventModule.js"></script>
-<script type="text/javascript">
-    console.log("angular object",angular);
-</script>
+
+
+
 
 	</body>
 </html>
