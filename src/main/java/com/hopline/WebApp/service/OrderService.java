@@ -43,7 +43,7 @@ public class OrderService extends IService {
 			order.setOrderState(OrderStates.DEFAULTER_CALL);
 			setReturnPage(Constants.YOUR_ORDER);
 		} else {
-			order.setOrderState(OrderStates.SUBMIT);
+			order.setOrderState(OrderStates.OK_ORDER);
 			setReturnPage(Constants.YOUR_ORDER);
 		}
 

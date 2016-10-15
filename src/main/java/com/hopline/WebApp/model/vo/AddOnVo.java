@@ -9,7 +9,7 @@ public class AddOnVo implements java.io.Serializable {
 
 	
 	//For UI frontend
-	private String selected;
+	private boolean selected;
 	
 	public Integer getIdaddOn() {
 		return idaddOn;
@@ -35,11 +35,12 @@ public class AddOnVo implements java.io.Serializable {
 	public void setStockYn(String stockYn) {
 		this.stockYn = stockYn;
 	}
-	public String getSelected() {
+	public boolean isSelected() {
 		return selected;
 	}
-	public void setSelected(String selected) {
+	public void setSelected(boolean selected) {
 		this.selected = selected;
 	}
+
 	
 }
