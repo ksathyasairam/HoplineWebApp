@@ -67,12 +67,13 @@ public class OrderDao {
 	}
 	
 	public List<Order> getAllOrders(int userId) {
-		String queryString = "from com.hopline.WebApp.model.dao.Order r where r.user.iduser = ? and r.orderTime > ?";
+		String queryString = "from com.hopline.WebApp.model.dao.Order r where r.user.iduser = ? and r.orderState <> ? and r.orderTime > ?";
 
 		Query query = sessionFactory.getCurrentSession().createQuery(queryString);
 
 		query.setParameter(0, userId);
-		query.setParameter(1, Util.getUserSessionStartTime());
+		query.setParameter(1, OrderStates.TEMP_SUBMIT);
+		query.setParameter(2, Util.getUserSessionStartTime());
 
 		return (List<Order>) query.list();
 	}

@@ -154,7 +154,7 @@ public class OrderService extends IService {
 	}
 	
 	public List<OrderVo> retrieveActiveOrders(UserVo userVo) {
-		List<Order> orders = orderDao.getActiveUnpaidOrders(userVo.getIduser());
+		List<Order> orders = orderDao.getAllOrders(userVo.getIduser());
 		
 		List<OrderVo> orderVos = new ArrayList<OrderVo>();
 		if (orders == null) return orderVos;
