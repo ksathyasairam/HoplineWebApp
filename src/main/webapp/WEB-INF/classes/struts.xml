@@ -59,7 +59,7 @@
 	<package name="hopline-vendor-services" extends="hopline-vendor-services-basic">
 	
 	
-		<action name="jsonTest"
+		<action name="jsonTest" method="create"
 			class="com.hoplineVendorServices.action.PreparingOrdersAction">
 			<result type="json">
 				<param name="root">order</param>
