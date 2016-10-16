@@ -59,9 +59,9 @@ public class OrderDao {
 		query.setParameter(2, OrderStates.BIG_ORDER_CALL);
 		query.setParameter(3, OrderStates.DEFAULTER_CALL);
 		query.setParameter(4, OrderStates.OK_ORDER);
-		query.setParameter(4, OrderStates.PREPARING);
-		query.setParameter(5, OrderStates.READY_FOR_PICKUP);
-		query.setParameter(6, Util.getUserSessionStartTime());
+		query.setParameter(5, OrderStates.PREPARING);
+		query.setParameter(6, OrderStates.READY_FOR_PICKUP);
+		query.setParameter(7, Util.getUserSessionStartTime());
 
 		return (List<Order>) query.list();
 	}
