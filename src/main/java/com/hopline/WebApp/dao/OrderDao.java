@@ -50,7 +50,7 @@ public class OrderDao {
 
 	public List<Order> getActiveUnpaidOrders(int userId) {
 		String queryString = "from com.hopline.WebApp.model.dao.Order r where r.user.iduser = ? and (r.orderState = ? or r.orderState = ? or r.orderState = ?"
-				+ "or r.orderState = ? or ( r.orderState = ? and r.orderTime > ?)) and r.paidYn='N' ";
+				+ "or r.orderState = ? or r.orderState = ? or ( r.orderState = ? and r.orderTime > ?)) and r.paidYn='N' ";
 
 		Query query = sessionFactory.getCurrentSession().createQuery(queryString);
 
@@ -58,7 +58,8 @@ public class OrderDao {
 		query.setParameter(1, OrderStates.BIG_ORDER_PAY);
 		query.setParameter(2, OrderStates.BIG_ORDER_CALL);
 		query.setParameter(3, OrderStates.DEFAULTER_CALL);
-		query.setParameter(4, OrderStates.SUBMIT);
+		query.setParameter(4, OrderStates.OK_ORDER);
+		query.setParameter(4, OrderStates.PREPARING);
 		query.setParameter(5, OrderStates.READY_FOR_PICKUP);
 		query.setParameter(6, Util.getUserSessionStartTime());
 
@@ -171,3 +172,4 @@ public class OrderDao {
 	// }
 
 }
+

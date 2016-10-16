@@ -39,6 +39,52 @@
 		</global-results>
 	</package>
 
+	<package name="hopline-vendor-services-basic" extends="struts-default,json-default" namespace="/rest"
+		abstract="yes">
+		<interceptors>
+			<interceptor-stack name="hoplineStack">
+				<interceptor-ref name="json">
+					<param name="contentType">application/json</param>
+				</interceptor-ref>
+
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="hoplineStack" />
+	</package>
+
+	
+	
+	
+	
+	<package name="hopline-vendor-services" extends="hopline-vendor-services-basic">
+	
+	
+		<action name="jsonTest"
+			class="com.hoplineVendorServices.action.PreparingOrdersAction">
+			<result type="json">
+				<param name="root">order</param>
+			</result>
+
+		</action>
+	
+	
+	
+	
+	
+	</package>
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<package name="helloworld" extends="hopline-basic">
 		<action name="hello" class="com.hopline.WebApp.action.HelloWorldAction"
 			method="execute">
@@ -81,21 +127,21 @@
 		<action name="yourOrderStates"
 			class="com.hopline.WebApp.endpoint.YourOrderStatusAction" method="execute">
 		</action>
-		
+
 		<action name="OTPVerifyOnLoad" class="com.hopline.WebApp.action.OTPVerificationAction"
 			method="executeVerificationOnload">
 			<result name="success">/OTPVerification.jsp</result>
 		</action>
-		
+
 		<action name="OTPVerifyOnNext" class="com.hopline.WebApp.action.OTPVerificationAction"
 			method="executeVerificationOnNext">
 			<result name="success" type="redirectAction">orderSummaryOnLoad</result>
 			<result name="login" type="redirectAction">loginOnLoad</result>
 			<result name="input">/OTPVerification.jsp</result>
 		</action>
-		
-		<action name="resendOTP"
-			class="com.hopline.WebApp.action.OTPVerificationAction" method="resendOTP">
+
+		<action name="resendOTP" class="com.hopline.WebApp.action.OTPVerificationAction"
+			method="resendOTP">
 		</action>
 	</package>
 </struts>

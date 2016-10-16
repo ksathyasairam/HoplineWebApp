@@ -1,6 +1,6 @@
-package com.hopline.WebApp.model.vo;
+package com.hoplineVendorServices.model;
 
-public class AddOnVo implements java.io.Serializable {
+public class AddOnTo implements java.io.Serializable {
 
 	private Integer idaddOn;
 	private String name;
