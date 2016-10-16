@@ -53,34 +53,44 @@
 			
 
 <div style="position:fixed; top:25%; left:50%; background: #eeeeee; padding-top:18px; padding-bottom:18px; padding-left:10px; padding-right:10px; border-radius:  3px; margin-left:-129px;box-shadow:0px 0px  6px #888888; border: 1px solid #AFAFAF;">
-<form action="OTPVerifyOnNext">
-  <div style=" padding-bottom:5%; position:relative; left:50%; margin-left:-20px;" >
-  	<img src="images/wait.png" style="width:40px;">
-  </div>
+	<form action="OTPVerifyOnNext">
+  		<div style=" padding-bottom:5%; position:relative; left:50%; margin-left:-20px;" >
+  			<img src="images/wait.png" style="width:40px;">
+  		</div>
 
-  <div style="color:grey; text-align:center; padding-bottom:8%; ">
-  	<p>Sit back and relax while we verify<br> your mobile number.<p>
-  </div>
+  		<div style="color:grey; text-align:center; padding-bottom:8%; ">
+  			<p>Sit back and relax while we verify<br> your mobile number.<p>
+  		</div>
 
-  <div style="padding-bottom:5%; position:relative; left:50%; margin-left:-100px;" >
-     <input type="text" name="enteredOTP" placeholder="Enter OTP" style=" text-align:center;width:200px; background: #d3d3d3; border:none ; border-radius:  2px; height:35px;" />
+  		<div style="padding-bottom:5%; position:relative; left:50%; margin-left:-100px;" >
+     		<input type="text" name="enteredOTP" placeholder="Enter OTP" style=" text-align:center;width:200px; background: #d3d3d3; border:none ; border-radius:  2px; height:35px;" />
 
-  </div>
-  <div  style="padding-bottom:5%;position:relative; left:50%; margin-left:-100px;">
-      <input type="submit" value="Verify" ui-sref="order" style=" color:white;width:200px; background:#4fb66d; border:none ; border-radius:  2px; height:35px;"/>
-  </div>
-  </form>
-  <form action="resendOTP">
-      <div  style="color:grey; text-align:center; padding-bottom:8%;font-size:12px;">
-      	Did not receive an OTP ? <a href="#" onclick="$(this).closest('form').submit(); return false;" style="color:#67baca;">Resend</a> OTP.
-  	  </div>
-   </form>
+  		</div>
+  		<div  style="padding-bottom:5%;position:relative; left:50%; margin-left:-100px;">
+      		<input type="submit" value="Verify" ui-sref="order" style=" color:white;width:200px; background:#4fb66d; border:none ; border-radius:  2px; height:35px;"/>
+  		</div>
+  	</form>
+
+     	<div  style="color:grey; text-align:center; padding-bottom:5%;font-size:12px;">
+      		Did not receive an OTP ? <a id="resendotp" href="#" onclick="$(this).closest('form').submit(); return false;" style="color:#67baca;">Resend</a> OTP.
+  	  	</div>
+  	  	<s:if test="%{OTPMismatch}">
+  	  		<div  style="color:grey; text-align:center; padding-bottom:5%;font-size:12px;color:#cf3721;">
+  	  			The OTP you entered is incorrect.<br>Please enter again.
+  	  		</div>
+  	  	</s:if>
 </div>
 
 
 		</div>
 	</div>
-
+	<script>
+		$(document).ready(function(){
+			$("#resendotp").click(function(){
+				  $.get("/resendOTP");
+			});
+		});
+	</script>
 
 
 	</body>
