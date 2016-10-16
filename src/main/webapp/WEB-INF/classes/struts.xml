@@ -58,15 +58,14 @@
 	
 	<package name="hopline-vendor-services" extends="hopline-vendor-services-basic">
 	
-	
-		<action name="jsonTest" method="create"
-			class="com.hoplineVendorServices.action.PreparingOrdersAction">
+
+		<action name="udpateOrderStatus" method="execute"
+			class="com.hopline.vendorServices.action.UpdateOrderStatusAction">
 			<result type="json">
-				<param name="root">order</param>
+				<param name="root">orderStatus</param>
 			</result>
 
-		</action>
-	
+		</action>	
 	
 	
 	

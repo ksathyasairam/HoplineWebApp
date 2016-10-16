@@ -8,7 +8,10 @@ import javax.ws.rs.core.MediaType;
 
 import org.json.JSONObject;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.hopline.WebApp.model.vo.UserVo;
+import com.hopline.vendorServices.model.OrderStatusTo;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -63,4 +66,11 @@ public class Util {
 	public static boolean isInvalidUserData(UserVo user) {
 		return user == null || user.getPhone() == null || user.getName() == null || user.getPhone().isEmpty() || user.getName().isEmpty();
 	}
+	
+	public static void printObjectWithNull(Object object) {
+		Gson gson = new GsonBuilder().serializeNulls().create();
+		System.out.println(gson.toJson(object));
+
+	}
+	
 }
