@@ -95,12 +95,3 @@
 
 	</body>
 </html>
-   <form action="OTPVerifyOnNext">
-      <label for="name">Enter OTP</label><br/>
-      <input type="text" name="enteredOTP"/>
-      <input type="submit" value="Verify"/>
-   </form>
-   
-    <form action="resendOTP">
-      <input type="submit" value="Resend OTP"/>
-   </form>
