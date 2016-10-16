@@ -69,12 +69,22 @@
     	</div>
     	<div style="padding-bottom:5%;" >
       		<img src="images/mobile.png" style=" z-index:20; margin-left:-99%;height:31px;padding-top:3px;">
-      		<input name="user.phone" type="text" placeholder="Phone No." pattern="^\d{10}$"  oninvalid="setCustomValidity('Enter a valid phone number.')" style="float:left; width:100%; background:#d3d3d3; border:none ; padding-left: 25px; border-radius:  2px; height:35px;" required />
-
+      		<input id="userphone" name="user.phone" type="text" placeholder="Phone No." pattern="^\d{10}$"    style="float:left; width:100%; background:#d3d3d3; border:none ; padding-left: 25px; border-radius:  2px; height:35px;" required />
+			
     	</div>
     	<div >
-      		<input type="submit" value="Login"  style=" color:white;width:300px; background:#4fb66d; border:none ; border-radius:  2px; height:35px;"/>
-
+      		<input id="yoyo" type="submit" value="Login"  style=" color:white;width:300px; background:#4fb66d; border:none ; border-radius:  2px; height:35px;"/>
+			<script>
+				$("#yoyo").click(function(){
+				var input = document.getElementById('userphone');
+				  if(input.validity.patternMismatch){  
+				        input.setCustomValidity("Please enter a valid Phone No.");  
+				    }  
+				    else {  
+				        input.setCustomValidity("");  
+				    } 
+				});
+			</script>
     	</div>
     </form>
 </div>

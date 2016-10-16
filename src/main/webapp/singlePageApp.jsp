@@ -263,7 +263,7 @@
 	    value.addOns[i].selected=false;
 	  }
 	  
-	  $('.addedtoast').animate({top: '80'},1000);
+	  $('.addedtoast').animate({top: '85'},1000);
 	  $('.addedtoast').fadeOut(1500);
 	  $('.addedtoast').css({top: '4%'});
 	  $('.addedtoast').show();   
