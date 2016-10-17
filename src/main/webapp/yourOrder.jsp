@@ -26,19 +26,20 @@
 
 		<script>
 
-    		$(function() {
-  				var people = [];
+    		$(function worker() {
    				$.getJSON('/yourOrderStates', function(data) {
    					console.log(data);
        				$.each(data.orderStatus, function(i, f) {
-          				var tblRow = "<p style='font-size:12px; margin-top:15px; float:right; padding-right:2%;'>"+ f.orderState +"</p>"; 
-            			$(tblRow).appendTo("#"+f.idorder);
+       					var rep="replaceStatus"+f.idorder;
+          				var tblRow = "<p id="+rep+ " "+" style='font-size:12px; margin-top:15px; float:right; padding-right:2%;'>"+ f.orderState +"</p>"; 
+          				$( "#replaceStatus"+f.idorder ).replaceWith( tblRow );
           				console.log(f.idorder);
           				console.log(f.orderState);
      				});
-
-   				});
-
+   				}).complete(function() {
+   			      // Schedule the next request when the current one's complete
+   			      setTimeout(worker, 5000);
+   			    });
 			});
 		</script>
 	<a id="return-to-top" style="z-index:11; ">
@@ -89,6 +90,8 @@
 		<h4>Order No: #<s:property value="customerOrderId"/></h4>
 		<p style="font-size:12px;">1 Jan 2016<br> 2:30 PM</p>
 	</div>
+	<p id="replaceStatus<s:property value="idorder"/>">
+	</p>
 </div>
 
 <div id="show<s:property value="idorder"/>" class="banner-info" style="margin-left:7px;margin-right:7px; display:none"  >
