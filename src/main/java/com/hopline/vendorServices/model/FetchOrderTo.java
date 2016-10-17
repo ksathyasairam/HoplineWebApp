@@ -1,0 +1,48 @@
+package com.hopline.vendorServices.model;
+
+import java.io.Serializable;
+import java.util.List;
+
+import com.hopline.WebApp.model.vo.OrderVo;
+
+public class FetchOrderTo implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 740088737221743039L;
+	private Integer shopId;
+	private List<String> orderStates;
+	private List<OrderTo> orders;
+	private boolean success;
+	
+	public List<String> getOrderStates() {
+		return orderStates;
+	}
+	public void setOrderStates(List<String> orderStates) {
+		this.orderStates = orderStates;
+	}
+	
+	public boolean isSuccess() {
+		return success;
+	}
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+	public List<OrderTo> getOrders() {
+		return orders;
+	}
+	public void setOrders(List<OrderTo> orders) {
+		this.orders = orders;
+	}
+	public Integer getShopId() {
+		return shopId;
+	}
+	public void setShopId(Integer shopId) {
+		this.shopId = shopId;
+	}
+	
+	
+	
+
+}
