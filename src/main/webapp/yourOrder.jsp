@@ -23,14 +23,23 @@
 
 </head>
 	<body> 
+
 		<script>
-			$.ajax({
-			url: 'http://localhost:8080/yourOrderStates',
-			type: "GET",
-			dataType: "json",
-			success: function (data) {
- 			console.log(data);
-			}
+
+    		$(function worker() {
+   				$.getJSON('/yourOrderStates', function(data) {
+   					console.log(data);
+       				$.each(data.orderStatus, function(i, f) {
+       					var rep="replaceStatus"+f.idorder;
+          				var tblRow = "<p id="+rep+ " "+" style='font-size:12px; margin-top:15px; float:right; padding-right:2%;'>"+ f.orderState +"</p>"; 
+          				$( "#replaceStatus"+f.idorder ).replaceWith( tblRow );
+          				console.log(f.idorder);
+          				console.log(f.orderState);
+     				});
+   				}).complete(function() {
+   			      // Schedule the next request when the current one's complete
+   			      setTimeout(worker, 5000);
+   			    });
 			});
 		</script>
 	<a id="return-to-top" style="z-index:11; ">
@@ -52,7 +61,7 @@
 				
 		<!-- container -->
 			<!-- header -->
-			<div id="home" class="header" >
+			<div id="home" class="header" style="padding-bottom:50px;" >
 
 				<!-- top-hedader -->
 				<div class="top-header" style="margin-top:15px;" >
@@ -76,16 +85,16 @@
 <div style="padding-top:27px;">
 </div>
 <s:iterator value="orders">
-<div id="<s:property value="customerOrderId"/>" style="margin-left:7px;margin-top:7px; margin-right:7px; padding-left:2%;padding-right:2%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); float:left; width:96%;">
+<div id="<s:property value="idorder"/>" style="margin-left:7px;margin-top:7px; margin-right:7px; padding-left:2%;padding-right:2%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); float:left; width:96%;">
 	<div style="float:left; width:55%; ">
 		<h4>Order No: #<s:property value="customerOrderId"/></h4>
 		<p style="font-size:12px;">1 Jan 2016<br> 2:30 PM</p>
 	</div>
-
-					
+	<p id="replaceStatus<s:property value="idorder"/>">
+	</p>
 </div>
 
-<div id="show<s:property value="customerOrderId"/>" class="banner-info" style="margin-left:7px;margin-right:7px; display:none"  >
+<div id="show<s:property value="idorder"/>" class="banner-info" style="margin-left:7px;margin-right:7px; display:none"  >
 
 				<div class=" header-right">
 
@@ -136,12 +145,15 @@
 				<div class="clearfix"> </div>
 </div>
 <script>
-$('#<s:property value="customerOrderId"/>').click(function() {    
-    $('#show<s:property value="customerOrderId"/>').toggle();
-});
-	
+	$('#<s:property value="idorder"/>').click(function() {    
+    $('#show<s:property value="idorder"/>').toggle();
+	});
 </script>
 </s:iterator>
+<div style="height:50px; width:100%; float:left;">
+
+</div>
+
 		</div>
 	</div>
 

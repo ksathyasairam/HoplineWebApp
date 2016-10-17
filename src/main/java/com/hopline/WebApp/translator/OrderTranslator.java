@@ -29,5 +29,13 @@ public class OrderTranslator {
 		    mapper.map(order, OrderStatus.class);
 		return destObject;
 	}
+	
+	public static <T> T convert(Object object, Class<T> type) {
+		Mapper mapper = new DozerBeanMapper();
+		T destObject =  
+		    mapper.map(object, type);
+		return destObject;
+	}
+	
 
 }

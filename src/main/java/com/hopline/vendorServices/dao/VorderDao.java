@@ -110,6 +110,14 @@ public class VorderDao {
 		criteria.add(Restrictions.eq("order.idorder", idorder));
 		return (Order) criteria.uniqueResult();
 	}
+
+	public List<Order> retrieveOrdersByStates(Integer shopId, List<String> orderStates) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Order.class, "order");
+		criteria.createCriteria("order.shop","shop");
+		criteria.add(Restrictions.eq("shop.idshop", shopId));
+		criteria.add(Restrictions.in("order.orderState", orderStates));
+		return (List<Order>) criteria.list();
+	}
 	
 //	public Shop retrieveShopById(int shopId) {
 //		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Shop.class, "s");
