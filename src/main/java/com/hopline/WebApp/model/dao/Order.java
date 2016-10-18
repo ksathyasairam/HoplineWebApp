@@ -21,6 +21,7 @@ public class Order implements java.io.Serializable {
 	private String cancelReason;
 	private int totalItemCount;
 	private BigDecimal totalPrice;
+	private String orderCreator;
 	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>(0);
 
 	public Order() {
@@ -133,6 +134,14 @@ public class Order implements java.io.Serializable {
 
 	public void setTotalPrice(BigDecimal totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+
+	public String getOrderCreator() {
+		return orderCreator;
+	}
+
+	public void setOrderCreator(String orderCreator) {
+		this.orderCreator = orderCreator;
 	}
 
 }

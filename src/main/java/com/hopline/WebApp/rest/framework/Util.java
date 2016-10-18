@@ -10,6 +10,8 @@ import org.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.hopline.WebApp.model.vo.OrderProductVo;
+import com.hopline.WebApp.model.vo.OrderVo;
 import com.hopline.WebApp.model.vo.UserVo;
 import com.hopline.vendorServices.model.OrderStatusTo;
 import com.sun.jersey.api.client.Client;
@@ -70,6 +72,21 @@ public class Util {
 	public static void printObjectWithNull(Object object) {
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		System.out.println(gson.toJson(object));
+
+	}
+
+	public static boolean validateOrder(OrderVo order) {
+		
+		boolean valid =  order != null 
+				&& order.getShop() != null && order.getShop().getIdshop() != null && order.getOrderProducts() != null && order.getOrderProducts().size() > 0 ; 
+				
+		if (valid) {
+			for (OrderProductVo orderProductVo : order.getOrderProducts()) {
+				valid = valid && orderProductVo.getProduct() != null && orderProductVo.getProduct().getProductId() != null && orderProductVo.getCount() != null && orderProductVo.getCount() > 0;
+			}
+		}
+		//TODO : add  Addon Validation
+		return valid;
 
 	}
 	

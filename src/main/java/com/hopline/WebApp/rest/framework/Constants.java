@@ -14,5 +14,11 @@ public class Constants {
 	
 	public static final String BIG_ORDER_PAY = "bigOrderPay";
 	public static final String YOUR_ORDER = "yourOrder";
+	
+	
+	
+	
+	public static final String ORDER_CREATOR_VENDOR = "vendor";
+	public static final String ORDER_CREATOR_WEBSITE_CUSTOMER = "website-customer";
 
 }

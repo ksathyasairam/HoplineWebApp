@@ -93,7 +93,14 @@ public class OrderService extends IService {
 	public OrderVo createTempOrder(OrderVo orderVo) {
 		Order order = OrderTranslator.toOrder(orderVo);
 		order.setOrderState(OrderStates.TEMP_SUBMIT);
-		order.setPaidYn("Y".equals(orderVo.getPaidYn()) ? "Y" : "N" );
+		order.setPaidYn("N");
+		order.setOrderCreator(Constants.ORDER_CREATOR_WEBSITE_CUSTOMER);
+		order = createOrder(order);
+		
+		return OrderTranslator.toOrderVo(order);
+	}
+	
+	public Order createOrder(Order order) {
 		order.setOrderTime(new Date());
 		order.setTotalItemCount(0);
 		order.setTotalPrice(BigDecimal.valueOf(0));
@@ -127,7 +134,7 @@ public class OrderService extends IService {
 		orderDao.updateOrder(order);
 			order.getOrderProducts().iterator().next().getProduct().getPrice();
 		order = orderDao.retrieveOrderById(orderId);
-		return OrderTranslator.toOrderVo(order);
+		return order;
 	}
 
 	private void populateItemCountAndPrice(Order order) {

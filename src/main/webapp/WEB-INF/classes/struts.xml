@@ -77,6 +77,14 @@
 		</action>	
 	
 	
+		<action name="createWalkinOrder" method="execute"
+			class="com.hopline.vendorServices.action.WalkInOrderAction">
+			<result type="json">
+				<param name="root">order</param>
+			</result>
+
+		</action>
+	
 	
 	
 	</package>

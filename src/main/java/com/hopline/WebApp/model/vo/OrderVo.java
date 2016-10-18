@@ -16,6 +16,7 @@ public class OrderVo implements java.io.Serializable {
 	private Integer totalItemCount;
 	private Double totalPrice;
 	private List<OrderProductVo> orderProducts;
+	private String orderCreator;
 	public Integer getIdorder() {
 		return idorder;
 	}
@@ -81,6 +82,12 @@ public class OrderVo implements java.io.Serializable {
 	}
 	public void setOrderProducts(List<OrderProductVo> orderProducts) {
 		this.orderProducts = orderProducts;
+	}
+	public String getOrderCreator() {
+		return orderCreator;
+	}
+	public void setOrderCreator(String orderCreator) {
+		this.orderCreator = orderCreator;
 	}
 		
 }

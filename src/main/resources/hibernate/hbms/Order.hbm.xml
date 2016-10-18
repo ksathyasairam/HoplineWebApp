@@ -35,6 +35,9 @@
         <property name="totalPrice" type="big_decimal">
             <column name="totalPrice" precision="10" scale="3" not-null="true" />
         </property>
+        <property name="orderCreator" type="string">
+            <column name="orderCreator" length="45" />
+        </property>
         <set name="orderProducts"  table="orderProduct" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="orderId" not-null="true" />

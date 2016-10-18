@@ -13,7 +13,7 @@ public class FetchOrderTo implements Serializable {
 	private static final long serialVersionUID = 740088737221743039L;
 	private Integer shopId;
 	private List<String> orderStates;
-	private List<OrderTo> orders;
+	private List<OrderVo> orders;
 	private boolean success;
 	
 	public List<String> getOrderStates() {
@@ -29,17 +29,18 @@ public class FetchOrderTo implements Serializable {
 	public void setSuccess(boolean success) {
 		this.success = success;
 	}
-	public List<OrderTo> getOrders() {
-		return orders;
-	}
-	public void setOrders(List<OrderTo> orders) {
-		this.orders = orders;
-	}
+	
 	public Integer getShopId() {
 		return shopId;
 	}
 	public void setShopId(Integer shopId) {
 		this.shopId = shopId;
+	}
+	public List<OrderVo> getOrders() {
+		return orders;
+	}
+	public void setOrders(List<OrderVo> orders) {
+		this.orders = orders;
 	}
 	
 	
