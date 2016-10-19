@@ -20,6 +20,7 @@
 	<link href='//fonts.googleapis.com/css?family=Asap:400,700,400italic' rel='stylesheet' type='text/css'>
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Abel|Carme|Hind+Guntur|Josefin+Sans|Josefin+Slab|Mandali|Meera+Inimai|News+Cycle|Oxygen|Raleway" rel="stylesheet"> 
 <!-- webfonts -->
 
 </head>
@@ -279,7 +280,18 @@
 	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || [];
 	  this.totalOrder();
 	};
-
+	
+	this.clearCart=function()
+	{	
+	  for(var i = 0; i < this.checkList.length; i++){
+	  var elementToRemove = '#cartItem-'+ i;
+	  $(elementToRemove).hide();
+	  }
+	  check1=[];
+	  localStorage.setItem('checkList', JSON.stringify(check1));
+	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || [];
+	  this.totalOrder();
+	};
 
 
 	this.post1=function() {
