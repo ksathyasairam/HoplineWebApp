@@ -369,7 +369,7 @@ input:checked + .slider:before {
 #home {
    background: url(../images/checks.png) repeat;
     
-    min-height:650px;
+    min-height:100vh;
     position: relative;
 }
 .top-header {

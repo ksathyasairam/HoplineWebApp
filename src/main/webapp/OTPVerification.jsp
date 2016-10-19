@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
@@ -23,11 +22,7 @@
 <!-- webfonts -->
 
 </head>
-	<body> 
-
-	<a id="return-to-top" style="z-index:11; "><i><img src="images/up.png" alt=" " / ></i></a>
-		
-	<a  class="addedtoast" style=" z-index:9;" ><b>Item Added</b></a>
+	<body > 
 				
 		<!-- container -->
 			<!-- header -->
@@ -44,7 +39,7 @@
 						<h1 ><a href="index.html">HOPLINE</a></h1>
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
-						<span class="menu"><img src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
+						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
 					</div>
 
 				</div>
@@ -52,22 +47,22 @@
 
 			
 
-<div style="position:fixed; top:25%; left:50%; background: #eeeeee; padding-top:18px; padding-bottom:18px; padding-left:10px; padding-right:10px; border-radius:  3px; margin-left:-129px;box-shadow:0px 0px  6px #888888; border: 1px solid #AFAFAF;">
+<div style="position:absolute; top:25%; left:50%; background: #eeeeee; padding-top:18px; padding-bottom:18px; padding-left:10px; padding-right:10px; border-radius: 3px; margin-left:-129px;box-shadow:0px 0px  6px #888888; border: 1px solid #AFAFAF;">
 	<form action="OTPVerifyOnNext">
-  		<div style=" padding-bottom:5%; position:relative; left:50%; margin-left:-20px;" >
-  			<img src="images/wait.png" style="width:40px;">
+  		<div style=" padding-bottom:5%;  margin-left:43% " >
+  			<img src="images/wait.png" style="width:40px; ">
   		</div>
 
   		<div style="color:grey; text-align:center; padding-bottom:8%; ">
   			<p>Sit back and relax while we verify<br> your mobile number.<p>
   		</div>
 
-  		<div style="padding-bottom:5%; position:relative; left:50%; margin-left:-100px;" >
-     		<input type="text" name="enteredOTP" placeholder="Enter OTP" style=" text-align:center;width:200px; background: #d3d3d3; border:none ; border-radius:  2px; height:35px;" />
+  		<div style="padding-bottom:5%;" >
+     		<input type="text" name="enteredOTP" placeholder="Enter OTP" style=" text-align:center;width:100%; background: #d3d3d3; border:none ; border-radius:  2px; height:35px;" />
 
   		</div>
-  		<div  style="padding-bottom:5%;position:relative; left:50%; margin-left:-100px;">
-      		<input type="submit" value="Verify" ui-sref="order" style=" color:white;width:200px; background:#4fb66d; border:none ; border-radius:  2px; height:35px;"/>
+  		<div  style="padding-bottom:5%; ">
+      		<input type="submit" value="Verify" ui-sref="order" style=" color:white;width:100%; background:#4fb66d; border:none ; border-radius:  2px; height:35px;"/>
   		</div>
   	</form>
 
@@ -86,12 +81,16 @@
 	</div>
 	<script>
 		$(document).ready(function(){
+		$("#menubutton").css({"opacity":"0","pointer-events": "none","cursor": "default"});
+		})
+	</script>
+	<script>
+		$(document).ready(function(){
 			$("#resendotp").click(function(){
 				  $.get("/resendOTP");
 			});
 		});
 	</script>
-
 
 	</body>
 </html>

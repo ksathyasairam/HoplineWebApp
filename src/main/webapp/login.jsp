@@ -22,11 +22,8 @@
 <!-- webfonts -->
 
 </head>
-	<body ng-app="mainApp" ng-controller="EventCtrl as event"> 
+	<body ng-app="mainApp" ng-controller="EventCtrl as event" > 
 
-	<a id="return-to-top" style="z-index:11; "><i><img src="images/up.png" alt=" " / ></i></a>
-		
-	<a  class="addedtoast" style=" z-index:9;" ><b>Item Added</b></a>
 				
 		<!-- container -->
 			<!-- header -->
@@ -43,7 +40,7 @@
 						<h1 ><a href="index.html">HOPLINE</a></h1>
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
-						<span class="menu"><img src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
+						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
 					</div>
 
 				</div>
@@ -52,7 +49,7 @@
 			
 			
 
-<div style="position:fixed; top:25%; left:50%; background: #eeeeee; padding-top:18px; padding-bottom:18px; padding-left:10px; padding-right:10px; border-radius:  3px; margin-left:-160px; box-shadow:0px 0px  6px #888888; border: 1px solid #AFAFAF;">
+<div style="position:absolute; top:25%; left:50%; background: #eeeeee; padding-top:18px; padding-bottom:18px; padding-left:10px; padding-right:10px; border-radius:  3px; margin-left:-160px; box-shadow:0px 0px  6px #888888; border: 1px solid #AFAFAF;">
     <div style=" position:absolute;left:50%;height:90px; width:90px; -webkit-border-radius: 60px;-moz-border-radius: 60px; border-radius: 60px; background: #b2301d; margin-top:-60px; margin-left:-45px;box-shadow:0px -1px  2px #888888;">
       
     </div>
@@ -91,6 +88,12 @@
 
 		</div>
 	</div>
+<script>
+	$(document).ready(function(){
+	
+	$("#menubutton").css({"opacity":"0","pointer-events": "none","cursor": "default"});
+	})
+</script>
 
 <script src="./app/angular.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.js"></script>
@@ -100,6 +103,7 @@
 <script type="text/javascript">
     console.log("angular object",angular);
 </script>
+
 
 	</body>
 </html>
