@@ -122,9 +122,7 @@
 						 	</s:iterator>
 						 </li>
 						 </s:iterator>
-						 <br>
-						 <div style="border-bottom: 1px double #AFAFAF;">
-						 </div>
+
 						 <br>
 						 <div>
 						 	<div style=" float:right; color:#525a54;  font-size:14px;">

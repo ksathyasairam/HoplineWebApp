@@ -65,7 +65,7 @@
 <div class="banner-info" style="margin-left:7px;margin-right:7px;" >
 				<div class=" header-right">
 					<h6  style="text-align:center;">Order Summary</h6>
-					<p style="text-align:center; color:#525a54;">Order No.: #<s:property value="order.customerOrderId"/></p>
+					<p style="text-align:center; color:#525a54;font-family: 'Roboto', sans-serif; font-size:17px;">Order No: #<s:property value="order.customerOrderId"/></p>
 					<ul class="address">
 						<s:iterator value="order.orderProducts">
 						 <li  id="cartItem-{{$index}}" style="border-bottom: 1.5px dotted #AFAFAF;margin-top:2%;padding-bottom:2%;">
@@ -89,15 +89,12 @@
 						 </li>
 						 </s:iterator>
 						 <br>
-						 <div style="border-bottom: 1px double #AFAFAF;">
-						 </div>
-						 <br>
 						 <div>
-						 	<div style=" float:right; color:#525a54;  font-size:14px;">
-						 		Total: &#8377.<s:property value="order.totalPrice"/>
+						 	<div style=" float:right; color:#525a54;  font-size:15px;">
+						 		<b>Total: &#8377.<s:property value="order.totalPrice"/></b>
 						 	</div>
-						 	<div style=" float:left; color:#525a54;  font-size:14px;">
-						 		Quantity: <s:property value="order.totalItemCount"/>
+						 	<div style=" float:left; color:#525a54;  font-size:15px;">
+						 		<b>Quantity: <s:property value="order.totalItemCount"/></b>
 						 	</div>
 						 	<br>
 						 </div>

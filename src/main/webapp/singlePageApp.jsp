@@ -19,14 +19,12 @@
 <!-- webfonts -->
 	<link href='//fonts.googleapis.com/css?family=Asap:400,700,400italic' rel='stylesheet' type='text/css'>
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 <!-- webfonts -->
 
 </head>
 	<body ng-app="mainApp" ng-controller="EventCtrl as event"> 
 
-	
-		
 	<a  class="addedtoast" style=" z-index:9;" ><b>Item Added</b></a>
 				
 		<!-- container -->
