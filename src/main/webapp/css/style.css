@@ -598,22 +598,14 @@ ul.address-text b {
         margin-right: 5em;
         min-height: 433px;
     }
-    #work,.blog{
-        padding:4em 0;
-    }
-    .footer {
-        min-height: 650px;
-        padding: 4em 0 0em 0;
-    }
-    #port {
-      padding:4em 0 0 0;
-    }
     .thumb .team_pos {
         bottom: -83px;
         left: 0;
         margin-top: -17px;
         padding: 6px 0;
     }
+    .spacing{
+	padding-top:4%;
     
 }
 @media(max-width:1280px){
@@ -635,6 +627,8 @@ ul.address-text b {
         line-height: 2em;
         margin-top: 0.5em;
     }
+    .spacing{
+	padding-top:5%;
 }
 @media(max-width:1024px){
     .about-left {
@@ -646,20 +640,7 @@ ul.address-text b {
         margin-right:5em;
         min-height: 459px;
     }
-    .news-text {
-        float: right;
-        padding: 0.7em 2em 2em 2em;
-    }
-    #work,.blog,#services {
-        padding: 3em 0;
-    }
-    #port {
-        padding: 3em 0 0 0;
-    }
-    .footer {
-        min-height: 587px;
-        padding: 3em 0 0em 0;
-    }
+
     ul.year li:nth-child(2) {
         margin-top: 157px;
     }
@@ -678,6 +659,8 @@ ul.address-text b {
         margin-top: -50px;
         padding: 6px 0;
     }
+    .spacing{
+	padding-top:4%;
 }
 @media(max-width:991px){
     .navigation-right ul li a {
@@ -744,9 +727,9 @@ ul.address-text b {
     }
     .navigation-right ul {
         position: fixed;
-        left: 0%;
+        left: 55%;
         top:4em;
-        width: 100%;
+        width: 45%;
         z-index: 999;
         text-align: center;
         padding: 0px;
@@ -853,10 +836,12 @@ ul.address-text b {
     .navigation-right {
         margin: 0em 0 0;
     }
+    .spacing{
+	padding-top:4%;
 }
  
 
-@media(max-width:375px){
+@media(max-width:500px){
     .banner-info {
         margin-top: 1.2em;
     }
@@ -878,9 +863,20 @@ ul.address-text b {
         width:85%;
         margin-top: 8px;
     }
-    .news-text {
-        float: right;
-        padding: 0.5em 1em 1.5em 1em;
+	.spacing{
+	padding-top:9%;
+	}
+	.navigation-right ul {
+        position: fixed;
+        left: 0%;
+        top:4em;
+        width: 100%;
+        z-index: 999;
+        text-align: center;
+        padding: 0px;
+        
     }
+
+
 }
 
