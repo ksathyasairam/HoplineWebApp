@@ -57,12 +57,12 @@
 
 <s:form action="HoplineWebApp/orderSummaryNext">
  
-<s:submit value="Confirm Order" style="position:fixed; left:1%; bottom:10px; background:#4fb66d; opacity:0.9; height:40px; text-align:center;width:98%;line-height:40px;border-radius:3px 3px 3px 3px;color:white;border:none;"  />
+<s:submit value="Confirm Order" class="bigBack" style="border:none;"  />
 </s:form> 
 <div style="padding-top:20px;">
 </div>
 
-<div class="banner-info" style="margin-left:7px;margin-right:7px;" >
+<div class="banner-info" id="sideSpacing" >
 				<div class=" header-right">
 					<h6  style="text-align:center;">Order Summary</h6>
 					<p style="text-align:center; color:#525a54;font-family: 'Roboto', sans-serif; font-size:17px;">Order No: #<s:property value="order.customerOrderId"/></p>
