@@ -1,14 +1,14 @@
 <a href="/yourOrders"><img  src="images/invoice-4.png" alt=" " / style="position:fixed;right:0%;height:32px;  top:16px; float:right; margin-right:62px;z-index:999;" >	</a>
 
-<a id="fullcart" style="z-index:12;" ui-sref="login" ng-click="event.toast=!event.toast;"><i><img src="images/totalcart.png" alt=" " / ></i></a>
+<a id="fullcart" style="z-index:12;" ui-sref="login" ng-click="event.toast=!event.toast;"><i><img src="images/instant.png" alt=" " style="height:30px;" / ></i></a>
 
-<a id="return-to-top" style="z-index:11; "><i><img src="images/up.png" alt=" " / ></i></a>
+<a id="return-to-top" style="z-index:11; "><i><img src="images/up4.png" alt=" " style="height:15px;"/ ></i></a>
 
-<a id="checkcart" style="z-index:11;" ui-sref="cart" ><i><img src="images/cart5.png" alt=" " / ></i></a>
+<a id="checkcart" style="z-index:11;" ui-sref="cart" ><i><img src="images/cartfinal.png" alt=" "  style="height:56px;"/ ></i></a>
 
 <a id="totalorder" style="z-index:3; " ><div style="float:left;"><b>Qty:{{event.totalQuantity}}</b></div><div style="float:right;"><b>₹:{{event.totalCost}}.00</b></div></a>
 
-<a id="returnBackTo" style="z-index:12;" ui-sref="restaurant"><i><img src="images/returnbackto.png" alt=" " / ></i></a>
+<a id="returnBackTo" style="z-index:12;" ui-sref="restaurant"><i><img src="images/rere.png" alt=" " style="height:24px;"/ ></i></a>
 
 
 <div style="padding-top:20px;">
@@ -57,9 +57,20 @@
 												</div>
 											</div>
 											<div style="float:right;text-align:right;" ng-show="fooditem.isExpanded;">
-												<img src="images/minus.png" style="padding-right=30%;" ng-click="event.decreaseItemCount(fooditem);">
-											 	&emsp;{{fooditem.quantity}}&emsp;
-												<img src="images/plus.png" ng-click="fooditem.quantity=fooditem.quantity+1;"> 
+												<div style="float:left; height:24px; width:24px; border-radius:12px 12px 12px 12px; background:#e64539; " ng-click="event.decreaseItemCount(fooditem);">
+													<div style="width:14px; height:4px; position:relative; left:50%;top:50%; margin-left:-7px;margin-top:-2px; background:white;">
+														
+													</div>
+												</div>
+											 	<div style="float:left">&emsp;{{fooditem.quantity}}&emsp;</div>
+												<div style="float:left; height:24px; width:24px; border-radius:12px 12px 12px 12px; background:#4fb66d;" ng-click="fooditem.quantity=fooditem.quantity+1;">
+													<div style="width:14px; height:4px; position:relative; left:50%;top:50%; margin-left:-7px;margin-top:-2px; background:white;">
+														
+													</div>
+													<div style="width:4px; height:14px; position:relative; left:50%;top:50%; margin-left:-2px;margin-top:-9px; background:white;">
+														
+													</div>
+												</div>
 											</div>
 										</div>
 										<br>

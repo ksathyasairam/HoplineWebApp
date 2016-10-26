@@ -105,9 +105,9 @@ body h1,h2,h3,h4,h5,h6{
     color: #fff;
     position: relative;
     left: 50%;
-    margin-left:-15px;
+    margin-left:-27px;
     top: 50%;
-    margin-top:-13px;
+    margin-top:-26px;
 
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
@@ -154,8 +154,8 @@ body h1,h2,h3,h4,h5,h6{
     top: 50%;
     left: 50%;
     
-    margin-left: -12px;
-    margin-top:-5px;
+    margin-left: -13px;
+    margin-top:-12px;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
