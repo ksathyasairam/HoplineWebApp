@@ -564,13 +564,66 @@ ul.address-text b {
     filter: alpha(opacity=0);
 }
 /*-- responsive-design --*/
-@media(max-width:1366px){
-    .about-left-grid {
-        width: 70%;
-        float: right;
-        margin-right: 5em;
-        min-height: 433px;
+@media(min-width:1366px){
+    .spacing{
+	padding-top:4%;
     }
+    .imageAlign{
+	margin-top:-1%;
+	}
+	#sideSpacing{
+	margin-left:170px;
+	margin-right:170px;
+	}
+	.bigBack{
+	 position:fixed;
+	 left:51%;
+	 bottom:5px;
+	 line-height:55px;
+	 background:#67baca; 
+	 opacity:0.9; 
+	 height:55px; 
+	 font-size:20px;
+	 text-align:center;
+	 border-radius:3px 3px 3px 3px;
+	 color:white;
+	 width:98%;
+	 z-index:11;
+	 margin-left:-50%;
+	}
+	.smallBack{
+	position:fixed; 
+	left:1%; 
+	bottom:5px; 
+	line-height:55px; 
+	background:#67baca; 
+	opacity:0.9; 
+	height:55px;
+	font-size:20px; 
+	text-align:center;
+	border-radius:3px 3px 3px 3px;
+	color:white;
+	width:39%;
+	z-index:11;
+	}
+	.proceedToCheckout{
+	position:fixed; 
+	right:1%; 
+	bottom:5px; 
+	line-height:55px; 
+	background:#4fb66d; 
+	opacity:0.9; 
+	height:55px;
+	font-size:20px; 
+	text-align:center;
+	border-radius:3px 3px 3px 3px;
+	color:white;
+	width:58%;
+	z-index:11;
+	}
+    
+}
+@media(max-width:1366px){
     .spacing{
 	padding-top:4%;
     }
