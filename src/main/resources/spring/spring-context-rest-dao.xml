@@ -30,7 +30,7 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://hopline.cftgzg2h6jdu.us-east-1.rds.amazonaws.com:3306/hopline" />
+			value="jdbc:mysql://hopline.c4njdrsmog9r.us-east-1.rds.amazonaws.com:3306/hopline" />
 		<property name="username" value="hopline" />
 		<property name="password" value="newyearnewlife" />
 	</bean>

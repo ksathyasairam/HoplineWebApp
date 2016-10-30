@@ -39,8 +39,8 @@
 		</global-results>
 	</package>
 
-	<package name="hopline-vendor-services-basic" extends="struts-default,json-default" namespace="/rest"
-		abstract="yes">
+	<package name="hopline-vendor-services-basic" extends="struts-default,json-default"
+		namespace="/rest" abstract="yes">
 		<interceptors>
 			<interceptor-stack name="hoplineStack">
 				<interceptor-ref name="json">
@@ -52,12 +52,12 @@
 		<default-interceptor-ref name="hoplineStack" />
 	</package>
 
-	
-	
-	
-	
+
+
+
+
 	<package name="hopline-vendor-services" extends="hopline-vendor-services-basic">
-	
+
 
 		<action name="udpateOrderStatus" method="execute"
 			class="com.hopline.vendorServices.action.UpdateOrderStatusAction">
@@ -65,18 +65,18 @@
 				<param name="root">orderStatus</param>
 			</result>
 
-		</action>	
-		
-		
+		</action>
+
+
 		<action name="fetchOrders" method="execute"
 			class="com.hopline.vendorServices.action.FetchOrdersAction">
 			<result type="json">
 				<param name="root">fetchOrder</param>
 			</result>
 
-		</action>	
-	
-	
+		</action>
+
+
 		<action name="createWalkinOrder" method="execute"
 			class="com.hopline.vendorServices.action.WalkInOrderAction">
 			<result type="json">
@@ -84,9 +84,17 @@
 			</result>
 
 		</action>
-	
-	
-	
+
+		<action name="retrieveMenu" method="execute"
+			class="com.hopline.vendorServices.action.RetrieveMenu">
+			<result type="json">
+				<param name="root">categoryVos</param>
+			</result>
+
+		</action>
+
+
+
 	</package>
 
 

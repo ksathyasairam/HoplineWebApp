@@ -9,15 +9,23 @@ import org.dozer.Mapper;
 import com.google.gson.Gson;
 import com.hopline.WebApp.dao.CategoryDao;
 import com.hopline.WebApp.model.dao.Category;
-import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.vo.CategoryVo;
 import com.hopline.WebApp.rest.framework.IService;
-import com.mysql.fabric.xmlrpc.base.Array;
 
 public class CategoryServiceImpl extends IService{
 	private CategoryDao categoryDao;
 	
 	public String retrieveAllCategoryJson() {
+		
+		List<CategoryVo> categoryVos = retrieveAllCategory();
+
+		Gson gson = new Gson();
+		String s = gson.toJson(categoryVos);
+
+		return s;
+	}
+	
+	public List<CategoryVo> retrieveAllCategory() {
 		List<Category> categories =  getCategoryDao().retriveAllCategory();
 		
 		List<CategoryVo> categoryVos = new ArrayList<CategoryVo>();
@@ -28,12 +36,8 @@ public class CategoryServiceImpl extends IService{
 			    mapper.map(category, CategoryVo.class);
 			categoryVos.add(destObject);
 		}
-
-		Gson gson = new Gson();
-
-		String s = gson.toJson(categoryVos);
 		
-		return s;
+		return categoryVos;
 	}
 
 	public CategoryDao getCategoryDao() {
@@ -44,4 +48,5 @@ public class CategoryServiceImpl extends IService{
 		this.categoryDao = categoryDao;
 	}
 
+	
 }
