@@ -11,6 +11,7 @@ import com.hopline.WebApp.constants.OrderStates;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.OrderProductAddon;
+import com.hopline.WebApp.model.dao.Product;
 import com.hopline.WebApp.rest.framework.Util;
 
 public class VorderDao {
@@ -103,6 +104,17 @@ public class VorderDao {
 	public Integer saveOrderProductAddon(OrderProductAddon orderProductAddon) {
 		return (Integer) getSessionFactory().getCurrentSession().save(orderProductAddon);
 		
+	}
+	
+	public Integer saveProduct(Product product) {
+		return (Integer) getSessionFactory().getCurrentSession().save(product);
+		
+	}
+	
+	public Product getProductByid(Integer id) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class, "p");
+		criteria.add(Restrictions.eq("p.productId", id));
+		return (Product) criteria.uniqueResult();
 	}
 
 	public Order getOrder(Integer idorder) {

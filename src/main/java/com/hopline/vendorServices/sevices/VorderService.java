@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.hopline.WebApp.constants.OrderStates;
 import com.hopline.WebApp.model.dao.Order;
+import com.hopline.WebApp.model.dao.Product;
 import com.hopline.WebApp.model.vo.OrderVo;
 import com.hopline.WebApp.model.vo.UserVo;
 import com.hopline.WebApp.rest.framework.Constants;
@@ -17,6 +18,7 @@ import com.hopline.WebApp.translator.OrderTranslator;
 import com.hopline.vendorServices.dao.VorderDao;
 import com.hopline.vendorServices.model.FetchOrderTo;
 import com.hopline.vendorServices.model.OrderStatusTo;
+import com.hopline.vendorServices.model.Stock;
 
 public class VorderService extends IService {
 	private VorderDao orderDao;
@@ -89,6 +91,17 @@ public class VorderService extends IService {
 		orderVo = OrderTranslator.toOrderVo(order);
 		
 		return orderVo;
+	}
+
+	public Stock udpateStock(Stock stock) {
+		
+		Product product = orderDao.getProductByid(stock.getProductId());
+		
+		product.setStockYn(stock.getStockYN());
+		
+		orderDao.saveProduct(product);
+		stock.setSuccess(true);
+		return stock;
 	}
 
 }
