@@ -134,6 +134,7 @@ public class OrderService extends IService {
 		orderDao.updateOrder(order);
 			order.getOrderProducts().iterator().next().getProduct().getPrice();
 		order = orderDao.retrieveOrderById(orderId);
+
 		return order;
 	}
 
@@ -189,6 +190,11 @@ public class OrderService extends IService {
 	}
 	
 	
+	public String retrieveSingleOrderStatus(Integer orderId) {
+		Order order = orderDao.retrieveOrderById(orderId);
+		return order.getOrderState();
+	}
+	
 
 
 
@@ -206,4 +212,7 @@ public class OrderService extends IService {
 
 
 
+
+
 }
+

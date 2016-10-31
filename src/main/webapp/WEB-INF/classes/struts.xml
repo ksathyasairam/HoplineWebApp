@@ -152,6 +152,9 @@
 			class="com.hopline.WebApp.endpoint.YourOrderStatusAction" method="execute">
 		</action>
 
+		<action name="orderState"
+			class="com.hopline.WebApp.endpoint.OrderStatusAction" method="execute">
+		</action>
 		<action name="OTPVerifyOnLoad" class="com.hopline.WebApp.action.OTPVerificationAction"
 			method="executeVerificationOnload">
 			<result name="success">/OTPVerification.jsp</result>

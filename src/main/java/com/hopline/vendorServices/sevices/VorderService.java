@@ -3,8 +3,6 @@ package com.hopline.vendorServices.sevices;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.aspectj.apache.bcel.classfile.Constant;
-
 import com.hopline.WebApp.constants.OrderStates;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.vo.OrderVo;
@@ -12,6 +10,7 @@ import com.hopline.WebApp.model.vo.UserVo;
 import com.hopline.WebApp.rest.framework.Constants;
 import com.hopline.WebApp.rest.framework.IService;
 import com.hopline.WebApp.rest.framework.ServiceLocator;
+import com.hopline.WebApp.rest.framework.Util;
 import com.hopline.WebApp.service.LoginServiceImpl;
 import com.hopline.WebApp.service.OrderService;
 import com.hopline.WebApp.translator.OrderTranslator;
@@ -44,6 +43,14 @@ public class VorderService extends IService {
 			order.setCancelReason(orderStatus.getCancelReason());
 
 		orderDao.updateOrder(order);
+		
+		if (OrderStates.PREPARING.equals(order.getOrderState())){
+			Util.sendSMS(order.getUser().getPhone(),String.format(Constants.SMS_ORDER_CREATED_TEXT, order.getCustomerOrderId()));
+		}else if (OrderStates.CANCELLED.equals(order.getOrderState())){
+			Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_CANCELLED_TEXT,order.getCustomerOrderId(), orderStatus.getCancelReason()));
+		}else if (OrderStates.READY_FOR_PICKUP.equals(order.getOrderState())){
+			Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_ORDER_READY_TEXT, order.getCustomerOrderId()));
+		}
 
 		orderStatus.setSuccess(true);
 
@@ -77,6 +84,8 @@ public class VorderService extends IService {
 		order.setOrderCreator(Constants.ORDER_CREATOR_VENDOR);
 		order = ServiceLocator.getInstance().getService(OrderService.class).createOrder(order);
 		
+		Util.sendSMS(order.getUser().getPhone(),String.format(Constants.SMS_ORDER_CREATED_TEXT, order.getCustomerOrderId()));
+	
 		orderVo = OrderTranslator.toOrderVo(order);
 		
 		return orderVo;

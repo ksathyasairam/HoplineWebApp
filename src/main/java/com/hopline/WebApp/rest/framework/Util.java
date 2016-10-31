@@ -1,5 +1,11 @@
 package com.hopline.WebApp.rest.framework;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -13,7 +19,6 @@ import com.google.gson.GsonBuilder;
 import com.hopline.WebApp.model.vo.OrderProductVo;
 import com.hopline.WebApp.model.vo.OrderVo;
 import com.hopline.WebApp.model.vo.UserVo;
-import com.hopline.vendorServices.model.OrderStatusTo;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -64,6 +69,59 @@ public class Util {
 
 		return null;
 	}
+	
+	
+	//TODO : NO Response check and error handling in this method. FIX.
+	public static void sendSMS(String phone, String message) {
+      //define route
+      String route="4";
+
+      //Prepare Url
+      URLConnection myURLConnection=null;
+      URL myURL=null;
+      BufferedReader reader=null;
+		
+
+      //encoding message
+      String encoded_message=URLEncoder.encode(message);
+
+      //Send SMS API
+      String mainUrl="http://api.msg91.com/api/sendhttp.php?";
+      
+
+      //Prepare parameter string
+      StringBuilder sbPostData= new StringBuilder(mainUrl);
+      sbPostData.append("authkey="+Constants.SMS_AUTH_KEY);
+      sbPostData.append("&mobiles="+phone);
+      sbPostData.append("&message="+encoded_message);
+      sbPostData.append("&route="+route);
+      sbPostData.append("&sender="+Constants.SENDER_ID);
+
+      //final string
+      mainUrl = sbPostData.toString();
+      
+      try
+      {
+          //prepare connection
+          myURL = new URL(mainUrl);
+          myURLConnection = myURL.openConnection();
+          myURLConnection.connect();
+          reader= new BufferedReader(new InputStreamReader(myURLConnection.getInputStream()));
+          //reading response
+          String response;
+          while ((response = reader.readLine()) != null)
+          //print response
+          System.out.println(response);
+
+          //finally close connection
+          reader.close();
+      }
+      catch (IOException e)
+      {
+              e.printStackTrace();
+      }
+		
+	}
 
 	public static boolean isInvalidUserData(UserVo user) {
 		return user == null || user.getPhone() == null || user.getName() == null || user.getPhone().isEmpty() || user.getName().isEmpty();
@@ -89,5 +147,7 @@ public class Util {
 		return valid;
 
 	}
+
+
 	
 }
