@@ -19,11 +19,11 @@
 
 					<ul class="address">
 					
-					    <li ng-repeat="fooditem in cat.products track by $index" >
+					    <li ng-repeat="fooditem in cat.products track by $index" class="webMenu" style="display:inline-block;" >
 					    		
-								<div  style="border-bottom: 1px dotted #AFAFAF; " >
+								<div  class="dottedLining" >
 
-									<div id="div-{{cat.name}}-{{$index}}" style="color:#525a54; padding-left:2%; padding-top:2%; padding-bottom:3%;padding-right:3%;">
+									<div id="div-{{cat.name}}-{{$index}}" style="color:#525a54; padding-left:2%; padding-top:2%; padding-bottom:3%;padding-right:2%;">
 										<div style="float:left;opacity:0.8; margin-top:6px;" ng-show="fooditem.vegYn=='Y'" >
 											<div style="width:12px; height:12px;border:1px solid #4fb66d; border-radius: 1px 1px 1px 1px; text-align:center;">
 												<div style="position:relative; left:50%; margin-left:-3px;top:50%; margin-top:-3px; width:6px; height:6px; border-radius: 6px 6px 6px 6px; background:#4fb66d;">
@@ -104,11 +104,11 @@
 										</div>
 
 
-										<div style="opacity:0.9;  margin-bottom:3%;" >
-											<div style="border-radius: 3px 3px 3px 3px; background:#cf3721; width:39%;text-align:center;color:white ;padding-top:2%;padding-bottom:2%;display: inline-block" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.cancelOrder(fooditem);">
+										<div class="cancelAndAddToCart" >
+											<div style="border-radius: 3px 3px 3px 3px; background:#cf3721; width:39.5%;text-align:center;color:white ;padding-top:2%;padding-bottom:2%;display: inline-block;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.cancelOrder(fooditem);">
 												Cancel
 											</div>
-											<div style="border-radius: 3px 3px 3px 3px; background:#f2c057; width:59%;text-align:center;color:white;padding-top:2%;padding-bottom:2%;display: inline-block" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.addCheckList($index,cat.name,fooditem);">
+											<div style="border-radius: 3px 3px 3px 3px; background:#f2c057; width:59%;text-align:center;color:white;padding-top:2%;padding-bottom:2%;display: inline-block; float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.addCheckList($index,cat.name,fooditem);">
 												Add to Cart
 											</div>
 										</div>

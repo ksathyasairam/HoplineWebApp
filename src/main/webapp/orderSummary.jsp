@@ -51,13 +51,10 @@
 				</div>
 
 			
-<div style="padding-top:27px;">
-</div>
 
-
-<s:form action="HoplineWebApp/orderSummaryNext">
+<s:form action="/orderSummaryNext">
  
-<s:submit value="Confirm Order" class="bigBack" style="border:none;"  />
+<s:submit value="Confirm Order" class="bigBack" style="border:none; background:#4fb66d"  />
 </s:form> 
 <div style="padding-top:20px;">
 </div>

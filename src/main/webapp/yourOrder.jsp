@@ -82,10 +82,10 @@
 				</div>
 
 			
-<div style="padding-top:27px;">
+<div class="spacing">
 </div>
 <s:iterator value="orders">
-<div id="<s:property value="idorder"/>" style="margin-left:7px;margin-top:7px; margin-right:7px; padding-left:2%;padding-right:2%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); float:left; width:96%;">
+<div id="<s:property value="idorder"/>" style="margin-left:1%;margin-top:7px; margin-right:1%; padding-left:2%;padding-right:2%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); float:left; width:98%;">
 	<div style="float:left; width:55%; ">
 		<h4>Order No: #<s:property value="customerOrderId"/></h4>
 		<p style="font-size:12px;">1 Jan 2016<br> 2:30 PM</p>
@@ -94,7 +94,7 @@
 	</p>
 </div>
 
-<div id="show<s:property value="idorder"/>" class="banner-info" style="margin-left:7px;margin-right:7px; display:none"  >
+<div id="show<s:property value="idorder"/>" class="banner-info" style="margin-left:1%;margin-right:1%; display:none"  >
 
 				<div class=" header-right">
 
