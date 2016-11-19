@@ -67,7 +67,7 @@ public class OrderDao {
 	}
 	
 	public List<Order> getAllOrders(int userId) {
-		String queryString = "from com.hopline.WebApp.model.dao.Order r where r.user.iduser = ? and r.orderState <> ? and r.orderTime > ?";
+		String queryString = "from com.hopline.WebApp.model.dao.Order r where r.user.iduser = ? and r.orderState <> ? and r.orderTime > ? ORDER BY r.orderTime DESC";
 
 		Query query = sessionFactory.getCurrentSession().createQuery(queryString);
 

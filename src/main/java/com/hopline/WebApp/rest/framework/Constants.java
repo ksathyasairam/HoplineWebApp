@@ -23,10 +23,19 @@ public class Constants {
 	public static final String ORDER_CREATOR_VENDOR = "vendor";
 	public static final String ORDER_CREATOR_WEBSITE_CUSTOMER = "website-customer";
 	
-	public static final String SMS_CANCELLED_TEXT = "We apologise for the inconvenience but it looks like your order #%s is being cancelled by the restaurant. Comments from restaurant : \"%s\"";
+//	public static final String SMS_CANCELLED_TEXT = "We apologise for the inconvenience but it looks like your order #%s is being cancelled by the restaurant. Comments from restaurant : \"%s\"";
 
-	public static final String SMS_ORDER_READY_TEXT = "Your order #%s is ready";
+//	public static final String SMS_ORDER_READY_TEXT = "Your order #%s is ready";
 	
-	public static final String SMS_ORDER_CREATED_TEXT = "Your order has been accepted by vendor, your order number is #%s";
+//	public static final String SMS_ORDER_CREATED_TEXT = "Your order has been accepted by vendor, your order number is #%s";
+	
+	
+	
+	
+	public static final String SMS_CANCELLED_TEXT = "Oops! looks like your order #%s has been cancelled. We apologize for the inconvenience caused. Comments from restaurant : \"%s\"";
+
+	public static final String SMS_ORDER_READY_TEXT = "Hi %s, your order #%s is ready for pick up. Enjoy your food!!";
+	
+	public static final String SMS_ORDER_CREATED_TEXT = "Hi %s, your order has been successfully accepted by %s. Your order no. is #%s. Thank you for your order!";
 
 }
