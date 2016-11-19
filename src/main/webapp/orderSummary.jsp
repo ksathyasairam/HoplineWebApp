@@ -88,7 +88,7 @@
 						 <br>
 						 <div>
 						 	<div style=" float:right; color:#525a54;  font-size:15px;">
-						 		<b>Total: &#8377.<s:property value="order.totalPrice"/></b>
+						 		<b>Total: &#8377 <s:property value="order.totalPrice"/></b>
 						 	</div>
 						 	<div style=" float:left; color:#525a54;  font-size:15px;">
 						 		<b>Quantity: <s:property value="order.totalItemCount"/></b>

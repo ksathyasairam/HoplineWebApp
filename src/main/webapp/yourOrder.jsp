@@ -31,7 +31,18 @@
    					console.log(data);
        				$.each(data.orderStatus, function(i, f) {
        					var rep="replaceStatus"+f.idorder;
-          				var tblRow = "<p id="+rep+ " "+" style='font-size:12px; margin-top:15px; float:right; padding-right:2%;'>"+ f.orderState +"</p>"; 
+       					if(f.orderState=="OK_ORDER" || f.orderState=="TEMP_SUBMIT" || f.orderState=="DEFAULTER_CALL")
+          				var tblRow = "<p id="+rep+ " "+" style='font-size:12px; margin-top:15px; float:right; padding-right:2%;'>"+ "PROCESSING..." +"</p>"; 
+          				else if(f.orderState=="CANCELLED")
+          					var tblRow = "<p id="+rep+ " "+" style='font-size:12px; color:red; margin-top:15px; float:right; padding-right:2%;'>"+ "CANCELLED" +"</p>";
+          				else if(f.orderState=="PREPARING")
+              				var tblRow = "<p id="+rep+ " "+" style='font-size:12px; color:orange; margin-top:15px; float:right; padding-right:2%;'>"+ "PREPARING" +"</p>";
+              			else if(f.orderState=="COMPLETED")
+                  			var tblRow = "<p id="+rep+ " "+" style='font-size:12px; color:green; margin-top:15px; float:right; padding-right:2%;'>"+ "COMPLETED" +"</p>";
+                  		else if(f.orderState=="READY_FOR_PICKUP")
+                      		var tblRow = "<p id="+rep+ " "+" style='font-size:12px; color:green; margin-top:15px; float:right; padding-right:2%;'>"+ "READY FOR PICKUP" +"</p>";
+                      	else if(f.orderState=="UNPICKED")
+                          	var tblRow = "<p id="+rep+ " "+" style='font-size:12px; color:red; margin-top:15px; float:right; padding-right:2%;'>"+ "UNPICKED" +"</p>";
           				$( "#replaceStatus"+f.idorder ).replaceWith( tblRow );
           				console.log(f.idorder);
           				console.log(f.orderState);
@@ -41,6 +52,9 @@
    			      setTimeout(worker, 5000);
    			    });
 			});
+		</script>
+		<script>
+			localStorage.clear();
 		</script>
 	<a id="return-to-top" style="z-index:11; ">
 		<i>
@@ -88,7 +102,7 @@
 <div id="<s:property value="idorder"/>" style="margin-left:1%;margin-top:7px; margin-right:1%; padding-left:2%;padding-right:2%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); float:left; width:98%;">
 	<div style="float:left; width:55%; ">
 		<h4>Order No: #<s:property value="customerOrderId"/></h4>
-		<p style="font-size:12px;">1 Jan 2016<br> 2:30 PM</p>
+		<p style="font-size:12px;"><s:property value="orderTime"/></p>
 	</div>
 	<p id="replaceStatus<s:property value="idorder"/>">
 	</p>

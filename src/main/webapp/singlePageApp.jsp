@@ -195,6 +195,7 @@
 
 	this.takeMeTo=function(name)
 	  {
+		name=name.split(' ').join('');
 	    console.log(name);
 	    var element='#' + name;
 	      $("body, html").animate({ 
@@ -292,7 +293,24 @@
 	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || [];
 	  this.totalOrder();
 	};
-
+	
+	
+	this.hide=function(){
+		
+		$( "ul.nav1" ).slideUp( 500, function() {
+			 // Animation complete.
+			  });
+		$('#instantCheckPopUp').css({display:'none'});
+		$('#fullcart').css({display:'block'});
+		$('#fullcart2').css({display:'none'});
+	};
+	
+	this.instantCheckPopUp=function(){
+		$('#instantCheckPopUp').css({display:'block'});
+		$('#fullcart').css({display:'none'});
+		$('#fullcart2').css({display:'block'});
+		
+	};
 
 	this.post1=function() {
 	  var path="/orderSummaryOnLoad";
@@ -355,8 +373,7 @@
 	    form.submit();
 	};
 
-
-
+	
 	}])
 
 

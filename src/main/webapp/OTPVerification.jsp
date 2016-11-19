@@ -69,8 +69,12 @@
      	<div  style="color:grey; text-align:center; padding-bottom:5%;font-size:12px;">
       		Did not receive an OTP ? <a id="resendotp" href="#" onclick="$(this).closest('form').submit(); return false;" style="color:#67baca;">Resend</a> OTP.
   	  	</div>
+  	  	<div id="resentOTPtext" style="color:grey; text-align:center; padding-bottom:5%;font-size:12px;display:none;">
+      		The OTP has been resent.
+  	  	</div>
   	  	<s:if test="%{OTPMismatch}">
-  	  		<div  style="color:grey; text-align:center; padding-bottom:5%;font-size:12px;color:#cf3721;">
+  	  		
+  	  		<div id="OTPMismatchText" style="color:grey; text-align:center; padding-bottom:5%;font-size:12px;color:#cf3721;">
   	  			The OTP you entered is incorrect.<br>Please enter again.
   	  		</div>
   	  	</s:if>
@@ -87,6 +91,8 @@
 	<script>
 		$(document).ready(function(){
 			$("#resendotp").click(function(){
+				$('#resentOTPtext').css({display:'block'});
+				$('#OTPMismatchText').css({display:'none'});
 				  $.get("/resendOTP");
 			});
 		});

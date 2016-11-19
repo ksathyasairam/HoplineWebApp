@@ -49,7 +49,7 @@
     			            	   success: function (data) {                       
     			            	      console.log(data);
     			            	      if(data!="BIG_ORDER_PAY")
-    			            	    	  window.location.replace('"/orderSummaryNext"');
+    			            	    	  window.location.replace('/yourOrder');
     			            	      
     			            	   },
     			            	   error: function (xhr, text, error) {              
