@@ -8,9 +8,9 @@
 
 <a id="checkcart" style="z-index:11;" ui-sref="cart" ><i><img src="images/cartfinal.png" alt=" "  style="height:56px;"/ ></i></a>
 
-<a id="totalorder" style="z-index:3; " ><div style="float:left;"><b>Qty:{{event.totalQuantity}}</b></div><div style="float:right;"><b>₹:{{event.totalCost}}.00</b></div></a>
+<a id="totalorder" style="z-index:3; " ><div style="float:left;"><b>Qty:{{event.totalQuantity}}</b></div><div style="float:right;"><b>₹ {{event.totalCost}}.00</b></div></a>
 
-<a id="returnBackTo" style="z-index:12;" ui-sref="restaurant"><i><img src="images/rere.png" alt=" " style="height:24px;"/ ></i></a>
+<!--  <a id="returnBackTo" style="z-index:12;" ui-sref="restaurant"><i><img src="images/rere.png" alt=" " style="height:24px;"/ ></i></a>-->
 
 <div id="instantCheckPopUp" style="display:none">Are you sure you want to continue with instant checkout?</div>
 
@@ -20,7 +20,7 @@
 <div class="banner-info" ng-repeat="cat in event.foodItems"  style="margin-left:7px;margin-right:7px;"ng-click="event.hide();">
 				<div class=" header-right">
 					<h6 id=" {{cat.name.split(' ').join('')}}" style="text-align:left;padding-left:2%;">{{cat.name}} <img src="{{cat.imgUrl}}" class="imageAlign" style="float:right; height:35px; margin-right:3%; "></h6>
-
+					<p style="margin-left:2%;color:#b4b2b2;text-transform: uppercase;font-weight: 500;font-size:13px;font-family: 'Asap', sans-serif;margin-top:-9px;display:block;float:left;letter-spacing: 1px;">{{cat.subCategoryName}}</p>
 					<ul class="address">
 					
 					    <li ng-repeat="fooditem in cat.products track by $index" class="webMenu" style="display:inline-block;" >
@@ -85,7 +85,7 @@
 										</div>
 										
 										<div style="margin-left:18px;">
-											<i style="font-size:12px; font-family: 'Raleway', sans-serif;">
+											<i style="font-size:12px; font-family: 'Raleway', sans-serif;" ng-show="fooditem.shortDesc.length();">
 												"{{fooditem.shortDesc}}"
 											</i>
 										</div>
@@ -127,7 +127,10 @@
 				</div>
 				
 				<div class="clearfix"> </div>
+				
 			
+</div>
+<div style="padding-top:140px;">
 </div>
 
 

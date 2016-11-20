@@ -37,7 +37,7 @@
 					<!-- /logo -->
 					<!--top-nav---->
 
-				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #cf3721 ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
+				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #cf3721 ; padding-top:1em; padding-bottom:1em;z-index: 99999; ">
 				<div class="navigation">
 					<div class="logo" style="position:fixed;left:1em;">
 						<h1 ui-sref="restaurant">HOPLINE</h1>

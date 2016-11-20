@@ -56,7 +56,7 @@ angular.module('mainApp', ['eventModule','ngRoute','ui.router'])
         })
 
 
-        $urlRouterProvider.when('', '/restaurant');
+        $urlRouterProvider.when('', '/home');
    
   }])
 .run([function () {
