@@ -53,9 +53,7 @@
    			    });
 			});
 		</script>
-		<script>
-			localStorage.clear();
-		</script>
+		
 	<a id="return-to-top" style="z-index:11; ">
 		<i>
 			<img src="images/up.png" alt=" " / >
@@ -140,7 +138,7 @@
 						 <br>
 						 <div>
 						 	<div style=" float:right; color:#525a54;  font-size:14px;">
-						 		Total: &#8377.<s:property value="totalPrice"/>
+						 		Total: &#8377 <s:property value="totalPrice"/>
 						 	</div>
 						 	<div style=" float:left; color:#525a54;  font-size:14px;">
 						 		Quantity: <s:property value="totalItemCount"/>

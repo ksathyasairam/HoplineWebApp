@@ -29,7 +29,7 @@
     		$(function worker() {
     			 var path="/orderState";
     			    method = "post"; 
-
+					var count=0;
     			    var form = document.createElement("form");
     			    form.setAttribute("method", method);
     			    form.setAttribute("action", path);
@@ -49,7 +49,11 @@
     			            	   success: function (data) {                       
     			            	      console.log(data);
     			            	      if(data!="BIG_ORDER_PAY")
-    			            	    	  window.location.replace('/yourOrder');
+    			            	    	  {
+    			            	    	  window.location.replace('/yourOrders');
+    			            	      	  count=1;
+    			            	    	  }
+    			            	      	  
     			            	      
     			            	   },
     			            	   error: function (xhr, text, error) {              
@@ -58,7 +62,7 @@
     			            	}).complete(function() {
     			            		$("form").remove();
     				   			      // Schedule the next request when the current one's complete
-    				   			      
+    				   			      if(count==0)
     				   			      setTimeout(worker, 5000);
     				   			    });			    	    
 			});

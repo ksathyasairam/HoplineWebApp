@@ -30,13 +30,11 @@
 						 		</div>
 						 	</div>
 						 	<br>
-						 	<div ng-repeat="addons in food.addOns" style="font-size: 13px;">
+						 	<div ng-repeat="addons in food.addOns | filter:{ selected: true }" style="font-size: 13px;">
 						 		<div style="color:#525a54;float:left;">
 						 			{{addons.name}}
 						 		</div>
-						 		<div style="color:#525a54;float:right;margin-right:67px">
-						 			{{addons.selected}}
-						 		</div>
+						 		
 						 		<br>
 						 	</div>
 						 </li>
