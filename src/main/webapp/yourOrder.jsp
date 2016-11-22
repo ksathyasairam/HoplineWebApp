@@ -29,6 +29,10 @@
     		$(function worker() {
    				$.getJSON('/yourOrderStates', function(data) {
    					console.log(data);
+   					if(data.length==0){
+   						
+   					}
+   					else{
        				$.each(data.orderStatus, function(i, f) {
        					var rep="replaceStatus"+f.idorder;
        					if(f.orderState=="OK_ORDER" || f.orderState=="TEMP_SUBMIT" || f.orderState=="DEFAULTER_CALL")
@@ -47,6 +51,7 @@
           				console.log(f.idorder);
           				console.log(f.orderState);
      				});
+   					}
    				}).complete(function() {
    			      // Schedule the next request when the current one's complete
    			      setTimeout(worker, 5000);
@@ -70,6 +75,7 @@
 			Item Added
 		</b>
 	</a>
+	
 				
 		<!-- container -->
 			<!-- header -->
@@ -95,6 +101,9 @@
 
 			
 <div class="spacing">
+</div>
+<div id="emptyYourOrderPopup" style="display:none;'z-index:90;position:fixed;width:90%;top:50%;margin-top:-150px;height:300px;margin-left:5%;margin-right:5%;border-radius:3px;box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1);">
+		hello
 </div>
 <s:iterator value="orders">
 <div id="<s:property value="idorder"/>" style="margin-left:1%;margin-top:7px; margin-right:1%; padding-left:2%;padding-right:2%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); float:left; width:98%;">
