@@ -50,6 +50,8 @@ public class VorderService extends IService {
 
 		orderDao.updateOrder(order);
 		
+		orderDao.saveOrderStatusLog(OrderService.getOrderStatusLog(order));
+		
 		if (OrderStates.PREPARING.equals(order.getOrderState())){
 			Util.sendSMS(order.getUser().getPhone(),String.format(Constants.SMS_ORDER_CREATED_TEXT,order.getUser().getName(), order.getShop().getShopName(), order.getCustomerOrderId()));
 		}else if (OrderStates.CANCELLED.equals(order.getOrderState())){

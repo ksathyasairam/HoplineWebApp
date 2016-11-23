@@ -4,9 +4,10 @@
 <!-- Generated 6 Oct, 2016 1:14:12 AM by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
     <class name="com.hopline.WebApp.model.dao.OrderStatusLog" table="orderStatusLog" catalog="hopline">
-        <id name="orderStatusLogid" type="string">
-            <column name="orderStatusLogid" length="45" />
-            <generator class="assigned" />
+        
+        <id name="orderStatusLogid" type="java.lang.Integer">
+            <column name="orderStatusLogid"/>
+            <generator class="identity" />
         </id>
         <timestamp name="timestamp" column="timestamp" />
         <property name="orderId" type="int">

@@ -13,6 +13,7 @@ import com.hopline.WebApp.model.dao.AddOn;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.OrderProductAddon;
+import com.hopline.WebApp.model.dao.OrderStatusLog;
 import com.hopline.WebApp.model.vo.OrderVo;
 import com.hopline.WebApp.model.vo.UserVo;
 import com.hopline.WebApp.rest.framework.Constants;
@@ -49,6 +50,8 @@ public class OrderService extends IService {
 
 		order.setOrderTime(new Date());
 		orderDao.updateOrder(order);
+
+		orderDao.saveOrderStatusLog(getOrderStatusLog(order));
 
 		return OrderTranslator.toOrderVo(order);
 	}
@@ -134,8 +137,18 @@ public class OrderService extends IService {
 		orderDao.updateOrder(order);
 			order.getOrderProducts().iterator().next().getProduct().getPrice();
 		order = orderDao.retrieveOrderById(orderId);
+		
+		orderDao.saveOrderStatusLog(getOrderStatusLog(order));
 
 		return order;
+	}
+	
+	public static OrderStatusLog getOrderStatusLog(Order order) {
+		OrderStatusLog orderStatusLog = new OrderStatusLog();
+		orderStatusLog.setOrderId(order.getIdorder());
+		orderStatusLog.setOrderStatus(order.getOrderState());
+		orderStatusLog.setTimestamp(new Date());
+		return orderStatusLog;
 	}
 
 	private void populateItemCountAndPrice(Order order) {
