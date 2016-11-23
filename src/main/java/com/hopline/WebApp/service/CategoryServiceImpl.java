@@ -51,7 +51,8 @@ public class CategoryServiceImpl extends IService{
 	class ProductVenNvegComparator implements Comparator<ProductVo> {
 	    @Override
 	    public int compare(ProductVo a, ProductVo b) {
-	        return a.getVegYn().compareToIgnoreCase(b.getVegYn()) * -1 ;
+	        return a.getVegYn().compareToIgnoreCase(b.getVegYn()) == 0 ? 
+	        		a.getName().compareToIgnoreCase(b.getName()) : a.getVegYn().compareToIgnoreCase(b.getVegYn()) * -1  ;
 	    }
 	}
 

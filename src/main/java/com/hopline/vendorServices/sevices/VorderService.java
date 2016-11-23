@@ -1,6 +1,7 @@
 package com.hopline.vendorServices.sevices;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.hopline.WebApp.constants.OrderStates;
@@ -43,6 +44,9 @@ public class VorderService extends IService {
 
 		if (orderStatus.getCancelReason() != null && !orderStatus.getCancelReason().isEmpty())
 			order.setCancelReason(orderStatus.getCancelReason());
+		
+		if(orderStatus.isUpdateOrderTime())
+			order.setOrderTime(new Date());
 
 		orderDao.updateOrder(order);
 		

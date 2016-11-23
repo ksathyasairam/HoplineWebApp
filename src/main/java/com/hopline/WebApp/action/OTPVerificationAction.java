@@ -12,6 +12,7 @@ public class OTPVerificationAction extends BaseAction {
 
 	private String enteredOTP;
 	private boolean OTPMismatch;
+	private String afterLoginURL;
 	
 	public String executeVerificationOnload() {
 		return Action.SUCCESS;
@@ -20,6 +21,12 @@ public class OTPVerificationAction extends BaseAction {
 	public String executeVerificationOnNext() throws Exception {
 		
 		String sessionOTP = (String) getSession().get(SessionConstants.GENERATED_OTP);
+		
+		afterLoginURL = (String) getSession().get(SessionConstants.AFTER_LOGIN_REDIRECT_URL);
+		if (afterLoginURL == null){
+			afterLoginURL = "singlePageApp";
+		}
+		
 		
 		if (enteredOTP != null && sessionOTP != null && enteredOTP.equals(sessionOTP)) {
 			
@@ -74,6 +81,14 @@ public class OTPVerificationAction extends BaseAction {
 
 	public void setOTPMismatch(boolean oTPMismatch) {
 		OTPMismatch = oTPMismatch;
+	}
+
+	public String getAfterLoginURL() {
+		return afterLoginURL;
+	}
+
+	public void setAfterLoginURL(String afterLoginURL) {
+		this.afterLoginURL = afterLoginURL;
 	}
 
 

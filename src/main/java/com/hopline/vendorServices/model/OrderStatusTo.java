@@ -1,5 +1,6 @@
 package com.hopline.vendorServices.model;
 
+
 import java.io.Serializable;
 
 public class OrderStatusTo implements Serializable{
@@ -12,6 +13,7 @@ public class OrderStatusTo implements Serializable{
 	private String orderStatus;
 	private String paidYN;
 	private String cancelReason;
+	private boolean updateOrderTime;
 	private boolean success;
 	
 	public Integer getOrderId() {
@@ -46,6 +48,13 @@ public class OrderStatusTo implements Serializable{
 	public void setSuccess(boolean success) {
 		this.success = success;
 	}
-	
 
+
+	public boolean isUpdateOrderTime() {
+		return updateOrderTime;
+	}
+
+	public void setUpdateOrderTime(boolean updateOrderTime) {
+		this.updateOrderTime = updateOrderTime;
+	}
 }
