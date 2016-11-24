@@ -1,9 +1,11 @@
 package com.hopline.vendorServices.sevices;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.hopline.WebApp.constants.OrderStates;
+import com.hopline.WebApp.model.dao.OfflineOrderLog;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.Product;
 import com.hopline.WebApp.model.vo.OrderVo;
@@ -17,6 +19,7 @@ import com.hopline.WebApp.service.OrderService;
 import com.hopline.WebApp.translator.OrderTranslator;
 import com.hopline.vendorServices.dao.VorderDao;
 import com.hopline.vendorServices.model.FetchOrderTo;
+import com.hopline.vendorServices.model.OfflineOrderLogTo;
 import com.hopline.vendorServices.model.OrderStatusTo;
 import com.hopline.vendorServices.model.Stock;
 
@@ -43,8 +46,13 @@ public class VorderService extends IService {
 
 		if (orderStatus.getCancelReason() != null && !orderStatus.getCancelReason().isEmpty())
 			order.setCancelReason(orderStatus.getCancelReason());
+		
+		if(orderStatus.isUpdateOrderTime())
+			order.setOrderTime(new Date());
 
 		orderDao.updateOrder(order);
+		
+		orderDao.saveOrderStatusLog(OrderService.getOrderStatusLog(order));
 		
 		if (OrderStates.PREPARING.equals(order.getOrderState())){
 			Util.sendSMS(order.getUser().getPhone(),String.format(Constants.SMS_ORDER_CREATED_TEXT,order.getUser().getName(), order.getShop().getShopName(), order.getCustomerOrderId()));
@@ -102,6 +110,17 @@ public class VorderService extends IService {
 		orderDao.saveProduct(product);
 		stock.setSuccess(true);
 		return stock;
+	}
+	
+	public OfflineOrderLogTo createOfflineOrderLog(OfflineOrderLogTo offlineOrderLogTo) {
+		
+		OfflineOrderLog offlineOrderLog = new OfflineOrderLog();
+		offlineOrderLog.setInsertTime(new Date());
+		offlineOrderLog.setOrdersJson(offlineOrderLogTo.getOrdersJson());
+		
+		orderDao.saveOfflineOrderLog(offlineOrderLog);
+		offlineOrderLogTo.setSuccess(true);
+		return offlineOrderLogTo;
 	}
 
 }

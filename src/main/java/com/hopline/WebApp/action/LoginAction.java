@@ -9,8 +9,10 @@ public class LoginAction extends BaseAction {
 
 	private UserVo user;
 	private boolean OTPGeneratinFailed;
+	private String afterLoginURL;
 	
 	public String executeLoginOnLoad() {
+		getSession().put(SessionConstants.AFTER_LOGIN_REDIRECT_URL, afterLoginURL);
 		return Action.SUCCESS;
 	}
 
@@ -59,6 +61,14 @@ public class LoginAction extends BaseAction {
 
 	public void setOTPGeneratinFailed(boolean oTPGeneratinFailed) {
 		OTPGeneratinFailed = oTPGeneratinFailed;
+	}
+
+	public String getAfterLoginURL() {
+		return afterLoginURL;
+	}
+
+	public void setAfterLoginURL(String afterLoginURL) {
+		this.afterLoginURL = afterLoginURL;
 	}
 
 }

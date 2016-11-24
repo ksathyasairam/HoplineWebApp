@@ -7,7 +7,6 @@ import javax.servlet.http.Cookie;
 import org.apache.struts2.ServletActionContext;
 
 import com.hopline.WebApp.action.BaseAction;
-import com.hopline.WebApp.action.OrderSummaryAction;
 import com.hopline.WebApp.model.dao.SecurityToken;
 import com.hopline.WebApp.model.vo.UserVo;
 import com.hopline.WebApp.rest.framework.ServiceLocator;
@@ -15,12 +14,15 @@ import com.hopline.WebApp.service.SecurityService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
+import com.opensymphony.xwork2.util.ValueStack;
 
 public class SecurityInterceptor implements Interceptor {
 
 	public static final String SESSION_ORDER_STORE = "orderStore";
 	public static final String SESSION_USER = "user";
 	public static final String REMEMBER_ME = "rememberMe";
+	
+	private String requestAction;
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
@@ -56,8 +58,14 @@ public class SecurityInterceptor implements Interceptor {
 
 		BaseAction action = (BaseAction) invocation.getAction();
 		
-		if (sessionUser == null && action.loginRequired())
+		if (sessionUser == null && action.loginRequired()){
+			
+			ValueStack stack = ActionContext.getContext().getValueStack();
+			stack.push(new Object() {public String getRequestAction(){return requestAction;}});
+			
+			requestAction = invocation.getProxy().getActionName();
 			return "login";
+		}
 		
 		return invocation.invoke();
 	}
@@ -110,5 +118,13 @@ public class SecurityInterceptor implements Interceptor {
 	public void init() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public String getRequestAction() {
+		return requestAction;
+	}
+
+	public void setRequestAction(String requestAction) {
+		this.requestAction = requestAction;
 	}
 }

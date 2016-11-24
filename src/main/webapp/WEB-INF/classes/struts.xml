@@ -4,23 +4,6 @@
    "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 
-	<!-- <package name="default" extends="struts-default"> <interceptors> <interceptor 
-		name="security" class="com.hopline.WebApp.interceptors.SecurityInterceptor" 
-		/> </interceptors> <action name="hello" class="com.hopline.WebApp.HelloWorldAction" 
-		method="execute"> <interceptor-ref name="params" /> <interceptor-ref name="security" 
-		/> <interceptor-ref name="defaultStack"></interceptor-ref> <result name="success">/HelloWorld.jsp</result> 
-		</action> <action name="loginOnLoad" class="com.hopline.WebApp.login.LoginAction" 
-		method="executeLoginOnLoad"> <interceptor-ref name="params" /> <interceptor-ref 
-		name="security" /> <interceptor-ref name="defaultStack"></interceptor-ref> 
-		<result name="success">/login.jsp</result> </action> <action name="loginNext" 
-		class="com.hopline.WebApp.login.LoginAction" method="execute"> <interceptor-ref 
-		name="params" /> <interceptor-ref name="security" /> <interceptor-ref name="defaultStack"></interceptor-ref> 
-		<result name="success" type="chain">orderSummaryOnLoad</result> </action> 
-		<action name="orderSummaryOnLoad" class="com.hopline.WebApp.ordersummary.OrderSummaryAction" 
-		method="executeOrderSummaryOnLoad"> <interceptor-ref name="params" /> <interceptor-ref 
-		name="security" /> <interceptor-ref name="defaultStack"></interceptor-ref> 
-		<result name="success">/orderSummary.jsp</result> </action> </package> -->
-
 	<package name="hopline-basic" extends="struts-default"
 		abstract="yes">
 		<interceptors>
@@ -35,7 +18,14 @@
 		</interceptors>
 		<default-interceptor-ref name="hoplineStack" />
 		<global-results>
-			<result name="login" type="redirectAction">loginOnLoad</result>
+			<result name="login" type="redirectAction">
+				   
+				<param name="actionName">loginOnLoad</param>
+				<param name="afterLoginURL">${requestAction}</param>
+
+
+
+			</result>
 		</global-results>
 	</package>
 
@@ -84,7 +74,7 @@
 			</result>
 
 		</action>
-		
+
 		<action name="updateStock" method="execute"
 			class="com.hopline.vendorServices.action.UpdateStock">
 			<result type="json">
@@ -101,7 +91,13 @@
 
 		</action>
 
+		<action name="createOfflineOrderLog" method="execute"
+			class="com.hopline.vendorServices.action.OfflineOrderLogAction">
+			<result type="json">
+				<param name="root">offlineOrderLogTo</param>
+			</result>
 
+		</action>
 
 	</package>
 
@@ -160,8 +156,8 @@
 			class="com.hopline.WebApp.endpoint.YourOrderStatusAction" method="execute">
 		</action>
 
-		<action name="orderState"
-			class="com.hopline.WebApp.endpoint.OrderStatusAction" method="execute">
+		<action name="orderState" class="com.hopline.WebApp.endpoint.OrderStatusAction"
+			method="execute">
 		</action>
 		<action name="OTPVerifyOnLoad" class="com.hopline.WebApp.action.OTPVerificationAction"
 			method="executeVerificationOnload">
@@ -170,7 +166,7 @@
 
 		<action name="OTPVerifyOnNext" class="com.hopline.WebApp.action.OTPVerificationAction"
 			method="executeVerificationOnNext">
-			<result name="success" type="redirectAction">orderSummaryOnLoad</result>
+			<result name="success" type="redirectAction">${afterLoginURL}</result>
 			<result name="login" type="redirectAction">loginOnLoad</result>
 			<result name="input">/OTPVerification.jsp</result>
 		</action>

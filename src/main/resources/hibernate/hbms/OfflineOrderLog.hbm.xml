@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 Nov, 2016 10:51:45 PM by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.hopline.WebApp.model.dao.OfflineOrderLog" table="offlineOrderLog" catalog="hopline" optimistic-lock="version">
+        <id name="idofflineOrderLog" type="java.lang.Integer">
+            <column name="idofflineOrderLog" />
+            <generator class="identity" />
+        </id>
+        <property name="ordersJson" type="string">
+            <column name="ordersJson" length="65535" not-null="true" />
+        </property>
+        <property name="insertTime" type="timestamp">
+            <column name="insertTime" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

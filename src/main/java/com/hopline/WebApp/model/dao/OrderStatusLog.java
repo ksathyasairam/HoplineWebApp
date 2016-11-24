@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class OrderStatusLog implements java.io.Serializable {
 
-	private String orderStatusLogid;
+	private Integer orderStatusLogid;
 	private Date timestamp;
 	private int orderId;
 	private String orderStatus;
@@ -16,17 +16,17 @@ public class OrderStatusLog implements java.io.Serializable {
 	public OrderStatusLog() {
 	}
 
-	public OrderStatusLog(String orderStatusLogid, int orderId, String orderStatus) {
+	public OrderStatusLog(Integer orderStatusLogid, int orderId, String orderStatus) {
 		this.orderStatusLogid = orderStatusLogid;
 		this.orderId = orderId;
 		this.orderStatus = orderStatus;
 	}
 
-	public String getOrderStatusLogid() {
+	public Integer getOrderStatusLogid() {
 		return this.orderStatusLogid;
 	}
 
-	public void setOrderStatusLogid(String orderStatusLogid) {
+	public void setOrderStatusLogid(Integer orderStatusLogid) {
 		this.orderStatusLogid = orderStatusLogid;
 	}
 

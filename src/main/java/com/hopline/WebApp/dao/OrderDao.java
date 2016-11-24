@@ -11,6 +11,7 @@ import com.hopline.WebApp.constants.OrderStates;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.OrderProductAddon;
+import com.hopline.WebApp.model.dao.OrderStatusLog;
 import com.hopline.WebApp.rest.framework.Util;
 
 public class OrderDao {
@@ -110,6 +111,10 @@ public class OrderDao {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Order.class, "order");
 		criteria.add(Restrictions.eq("order.idorder", idorder));
 		return (Order) criteria.uniqueResult();
+	}
+	
+	public Integer saveOrderStatusLog(OrderStatusLog orderStatusLog) {
+		return (Integer) getSessionFactory().getCurrentSession().save(orderStatusLog);
 	}
 	
 //	public Shop retrieveShopById(int shopId) {

@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.json.JSONObject;
 
+import com.fasterxml.jackson.databind.cfg.ConfigFeature;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hopline.WebApp.model.vo.OrderProductVo;
@@ -73,6 +74,7 @@ public class Util {
 	
 	//TODO : NO Response check and error handling in this method. FIX.
 	public static void sendSMS(String phone, String message) {
+		if (Config.DISABLE_SMS) return;
       //define route
       String route="4";
 
