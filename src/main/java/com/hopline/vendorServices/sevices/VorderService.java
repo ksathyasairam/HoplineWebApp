@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.hopline.WebApp.constants.OrderStates;
+import com.hopline.WebApp.model.dao.OfflineOrderLog;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.Product;
 import com.hopline.WebApp.model.vo.OrderVo;
@@ -18,6 +19,7 @@ import com.hopline.WebApp.service.OrderService;
 import com.hopline.WebApp.translator.OrderTranslator;
 import com.hopline.vendorServices.dao.VorderDao;
 import com.hopline.vendorServices.model.FetchOrderTo;
+import com.hopline.vendorServices.model.OfflineOrderLogTo;
 import com.hopline.vendorServices.model.OrderStatusTo;
 import com.hopline.vendorServices.model.Stock;
 
@@ -108,6 +110,17 @@ public class VorderService extends IService {
 		orderDao.saveProduct(product);
 		stock.setSuccess(true);
 		return stock;
+	}
+	
+	public OfflineOrderLogTo createOfflineOrderLog(OfflineOrderLogTo offlineOrderLogTo) {
+		
+		OfflineOrderLog offlineOrderLog = new OfflineOrderLog();
+		offlineOrderLog.setInsertTime(new Date());
+		offlineOrderLog.setOrdersJson(offlineOrderLogTo.getOrdersJson());
+		
+		orderDao.saveOfflineOrderLog(offlineOrderLog);
+		offlineOrderLogTo.setSuccess(true);
+		return offlineOrderLogTo;
 	}
 
 }

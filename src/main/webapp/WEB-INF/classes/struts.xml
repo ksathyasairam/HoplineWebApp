@@ -19,11 +19,12 @@
 		<default-interceptor-ref name="hoplineStack" />
 		<global-results>
 			<result name="login" type="redirectAction">
-			   <param name="actionName">loginOnLoad</param>
+				   
+				<param name="actionName">loginOnLoad</param>
 				<param name="afterLoginURL">${requestAction}</param>
-							
-			
-			
+
+
+
 			</result>
 		</global-results>
 	</package>
@@ -73,7 +74,7 @@
 			</result>
 
 		</action>
-		
+
 		<action name="updateStock" method="execute"
 			class="com.hopline.vendorServices.action.UpdateStock">
 			<result type="json">
@@ -90,7 +91,13 @@
 
 		</action>
 
+		<action name="createOfflineOrderLog" method="execute"
+			class="com.hopline.vendorServices.action.OfflineOrderLogAction">
+			<result type="json">
+				<param name="root">offlineOrderLogTo</param>
+			</result>
 
+		</action>
 
 	</package>
 
@@ -149,8 +156,8 @@
 			class="com.hopline.WebApp.endpoint.YourOrderStatusAction" method="execute">
 		</action>
 
-		<action name="orderState"
-			class="com.hopline.WebApp.endpoint.OrderStatusAction" method="execute">
+		<action name="orderState" class="com.hopline.WebApp.endpoint.OrderStatusAction"
+			method="execute">
 		</action>
 		<action name="OTPVerifyOnLoad" class="com.hopline.WebApp.action.OTPVerificationAction"
 			method="executeVerificationOnload">

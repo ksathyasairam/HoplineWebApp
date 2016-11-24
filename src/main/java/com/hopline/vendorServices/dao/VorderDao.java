@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
 import com.hopline.WebApp.constants.OrderStates;
+import com.hopline.WebApp.model.dao.OfflineOrderLog;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.OrderProductAddon;
@@ -158,6 +159,11 @@ public class VorderDao {
 //		criteria.add(Restrictions.eq("a.idaddOn", userId));
 //		return (AddOn) criteria.uniqueResult();
 //	}
+
+	public Integer saveOfflineOrderLog(OfflineOrderLog offlineOrderLog) {
+		return (Integer) getSessionFactory().getCurrentSession().save(offlineOrderLog);
+		
+	}
 	
 
 	// public SecurityToken getTokenbyUserId(Integer userId) {
