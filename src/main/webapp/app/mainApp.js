@@ -4,21 +4,20 @@ angular.module('mainApp', ['eventModule','ngRoute','ui.router'])
   function($urlRouterProvider,$stateProvider) {
 
     $stateProvider
+	    .state("restaurant", {
+	
+	        // Use a url of "/" to set a states as the "index".
+	        url: "/restaurant",
+	        templateUrl: 'restaurant.html'
+	
+	      })
     	.state("home", {
 
         // Use a url of "/" to set a states as the "index".
         url: "/home",
         templateUrl: 'home.html'
 
-        })
-        .state("restaurant", {
-
-          // Use a url of "/" to set a states as the "index".
-          url: "/restaurant",
-          templateUrl: 'restaurant.html'
-
-        })
-        
+        })               
         .state("cart", {
 
           // Use a url of "/" to set a states as the "index".
@@ -56,7 +55,7 @@ angular.module('mainApp', ['eventModule','ngRoute','ui.router'])
         })
 
 
-        $urlRouterProvider.when('', '/home');
+        $urlRouterProvider.when('', '/restaurant');
    
   }])
 .run([function () {
