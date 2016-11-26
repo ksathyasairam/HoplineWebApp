@@ -9,7 +9,6 @@ import com.hopline.WebApp.service.OrderService;
 import com.opensymphony.xwork2.Action;
 
 public class OrderSummaryAction extends BaseAction {
-	//arnav when you want to set or read addons, always use orderProductAddons inside orderProduct. Never use addons inside product.
 	private OrderVo order;
 	
 	@Override
@@ -17,8 +16,17 @@ public class OrderSummaryAction extends BaseAction {
 		return true;
 	}
 	
+	public String executeOrderSummaryOnLoadGetRequest() {
+		disableBrowserCache();
+		if (getSession().get("order") == null) return REDIRECT_HOME;
+		order = (OrderVo) getSession().get("order");
+
+		return Action.SUCCESS;
+	}
+	
 	public String executeOrderSummaryOnLoad() {
-		if (!validateOnLoad()) return INVALID_INPUT;
+		disableBrowserCache();
+		if (!validateOnLoad()) return REDIRECT_HOME;
 		UserVo user = (UserVo) getSession().get(SecurityInterceptor.SESSION_USER);
 		order.setUser(user);
 		//TODO : use user from session add.
@@ -31,7 +39,7 @@ public class OrderSummaryAction extends BaseAction {
 		if (getSession().get("order") == null) return INVALID_INPUT;
 		OrderService service = ServiceLocator.getInstance().getService(OrderService.class);
 		setOrder(service.submitOrder((OrderVo)getSession().get("order")));
-		getSession().put("order", getOrder());
+		getSession().put("order", null);
 		
 		return service.getReturnPage();
 	}

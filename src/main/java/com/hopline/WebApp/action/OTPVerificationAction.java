@@ -15,6 +15,10 @@ public class OTPVerificationAction extends BaseAction {
 	private String afterLoginURL;
 	
 	public String executeVerificationOnload() {
+		disableBrowserCache();
+
+		afterLoginURL = (String) getSession().get(SessionConstants.AFTER_LOGIN_REDIRECT_URL);
+		if (afterLoginURL == null) return REDIRECT_HOME;
 		return Action.SUCCESS;
 	}
 
@@ -36,7 +40,7 @@ public class OTPVerificationAction extends BaseAction {
 			user = ServiceLocator.getInstance().getService(LoginServiceImpl.class).login(user);
 			getSession().put(SecurityInterceptor.SESSION_USER, user);
 			getSession().put(SessionConstants.TEMP_USER, null);
-			
+			getSession().put(SessionConstants.AFTER_LOGIN_REDIRECT_URL,null);		//Used to check back page load in executeVerificationOnLoad
 			return "success";
 		
 		} else {

@@ -131,9 +131,17 @@
 
 		<action name="orderSummaryOnLoad" class="com.hopline.WebApp.action.OrderSummaryAction"
 			method="executeOrderSummaryOnLoad">
-			<result name="success">/orderSummary.jsp</result>
+			<result name="success" type="redirectAction">orderSummaryOnLoadGet</result>
 			<result name="input">orderSummaryOnLoad</result>
 			<result name="invalidInput">/invalidInput.jsp</result>
+			<result name="redirectHome" type="redirectAction">singlePageApp</result>
+		</action>
+		
+		<action name="orderSummaryOnLoadGet" class="com.hopline.WebApp.action.OrderSummaryAction"
+			method="executeOrderSummaryOnLoadGetRequest">
+			<result name="success">/orderSummary.jsp</result>
+			<result name="invalidInput">/invalidInput.jsp</result>
+			<result name="redirectHome" type="redirectAction">singlePageApp</result>
 		</action>
 
 		<action name="orderSummaryNext" class="com.hopline.WebApp.action.OrderSummaryAction"
@@ -162,6 +170,7 @@
 		<action name="OTPVerifyOnLoad" class="com.hopline.WebApp.action.OTPVerificationAction"
 			method="executeVerificationOnload">
 			<result name="success">/OTPVerification.jsp</result>
+			<result name="redirectHome" type="redirectAction">singlePageApp</result>
 		</action>
 
 		<action name="OTPVerifyOnNext" class="com.hopline.WebApp.action.OTPVerificationAction"
