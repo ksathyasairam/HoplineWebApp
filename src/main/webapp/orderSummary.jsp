@@ -62,7 +62,6 @@
 <div class="banner-info" id="sideSpacing" >
 				<div class=" header-right">
 					<h6  style="text-align:center;">Order Summary</h6>
-					<p style="text-align:center; color:#525a54;font-family: 'Roboto', sans-serif; font-size:17px;">Order No: #<s:property value="order.customerOrderId"/></p>
 					<ul class="address">
 						<s:iterator value="order.orderProducts">
 						 <li  id="cartItem-{{$index}}" style="border-bottom: 1.5px dotted #AFAFAF;margin-top:2%;padding-bottom:2%;">

@@ -14,10 +14,26 @@
 </div>
 <div class="banner-info"  id="sideSpacing">
 				<div class=" header-right">
-					<h6 style="text-align:center;">Cart Summary</h6>
+					<h6 style="text-align:center;">Your Cart</h6>
 					<ul class="address">
 						 <li ng-repeat="food in event.checkList" id="cartItem-{{$index}}" style="border-bottom: 1.5px dotted #AFAFAF;margin-top:5%;padding-bottom:5%;">
-						 	<div style="color:#525a54;float:left;">
+						 	<div style="float:left;opacity:0.8; margin-top:6px;" ng-show="food.vegYn=='Y'" >
+											<div style="width:12px; height:12px;border:1px solid #4fb66d; border-radius: 1px 1px 1px 1px; text-align:center;">
+												<div style="position:relative; left:50%; margin-left:-3px;top:50%; margin-top:-3px; width:6px; height:6px; border-radius: 6px 6px 6px 6px; background:#4fb66d;">
+													
+												</div>
+											
+											</div>
+							</div>
+							<div style="float:left;opacity:0.8; margin-top:6px;" ng-show="food.vegYn=='N'" >
+											<div style="width:12px; height:12px;border:1px solid #cf3721; border-radius: 1px 1px 1px 1px; text-align:center;">
+												<div style="position:relative; left:50%; margin-left:-3px;top:50%; margin-top:-3px; width:6px; height:6px; border-radius: 6px 6px 6px 6px; background:#cf3721;">
+													
+												</div>
+											
+											</div>
+							</div>
+						 	<div style="color:#525a54;float:left;padding-left:1%;font-size:16px;font-family: 'Raleway', sans-serif;;">
 						 		{{food.name}}
 						 	</div>
 						 	<div style="color:#525a54;float:right;">
@@ -30,13 +46,19 @@
 						 		</div>
 						 	</div>
 						 	<br>
-						 	<div ng-repeat="addons in food.addOns | filter:{ selected: true }" style="font-size: 13px;">
-						 		<div style="color:#525a54;float:left;">
-						 			{{addons.name}}
-						 		</div>
-						 		
-						 		<br>
+						 	<div style="width:50%;display:inline-block;">
+							 	<div ng-repeat="addons in food.addOns | filter:{ selected: true }" style="font-size: 13px;padding-left:11%;">
+							 		<div style="color:#525a54;float:left;">
+							 			{{addons.name}}
+							 		</div>
+							 		
+							 		<br>
+							 	</div>
 						 	</div>
+						 	<div style="float:right;font-size:14px;">
+						 		<p style="padding-right:65%;">&#8377 {{food.quantity*food.price}}</p>
+						 	</div>
+						 	
 						 </li>						 
 						 <br>
 						 <div>
