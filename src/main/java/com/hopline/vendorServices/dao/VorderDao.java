@@ -136,9 +136,10 @@ public class VorderDao {
 	
 	public List<Order> retrieveOrderHistory(Integer shopId) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Order.class, "order");
+		criteria.addOrder(org.hibernate.criterion.Order.desc("order.idorder"));
+		
 		criteria.createCriteria("order.shop","shop");
 		criteria.add(Restrictions.eq("shop.idshop", shopId));
-		criteria.addOrder(org.hibernate.criterion.Order.desc("order.orderTime"));
 		
 		List<String> orderStates = new ArrayList<String>();
 		
