@@ -22,7 +22,7 @@ public class Order implements java.io.Serializable {
 	private int totalItemCount;
 	private BigDecimal totalPrice;
 	private String orderCreator;
-	private Integer ordersInQueue; 
+	private Integer ordersInQueue;
 	private Integer orderCompleteTime;
 	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>(0);
 
@@ -125,10 +125,22 @@ public class Order implements java.io.Serializable {
 		this.orderCreator = orderCreator;
 	}
 
+	/**
+	 * Number of orders including current and previous orders at the time of
+	 * order creation.
+	 * 
+	 * @return
+	 */
 	public Integer getOrdersInQueue() {
 		return ordersInQueue;
 	}
 
+	/**
+	 * Number of orders including current and previous orders at the time of
+	 * order creation.
+	 * 
+	 * @return
+	 */
 	public void setOrdersInQueue(Integer ordersInQueue) {
 		this.ordersInQueue = ordersInQueue;
 	}

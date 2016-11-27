@@ -198,19 +198,25 @@ public class OrderService extends IService {
 		for (Order order : orders){
 			OrderVo orderVo = OrderTranslator.toOrderVo(order);
 			orderVo.setNumUnitInProgressBar(order.getOrdersInQueue());
-			
-			Integer currentProgress = orderVo.getNumUnitInProgressBar() - orderDao.getNumbeOrdersInQueue(order.getIdorder());
-			if (OrderStates.READY_FOR_PICKUP.equals(order.getOrderState()) || OrderStates.COMPLETED.equals(order.getOrderState()) ||
-					OrderStates.CANCELLED.equals(order.getOrderState()) || OrderStates.UNPICKED.equals(order.getOrderState()) ){
-				currentProgress = orderVo.getNumUnitInProgressBar();
-			}
-			
-			orderVo.setCurrentProgress(currentProgress);
+			orderVo.setCurrentProgress(getCurrentProgressBar(order));
 			orderVos.add(orderVo);
 		}
 		return orderVos;
 	}
 	
+	
+	
+	private Integer getCurrentProgressBar(Order order) {
+		Integer currentProgress = order.getOrdersInQueue() - orderDao.getNumbeOrdersInQueue(order.getIdorder());
+		if (OrderStates.READY_FOR_PICKUP.equals(order.getOrderState()) || OrderStates.COMPLETED.equals(order.getOrderState()) ||
+				OrderStates.CANCELLED.equals(order.getOrderState()) || OrderStates.UNPICKED.equals(order.getOrderState()) ){
+			currentProgress = order.getOrdersInQueue();
+		}
+		return currentProgress;
+	}
+
+
+
 	public OrderStatusList retrieveOrdersStatus(Integer userId) {
 		List<Order> orders = orderDao.getAllOrders(userId);
 		
@@ -223,7 +229,7 @@ public class OrderService extends IService {
 		for (Order order : orders){
 			OrderStatus os = OrderTranslator.toOrderStatus(order);
 			os.setNumUnitInProgressBar(order.getOrdersInQueue());
-			os.setCurrentProgress(orderDao.getNumbeOrdersInQueue(order.getIdorder()));
+			os.setCurrentProgress(getCurrentProgressBar(order));
 			orderStatusList.add(os);
 		}
 		
