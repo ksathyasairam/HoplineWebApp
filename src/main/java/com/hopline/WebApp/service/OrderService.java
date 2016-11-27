@@ -46,9 +46,11 @@ public class OrderService extends IService {
 		} else {
 			order.setOrderState(OrderStates.OK_ORDER);
 			setReturnPage(Constants.YOUR_ORDER);
-		}
+		}								
 
 		order.setOrderTime(new Date());
+		order.setOrderCompleteTime(getOrderCompleteTime(order));
+		order.setOrdersInQueue(orderDao.getNumbeOrdersInQueue(order.getIdorder()));
 		orderDao.updateOrder(order);
 
 		orderDao.saveOrderStatusLog(getOrderStatusLog(order));
@@ -107,6 +109,8 @@ public class OrderService extends IService {
 		order.setOrderTime(new Date());
 		order.setTotalItemCount(0);
 		order.setTotalPrice(BigDecimal.valueOf(0));
+		order.setOrdersInQueue(0);
+		order.setOrderCompleteTime(0);
 		Integer orderId = orderDao.saveOrder(order);
 		
 		for (OrderProduct op : order.getOrderProducts()) {
@@ -133,9 +137,14 @@ public class OrderService extends IService {
 		orderDao.refresh(order);
 		order = orderDao.retrieveOrderById(orderId);
 		order.setCustomerOrderId(orderId % 1000);
+
+		order.setOrdersInQueue(orderDao.getNumbeOrdersInQueue(order.getIdorder()));
+		order.setOrderCompleteTime(getOrderCompleteTime(order));
+		
 		populateItemCountAndPrice(order);
 		orderDao.updateOrder(order);
-			order.getOrderProducts().iterator().next().getProduct().getPrice();
+		
+		order.getOrderProducts().iterator().next().getProduct().getPrice();
 		order = orderDao.retrieveOrderById(orderId);
 		
 		orderDao.saveOrderStatusLog(getOrderStatusLog(order));
@@ -143,6 +152,12 @@ public class OrderService extends IService {
 		return order;
 	}
 	
+	private Integer getOrderCompleteTime(Order order) {
+		return 5;
+	}
+
+
+
 	public static OrderStatusLog getOrderStatusLog(Order order) {
 		OrderStatusLog orderStatusLog = new OrderStatusLog();
 		orderStatusLog.setOrderId(order.getIdorder());
@@ -181,7 +196,17 @@ public class OrderService extends IService {
 		if (orders == null) return orderVos;
 		
 		for (Order order : orders){
-			orderVos.add(OrderTranslator.toOrderVo(order));
+			OrderVo orderVo = OrderTranslator.toOrderVo(order);
+			orderVo.setNumUnitInProgressBar(order.getOrdersInQueue());
+			
+			Integer currentProgress = orderVo.getNumUnitInProgressBar() - orderDao.getNumbeOrdersInQueue(order.getIdorder());
+			if (OrderStates.READY_FOR_PICKUP.equals(order.getOrderState()) || OrderStates.COMPLETED.equals(order.getOrderState()) ||
+					OrderStates.CANCELLED.equals(order.getOrderState()) || OrderStates.UNPICKED.equals(order.getOrderState()) ){
+				currentProgress = orderVo.getNumUnitInProgressBar();
+			}
+			
+			orderVo.setCurrentProgress(currentProgress);
+			orderVos.add(orderVo);
 		}
 		return orderVos;
 	}
@@ -196,7 +221,10 @@ public class OrderService extends IService {
 		if (orders == null) return result;
 		
 		for (Order order : orders){
-			orderStatusList.add(OrderTranslator.toOrderStatus(order));
+			OrderStatus os = OrderTranslator.toOrderStatus(order);
+			os.setNumUnitInProgressBar(order.getOrdersInQueue());
+			os.setCurrentProgress(orderDao.getNumbeOrdersInQueue(order.getIdorder()));
+			orderStatusList.add(os);
 		}
 		
 		return result;

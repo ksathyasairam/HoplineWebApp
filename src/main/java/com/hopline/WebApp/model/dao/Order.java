@@ -22,30 +22,11 @@ public class Order implements java.io.Serializable {
 	private int totalItemCount;
 	private BigDecimal totalPrice;
 	private String orderCreator;
+	private Integer ordersInQueue; 
+	private Integer orderCompleteTime;
 	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>(0);
 
 	public Order() {
-	}
-
-	public Order(Shop shop, User user, int customerOrderId, String orderState, String paidYn, Date orderTime) {
-		this.shop = shop;
-		this.user = user;
-		this.customerOrderId = customerOrderId;
-		this.orderState = orderState;
-		this.paidYn = paidYn;
-		this.orderTime = orderTime;
-	}
-
-	public Order(Shop shop, User user, int customerOrderId, String orderState, String paidYn, Date orderTime,
-			String cancelReason, Set<OrderProduct> orderProducts) {
-		this.shop = shop;
-		this.user = user;
-		this.customerOrderId = customerOrderId;
-		this.orderState = orderState;
-		this.paidYn = paidYn;
-		this.orderTime = orderTime;
-		this.cancelReason = cancelReason;
-		this.orderProducts = orderProducts;
 	}
 
 	public Integer getIdorder() {
@@ -142,6 +123,22 @@ public class Order implements java.io.Serializable {
 
 	public void setOrderCreator(String orderCreator) {
 		this.orderCreator = orderCreator;
+	}
+
+	public Integer getOrdersInQueue() {
+		return ordersInQueue;
+	}
+
+	public void setOrdersInQueue(Integer ordersInQueue) {
+		this.ordersInQueue = ordersInQueue;
+	}
+
+	public Integer getOrderCompleteTime() {
+		return orderCompleteTime;
+	}
+
+	public void setOrderCompleteTime(Integer orderCompleteTime) {
+		this.orderCompleteTime = orderCompleteTime;
 	}
 
 }

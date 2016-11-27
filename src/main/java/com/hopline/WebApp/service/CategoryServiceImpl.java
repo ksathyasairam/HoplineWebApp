@@ -13,18 +13,45 @@ import com.hopline.WebApp.dao.CategoryDao;
 import com.hopline.WebApp.model.dao.Category;
 import com.hopline.WebApp.model.dao.Product;
 import com.hopline.WebApp.model.vo.CategoryVo;
+import com.hopline.WebApp.model.vo.MenuPage;
 import com.hopline.WebApp.model.vo.ProductVo;
+import com.hopline.WebApp.model.vo.UserVo;
 import com.hopline.WebApp.rest.framework.IService;
 
 public class CategoryServiceImpl extends IService{
 	private CategoryDao categoryDao;
 	
-	public String retrieveAllCategoryJson() {
+	public String retrieveMenuPageJson(UserVo user) {
+		
+//		List<CategoryVo> categoryVos = retrieveAllCategory();
+//		List<Integer> favourites = null;
+//		
+//		if (user != null) {
+//			favourites = categoryDao.getFavouriteItems(user.getIduser());
+//		} else {
+//			favourites = new ArrayList<Integer>();
+//		}
+//		MenuPage menuPage = new MenuPage();
+//		menuPage.setCategories(categoryVos);
+//		menuPage.setFavourites(favourites);
+//		
+//		Gson gson = new Gson();
+//		String s = gson.toJson(menuPage);
+//		
+		
+		
+		
 		
 		List<CategoryVo> categoryVos = retrieveAllCategory();
-
 		Gson gson = new Gson();
 		String s = gson.toJson(categoryVos);
+		
+		
+		
+		
+		
+		
+		
 
 		return s;
 	}

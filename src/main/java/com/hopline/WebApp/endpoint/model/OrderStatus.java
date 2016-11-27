@@ -5,6 +5,9 @@ public class OrderStatus {
 	private Integer idorder;
 	private String orderState;
 	private String cancelReason;
+	private Integer numUnitInProgressBar;
+	private Integer currentProgress;
+	
 	public Integer getIdorder() {
 		return idorder;
 	}
@@ -22,6 +25,18 @@ public class OrderStatus {
 	}
 	public void setCancelReason(String cancelReason) {
 		this.cancelReason = cancelReason;
+	}
+	public Integer getNumUnitInProgressBar() {
+		return numUnitInProgressBar;
+	}
+	public void setNumUnitInProgressBar(Integer numUnitInProgressBar) {
+		this.numUnitInProgressBar = numUnitInProgressBar;
+	}
+	public Integer getCurrentProgress() {
+		return currentProgress;
+	}
+	public void setCurrentProgress(Integer currentProgress) {
+		this.currentProgress = currentProgress;
 	}
 
 

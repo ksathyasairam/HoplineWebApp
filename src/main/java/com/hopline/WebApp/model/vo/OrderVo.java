@@ -17,6 +17,20 @@ public class OrderVo implements java.io.Serializable {
 	private Double totalPrice;
 	private List<OrderProductVo> orderProducts;
 	private String orderCreator;
+	
+	
+	private Integer numUnitInProgressBar;
+	private Integer currentProgress;
+	private Integer orderCompleteTime;
+
+	
+
+	public Integer getCurrentProgress() {
+		return currentProgress;
+	}
+	public void setCurrentProgress(Integer currentProgress) {
+		this.currentProgress = currentProgress;
+	}
 	public Integer getIdorder() {
 		return idorder;
 	}
@@ -88,6 +102,18 @@ public class OrderVo implements java.io.Serializable {
 	}
 	public void setOrderCreator(String orderCreator) {
 		this.orderCreator = orderCreator;
+	}
+	public Integer getNumUnitInProgressBar() {
+		return numUnitInProgressBar;
+	}
+	public void setNumUnitInProgressBar(Integer numUnitInProgressBar) {
+		this.numUnitInProgressBar = numUnitInProgressBar;
+	}
+	public Integer getOrderCompleteTime() {
+		return orderCompleteTime;
+	}
+	public void setOrderCompleteTime(Integer orderCompleteTime) {
+		this.orderCompleteTime = orderCompleteTime;
 	}
 		
 }

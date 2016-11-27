@@ -78,7 +78,27 @@ public class OrderDao {
 
 		return (List<Order>) query.list();
 	}
+	
+	public int getNumbeOrdersInQueue(int idOrder) {
+		String queryString = "select count(*) from com.hopline.WebApp.model.dao.Order r where r.idorder <= ? and r.orderTime > ? and (r.orderState = ? or r.orderState = ? or r.orderState = ?"
+				+ "or r.orderState = ? or r.orderState = ?)";
 
+		Query query = sessionFactory.getCurrentSession().createQuery(queryString);
+
+		query.setParameter(0, idOrder);
+		query.setParameter(1, Util.getUserSessionStartTime());
+		query.setParameter(2, OrderStates.BIG_ORDER_CALL);
+		query.setParameter(3, OrderStates.DEFAULTER_CALL);
+		query.setParameter(4, OrderStates.OK_ORDER);
+		query.setParameter(5, OrderStates.PREPARING);
+		query.setParameter(6, OrderStates.BIG_ORDER_PAY);
+
+		Long res = (Long)query.uniqueResult();
+		return Util.safeLongToInt(res) ;
+	}
+	
+	
+	
 	public Integer saveOrder(Order order) {
 		return (Integer) getSessionFactory().getCurrentSession().save(order);
 	}

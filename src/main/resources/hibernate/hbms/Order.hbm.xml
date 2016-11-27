@@ -38,6 +38,12 @@
         <property name="orderCreator" type="string">
             <column name="orderCreator" length="45" />
         </property>
+        <property name="ordersInQueue" type="int">
+            <column name="ordersInQueue" not-null="true" />
+        </property>
+        <property name="orderCompleteTime" type="int">
+            <column name="orderCompleteTime" not-null="true" />
+        </property>
         <set name="orderProducts"  table="orderProduct" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="orderId" not-null="true" />

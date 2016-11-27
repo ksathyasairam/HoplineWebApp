@@ -19,7 +19,7 @@ public class HelloWorldAction extends BaseAction {
 	public String execute() throws Exception {
 		super.execute();
 		// categories =
-		 ServiceLocator.getInstance().getService(CategoryServiceImpl.class).retrieveAllCategoryJson();
+//		 ServiceLocator.getInstance().getService(CategoryServiceImpl.class).retrieveAllCategoryJson();
 
 //		setHelloCount((Integer) getSession().get(HELLO_COUNT));
 //
