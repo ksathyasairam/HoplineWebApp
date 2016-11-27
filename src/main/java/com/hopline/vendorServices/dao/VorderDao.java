@@ -1,5 +1,6 @@
 package com.hopline.vendorServices.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -130,6 +131,30 @@ public class VorderDao {
 		criteria.createCriteria("order.shop","shop");
 		criteria.add(Restrictions.eq("shop.idshop", shopId));
 		criteria.add(Restrictions.in("order.orderState", orderStates));
+		return (List<Order>) criteria.list();
+	}
+	
+	public List<Order> retrieveOrderHistory(Integer shopId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Order.class, "order");
+		criteria.createCriteria("order.shop","shop");
+		criteria.add(Restrictions.eq("shop.idshop", shopId));
+		criteria.addOrder(org.hibernate.criterion.Order.desc("order.orderTime"));
+		
+		List<String> orderStates = new ArrayList<String>();
+		
+		orderStates.add("BIG_ORDER_PAY");
+		orderStates.add("BIG_ORDER_CALL");
+		orderStates.add("DEFAULTER_CALL");
+		orderStates.add("OK_ORDER");
+		orderStates.add("PREPARING");
+		orderStates.add("READY_FOR_PICKUP");
+		orderStates.add("COMPLETED");
+		orderStates.add("UNPICKED");
+		orderStates.add("CANCELLED");
+		
+		criteria.add(Restrictions.in("order.orderState", orderStates));
+		criteria.setMaxResults(100);
+
 		return (List<Order>) criteria.list();
 	}
 

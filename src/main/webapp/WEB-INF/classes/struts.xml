@@ -66,6 +66,14 @@
 
 		</action>
 
+		<action name="fetchOrderHistory" method="execute"
+			class="com.hopline.vendorServices.action.FetchOrderHistory">
+			<result type="json">
+				<param name="root">fetchOrder</param>
+			</result>
+
+		</action>
+
 
 		<action name="createWalkinOrder" method="execute"
 			class="com.hopline.vendorServices.action.WalkInOrderAction">
@@ -136,7 +144,7 @@
 			<result name="invalidInput">/invalidInput.jsp</result>
 			<result name="redirectHome" type="redirectAction">singlePageApp</result>
 		</action>
-		
+
 		<action name="orderSummaryOnLoadGet" class="com.hopline.WebApp.action.OrderSummaryAction"
 			method="executeOrderSummaryOnLoadGetRequest">
 			<result name="success">/orderSummary.jsp</result>

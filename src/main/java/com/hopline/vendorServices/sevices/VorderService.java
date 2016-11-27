@@ -82,6 +82,22 @@ public class VorderService extends IService {
 		fetchOrder.setSuccess(true);
 		return fetchOrder;
 	}
+	
+	public FetchOrderTo retrieveOrderHistory(FetchOrderTo fetchOrder) {
+		List<Order> orders = orderDao.retrieveOrderHistory(fetchOrder.getShopId());
+
+		List<OrderVo> orderVos = new ArrayList<OrderVo>();
+		fetchOrder.setOrders(orderVos);
+
+		if (orders != null) {
+			for (Order order : orders) {
+				orderVos.add(OrderTranslator.convert(order, OrderVo.class));
+			}
+		}
+
+		fetchOrder.setSuccess(true);
+		return fetchOrder;
+	}
 
 	public OrderVo createWalkInOrder(OrderVo orderVo) {
 				
