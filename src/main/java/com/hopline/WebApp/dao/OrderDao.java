@@ -1,5 +1,6 @@
 package com.hopline.WebApp.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -94,6 +95,30 @@ public class OrderDao {
 		query.setParameter(6, OrderStates.BIG_ORDER_PAY);
 
 		Long res = (Long)query.uniqueResult();
+		if (res == null) return 0;
+		return Util.safeLongToInt(res) ;
+	}
+	
+	public int getItemsToPerpareInQueue(int idOrder) {
+		
+		
+		String subQueryString = "select r.idorder from com.hopline.WebApp.model.dao.Order r where r.idorder <= ? and r.orderTime > ? and (r.orderState = ? or r.orderState = ? or r.orderState = ?"
+				+ "or r.orderState = ? or r.orderState = ?)";
+		
+		String queryString = "select sum(p.count) from com.hopline.WebApp.model.dao.OrderProduct p where p.order.idorder  IN ("+subQueryString+")";
+				
+		Query query = sessionFactory.getCurrentSession().createQuery(queryString);
+		
+		query.setParameter(0, idOrder);
+		query.setParameter(1, Util.getUserSessionStartTime());
+		query.setParameter(2, OrderStates.BIG_ORDER_CALL);
+		query.setParameter(3, OrderStates.DEFAULTER_CALL);
+		query.setParameter(4, OrderStates.OK_ORDER);
+		query.setParameter(5, OrderStates.PREPARING);
+		query.setParameter(6, OrderStates.BIG_ORDER_PAY);
+		
+		Long res = (Long)query.uniqueResult();
+		if (res == null) return 0;
 		return Util.safeLongToInt(res) ;
 	}
 	

@@ -153,7 +153,12 @@ public class OrderService extends IService {
 	}
 	
 	private Integer getOrderCompleteTime(Order order) {
-		return 5;
+		int  itemsCount =  orderDao.getItemsToPerpareInQueue(order.getIdorder()) ;
+		
+		int time = (int) (itemsCount * 1.5);
+		
+		time = (time/5)* 5 + (time % 5 == 0 ? 0 : 5 );
+		return time;
 	}
 
 
