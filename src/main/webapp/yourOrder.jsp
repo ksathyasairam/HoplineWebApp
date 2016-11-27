@@ -19,6 +19,7 @@
 <!-- webfonts -->
 	<link href='//fonts.googleapis.com/css?family=Asap:400,700,400italic' rel='stylesheet' type='text/css'>
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Abel|Carme|Hind+Guntur|Josefin+Sans|Josefin+Slab|Mandali|Meera+Inimai|News+Cycle|Oxygen|Raleway" rel="stylesheet"> 
 <!-- webfonts -->
 
 </head>
@@ -29,8 +30,8 @@
     		$(function worker() {
    				$.getJSON('/yourOrderStates', function(data) {
    					console.log(data);
-   					if(data.length==0){
-   						
+   					if(data.orderStatus.length==0){
+   						$("#emptyYourOrderPopup").css({display:'block'});
    					}
    					else{
        				$.each(data.orderStatus, function(i, f) {
@@ -102,8 +103,9 @@
 			
 <div class="spacing">
 </div>
-<div id="emptyYourOrderPopup" style="display:none;'z-index:90;position:fixed;width:90%;top:50%;margin-top:-150px;height:300px;margin-left:5%;margin-right:5%;border-radius:3px;box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1);">
-		hello
+<div id="emptyYourOrderPopup" style="font-family: 'Raleway', sans-serif;text-align:center;display:none;z-index:90;position:fixed;width:95%;top:50%;margin-top:-70px;font-size:20px;height:140px;margin-left:2.5%;margin-right:5%;border-radius:3px;box-shadow:0px 0px  6px #888888; background:#cc5241;color:#ffffff;padding-top:4%;">
+	We haven't received any order from you yet.Go ahead and let your taste buds loose!
+	
 </div>
 <s:iterator value="orders">
 <div id="<s:property value="idorder"/>" style="margin-left:1%;margin-top:7px; margin-right:1%; padding-left:2%;padding-right:2%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); float:left; width:98%;">

@@ -168,14 +168,6 @@
 	  image:'images/bistro37.png'
 
 	},
-	{
-	  name:'Thee Pot',
-	  description:'Cafe',
-	  address:'Shop 17, Godavari Market, Sector 37, Noida',
-	  image:'images/theepot.png'
-
-	},
-
 
 	]
 
@@ -253,11 +245,12 @@
 	  var check = JSON.parse(localStorage.getItem('checkList')) || [];
 	  obj = angular.copy(value);
 	  check.push(obj);
+	  obj.quantity=1;
 	  localStorage.setItem('checkList', JSON.stringify(check));
 	  this.checkList= JSON.parse(localStorage.getItem('checkList'));
 	  
 	  console.log(this.checkList);
-	  value.quantity=1;
+	  //value.quantity=1;
 	  
 	  for(var i=0;i<value.addOns.length;i++){
 	    value.addOns[i].selected=false;
@@ -269,6 +262,25 @@
 	  $('.addedtoast').show();   
 	  this.totalOrder();
 	};
+	
+	this.removeCheckList=function(id,name,value)
+	  {
+		console.log("removed123");
+	  var check = JSON.parse(localStorage.getItem('checkList')) || [];
+	  obj = angular.copy(value);
+	  for(var i=0;i<check.length;i++)
+		  {
+		  if(check[i].productId==obj.productId)
+			  {
+			  check.splice(i, 1);
+			  break;
+			  }
+		  };
+		  console.log("removed");
+	  localStorage.setItem('checkList', JSON.stringify(check));
+	  this.checkList= JSON.parse(localStorage.getItem('checkList'));
+	  this.totalOrder();
+	};
 
 
 	this.removeCartItem=function(index)
@@ -276,9 +288,22 @@
 	  var elementToRemove = '#cartItem-'+ index;
 	  $(elementToRemove).hide();
 	  var check1 = JSON.parse(localStorage.getItem('checkList')) || [];
+	  console.log(check1[index]);
+	  /*for(var i=0;i<this.foodItems.length;i++)
+	  {
+	  	for(var j=0;j<this.foodItems[i].products.length;j++)
+	  		{
+	  		if(this.foodItems[i].products[j].productId==check1[index].productId);
+	  			{	
+	  				console.log("hello");
+	  				this.foodItems[i].products[j].quantity=this.foodItems[i].products[j].quantity-1;
+	  			}
+	  		}
+	  }*/
 	  check1.splice(index, 1);
 	  localStorage.setItem('checkList', JSON.stringify(check1));
 	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || [];
+
 	  this.totalOrder();
 	};
 	
