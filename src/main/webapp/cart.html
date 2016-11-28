@@ -1,4 +1,4 @@
-<img  src="images/rubbish-bin.png" alt=" " style="position:fixed;right:0%;height:31px;  top:16px; float:right; margin-right:15px;z-index:999;" ng-click="event.clearCart();" />
+<img  src="images/rubbish-bin.png" alt=" " style="position:fixed;right:0%;height:31px;  top:16px; float:right; margin-right:15px;z-index:999999;" ng-click="event.clearCart();" />
 
 
 <div ng-show="event.checkList.length==0" class="bigBack"  ui-sref="home" >
@@ -36,16 +36,39 @@
 						 	<div style="color:#525a54;float:left;padding-left:1%;font-size:16px;font-family: 'Raleway', sans-serif;;">
 						 		{{food.name}}
 						 	</div>
-						 	<div style="color:#525a54;float:right;">
-						 		x {{food.quantity}} 
-						 		
-						 		<div style="width:48px; height:18px; border-radius:3px;border:1px solid #cf3721;float:right;line-height:normal; margin-right:6px;  margin-left:11px;text-align:center; color:#cf3721; font-size:12px; margin-top:3px;" id="remove-{{$index}}" ng-click="event.removeCartItem($index);">
-						 			<div style="position:relative;top:50%;margin-top:-9px;">
-						 				Cancel
-						 			</div>
-						 		</div>
+						 	<div style="height:20px;float:right;text-align:right;" >
+												<div style="float:left; height:20px; width:20px; border-radius:10px 10px 10px 10px; background:#e64539; " ng-click="event.decItemFromCart($index);">
+													<div style="margin-top:1px;margin-left:1px;height:18px; width:18px; border-radius:9px 9px 9px 9px; background:rgba(253, 246, 246, 1);">
+														<div style="width:12px; height:2px;position:relative;top:45%;left:50%;margin-left:-6px;background:#e64539;">
+															
+														</div>
+													</div>
+												</div>
+											 	<div style="float:left">&emsp;{{food.quantity}}&emsp;</div>
+												<div style="float:left; height:20px; width:20px; border-radius:10px 10px 10px 10px; background:#4fb66d;" ng-click="event.incItemFromCart($index);">
+													<div style="margin-top:1px;margin-left:1px;height:18px; width:18px; border-radius:9px 9px 9px 9px; background:rgba(253, 246, 246, 1);">
+														<div style="width:12px; height:2px;position:relative;top:45%;left:50%;margin-left:-6px;background:#4fb66d;">
+															
+														</div>
+														<div style="width:2px; height:12px; position:relative; left:50%;top:10%; margin-left:-1px; background:#4fb66d;">
+														
+														</div>
+													</div>
+												</div>
+											</div>
+							<div style="clear:both;width:100%;padding-top:5px;">
+							 	<div style="float:left;">			 		
+								 	<div style="width:54px; height:20px; border-radius:3px;border:1px solid #cf3721;line-height:normal; margin-right:6px; text-align:center; color:#cf3721; font-size:12px; margin-top:6px;" id="remove-{{$index}}" ng-click="event.removeCartItem($index);">
+								 			
+								 		Cancel
+								 			
+								 	</div>
+							 	</div>
+							 	<div style="float:right;font-size:14px;padding-top:6px;">
+							 		&#8377 {{food.quantity*food.price}}
+							 	</div>	
 						 	</div>
-						 	<br>
+					
 						 	<div style="width:50%;display:inline-block;">
 							 	<div ng-repeat="addons in food.addOns | filter:{ selected: true }" style="font-size: 13px;padding-left:11%;">
 							 		<div style="color:#525a54;float:left;">
@@ -55,9 +78,7 @@
 							 		<br>
 							 	</div>
 						 	</div>
-						 	<div style="float:right;font-size:14px;padding-right:18%;">
-						 		<p>&#8377 {{food.quantity*food.price}}</p>
-						 	</div>
+						 	
 						 	
 						 </li>						 
 						 <br>
