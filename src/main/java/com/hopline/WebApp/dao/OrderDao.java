@@ -33,8 +33,10 @@ public class OrderDao {
 
 	public Order getLastUserOrder(int userId) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Order.class, "order");
+		criteria.add(Restrictions.not(Restrictions.eq("order.orderState", OrderStates.TEMP_SUBMIT)));
 		criteria.createCriteria("order.user", "user");
 		criteria.add(Restrictions.eq("user.iduser", userId));
+		
 		criteria.addOrder(org.hibernate.criterion.Order.desc("order.orderTime"));
 		criteria.setMaxResults(1);
 		return (Order) criteria.uniqueResult();
