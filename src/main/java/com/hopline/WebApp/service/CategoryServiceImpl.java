@@ -23,28 +23,28 @@ public class CategoryServiceImpl extends IService{
 	
 	public String retrieveMenuPageJson(UserVo user) {
 		
-//		List<CategoryVo> categoryVos = retrieveAllCategory();
-//		List<Integer> favourites = null;
-//		
-//		if (user != null) {
-//			favourites = categoryDao.getFavouriteItems(user.getIduser());
-//		} else {
-//			favourites = new ArrayList<Integer>();
-//		}
-//		MenuPage menuPage = new MenuPage();
-//		menuPage.setCategories(categoryVos);
-//		menuPage.setFavourites(favourites);
-//		
-//		Gson gson = new Gson();
-//		String s = gson.toJson(menuPage);
-		
-		
-		
-		
-		
 		List<CategoryVo> categoryVos = retrieveAllCategory();
+		List<Integer> favourites = null;
+		
+		if (user != null) {
+			favourites = categoryDao.getFavouriteItems(user.getIduser());
+		} else {
+			favourites = new ArrayList<Integer>();
+		}
+		MenuPage menuPage = new MenuPage();
+		menuPage.setCategories(categoryVos);
+		menuPage.setFavourites(favourites);
+		
 		Gson gson = new Gson();
-		String s = gson.toJson(categoryVos);
+		String s = gson.toJson(menuPage);
+		
+		
+		
+		
+		
+//		List<CategoryVo> categoryVos = retrieveAllCategory();
+//		Gson gson = new Gson();
+//		String s = gson.toJson(categoryVos);
 		
 		
 		
