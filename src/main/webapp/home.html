@@ -14,10 +14,10 @@
 
 <div id="instantCheckPopUp" style="display:none">Are you sure you want to continue with instant checkout?</div>
 
-
+<div ng-init="event.checkMenuWithCart();">
 <div style="padding-top:20px;">
 </div>
-<div class="banner-info" ng-repeat="cat in event.foodItems"  style="margin-left:7px;margin-right:7px;"ng-click="event.hide();">
+<div class="banner-info" ng-repeat="cat in event.foodItems"  style="margin-left:7px;margin-right:7px;"ng-click="event.hide();" >
 				<div class=" header-right">
 					<h6 id=" {{cat.name.split(' ').join('')}}" style="text-align:left;padding-left:2%;">{{cat.name}} <img src="{{cat.imgUrl}}" class="imageAlign" style="float:right; height:35px; margin-right:3%; "></h6>
 					<p style="margin-left:2%;color:#b4b2b2;text-transform: uppercase;font-weight: 500;font-size:13px;font-family: 'Asap', sans-serif;margin-top:-9px;display:block;float:left;letter-spacing: 1px;">{{cat.subCategoryName}}</p>
@@ -55,12 +55,12 @@
 											</div>
 										</div>
 										<div ng-show="fooditem.stockYn=='Y'">
-											<div style="float:right;">
+											<!-- <div style="float:right;">
 												<div style="width:60px; height:26px;font-size:14px;padding-top:2px;border:1px solid #67baca; border-radius: 3px 3px 3px 3px; text-align:center;background:#67baca; color:white;"  ng-show="!fooditem.isExpanded;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;">
 													ADD
 												</div>
-											</div>
-											<div style="height:26px;float:right;text-align:right;" ng-show="fooditem.isExpanded;">
+											</div> -->
+											<div style="height:26px;float:right;text-align:right;">
 												<div style="float:left; height:24px; width:24px; border-radius:12px 12px 12px 12px; background:#e64539; " ng-click="event.decreaseItemCount(fooditem);event.removeCheckList($index,cat.name,fooditem);">
 													<div style="margin-top:2px;margin-left:2px;height:20px; width:20px; border-radius:10px 10px 10px 10px; background:rgba(253, 246, 246, 1);">
 														<div style="width:12px; height:2px;position:relative;top:45%;left:50%;margin-left:-6px;background:#e64539;">
@@ -145,7 +145,7 @@
 </div>
 <div style="padding-top:140px;">
 </div>
-
+</div>
 
 <script>
 $(window).scroll(function() {
