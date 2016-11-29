@@ -175,6 +175,8 @@
 
 	  this.foodIt=  <s:property escape="false"  value="menuJsonString"/>	
 	  this.foodItems=this.foodIt.categories;
+	  this.favourites=this.foodIt.favourites;
+	  this.favList=[];
 	  
 	this.checkMenuWithCart=function(){
 		var check1 = JSON.parse(localStorage.getItem('checkList')) || [];
@@ -191,7 +193,19 @@
 			  		}
 			  }
 		}
-		
+		for(var i=0;i<this.favourites.length;i++){
+			for(var j=0;j<this.foodItems.length;j++)
+			  {
+			  	for(var k=0;k<this.foodItems[j].products.length;k++)
+			  		{
+			  		if(this.foodItems[j].products[k].productId==this.favourites[i])
+			  			{	
+			  				this.favList.push(this.foodItems[j].products[k]);
+			  				
+			  			}
+			  		}
+			  }
+		}
 	}  
 
 	this.showContent=function(id,name,val)
@@ -284,10 +298,10 @@
 	    value.addOns[i].selected=false;
 	  }
 	  
-	  $('.addedtoast').animate({top: '85'},1000);
-	  $('.addedtoast').fadeOut(1500);
-	  $('.addedtoast').css({top: '4%'});
-	  $('.addedtoast').show();   
+	  //$('.addedtoast').animate({top: '85'},1000);
+	  //$('.addedtoast').fadeOut(1500);
+	  //$('.addedtoast').css({top: '4%'});
+	  //$('.addedtoast').show();   
 	  this.totalOrder();
 	};
 	

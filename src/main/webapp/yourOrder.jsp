@@ -20,6 +20,8 @@
 	<link href='//fonts.googleapis.com/css?family=Asap:400,700,400italic' rel='stylesheet' type='text/css'>
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 	<link href="https://fonts.googleapis.com/css?family=Abel|Carme|Hind+Guntur|Josefin+Sans|Josefin+Slab|Mandali|Meera+Inimai|News+Cycle|Oxygen|Raleway" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Cantora+One|Carrois+Gothic+SC" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nobile:700" rel="stylesheet">
 <!-- webfonts -->
 
 </head>
@@ -38,48 +40,48 @@
        					var rep="replaceStatus"+f.idorder;
        					if(f.orderState=="TEMP_SUBMIT")
        						{
-          					var tblRow = "<div id="+rep+ " "+" style='text-align:center;font-size:13px;'>"+ "PROCESSING..." +"</div>"; 
+          					var tblRow = "<div id=" + rep + " style='text-align:center;font-size:14px;'>"+ "PROCESSING..." +"</div>"; 
           					$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
        						}
           				else if(f.orderState=="CANCELLED")
           					{
           					$("#progressBar"+f.idorder).css({display:'none'});
           					$("#info"+f.idorder).css({display:'none'});
-          					var tblRow = "<div id="+rep+ " "+" style='text-align:center;font-size:13px;color:#e64539;padding-bottom:3%;}'>"+ "CANCELLED"+"<br/>"+" Looks like the restaurant cancelled your order. Sorry for the inconvenience." +"</div>";
+          					var tblRow = "<div id="+ rep + "><div style='font-family: 'Cantora One', sans-serif;font-size:40px;text-align:center;color:#cf3721;'>:(</div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;}'>"+" Looks like the restaurant cancelled your order. Sorry for the inconvenience." +"</div></div>";
           					
           					}
           				else if(f.orderState=="PREPARING")
           					{
-              				var tblRow = "<div id="+rep+ " "+" style='text-align:center;font-size:13px;'>"+ "The chef is working their magic! Your food will be ready soon." +"</div>";
+              				var tblRow = "<div id="+ rep + "><div><img src='images/chef.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "The chef is working their magic! Your food will be ready soon." +"</div></div>";
               				$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
           					}
               			else if(f.orderState=="COMPLETED")
               				{
               				$("#progressBar"+f.idorder).css({display:'none'});
           					$("#info"+f.idorder).css({display:'none'});
-          					var tblRow = "<div id="+rep+ " "+" style='text-align:center;font-size:15px;color:#4fb66d;padding-bottom:3%;}'>"+ " Your order is complete." +"</div>";
+          					var tblRow = "<div id="+ rep + "><div style='font-family: 'Cantora One', sans-serif;font-size:40px;text-align:center;color:#4fb66d;'>:)</div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;'>"+ " Your order is complete." +"</div></div>";
           					
               				}
               			else if(f.orderState=="DEFAULTER_CALL")
 	          				{
 	          				$("#progressBar"+f.idorder).css({display:'none'});
 	      					$("#info"+f.idorder).css({display:'none'});
-	      					var tblRow = "<div id="+rep+ " "+" style='text-align:center;font-size:13px;padding-bottom:3%;}'>"+ "our last order was not picked up by you. We need to verify your current order before it gets accepted. You will be receiving a call from the restaurant shortly." +"</div>";
+	      					var tblRow = "<div id="+ rep + "><div><img src='images/defaulter.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;'>"+ "our last order was not picked up by you. We need to verify your current order before it gets accepted. You will be receiving a call from the restaurant shortly." +"</div></div>";
 	      					
 	          				}
                   		else if(f.orderState=="READY_FOR_PICKUP")
                   			{
-                      		var tblRow = "<div id="+rep+ " "+" style='text-align:center;font-size:13px;'>"+ "Your food is ready for pick-up and awaits you!" +"</div>";
+                      		var tblRow = "<div id="+ rep + "><div><img src='images/chef.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='margin-top:1%;text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your food is ready for pick-up and awaits you!" +"</div></div>";
                       		$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
                   			}
                       	else if(f.orderState=="UNPICKED")
                       		{
-                          	var tblRow = "<div id="+rep+ " "+" style='text-align:center;font-size:13px;'>"+ "UNPICKED" +"</div>";
+                          	var tblRow = "<div id="+ rep + "><div style='font-family: 'Cantora One', sans-serif;font-size:40px;text-align:center;color:#cf3721;'>:/</div><div  style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "UNPICKED" +"</div></div>";
                           	$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
                       		}
                          else if(f.orderState=="OK_ORDER")
                         	 {
-                             var tblRow = "<div id="+rep+ " "+" style='text-align:center;font-size:13px;'>"+ "Your order has been successfully accepted.The chef will start preparing soon." +"</div>"; 	
+                             var tblRow = "<div id="+ rep + "><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order has been successfully accepted.The chef will start preparing soon." +"</div></div>"; 	
                              $("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
                         	 }
           				$( "#replaceStatus"+f.idorder ).replaceWith( tblRow );
@@ -100,7 +102,7 @@
 		</i>
 	</a>
 	<a   href="/singlePageApp#/home">
-		<div style="position:fixed; left:1%; bottom:5px; background:#67baca; opacity:0.9; height:40px; text-align:center;padding-top:2%;padding-bottom:3%;border-radius:3px 3px 3px 3px;color:white;width:98%;z-index:11" >
+		<div  class="bigBack">
 			Back to Menu
 		</div>
 	</a>
@@ -137,39 +139,47 @@
 			
 <div class="spacing">
 </div>
-<div id="emptyYourOrderPopup" style="font-family: 'Raleway', sans-serif;text-align:center;display:none;z-index:90;position:fixed;width:95%;top:50%;margin-top:-70px;font-size:20px;height:140px;margin-left:2.5%;margin-right:5%;border-radius:3px;box-shadow:0px 0px  6px #888888; background:#cc5241;color:#ffffff;padding-top:4%;">
-	We haven't received any order from you yet.Go ahead and let your taste buds loose!
+<div id="emptyYourOrderPopup" style="font-family: 'Raleway', sans-serif;display:none;text-align:center;z-index:90;position:fixed;width:90%;top:50%;margin-top:-110px;font-size:20px;height:220px;margin-left:5%;margin-right:5%;border-radius:3px;box-shadow:0px 0px  6px #888888; background:#c22929;color:#ffffff;padding-top:4%;opacity:0.8;">
+	<div>
+		<img src="images/dish-cover.png" alt=" " style="height:80px;"/>
+	</div>
+	We haven't received any order from you yet. Go ahead and let your taste buds loose!
 	
 </div>
 <s:iterator value="orders">
-<div id="<s:property value="idorder"/>" style="margin-left:1%;margin-top:7px; margin-right:1%; padding-left:2%;padding-right:2%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); float:left; width:98%;">
+<div id="<s:property value="idorder"/>" style="margin-bottom:5%;margin-left:1%;margin-top:7px; margin-right:1%; padding-left:2%;padding-right:2%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); float:left; width:98%;">
 	<div style="float:left; width:100%">
-		<div style="width:48%;display:inline-block;font-size:15px;"><b>Order No: #<s:property value="customerOrderId"/></b></div>
-		<div style="width:50%;display:inline-block;text-align:right;font-size:15px;"><s:property value="orderTime"/></div>
-		<div style="width:100%;padding-top:3%;display:inline-block;">
+		<div style="margin-left:-2%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 0px solid transparent; border-right: 20px solid transparent; border-top: 30px solid #d15644;"></div>
+		<div style="margin-top:-27px" >
+		<div style="color:white;width:48%;display:inline-block;font-size:15px;"><b>Order No: #<s:property value="customerOrderId"/></b></div>
+		<div style="width:50%;display:inline-block;text-align:right;color:#7d7b79;font-size:14px;font-family: 'Roboto', sans-serif;"><s:property value="orderTime"/></div>
+		
+		<div style="width:100%;display:inline-block;">
+			<div id="replaceStatus<s:property value="idorder"/>" style="text-align:center;">
+				
+			</div>
+		</div>
+		<div style="width:100%;padding-top:3%;display:inline-block;padding-bottom:2%;">
 			<div id="progressBar<s:property value="idorder"/>" style="height:8px;width:90%;position:relative;left:50%;margin-left:-45%;border-radius:4px;background:#ffffff;">
 				<div id="progress<s:property value="idorder"/>" style="width:70%;background:#4fb66d;height:100%;border-radius:4px">
 					
 				</div>
 			</div>
 		</div>
-		<div style="width:100%;padding-top:3%;display:inline-block;">
-			<div id="replaceStatus<s:property value="idorder"/>" style="text-align:center;">
-				
-			</div>
-		</div>
-		<div id="info<s:property value="idorder"/>"  style="padding-top:2%;font-size:14px;">
-			<div style="width:60%;float:left;>">Order complete time : <s:property value="orderCompleteTime"/></div>
-			<div style="width:30%;;text-align:right;float:right;">&#8377 <s:property value="totalPrice"/></div>
+		<div id="info<s:property value="idorder"/>"  style="padding-top:2%;font-size:14px;z-index:99999;font-family: 'Roboto', sans-serif;color:#7d7b79;">
+			<div style="width:60%;float:left;>">Estimated time : <s:property value="orderCompleteTime"/></div>
+			<div style="z-index:99999;width:30%;;text-align:right;float:right;color:white;">&#8377 <s:property value="totalPrice"/></div>
 		</div>
 		<!-- Order complete time : <s:property value="orderCompleteTime"/>
 		Current progress : <s:property value="currentProgress"/>
 		Num unit in progress : <s:property value="numUnitInProgressBar"/> -->
-		
+		<div style="float:right;margin-right:-2%;margin-top:-7%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 20px solid transparent; border-right: 0px solid transparent; border-bottom: 30px solid #388dad;color:white;font-size:14px;padding-left:10%;"><div style="margin-top:5px;">&#8377 <s:property value="totalPrice"/></div></div>
 		
 	</div>
-	<!-- <p id="replaceStatus<s:property value="idorder"/>">
-	</p> -->
+	<!-- <div id="replaceStatus<s:property value="idorder"/>" style="text-align:center;">
+				
+			</div> -->
+	</div>
 </div>
 
 <div id="show<s:property value="idorder"/>" class="banner-info" style="margin-left:1%;margin-right:1%; display:none"  >
