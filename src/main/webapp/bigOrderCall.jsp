@@ -100,9 +100,7 @@
 							
 						</div>	
 					</div>
-				</div>
-
-			
+				</div>			
 <div class="spacing">
 </div>
 <div id="sideSpacing">
