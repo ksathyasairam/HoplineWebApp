@@ -14,7 +14,7 @@
 
 <a id="returnBackTo" style="z-index:12;" ui-sref="restaurant"><i><img src="images/rere.png" alt=" " style="height:24px;"/ ></i></a>
 
-<div id="instantCheckPopUp" style="display:none">Are you sure you want to continue with instant checkout?</div>
+<div id="instantCheckPopUp" style="z-index:999999;padding-top:3%;">Go to cart and remove</div>
 
 <div ng-init="event.checkMenuWithCart();">
 <div style="padding-top:20px;">
@@ -104,8 +104,14 @@
 												"{{fooditem.shortDesc}}"
 											</i>
 										</div>
+										<div style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;">
+												<div style="margin-top:-20px;width:20px; height:20px;font-size:12px;border:1px solid #67baca; border-radius: 3px 3px 3px 3px; text-align:center; color:#67baca;">
+													
+												</div>
+										</div>
 										
 									</div>
+									
 
 									<div id="item-{{cat.name}}-{{$index}}"  ng-show="fooditem.isExpanded;">
 

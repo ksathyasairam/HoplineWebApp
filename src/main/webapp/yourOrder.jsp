@@ -152,9 +152,9 @@
 				
 			</div>
 		</div>
-		<div style="width:100%;padding-top:3%;display:inline-block;padding-bottom:2%;">
-			<div id="progressBar<s:property value="idorder"/>" style="height:8px;width:90%;position:relative;left:50%;margin-left:-45%;border-radius:4px;background:#ffffff;">
-				<div id="progress<s:property value="idorder"/>" style="width:70%;background:#4fb66d;height:100%;border-radius:4px">
+		<div style="width:100%;padding-top:3%;display:inline-block;padding-bottom:3%;">
+			<div id="progressBar<s:property value="idorder"/>" style="height:8px;width:90%;position:relative;left:50%;margin-left:-45%;border-radius:4px;background:#e4e4e4;">
+				<div id="progress<s:property value="idorder"/>" style="width:0%;background:#4fb66d;height:100%;border-radius:4px">
 					
 				</div>
 			</div>

@@ -296,7 +296,7 @@ body h1,h2,h3,h4,h5,h6{
     font-size:12px;
     width: 80%;
     height: 40px;
-    display: block;
+    display: none;
     text-decoration: none;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
