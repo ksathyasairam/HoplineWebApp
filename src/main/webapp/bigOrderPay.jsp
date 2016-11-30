@@ -106,11 +106,11 @@
 <div class="spacing">
 </div>
 <div id="sideSpacing">
-	<div style="margin-left:1%;margin-top:7px; margin-right:1%; padding-left:2%;padding-right:2%;padding-top:1%;padding-bottom:1%; box-shadow:0px 0px  6px #888888; background:#c22929; width:98%;">
+	<div style="margin-left:1%;margin-top:7px; margin-right:1%; padding-left:2%;padding-right:2%;padding-top:1%;padding-bottom:1%; box-shadow:0px 0px  6px #888888; background:#c22929;opacity:0.7; width:98%;color:#ffffff;">
 		<div style=" width:100%; ">
 			<div style="font-size:18px; text-align:center;">Big Order Pay</div>
 			<div style="height:7px;width:100%;"></div>
-			<p style="font-size:12px;">Your order is more than Rs.1000 so blah blah blah blah blah blah blah blah blah</p>
+			<p style="font-size:12px;">Your order is more than Rs.500 so blah blah blah blah blah blah blah blah blah</p>
 		</div>
 	</div>
 	<div style="margin-left:1%;margin-top:1%; margin-right:1%; padding-left:2%;padding-right:2%;padding-top:1%;padding-bottom:1%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); clear:both; width:98%; border-radius:3px 3px 3px 3px;">
