@@ -16,10 +16,6 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  <meta name="keywords" content="" />
-<!-- webfonts -->
-	<link href='//fonts.googleapis.com/css?family=Asap:400,700,400italic' rel='stylesheet' type='text/css'>
-	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-<!-- webfonts -->
 
 </head>
 	<body ng-app="mainApp" ng-controller="EventCtrl as event"> 
@@ -121,7 +117,7 @@ $(document).ready(function(){
 </script>
 
 <script src="./app/angular.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.js"></script>
+<script src="./app/angular-route.js"></script>
 <script src="./app/mainApp.js"></script>
 <script src="./app/ui.router.js"></script>
 <script src="./app/event/eventModule.js"></script>

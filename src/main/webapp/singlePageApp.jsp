@@ -16,12 +16,6 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  <meta name="keywords" content="" />
-<!-- webfonts -->
-	<link href='//fonts.googleapis.com/css?family=Asap:400,700,400italic' rel='stylesheet' type='text/css'>
-	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Abel|Carme|Hind+Guntur|Josefin+Sans|Josefin+Slab|Mandali|Meera+Inimai|News+Cycle|Oxygen|Raleway" rel="stylesheet"> 
-<!-- webfonts -->
 
 </head>
 	<body ng-app="mainApp" ng-controller="EventCtrl as event" style="background-image: url(../images/checks.png);min-height:100vh;"> 
@@ -79,7 +73,7 @@
 
 
 <script src="./app/angular.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.js"></script>
+<script src="./app/angular-route.js"></script>
 
 
 
@@ -193,7 +187,7 @@
 			  		}
 			  }
 		}
-		for(var i=0;i<this.favourites.length;i++){
+		/*for(var i=0;i<this.favourites.length;i++){
 			for(var j=0;j<this.foodItems.length;j++)
 			  {
 			  	for(var k=0;k<this.foodItems[j].products.length;k++)
@@ -205,7 +199,7 @@
 			  			}
 			  		}
 			  }
-		}
+		}*/
 	}  
 
 	this.showContent=function(id,name,val)
@@ -234,6 +228,11 @@
 	  if(val.quantity>1)
 	  {
 	  val.quantity= val.quantity-1;
+	  $("#checkcartNotify").css({display:'block'});
+	  $("#checkcartNotify").animate({opacity:0}, 1000, function() {
+		  $("#checkcartNotify").css({display:'none'});
+		  $("#checkcartNotify").css({opacity:1});
+	  });
 
 	  }
 	  else if(val.quantity==1)
@@ -297,7 +296,11 @@
 	  for(var i=0;i<value.addOns.length;i++){
 	    value.addOns[i].selected=false;
 	  }
-	  
+	  $("#checkcartNotify").css({display:'block'});
+	  $("#checkcartNotify").animate({opacity:0}, 1000, function() {
+		  $("#checkcartNotify").css({display:'none'});
+		  $("#checkcartNotify").css({opacity:1});
+	  });
 	  //$('.addedtoast').animate({top: '85'},1000);
 	  //$('.addedtoast').fadeOut(1500);
 	  //$('.addedtoast').css({top: '4%'});

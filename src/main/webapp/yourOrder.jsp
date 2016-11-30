@@ -16,13 +16,6 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  <meta name="keywords" content="" />
-<!-- webfonts -->
-	<link href='//fonts.googleapis.com/css?family=Asap:400,700,400italic' rel='stylesheet' type='text/css'>
-	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-	<link href="https://fonts.googleapis.com/css?family=Abel|Carme|Hind+Guntur|Josefin+Sans|Josefin+Slab|Mandali|Meera+Inimai|News+Cycle|Oxygen|Raleway" rel="stylesheet"> 
-	<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC|Cantora+One|Carrois+Gothic+SC" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Nobile:700" rel="stylesheet">
-<!-- webfonts -->
 
 </head>
 	<body> 
@@ -47,7 +40,7 @@
           					{
           					$("#progressBar"+f.idorder).css({display:'none'});
           					$("#info"+f.idorder).css({display:'none'});
-          					var tblRow = "<div id="+ rep + "><div style='font-family: 'Cantora One', sans-serif;font-size:40px;text-align:center;color:#cf3721;'>:(</div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;}'>"+" Looks like the restaurant cancelled your order. Sorry for the inconvenience." +"</div></div>";
+          					var tblRow = "<div id="+ rep + "><div style='font-size:40px;text-align:center;color:#cf3721;'>:(</div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;}'>"+" Looks like the restaurant cancelled your order. Sorry for the inconvenience." +"</div></div>";
           					
           					}
           				else if(f.orderState=="PREPARING")
@@ -59,24 +52,24 @@
               				{
               				$("#progressBar"+f.idorder).css({display:'none'});
           					$("#info"+f.idorder).css({display:'none'});
-          					var tblRow = "<div id="+ rep + "><div style='font-family: 'Cantora One', sans-serif;font-size:40px;text-align:center;color:#4fb66d;'>:)</div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;'>"+ " Your order is complete." +"</div></div>";
+          					var tblRow = "<div id="+ rep + "><div style='font-size:40px;text-align:center;color:#4fb66d;'>:)</div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;'>"+ " Your order is complete." +"</div></div>";
           					
               				}
               			else if(f.orderState=="DEFAULTER_CALL")
 	          				{
 	          				$("#progressBar"+f.idorder).css({display:'none'});
 	      					$("#info"+f.idorder).css({display:'none'});
-	      					var tblRow = "<div id="+ rep + "><div><img src='images/defaulter.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;'>"+ "our last order was not picked up by you. We need to verify your current order before it gets accepted. You will be receiving a call from the restaurant shortly." +"</div></div>";
+	      					var tblRow = "<div id="+ rep + "><div><img src='images/defaulter.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;'>"+ "Your last order was not picked up by you. We need to verify your current order before it gets accepted. You will be receiving a call from the restaurant shortly." +"</div></div>";
 	      					
 	          				}
                   		else if(f.orderState=="READY_FOR_PICKUP")
                   			{
-                      		var tblRow = "<div id="+ rep + "><div><img src='images/chef.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='margin-top:1%;text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your food is ready for pick-up and awaits you!" +"</div></div>";
+                      		var tblRow = "<div id="+ rep + "><div><img src='images/ready.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='margin-top:1%;text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your food is ready for pick-up and awaits you!" +"</div></div>";
                       		$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
                   			}
                       	else if(f.orderState=="UNPICKED")
                       		{
-                          	var tblRow = "<div id="+ rep + "><div style='font-family: 'Cantora One', sans-serif;font-size:40px;text-align:center;color:#cf3721;'>:/</div><div  style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "UNPICKED" +"</div></div>";
+                          	var tblRow = "<div id="+ rep + "><div style='font-size:40px;text-align:center;color:#cf3721;'>:/</div><div  style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "UNPICKED" +"</div></div>";
                           	$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
                       		}
                          else if(f.orderState=="OK_ORDER")
@@ -139,7 +132,7 @@
 			
 <div class="spacing">
 </div>
-<div id="emptyYourOrderPopup" style="font-family: 'Raleway', sans-serif;display:none;text-align:center;z-index:90;position:fixed;width:90%;top:50%;margin-top:-110px;font-size:20px;height:220px;margin-left:5%;margin-right:5%;border-radius:3px;box-shadow:0px 0px  6px #888888; background:#c22929;color:#ffffff;padding-top:4%;opacity:0.8;">
+<div id="emptyYourOrderPopup" style="font-family: 'Raleway', sans-serif;display:none;text-align:center;z-index:90;position:fixed;width:90%;top:50%;margin-top:-110px;font-size:20px;height:220px;margin-left:5%;margin-right:5%;border-radius:3px;box-shadow:0px 0px  6px #888888; background:#c22929;color:#ffffff;padding-top:4%;opacity:0.7;">
 	<div>
 		<img src="images/dish-cover.png" alt=" " style="height:80px;"/>
 	</div>
@@ -152,7 +145,7 @@
 		<div style="margin-left:-2%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 0px solid transparent; border-right: 20px solid transparent; border-top: 30px solid #d15644;"></div>
 		<div style="margin-top:-27px" >
 		<div style="color:white;width:48%;display:inline-block;font-size:15px;"><b>Order No: #<s:property value="customerOrderId"/></b></div>
-		<div style="width:50%;display:inline-block;text-align:right;color:#7d7b79;font-size:14px;font-family: 'Roboto', sans-serif;"><s:property value="orderTime"/></div>
+		<div style="width:50%;display:inline-block;text-align:right;color:#7d7b79;font-size:14px;font-family: 'Roboto', sans-serif;"><s:property value="orderTime.getTime();"/></div>
 		
 		<div style="width:100%;display:inline-block;">
 			<div id="replaceStatus<s:property value="idorder"/>" style="text-align:center;">
