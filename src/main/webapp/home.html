@@ -14,7 +14,9 @@
 
 <a id="returnBackTo" style="z-index:12;" ui-sref="restaurant"><i><img src="images/rere.png" alt=" " style="height:24px;"/ ></i></a>
 
-<div id="instantCheckPopUp" style="z-index:999999;padding-top:3%;">Go to cart and remove</div>
+<div id="instantCheckPopUp" style="z-index:999999;padding-top:3%;">Remove this item from cart</div>
+
+<div id="instantCheckPopUp2" style="z-index:999999;padding-top:3%;">Your cart is empty. Please add something and then proceed to checkout</div>
 
 <div ng-init="event.checkMenuWithCart();">
 <div style="padding-top:20px;">
@@ -63,8 +65,8 @@
 												</div>
 											</div> -->
 											<div style="height:26px;float:right;text-align:right;">
-												<div style="float:left; height:24px; width:24px; border-radius:12px 12px 12px 12px; background:#e64539; " ng-click="event.decreaseItemCount(fooditem);event.removeCheckList($index,cat.name,fooditem);">
-													<div style="margin-top:2px;margin-left:2px;height:20px; width:20px; border-radius:10px 10px 10px 10px; background:rgba(253, 246, 246, 1);">
+												<div style="float:left; height:22px; width:22px; border-radius:11px 11px 11px 11px; background:#e64539; " ng-click="event.decreaseItemCount(fooditem);event.removeCheckList($index,cat.name,fooditem);">
+													<div style="margin-top:1px;margin-left:1px;height:20px; width:20px; border-radius:10px 10px 10px 10px; background:rgba(253, 246, 246, 1);">
 														<div style="width:12px; height:2px;position:relative;top:45%;left:50%;margin-left:-6px;background:#e64539;">
 															
 														</div>
@@ -74,8 +76,8 @@
 													</div> -->
 												</div>
 											 	<div style="float:left">&emsp;{{fooditem.quantity-1}}&emsp;</div>
-												<div style="float:left; height:24px; width:24px; border-radius:12px 12px 12px 12px; background:#4fb66d;" ng-click="fooditem.quantity=fooditem.quantity+1;event.addCheckList($index,cat.name,fooditem);">
-													<div style="margin-top:2px;margin-left:2px;height:20px; width:20px; border-radius:10px 10px 10px 10px; background:rgba(253, 246, 246, 1);">
+												<div style="float:left; height:22px; width:22px; border-radius:11px 11px 11px 11px; background:#4fb66d;" ng-click="fooditem.quantity=fooditem.quantity+1;event.addCheckList($index,cat.name,fooditem);">
+													<div style="margin-top:1px;margin-left:1px;height:20px; width:20px; border-radius:10px 10px 10px 10px; background:rgba(253, 246, 246, 1);">
 														<div style="width:12px; height:2px;position:relative;top:45%;left:50%;margin-left:-6px;background:#4fb66d;">
 															
 														</div>
@@ -99,14 +101,16 @@
 											</p>
 										</div>
 										
-										<div style="margin-left:18px;">
+										<div style="margin-left:18px;width:85%;">
 											<i style="font-size:12px; font-family: 'Raleway', sans-serif;" ng-show="fooditem.shortDesc.length();">
 												"{{fooditem.shortDesc}}"
 											</i>
 										</div>
 										<div style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;">
-												<div style="margin-top:-20px;width:20px; height:20px;font-size:12px;border:1px solid #67baca; border-radius: 3px 3px 3px 3px; text-align:center; color:#67baca;">
-													
+												<div style="padding-top:4px;margin-top:-20px;width:20px; height:20px;font-size:12px;border:none; border-radius: 3px 3px 3px 3px; text-align:center; color:#67baca;">
+													<div style="padding-top:3%;">
+														<img src="images/downdown.png" alt=" " style="height:7px;margin-top:5px;"/>
+													</div>
 												</div>
 										</div>
 										

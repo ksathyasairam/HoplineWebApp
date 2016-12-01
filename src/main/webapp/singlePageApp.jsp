@@ -233,14 +233,13 @@
 	  {
 	  val.quantity= val.quantity-1;
 	  $("#checkcartNotify").css({display:'block'});
-	  $("#checkcartNotify").animate({opacity:0}, 1000, function() {
+	  $("#checkcartNotify").animate({opacity:0}, 1500, function() {
 		  $("#checkcartNotify").css({display:'none'});
 		  $("#checkcartNotify").css({opacity:1});
 	  });
 
 	  }
-	  else if(val.quantity==1)
-	  val.isExpanded=!val.isExpanded;
+
 
 	  };
 
@@ -311,7 +310,7 @@
 	    value.addOns[i].selected=false;
 	  }
 	  $("#checkcartNotify").css({display:'block'});
-	  $("#checkcartNotify").animate({opacity:0}, 1000, function() {
+	  $("#checkcartNotify").animate({opacity:0}, 1500, function() {
 	  $("#checkcartNotify").css({display:'none'});
 	  $("#checkcartNotify").css({opacity:1});
 	  });
@@ -456,6 +455,7 @@
 		$( "ul.nav1" ).slideUp( 500, function() {
 			 // Animation complete.
 			  });
+		$("#instantCheckPopUp2").css({display:'none'});
 	};
 	
 	this.instantCheckPopUp=function(){
@@ -466,6 +466,11 @@
 	};
 
 	this.post1=function() {
+		if(this.checkList.length==0)
+			{
+			$("#instantCheckPopUp2").css({display:'block'});
+			}
+		else{
 	  var path="/orderSummaryOnLoad";
 	    method = "post"; 
 
@@ -524,6 +529,7 @@
 	}
 	    document.body.appendChild(form);
 	    form.submit();
+		}
 	};
 
 	

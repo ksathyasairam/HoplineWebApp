@@ -23,7 +23,7 @@
 				<div class=" header-right">
 					<h6 style="text-align:center;">Your Cart</h6>
 					<ul class="address">
-						 <li ng-repeat="food in event.checkList" id="cartItem-{{$index}}" style="border-bottom: 1.5px dotted #AFAFAF;margin-top:5%;padding-bottom:2%;">
+						 <li ng-repeat="food in event.checkList" id="cartItem-{{$index}}" style="border-bottom: 1.5px dotted #AFAFAF;margin-top:5%;padding-bottom:1%;">
 						 	<div style="float:left;opacity:0.8; margin-top:6px;" ng-show="food.vegYn=='Y'" >
 											<div style="width:12px; height:12px;border:1px solid #4fb66d; border-radius: 1px 1px 1px 1px; text-align:center;">
 												<div style="position:relative; left:50%; margin-left:-3px;top:50%; margin-top:-3px; width:6px; height:6px; border-radius: 6px 6px 6px 6px; background:#4fb66d;">
@@ -63,30 +63,27 @@
 													</div>
 												</div>
 											</div>
-							<div style="clear:both;width:100%;padding-top:5px;">
-							 	<div style="width:40%;float:left;">			 		
+							<div style="clear:both;width:100%;">
+							 	<div ng-repeat="addons in food.addOns | filter:{ selected: true }" style="font-size: 12px;">
+							 		<div style="color:#525a54;float:left;">
+							 			+ {{addons.name}}
+							 		</div>
+							 		
+							 		<br>
+							 	</div>
+						 	</div>	
+							<div style="clear:both;width:100%;">
+							 	<div style="width:40%;float:left">			 		
 								 	<div style="width:54px; height:20px; border-radius:3px;border:1px solid #cf3721;line-height:normal; margin-right:6px; text-align:center; color:#cf3721; font-size:12px; margin-top:6px;" id="remove-{{$index}}" ng-click="event.removeCartItem($index);">
 								 			
 								 		Cancel
 								 			
 								 	</div>
 							 	</div>
-							 	<div style="font-size:14px;padding-top:11px;width:40%;float:right;text-align:right;">
+							 	<div style="font-size:14px;text-align:right;padding-top:9px;">
 							 		&#8377 {{food.quantity*food.price}}
 							 	</div>	
-						 	</div>
-					
-						 	<div style="width:50%;display:inline-block;">
-							 	<div ng-repeat="addons in food.addOns | filter:{ selected: true }" style="font-size: 13px;padding-left:11%;">
-							 		<div style="color:#525a54;float:left;">
-							 			{{addons.name}}
-							 		</div>
-							 		
-							 		<br>
-							 	</div>
-						 	</div>
-						 	
-						 	
+						 	</div>						 	
 						 </li>						 
 						 <br>
 						 <div>
