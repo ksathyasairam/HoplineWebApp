@@ -77,6 +77,16 @@
                              var tblRow = "<div id="+ rep + "><div><img src='images/okorder.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order has been successfully accepted.The chef will start preparing soon." +"</div></div>"; 	
                              $("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
                         	 }
+                         else if(f.orderState=="BIG_ORDER_CALL")
+	               			{
+	                   		var tblRow = "<div id="+ rep + "><div><img src='images/bigorder.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='margin-top:1%;text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order is more than Rs.1000 so blah blah blah blah blah blah blah blah" +"</div></div>";
+	                   		$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
+	               			}
+                         else if(f.orderState=="BIG_ORDER_PAY")
+	               			{
+	                   		var tblRow = "<div id="+ rep + "><div><img src='images/bigorder.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='margin-top:1%;text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order is more than Rs.500 so blah blah blah blah blah blah blah blah" +"</div></div>";
+	                   		$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
+	               			}
           				$( "#replaceStatus"+f.idorder ).replaceWith( tblRow );
           				console.log(f.idorder);
           				console.log(f.orderState);
@@ -149,7 +159,9 @@
 		
 		<div style="width:100%;display:inline-block;">
 			<div id="replaceStatus<s:property value="idorder"/>" style="text-align:center;">
-				
+				<div style="padding-top:2%;">
+					<img src='images/11.gif' alt=' ' style='' / >
+				</div>
 			</div>
 		</div>
 		<div style="width:100%;padding-top:3%;display:inline-block;padding-bottom:3%;">
