@@ -10,7 +10,7 @@
 
 <a id="checkcart" style="z-index:11;" ui-sref="cart" ><i><img src="images/cartfinal.png" alt=" "  style="height:56px;"/ ></i></a>
 
-<a id="totalorder" style="z-index:3; " ><div style="float:left;"><b>Qty:{{event.totalQuantity}}</b></div><div style="float:right;"><b>₹ {{event.totalCost}}.00</b></div></a>
+<a id="totalorder" style="z-index:3; " ><div id="qty" style="float:left;"><b>Qty:{{event.totalQuantity}}</b></div><div style="float:right;"><b>₹ {{event.totalCost}}.00</b></div></a>
 
 <a id="returnBackTo" style="z-index:12;" ui-sref="restaurant"><i><img src="images/rere.png" alt=" " style="height:24px;"/ ></i></a>
 
@@ -65,7 +65,7 @@
 												</div>
 											</div> -->
 											<div style="height:26px;float:right;text-align:right;">
-												<div style="float:left; height:22px; width:22px; border-radius:11px 11px 11px 11px; background:#e64539; " ng-click="event.decreaseItemCount(fooditem);event.removeCheckList($index,cat.name,fooditem);">
+												<div style="float:left; height:22px; width:22px; border-radius:11px 11px 11px 11px; background:#e64539; " ng-click="event.removeCheckList($index,cat.name,fooditem);">
 													<div style="margin-top:1px;margin-left:1px;height:20px; width:20px; border-radius:10px 10px 10px 10px; background:rgba(253, 246, 246, 1);">
 														<div style="width:12px; height:2px;position:relative;top:45%;left:50%;margin-left:-6px;background:#e64539;">
 															
@@ -106,10 +106,17 @@
 												"{{fooditem.shortDesc}}"
 											</i>
 										</div>
-										<div style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;">
+										<div style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;" ng-show="fooditem.isExpanded==false">
 												<div style="padding-top:4px;margin-top:-20px;width:20px; height:20px;font-size:12px;border:none; border-radius: 3px 3px 3px 3px; text-align:center; color:#67baca;">
 													<div style="padding-top:3%;">
-														<img src="images/downdown.png" alt=" " style="height:7px;margin-top:5px;"/>
+														<img src="images/downdown.png" alt=" " style="height:7px;margin-top:5px;"/>														
+													</div>
+												</div>
+										</div>
+										<div style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;" ng-show="fooditem.isExpanded==true">
+												<div style="padding-top:4px;margin-top:-20px;width:20px; height:20px;font-size:12px;border:none; border-radius: 3px 3px 3px 3px; text-align:center; color:#67baca;">
+													<div style="padding-top:3%;">
+														<img src="images/upup.png" alt=" " style="height:7px;margin-top:5px;"/>
 													</div>
 												</div>
 										</div>

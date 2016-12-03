@@ -237,6 +237,11 @@
 		  $("#checkcartNotify").css({display:'none'});
 		  $("#checkcartNotify").css({opacity:1});
 	  });
+	  $("#qty").css({color:"#4fb66d"});
+	  $("#qty").css({'font-size':"15px"});		  
+	  $("#qty").animate({'font-size':"12px"}, 400, function() {
+	  	$("#qty").css({'color':"#ffffff"});
+	  });
 
 	  }
 
@@ -313,6 +318,11 @@
 	  $("#checkcartNotify").animate({opacity:0}, 1500, function() {
 	  $("#checkcartNotify").css({display:'none'});
 	  $("#checkcartNotify").css({opacity:1});
+	  });	  
+	  $("#qty").css({color:"#4fb66d"});
+	  $("#qty").css({'font-size':"15px"});		  
+	  $("#qty").animate({'font-size':"12px"}, 400, function() {
+	  	$("#qty").css({'color':"#ffffff"});
 	  });
 	  //$('.addedtoast').animate({top: '85'},1000);
 	  //$('.addedtoast').fadeOut(1500);
@@ -344,6 +354,7 @@
 	  else if(abc==1){
 		  if(check[ind].quantity>1){
 			  check[ind].quantity=check[ind].quantity-1;
+			  this.decreaseItemCount(value);
 		  }
 		  else if(check[ind].quantity==1){
 			  check.splice(ind, 1); 

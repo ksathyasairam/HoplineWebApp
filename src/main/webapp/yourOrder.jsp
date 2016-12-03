@@ -74,7 +74,7 @@
                       		}
                          else if(f.orderState=="OK_ORDER")
                         	 {
-                             var tblRow = "<div id="+ rep + "><div><img src='images/defaulter.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order has been successfully accepted.The chef will start preparing soon." +"</div></div>"; 	
+                             var tblRow = "<div id="+ rep + "><div><img src='images/okorder.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order has been successfully accepted.The chef will start preparing soon." +"</div></div>"; 	
                              $("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
                         	 }
           				$( "#replaceStatus"+f.idorder ).replaceWith( tblRow );
