@@ -10,7 +10,7 @@
 
 <a id="checkcart" style="z-index:11;" ui-sref="cart" ><i><img src="images/cartfinal.png" alt=" "  style="height:56px;"/ ></i></a>
 
-<a id="totalorder" style="z-index:3; " ><div id="qty" style="float:left;"><b>Qty:{{event.totalQuantity}}</b></div><div style="float:right;"><b>₹ {{event.totalCost}}.00</b></div></a>
+<a id="totalorder" style="z-index:3; " ><div id="qty" style="float:left;"><b>Qty:{{event.totalQuantity}}</b></div><div id="cost" style="float:right;"><b>₹ {{event.totalCost}}.00</b></div></a>
 
 <a id="returnBackTo" style="z-index:12;" ui-sref="restaurant"><i><img src="images/rere.png" alt=" " style="height:24px;"/ ></i></a>
 
@@ -106,7 +106,7 @@
 												"{{fooditem.shortDesc}}"
 											</i>
 										</div>
-										<div style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;" ng-show="fooditem.isExpanded==false">
+										<div style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;" ng-show="fooditem.isExpanded==false && fooditem.addOns.length>0">
 												<div style="padding-top:4px;margin-top:-20px;width:20px; height:20px;font-size:12px;border:none; border-radius: 3px 3px 3px 3px; text-align:center; color:#67baca;">
 													<div style="padding-top:3%;">
 														<img src="images/downdown.png" alt=" " style="height:7px;margin-top:5px;"/>														

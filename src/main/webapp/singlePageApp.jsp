@@ -229,19 +229,21 @@
 	    };
 	 this.decreaseItemCount = function(val) {
 
-	  if(val.quantity>1)
+	  if(val.quantity>=1)
 	  {
 	  val.quantity= val.quantity-1;
-	  $("#checkcartNotify").css({display:'block'});
-	  $("#checkcartNotify").animate({opacity:0}, 1500, function() {
-		  $("#checkcartNotify").css({display:'none'});
-		  $("#checkcartNotify").css({opacity:1});
-	  });
-	  $("#qty").css({color:"#4fb66d"});
+	  //$("#checkcartNotify").css({display:'block'});
+	  //$("#checkcartNotify").animate({opacity:0}, 1500, function() {
+		  //$("#checkcartNotify").css({display:'none'});
+		  //$("#checkcartNotify").css({opacity:1});
+	  //});
+	  //$("#qty").css({color:"#79d75f"});
 	  $("#qty").css({'font-size':"15px"});		  
-	  $("#qty").animate({'font-size':"12px"}, 400, function() {
+	  $("#qty").animate({'font-size':"12px"}, 1000, function() {
 	  	$("#qty").css({'color':"#ffffff"});
 	  });
+	  
+	  
 
 	  }
 
@@ -314,16 +316,19 @@
 	  for(var i=0;i<value.addOns.length;i++){
 	    value.addOns[i].selected=false;
 	  }
-	  $("#checkcartNotify").css({display:'block'});
-	  $("#checkcartNotify").animate({opacity:0}, 1500, function() {
-	  $("#checkcartNotify").css({display:'none'});
-	  $("#checkcartNotify").css({opacity:1});
-	  });	  
-	  $("#qty").css({color:"#4fb66d"});
+	  //$("#checkcartNotify").css({display:'block'});
+	  //$("#checkcartNotify").animate({opacity:0}, 1500, function() {
+	  //$("#checkcartNotify").css({display:'none'});
+	  //$("#checkcartNotify").css({opacity:1});
+	  //});	  
+	 // $("#qty").css({color:"#79d75f"});
 	  $("#qty").css({'font-size':"15px"});		  
-	  $("#qty").animate({'font-size':"12px"}, 400, function() {
+	  $("#qty").animate({'font-size':"12px"}, 1000, function() {
 	  	$("#qty").css({'color':"#ffffff"});
 	  });
+	  
+	  
+	  
 	  //$('.addedtoast').animate({top: '85'},1000);
 	  //$('.addedtoast').fadeOut(1500);
 	  //$('.addedtoast').css({top: '4%'});
@@ -357,7 +362,8 @@
 			  this.decreaseItemCount(value);
 		  }
 		  else if(check[ind].quantity==1){
-			  check.splice(ind, 1); 
+			  check.splice(ind, 1);
+			  this.decreaseItemCount(value);
 		  }
 	  }
 	  localStorage.setItem('checkList', JSON.stringify(check));

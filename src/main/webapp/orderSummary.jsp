@@ -18,7 +18,7 @@
  <meta name="keywords" content="" />
 
 </head>
-	<body ng-app="mainApp" ng-controller="EventCtrl as event"> 
+	<body ng-app="mainApp" ng-controller="EventCtrl as event" style="background-image: url(../images/checks.png);min-height:100vh;> 
 
 	<a id="return-to-top" style="z-index:11; "><i><img src="images/up.png" alt=" " / ></i></a>
 		

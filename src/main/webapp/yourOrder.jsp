@@ -18,7 +18,7 @@
  <meta name="keywords" content="" />
 
 </head>
-	<body> 
+	<body style="background-image: url(../images/checks.png);min-height:100vh;"> 
 
 		<script>
 
@@ -155,7 +155,7 @@
 		<div style="margin-left:-2%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 0px solid transparent; border-right: 20px solid transparent; border-top: 30px solid #d15644;"></div>
 		<div style="margin-top:-27px" >
 		<div style="color:white;width:48%;display:inline-block;font-size:15px;"><b>Order No: #<s:property value="customerOrderId"/></b></div>
-		<div style="width:50%;display:inline-block;text-align:right;color:#7d7b79;font-size:14px;font-family: 'Roboto', sans-serif;"><s:property value="orderTime.getTime();"/></div>
+		<div style="width:50%;display:inline-block;text-align:right;color:#7d7b79;font-size:14px;font-family: 'Roboto', sans-serif;"><s:property value="orderTime;"/></div>
 		
 		<div style="width:100%;display:inline-block;">
 			<div id="replaceStatus<s:property value="idorder"/>" style="text-align:center;">
@@ -172,7 +172,7 @@
 			</div>
 		</div>
 		<div id="info<s:property value="idorder"/>"  style="padding-top:2%;font-size:14px;z-index:99999;font-family: 'Roboto', sans-serif;color:#7d7b79;">
-			<div style="width:60%;float:left;>">Estimated time : <s:property value="orderCompleteTime"/></div>
+			<div style="width:60%;float:left;>">Estimated time : <s:property value="orderCompleteTime"/> min</div>
 			<div style="z-index:99999;width:30%;;text-align:right;float:right;color:white;">&#8377 <s:property value="totalPrice"/></div>
 		</div>
 		<!-- Order complete time : <s:property value="orderCompleteTime"/>

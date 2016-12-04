@@ -1,4 +1,4 @@
-<img  src="images/rubbish-bin.png" alt=" " style="position:fixed;right:0%;height:31px;  top:16px; float:right; margin-right:15px;z-index:999999;" ng-click="event.clearCart();" />
+<img  src="images/rubbish-bin.png" alt=" " style="position:fixed;right:0%;height:31px;  top:16px; float:right; margin-right:15px;z-index:999999;" ng-click="event.clearCart();" ng-show="event.checkList.length>0" />
 
 
 <div ng-show="event.checkList.length==0" class="bigBack"  ui-sref="home" >
