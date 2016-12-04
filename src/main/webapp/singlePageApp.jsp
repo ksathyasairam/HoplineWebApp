@@ -323,7 +323,7 @@
 	  //});	  
 	 // $("#qty").css({color:"#79d75f"});
 	  $("#qty").css({'font-size':"15px"});		  
-	  $("#qty").animate({'font-size':"12px"}, 1000, function() {
+	  $("#qty").animate({'font-size':"12px"}, 800, function() {
 	  	$("#qty").css({'color':"#ffffff"});
 	  });
 	  

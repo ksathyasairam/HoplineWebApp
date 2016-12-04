@@ -106,27 +106,37 @@
 <div class="spacing">
 </div>
 <div id="sideSpacing">
-	<div style="position:fixed;bottom:8%;">
-		<div style="text-align:center;margin-left:1%;margin-top:7px; margin-right:1%; padding-left:2%;padding-right:2%;padding-top:2%;padding-bottom:6%; box-shadow:0px 0px  6px #888888; background:#c22929;opacity:0.7; width:98%;color:#ffffff;border-radius:3px;">
-			<div style="float:left;">
-				<img src="images/spoon.png" alt=" " style="height:60px;margin-top"/>
-			</div>	
-		
-			<div style="float:right;">
-				<img src="images/fork1.png" alt=" " style="height:60px;"/>
-			</div>
-			<div >
-				Your order is more than Rs.500 so blah blah blah blah blah blah blah blah
+	
+	<div style="border-radius:3px;box-shadow:0px 0px  6px #888888; background:#ffffff;color:#6d6c6c;padding-top:4%;opacity:0.7;padding-bottom:7%;height:81vh;">
+		<div style="position:relative;margin-left:-50px;left:50%;margin-top:2%;height:100px;width:100px;border-radius:50px;box-shadow:0px 0px  0px #888888; background:none;color:#c22929;border:2px solid #c22929;">
+			<div style="position:relative;left:50%;top:50%;margin-left:-32px;margin-top:-26px;font-size:38px;vertical-align:middle;">
+				520
 			</div>
 		</div>
-		<div>
-			<img src="images/bg2.png" alt=" " style="height:95px;margin-top"/>
+		<div style="margin-left:2%;position:relative;margin-top:8%;height:50px;width:96%;box-shadow:0px 0px  0px #888888; background:none;color:#6d6c6c;border:2px solid #c22929; border-radius:4px">
+			<div style="position:relative;top:50%;margin-top:-14px;font-size:16px;vertical-align:middle;float:left;margin-left:2%;">
+				Qty:520<s:property value="order.customerOrderId"/>
+			</div>
+			<div style="position:relative;top:50%;margin-top:-14px;font-size:16px;vertical-align:middle;text-align:right;margin-right:2%;">
+				&#8377:1020
+			</div>
 		</div>
-	</div>
-	<div style="margin-left:1%;margin-top:1%; margin-right:1%; padding-left:2%;padding-right:2%;padding-top:1%;padding-bottom:1%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); clear:both; width:98%; border-radius:3px 3px 3px 3px;">
-		<div style=" width:100%; ">
-			<div style="font-size:16px;">Order No: #<s:property value="order.customerOrderId"/></div>
-			<p style="font-size:12px;">1 Jan 2016<br> 2:30 PM</p>
+		<div style="position:absolute;bottom:11%;">
+			<div style="text-align:center; margin-left:1%; padding-left:2%;padding-right:2%;padding-top:2%;padding-bottom:6%; box-shadow:0px 0px  0px #888888; background:#c22929;opacity:1; width:96%;height:80px;color:#ffffff;border-radius:3px;">
+				<div style="float:left;">
+					<img src="images/spoon.png" alt=" " style="height:60px;margin-top"/>
+				</div>	
+			
+				<div style="float:right;">
+					<img src="images/fork1.png" alt=" " style="height:60px;"/>
+				</div>
+				<div >
+					Your order is more than Rs.500 so blah blah blah blah blah blah blah blah
+				</div>
+			</div>
+			<div>
+				<img src="images/bg2.png" alt=" " style="height:95px;margin-top:1%;"/>
+			</div>
 		</div>
 	</div>
 </div>

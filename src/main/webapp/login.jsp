@@ -62,7 +62,7 @@
     	</div>
     	<div style="padding-bottom:5%;" >
       		<img src="images/mobile.png" style=" z-index:20; margin-left:-99%;height:31px;padding-top:3px;">
-      		<input id="userphone" name="user.phone" type="text" placeholder="Phone No." pattern="^\d{10}$"    style="float:left; width:100%; background:#d3d3d3; border:none ; padding-left: 25px; border-radius:  2px; height:35px;" required />
+      		<input id="userphone" name="user.phone" type="text" placeholder="Phone No." pattern="[0-9]{10}"  required     style="float:left; width:100%; background:#d3d3d3; border:none ; padding-left: 25px; border-radius:  2px; height:35px;" />
 			
     	</div>
     	<div >

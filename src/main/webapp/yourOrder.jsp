@@ -45,7 +45,7 @@
           					}
           				else if(f.orderState=="PREPARING")
           					{
-              				var tblRow = "<div id="+ rep + "><div><img src='images/chef.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "The chef is working their magic! Your food will be ready soon." +"</div></div>";
+              				var tblRow = "<div id="+ rep + "><div><img src='images/chef.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "The chefs are working their magic! Your food will be ready soon." +"</div></div>";
               				$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
           					}
               			else if(f.orderState=="COMPLETED")
@@ -59,7 +59,7 @@
 	          				{
 	          				$("#progressBar"+f.idorder).css({display:'none'});
 	      					$("#info"+f.idorder).css({display:'none'});
-	      					var tblRow = "<div id="+ rep + "><div><img src='images/defaulter.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;'>"+ "Your last order was not picked up by you. We need to verify your current order before it gets accepted. You will be receiving a call from the restaurant shortly." +"</div></div>";
+	      					var tblRow = "<div id="+ rep + "><div><img src='images/defaulter.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;'>"+ "Your last order was not picked up by you. You will recieve a call shortly, to verify your order" +"</div></div>";
 	      					
 	          				}
                   		else if(f.orderState=="READY_FOR_PICKUP")
@@ -69,12 +69,12 @@
                   			}
                       	else if(f.orderState=="UNPICKED")
                       		{
-                          	var tblRow = "<div id="+ rep + "><div style='font-size:40px;text-align:center;color:#cf3721;'>:/</div><div  style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "UNPICKED" +"</div></div>";
+                          	var tblRow = "<div id="+ rep + "><div><img src='images/unpicked.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div  style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "UNPICKED" +"</div></div>";
                           	$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
                       		}
                          else if(f.orderState=="OK_ORDER")
                         	 {
-                             var tblRow = "<div id="+ rep + "><div><img src='images/okorder.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order has been successfully accepted.The chef will start preparing soon." +"</div></div>"; 	
+                             var tblRow = "<div id="+ rep + "><div><img src='images/okorder2.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order has been successfully accepted.The chef will start preparing soon." +"</div></div>"; 	
                              $("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
                         	 }
                          else if(f.orderState=="BIG_ORDER_CALL")
@@ -155,7 +155,7 @@
 		<div style="margin-left:-2%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 0px solid transparent; border-right: 20px solid transparent; border-top: 30px solid #d15644;"></div>
 		<div style="margin-top:-27px" >
 		<div style="color:white;width:48%;display:inline-block;font-size:15px;"><b>Order No: #<s:property value="customerOrderId"/></b></div>
-		<div style="width:50%;display:inline-block;text-align:right;color:#7d7b79;font-size:14px;font-family: 'Roboto', sans-serif;"><s:property value="orderTime;"/></div>
+		<div style="width:50%;display:inline-block;text-align:right;color:#7d7b79;font-size:14px;font-family: 'Roboto', sans-serif;"><s:date name="orderTime" format="hh:mm a" /></div>
 		
 		<div style="width:100%;display:inline-block;">
 			<div id="replaceStatus<s:property value="idorder"/>" style="text-align:center;">
@@ -175,21 +175,15 @@
 			<div style="width:60%;float:left;>">Estimated time : <s:property value="orderCompleteTime"/> min</div>
 			<div style="z-index:99999;width:30%;;text-align:right;float:right;color:white;">&#8377 <s:property value="totalPrice"/></div>
 		</div>
-		<!-- Order complete time : <s:property value="orderCompleteTime"/>
-		Current progress : <s:property value="currentProgress"/>
-		Num unit in progress : <s:property value="numUnitInProgressBar"/> -->
 		<div style="float:right;margin-right:-2%;margin-top:-7%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 20px solid transparent; border-right: 0px solid transparent; border-bottom: 30px solid #388dad;color:white;font-size:14px;padding-left:10%;"><div style="margin-top:5px;">&#8377 <s:property value="totalPrice"/></div></div>
 		
 	</div>
-	<!-- <div id="replaceStatus<s:property value="idorder"/>" style="text-align:center;">
-				
-			</div> -->
 	</div>
 </div>
 
-<div id="show<s:property value="idorder"/>" class="banner-info" style="margin-left:1%;margin-right:1%; display:none"  >
+<div id="show<s:property value='idorder'/>" class="banner-info" style="margin-left:1%;margin-right:1%; display:none;">
 
-				<div class=" header-right">
+				<div class=" header-right" style=" border-radius:0px 0px 3px 3px; border-left:1px solid #888888;border-right:1px solid #888888;border-bottom:1px solid #888888;margin-top:-5%">
 
 					<ul class="address">
 						<s:iterator value="orderProducts">
@@ -233,7 +227,7 @@
 
 					</ul>
 				</div>
-				<div class="clearfix"> </div>
+				
 </div>
 <script>
 	$('#<s:property value="idorder"/>').click(function() {    
