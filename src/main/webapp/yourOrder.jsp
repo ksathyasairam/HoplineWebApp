@@ -40,7 +40,7 @@
           					{
           					$("#progressBar"+f.idorder).css({display:'none'});
           					$("#info"+f.idorder).css({display:'none'});
-          					var tblRow = "<div id="+ rep + "><div style='font-size:40px;text-align:center;color:#cf3721;'>:(</div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;}'>"+" Looks like the restaurant cancelled your order. Sorry for the inconvenience." +"</div></div>";
+          					var tblRow = "<div id="+ rep + "><div style='font-size:40px;text-align:center;color:#cf3721;'>:(</div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;}'>"+" Looks like the restaurant cancelled your order. Sorry for the inconvenience.</br>" + f.cancelReason + "</div></div>";
           					
           					}
           				else if(f.orderState=="PREPARING")
@@ -69,7 +69,7 @@
                   			}
                       	else if(f.orderState=="UNPICKED")
                       		{
-                          	var tblRow = "<div id="+ rep + "><div><img src='images/unpicked.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div  style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "UNPICKED" +"</div></div>";
+                          	var tblRow = "<div id="+ rep + "><div><img src='images/unpicked.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-38px;' / ></div><div  style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "UNPICKED" +"</div></div>";
                           	$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
                       		}
                          else if(f.orderState=="OK_ORDER")
