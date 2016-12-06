@@ -12,6 +12,7 @@ import com.hopline.WebApp.model.vo.UserVo;
 import com.hopline.WebApp.rest.framework.ConversionUtil;
 import com.hopline.WebApp.rest.framework.EncryptionUtil;
 import com.hopline.WebApp.rest.framework.IService;
+import com.hopline.WebApp.rest.framework.Util;
 import com.hopline.WebApp.translator.UserTranslator;
 
 public class SecurityService extends IService{
@@ -28,7 +29,7 @@ public class SecurityService extends IService{
 		User user = new User();
 		user.setIduser(userId);
 		securityToken.setUser(user);
-		securityToken.setCreateTs(new Date());
+		securityToken.setCreateTs(Util.getCurrentDateTimeIndia());
 		Integer id = securityDao.saveToken(securityToken);
 		securityToken.setIdSecurityToken(id);
 		
@@ -48,7 +49,7 @@ public class SecurityService extends IService{
 		str.append(userId).append("|");
 		long salt = RandomUtils.nextLong(1000000, 99999999);
 		str.append(salt).append("|");
-		Date now = new Date();
+		Date now = Util.getCurrentDateTimeIndia();
 		str.append(now.getTime()).append("|");
 
 		String token = ConversionUtil.truncateString(

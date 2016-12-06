@@ -48,7 +48,7 @@ public class OrderService extends IService {
 			setReturnPage(Constants.YOUR_ORDER);
 		}								
 
-		order.setOrderTime(new Date());
+		order.setOrderTime(Util.getCurrentDateTimeIndia());
 		order.setOrderCompleteTime(getOrderCompleteTime(order));
 		order.setOrdersInQueue(orderDao.getNumbeOrdersInQueue(order.getIdorder()));
 		orderDao.updateOrder(order);
@@ -106,7 +106,7 @@ public class OrderService extends IService {
 	}
 	
 	public Order createOrder(Order order) {
-		order.setOrderTime(new Date());
+		order.setOrderTime(Util.getCurrentDateTimeIndia());
 		order.setTotalItemCount(0);
 		order.setTotalPrice(BigDecimal.valueOf(0));
 		order.setOrdersInQueue(0);
@@ -167,7 +167,7 @@ public class OrderService extends IService {
 		OrderStatusLog orderStatusLog = new OrderStatusLog();
 		orderStatusLog.setOrderId(order.getIdorder());
 		orderStatusLog.setOrderStatus(order.getOrderState());
-		orderStatusLog.setTimestamp(new Date());
+		orderStatusLog.setTimestamp(Util.getCurrentDateTimeIndia());
 		return orderStatusLog;
 	}
 
