@@ -116,7 +116,7 @@
 		</b>
 	</a>	
 	<div style="color:white;position:fixed;right:0%;height:24px;  top:18px; float:right; margin-right:15px;z-index:999999;border:1px solid #ffffff;border-radius:3px;padding-left:2px;padding-right:2px;font-size:14px;">
-		Feedback
+		<a href="/feedback.jsp" style="color:white;">Feedback</a>
 	</div>
 
 				
