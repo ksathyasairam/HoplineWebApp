@@ -1,13 +1,15 @@
 package com.hopline.vendorServices.sevices;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import com.hopline.WebApp.constants.OrderStates;
 import com.hopline.WebApp.model.dao.OfflineOrderLog;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.Product;
+import com.hopline.WebApp.model.vo.OrderProductVo;
 import com.hopline.WebApp.model.vo.OrderVo;
 import com.hopline.WebApp.model.vo.UserVo;
 import com.hopline.WebApp.rest.framework.Constants;
@@ -48,7 +50,7 @@ public class VorderService extends IService {
 			order.setCancelReason(orderStatus.getCancelReason());
 		
 		if(orderStatus.isUpdateOrderTime())
-			order.setOrderTime(new Date());
+			order.setOrderTime(Util.getCurrentDateTimeIndia());
 
 		orderDao.updateOrder(order);
 		
@@ -75,13 +77,23 @@ public class VorderService extends IService {
 
 		if (orders != null) {
 			for (Order order : orders) {
-				orderVos.add(OrderTranslator.convert(order, OrderVo.class));
+				OrderVo vo = OrderTranslator.convert(order, OrderVo.class);
+				Collections.sort(vo.getOrderProducts(), new SortOrderProductByName());
+				orderVos.add(vo);
 			}
 		}
 
 		fetchOrder.setSuccess(true);
 		return fetchOrder;
 	}
+	
+	class SortOrderProductByName implements Comparator<OrderProductVo> {
+	    @Override
+	    public int compare(OrderProductVo a, OrderProductVo b) {
+	        return a.getProduct().getName().compareToIgnoreCase(b.getProduct().getName()); 
+	    }
+	}
+
 	
 	public FetchOrderTo retrieveOrderHistory(FetchOrderTo fetchOrder) {
 		List<Order> orders = orderDao.retrieveOrderHistory(fetchOrder.getShopId());
@@ -91,7 +103,9 @@ public class VorderService extends IService {
 
 		if (orders != null) {
 			for (Order order : orders) {
-				orderVos.add(OrderTranslator.convert(order, OrderVo.class));
+				OrderVo vo = OrderTranslator.convert(order, OrderVo.class);
+				Collections.sort(vo.getOrderProducts(), new SortOrderProductByName());
+				orderVos.add(vo);
 			}
 		}
 
@@ -131,7 +145,7 @@ public class VorderService extends IService {
 	public OfflineOrderLogTo createOfflineOrderLog(OfflineOrderLogTo offlineOrderLogTo) {
 		
 		OfflineOrderLog offlineOrderLog = new OfflineOrderLog();
-		offlineOrderLog.setInsertTime(new Date());
+		offlineOrderLog.setInsertTime(Util.getCurrentDateTimeIndia());
 		offlineOrderLog.setOrdersJson(offlineOrderLogTo.getOrdersJson());
 		
 		orderDao.saveOfflineOrderLog(offlineOrderLog);
