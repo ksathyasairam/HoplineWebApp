@@ -131,7 +131,7 @@
 					<img src="images/fork1.png" alt=" " style="height:60px;"/>
 				</div>
 				<div >
-					Your order is more than Rs.500 so blah blah blah blah blah blah blah blah
+					It seems your order amount exceeded Rs.1000,kindly pay this amount at the counter.
 				</div>
 			</div>
 			<div>

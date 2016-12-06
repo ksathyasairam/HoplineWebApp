@@ -40,7 +40,7 @@
           					{
           					$("#progressBar"+f.idorder).css({display:'none'});
           					$("#info"+f.idorder).css({display:'none'});
-          					var tblRow = "<div id="+ rep + "><div style='font-size:40px;text-align:center;color:#cf3721;'>:(</div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;}'>"+" Looks like the restaurant cancelled your order. Sorry for the inconvenience.</br>" + f.cancelReason + "</div></div>";
+          					var tblRow = "<div id="+ rep + "><div style='font-size:40px;text-align:center;color:#cf3721;'>:(</div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;}'>"+" Looks like the restaurant cancelled your order. Sorry for the inconvenience.</br><i>'" + f.cancelReason + "'</i></div></div>";
           					
           					}
           				else if(f.orderState=="PREPARING")
@@ -69,7 +69,7 @@
                   			}
                       	else if(f.orderState=="UNPICKED")
                       		{
-                          	var tblRow = "<div id="+ rep + "><div><img src='images/unpicked.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-38px;' / ></div><div  style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "UNPICKED" +"</div></div>";
+                          	var tblRow = "<div id="+ rep + "><div><img src='images/unpicked.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-38px;' / ></div><div  style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Looks like you forgot to pick your order" +"</div></div>";
                           	$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
                       		}
                          else if(f.orderState=="OK_ORDER")
@@ -77,14 +77,14 @@
                              var tblRow = "<div id="+ rep + "><div><img src='images/okorder2.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order has been successfully accepted.The chef will start preparing soon." +"</div></div>"; 	
                              $("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
                         	 }
-                         else if(f.orderState=="BIG_ORDER_CALL")
-	               			{
-	                   		var tblRow = "<div id="+ rep + "><div><img src='images/bigorder.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='margin-top:1%;text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order is more than Rs.1000 so blah blah blah blah blah blah blah blah" +"</div></div>";
-	                   		$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
-	               			}
                          else if(f.orderState=="BIG_ORDER_PAY")
 	               			{
-	                   		var tblRow = "<div id="+ rep + "><div><img src='images/bigorder.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='margin-top:1%;text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order is more than Rs.500 so blah blah blah blah blah blah blah blah" +"</div></div>";
+	                   		var tblRow = "<div id="+ rep + "><div><img src='images/bigorder.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='margin-top:1%;text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "It seems your order amount exceeded Rs.1000,kindly pay this amount at the counter." +"</div></div>";
+	                   		$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
+	               			}
+                         else if(f.orderState=="BIG_ORDER_CALL")
+	               			{
+	                   		var tblRow = "<div id="+ rep + "><div><img src='images/bigorder.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='margin-top:1%;text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Since your order has exceeded Rs 500, you will receive a call shortly to verify the order." +"</div></div>";
 	                   		$("#progress"+f.idorder).css({width:((f.currentProgress/f.numUnitInProgressBar)*100)+"%"});
 	               			}
           				$( "#replaceStatus"+f.idorder ).replaceWith( tblRow );
@@ -116,6 +116,10 @@
 		</b>
 	</a>
 	
+	<div style="color:white;position:fixed;right:0%;height:24px;  top:18px; float:right; margin-right:15px;z-index:999999;border:1px solid #ffffff;border-radius:3px;padding-left:2px;padding-right:2px;font-size:14px;">
+		Feedback
+	</div>
+
 				
 		<!-- container -->
 			<!-- header -->
