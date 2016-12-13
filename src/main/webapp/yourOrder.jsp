@@ -115,11 +115,14 @@
 			Item Added
 		</b>
 	</a>	
-	<div style="color:white;position:fixed;right:0%;height:24px;  top:18px; float:right; margin-right:15px;z-index:999999;border:1px solid #ffffff;border-radius:3px;padding-left:2px;padding-right:2px;font-size:14px;">
+	<div style="color:white;position:fixed;right:10%;height:24px;  top:18px; float:right; margin-right:15px;z-index:999999;border:1px solid #ffffff;border-radius:3px;padding-left:2px;padding-right:2px;font-size:14px;">
 		<a href="/feedback.jsp" style="color:white;">Feedback</a>
 	</div>
-
-				
+	<div style="color:white;position:fixed;right:0%;height:24px;  top:18px; float:right; margin-right:15px;z-index:999999;padding-left:2px;padding-right:2px;font-size:14px;">
+		<a href="tel:9958675060">
+			<img src="images/phone.png" style="height:22px;" alt=" " / >
+		</a>
+	</div>			
 		<!-- container -->
 			<!-- header -->
 			<div id="home" class="header" style="padding-bottom:50px;" >
@@ -175,7 +178,7 @@
 			</div>
 		</div>
 		<div id="info<s:property value="idorder"/>"  style="padding-top:2%;font-size:14px;z-index:99999;font-family: 'Roboto', sans-serif;color:#7d7b79;">
-			<div style="width:60%;float:left;>">Estimated time : <s:property value="orderCompleteTime"/> min</div>
+			<div style="width:60%;float:left;">Estimated time : <s:property value="orderCompleteTime"/> min</div>
 			<div style="z-index:99999;width:30%;;text-align:right;float:right;color:white;">&#8377 <s:property value="totalPrice"/></div>
 		</div>
 		<div style="float:right;margin-right:-2%;margin-top:-7%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 20px solid transparent; border-right: 0px solid transparent; border-bottom: 30px solid #388dad;color:white;font-size:14px;padding-left:10%;"><div style="margin-top:5px;">&#8377 <s:property value="totalPrice"/></div></div>

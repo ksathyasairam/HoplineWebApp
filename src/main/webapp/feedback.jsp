@@ -52,7 +52,7 @@
 </div>
 <div id="sideSpacing">
 	
-	<div style="border-radius:3px;box-shadow:0px 0px  6px #888888; background:#ffffff;color:#6d6c6c;padding-top:4%;opacity:0.7;padding-bottom:7%;height:85vh;">
+	<div style="border-radius:3px;box-shadow:0px 0px  6px #888888; background:#ffffff;color:#6d6c6c;padding-top:4%;opacity:0.7;padding-bottom:7%;height:95vh;">
 		<div style="text-align:center;color:#c22929;">
 			<b>How do you feel about the app?</b>
 		</div>
@@ -69,9 +69,16 @@
 		</div>
 		<div style="margin-left:2%;position:relative;margin-top:8%;height:50px;width:96%; background:none;color:#6d6c6c; ">
 			<label for="like" style="color:#c22929;">Share your ideas on how we can improve</label>
-			<textarea rows="4" cols="50" name="lik" style="text-align:left;border:1px solid #c22929;margin-top:-1%;width:100%"/>
+			<textarea rows="4" cols="50" name="lik" style="text-align:left;border:1px solid #c22929;margin-top:-1%;width:100%">
 			</textarea>
 		</div>
+		<div>
+			<div style="width:70px;background:#3e92d3;border-radius:3px;color:white;position:relative;margin-left:2%;margin-top:25%;text-align:center;padding:1%">
+				Submit
+			</div>
+		<div>
+			
+		
 		
 	</div>
 </div>
