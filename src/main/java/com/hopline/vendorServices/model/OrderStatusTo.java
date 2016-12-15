@@ -15,6 +15,8 @@ public class OrderStatusTo implements Serializable{
 	private String cancelReason;
 	private boolean updateOrderTime;
 	private boolean success;
+
+	private Integer orderCompletionTime;
 	
 	public Integer getOrderId() {
 		return orderId;
@@ -56,5 +58,13 @@ public class OrderStatusTo implements Serializable{
 
 	public void setUpdateOrderTime(boolean updateOrderTime) {
 		this.updateOrderTime = updateOrderTime;
+	}
+
+	public Integer getOrderCompletionTime() {
+		return orderCompletionTime;
+	}
+
+	public void setOrderCompletionTime(Integer orderCompletionTime) {
+		this.orderCompletionTime = orderCompletionTime;
 	}
 }

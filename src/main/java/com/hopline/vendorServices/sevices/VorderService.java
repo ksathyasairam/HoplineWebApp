@@ -51,6 +51,9 @@ public class VorderService extends IService {
 		
 		if(orderStatus.isUpdateOrderTime())
 			order.setOrderTime(Util.getCurrentDateTimeIndia());
+		
+		if (orderStatus.getOrderCompletionTime() != null)
+			order.setOrderCompleteTime(orderStatus.getOrderCompletionTime());
 
 		orderDao.updateOrder(order);
 		

@@ -49,7 +49,7 @@ public class OrderService extends IService {
 		}								
 
 		order.setOrderTime(Util.getCurrentDateTimeIndia());
-		order.setOrderCompleteTime(getOrderCompleteTime(order));
+		order.setOrderCompleteTime(null);
 		order.setOrdersInQueue(orderDao.getNumbeOrdersInQueue(order.getIdorder()));
 		orderDao.updateOrder(order);
 
@@ -110,7 +110,7 @@ public class OrderService extends IService {
 		order.setTotalItemCount(0);
 		order.setTotalPrice(BigDecimal.valueOf(0));
 		order.setOrdersInQueue(0);
-		order.setOrderCompleteTime(0);
+		order.setOrderCompleteTime(null);
 		Integer orderId = orderDao.saveOrder(order);
 		
 		for (OrderProduct op : order.getOrderProducts()) {
@@ -139,7 +139,7 @@ public class OrderService extends IService {
 		order.setCustomerOrderId(orderId % 1000);
 
 		order.setOrdersInQueue(orderDao.getNumbeOrdersInQueue(order.getIdorder()));
-		order.setOrderCompleteTime(getOrderCompleteTime(order));
+		order.setOrderCompleteTime(null);
 		
 		populateItemCountAndPrice(order);
 		orderDao.updateOrder(order);
