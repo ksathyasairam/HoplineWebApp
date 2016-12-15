@@ -57,7 +57,7 @@
     	</div>
     	<div  style="padding-bottom:5%;">
       		<img src="images/user.png" style=" z-index:20; margin-left:-99%;height:31px;padding-top:3px;">
-      		<input name="user.name"  type="text" placeholder="Username" style="float:left;width:100%; background: #d3d3d3; border:none ; padding-left:25px; border-radius:  2px; height:35px;" required/>
+      		<input name="user.name"  type="text" placeholder="Your Name" style="float:left;width:100%; background: #d3d3d3; border:none ; padding-left:25px; border-radius:  2px; height:35px;" required/>
 
     	</div>
     	<div style="padding-bottom:5%;" >

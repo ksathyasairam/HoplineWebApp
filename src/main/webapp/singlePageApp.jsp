@@ -467,6 +467,15 @@
 	};
 	
 	
+	this.addOnsPrice=function(checkListItem){
+		var count=0;
+		for(var i=0;i<checkListItem.addOns.length;i++){
+			if(checkListItem.addOns[i].selected==true)
+				count=count+checkListItem.addOns[i].price;
+		}
+		checkListItem.price=checkListItem.price + count;
+	}
+	
 	this.hide=function(){
 		
 		$( "ul.nav1" ).slideUp( 500, function() {

@@ -23,7 +23,7 @@
 				<div class=" header-right">
 					<h6 style="text-align:center;">Your Cart</h6>
 					<ul class="address">
-						 <li ng-repeat="food in event.checkList" id="cartItem-{{$index}}" style="border-bottom: 1.5px dotted #AFAFAF;margin-top:5%;padding-bottom:1%;">
+						 <li ng-repeat="food in event.checkList" id="cartItem-{{$index}}" style="border-bottom: 1.5px dotted #AFAFAF;margin-top:5%;padding-bottom:1%;" ng-init="event.addOnsPrice(food)">
 						 	<div style="float:left;opacity:0.8; margin-top:6px;" ng-show="food.vegYn=='Y'" >
 											<div style="width:12px; height:12px;border:1px solid #4fb66d; border-radius: 1px 1px 1px 1px; text-align:center;">
 												<div style="position:relative; left:50%; margin-left:-3px;top:50%; margin-top:-3px; width:6px; height:6px; border-radius: 6px 6px 6px 6px; background:#4fb66d;">
