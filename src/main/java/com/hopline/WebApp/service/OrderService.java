@@ -117,6 +117,7 @@ public class OrderService extends IService {
 			Order tmpOrder = new Order();
 			tmpOrder.setIdorder(orderId);
 			op.setOrder(tmpOrder);
+			op.setPreparedYN("N");
 			Integer opId = orderDao.saveOrderProduct(op);
 		
 			

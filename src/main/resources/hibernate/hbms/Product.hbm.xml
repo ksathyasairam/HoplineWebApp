@@ -3,50 +3,58 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 6 Oct, 2016 1:14:12 AM by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
-    <class name="com.hopline.WebApp.model.dao.Product" table="product" catalog="hopline" optimistic-lock="version">
-        <id name="productId" type="java.lang.Integer">
-            <column name="productId" />
-            <generator class="identity" />
-        </id>
-        <property name="name" type="string">
-            <column name="name" length="400" not-null="true" />
-        </property>
-        <property name="shortDesc" type="string">
-            <column name="shortDesc" length="1000" />
-        </property>
-        <property name="longDesc" type="string">
-            <column name="longDesc" length="2000" />
-        </property>
-        <property name="price" type="big_decimal">
-            <column name="price" precision="10" scale="3" not-null="true" />
-        </property>
-        <property name="vegYn" type="string">
-            <column name="vegYN" length="45" not-null="true" />
-        </property>
-        <property name="stockYn" type="string">
-            <column name="stockYN" length="45" not-null="true" />
-        </property>
-        <set name="addOns" table="productAddon" inverse="false" lazy="true" fetch="select">
-            <key>
-                <column name="productId" not-null="true" />
-            </key>
-            <many-to-many entity-name="com.hopline.WebApp.model.dao.AddOn">
-                <column name="addonId" not-null="true" />
-            </many-to-many>
-        </set>
-        <set name="orderProducts" table="orderProduct" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="productId" not-null="true" />
-            </key>
-            <one-to-many class="com.hopline.WebApp.model.dao.OrderProduct" />
-        </set>
-        <set name="categories" table="categoryProduct" inverse="false" lazy="true" fetch="select">
-            <key>
-                <column name="productId" not-null="true" />
-            </key>
-            <many-to-many entity-name="com.hopline.WebApp.model.dao.Category">
-                <column name="categoryId" not-null="true" />
-            </many-to-many>
-        </set>
-    </class>
+	<class name="com.hopline.WebApp.model.dao.Product" table="product"
+		catalog="hopline" optimistic-lock="version">
+		<id name="productId" type="java.lang.Integer">
+			<column name="productId" />
+			<generator class="identity" />
+		</id>
+		<property name="name" type="string">
+			<column name="name" length="400" not-null="true" />
+		</property>
+		<property name="shortDesc" type="string">
+			<column name="shortDesc" length="1000" />
+		</property>
+		<property name="longDesc" type="string">
+			<column name="longDesc" length="2000" />
+		</property>
+		<property name="price" type="big_decimal">
+			<column name="price" precision="10" scale="3" not-null="true" />
+		</property>
+		<property name="vegYn" type="string">
+			<column name="vegYN" length="45" not-null="true" />
+		</property>
+		<property name="stockYn" type="string">
+			<column name="stockYN" length="45" not-null="true" />
+		</property>
+		<property name="singleAddonYN" type="string">
+			<column name="singleAddonYN" length="45" />
+		</property>
+
+		<set name="addOns" table="productAddon" inverse="false" lazy="true"
+			fetch="select">
+			<key>
+				<column name="productId" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.hopline.WebApp.model.dao.AddOn">
+				<column name="addonId" not-null="true" />
+			</many-to-many>
+		</set>
+		<set name="orderProducts" table="orderProduct" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="productId" not-null="true" />
+			</key>
+			<one-to-many class="com.hopline.WebApp.model.dao.OrderProduct" />
+		</set>
+		<set name="categories" table="categoryProduct" inverse="false"
+			lazy="true" fetch="select">
+			<key>
+				<column name="productId" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.hopline.WebApp.model.dao.Category">
+				<column name="categoryId" not-null="true" />
+			</many-to-many>
+		</set>
+	</class>
 </hibernate-mapping>

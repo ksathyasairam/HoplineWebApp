@@ -1,5 +1,9 @@
 package com.hopline.WebApp.endpoint.model;
 
+import java.util.List;
+
+import com.hopline.WebApp.model.vo.OrderProductVo;
+
 public class OrderStatus {
 	
 	private Integer idorder;
@@ -7,6 +11,8 @@ public class OrderStatus {
 	private String cancelReason;
 	private Integer numUnitInProgressBar;
 	private Integer currentProgress;
+	
+	private List<OrderProductVo> products;
 	
 	public Integer getIdorder() {
 		return idorder;
@@ -37,6 +43,12 @@ public class OrderStatus {
 	}
 	public void setCurrentProgress(Integer currentProgress) {
 		this.currentProgress = currentProgress;
+	}
+	public List<OrderProductVo> getProducts() {
+		return products;
+	}
+	public void setProducts(List<OrderProductVo> products) {
+		this.products = products;
 	}
 
 

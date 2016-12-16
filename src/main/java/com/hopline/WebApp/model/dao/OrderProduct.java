@@ -13,6 +13,7 @@ public class OrderProduct implements java.io.Serializable {
 	private Order order;
 	private Product product;
 	private int count;
+	private String preparedYN;
 	private Set<OrderProductAddon> orderProductAddons = new HashSet<OrderProductAddon>(0);
 	public Integer getIdorderProduct() {
 		return idorderProduct;
@@ -43,6 +44,12 @@ public class OrderProduct implements java.io.Serializable {
 	}
 	public void setOrderProductAddons(Set<OrderProductAddon> orderProductAddons) {
 		this.orderProductAddons = orderProductAddons;
+	}
+	public String getPreparedYN() {
+		return preparedYN;
+	}
+	public void setPreparedYN(String preparedYN) {
+		this.preparedYN = preparedYN;
 	}
 
 	

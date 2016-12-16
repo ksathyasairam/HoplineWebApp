@@ -2,6 +2,9 @@ package com.hopline.vendorServices.model;
 
 
 import java.io.Serializable;
+import java.util.List;
+
+import com.hopline.WebApp.model.vo.OrderProductVo;
 
 public class OrderStatusTo implements Serializable{
 	
@@ -17,6 +20,10 @@ public class OrderStatusTo implements Serializable{
 	private boolean success;
 
 	private Integer orderCompletionTime;
+	
+	private String action;
+	
+	private List<OrderProductVo> orderProductVoList;
 	
 	public Integer getOrderId() {
 		return orderId;
@@ -66,5 +73,17 @@ public class OrderStatusTo implements Serializable{
 
 	public void setOrderCompletionTime(Integer orderCompletionTime) {
 		this.orderCompletionTime = orderCompletionTime;
+	}
+	public List<OrderProductVo> getOrderProductVoList() {
+		return orderProductVoList;
+	}
+	public void setOrderProductVoList(List<OrderProductVo> orderProductVoList) {
+		this.orderProductVoList = orderProductVoList;
+	}
+	public String getAction() {
+		return action;
+	}
+	public void setAction(String action) {
+		this.action = action;
 	}
 }

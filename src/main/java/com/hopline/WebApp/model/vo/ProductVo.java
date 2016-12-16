@@ -13,7 +13,7 @@ public class ProductVo implements java.io.Serializable {
 	private String vegYn;
 	private String stockYn;
 	private List<AddOnVo> addOns;
-	
+	private String singleAddonYN;	
 	
 	
 	
@@ -83,6 +83,13 @@ public class ProductVo implements java.io.Serializable {
 	public void setExpanded(boolean isExpanded) {
 		this.isExpanded = isExpanded;
 	}
+	public String getSingleAddonYN() {
+		return singleAddonYN;
+	}
+	public void setSingleAddonYN(String singleAddonYN) {
+		this.singleAddonYN = singleAddonYN;
+	}
+	
 	
 	
 

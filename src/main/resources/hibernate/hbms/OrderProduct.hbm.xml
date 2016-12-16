@@ -3,25 +3,32 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 6 Oct, 2016 1:14:12 AM by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
-    <class name="com.hopline.WebApp.model.dao.OrderProduct" table="orderProduct" catalog="hopline" optimistic-lock="version">
-        <id name="idorderProduct" type="java.lang.Integer">
-            <column name="idorderProduct" />
-            <generator class="identity" />
-        </id>
-        <many-to-one name="order" class="com.hopline.WebApp.model.dao.Order" fetch="select">
-            <column name="orderId" not-null="true" />
-        </many-to-one>
-        <many-to-one name="product" class="com.hopline.WebApp.model.dao.Product" fetch="select">
-            <column name="productId" not-null="true" />
-        </many-to-one>
-        <property name="count" type="int">
-            <column name="count" not-null="true" />
-        </property>
-        <set name="orderProductAddons" table="orderProductAddon" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="orderProductId" not-null="true" />
-            </key>
-            <one-to-many class="com.hopline.WebApp.model.dao.OrderProductAddon" />
-        </set>
-    </class>
+	<class name="com.hopline.WebApp.model.dao.OrderProduct" table="orderProduct"
+		catalog="hopline" optimistic-lock="version">
+		<id name="idorderProduct" type="java.lang.Integer">
+			<column name="idorderProduct" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="order" class="com.hopline.WebApp.model.dao.Order"
+			fetch="select">
+			<column name="orderId" not-null="true" />
+		</many-to-one>
+		<many-to-one name="product" class="com.hopline.WebApp.model.dao.Product"
+			fetch="select">
+			<column name="productId" not-null="true" />
+		</many-to-one>
+		<property name="count" type="int">
+			<column name="count" not-null="true" />
+		</property>
+		<property name="preparedYN" type="string">
+			<column name="preparedYN" length="45" not-null="true" />
+		</property>
+		<set name="orderProductAddons" table="orderProductAddon" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="orderProductId" not-null="true" />
+			</key>
+			<one-to-many class="com.hopline.WebApp.model.dao.OrderProductAddon" />
+		</set>
+	</class>
 </hibernate-mapping>

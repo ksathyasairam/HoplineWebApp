@@ -8,6 +8,7 @@ import java.util.List;
 import com.hopline.WebApp.constants.OrderStates;
 import com.hopline.WebApp.model.dao.OfflineOrderLog;
 import com.hopline.WebApp.model.dao.Order;
+import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.Product;
 import com.hopline.WebApp.model.vo.OrderProductVo;
 import com.hopline.WebApp.model.vo.OrderVo;
@@ -80,8 +81,7 @@ public class VorderService extends IService {
 
 		if (orders != null) {
 			for (Order order : orders) {
-				OrderVo vo = OrderTranslator.convert(order, OrderVo.class);
-				Collections.sort(vo.getOrderProducts(), new SortOrderProductByName());
+				OrderVo vo = toOrderVo(order);
 				orderVos.add(vo);
 			}
 		}
@@ -90,6 +90,13 @@ public class VorderService extends IService {
 		return fetchOrder;
 	}
 	
+	private OrderVo toOrderVo(Order order) {
+		OrderVo vo = OrderTranslator.convert(order, OrderVo.class);
+		Collections.sort(vo.getOrderProducts(), new SortOrderProductByName());
+		return vo;
+		
+	}
+
 	class SortOrderProductByName implements Comparator<OrderProductVo> {
 	    @Override
 	    public int compare(OrderProductVo a, OrderProductVo b) {
@@ -154,6 +161,54 @@ public class VorderService extends IService {
 		orderDao.saveOfflineOrderLog(offlineOrderLog);
 		offlineOrderLogTo.setSuccess(true);
 		return offlineOrderLogTo;
+	}
+
+	public OrderStatusTo markItemsPrepared(OrderStatusTo orderStatus) {
+		Order order = orderDao.getOrder(orderStatus.getOrderId());
+
+		boolean orderReady= true;
+		for (OrderProductVo orderProductVo : orderStatus.getOrderProductVoList()) {
+			if (! ("Y".equals(orderProductVo.getPreparedYN()) || orderProductVo.isChecked() )){
+				orderReady = false;
+				break;
+			}
+		}
+		
+		if (orderReady) {
+			order.setOrderState(OrderStates.READY_FOR_PICKUP);
+		}
+		
+		for (OrderProduct dbProduct : order.getOrderProducts()) 
+			for (OrderProductVo clientProduct : orderStatus.getOrderProductVoList()) {
+				if (dbProduct.getIdorderProduct().equals(clientProduct.getIdorderProduct())) {
+					if ("N".equals(dbProduct.getPreparedYN()) && clientProduct.isChecked()){
+						dbProduct.setPreparedYN("Y");
+					}
+				}
+			}
+		
+		
+		
+		orderDao.updateOrder(order);
+		orderDao.saveOrderStatusLog(OrderService.getOrderStatusLog(order));
+		
+
+		order = orderDao.getOrder(order.getIdorder());
+		OrderVo vo = toOrderVo(order);
+		orderStatus.setOrderProductVoList(vo.getOrderProducts());
+		orderStatus.setOrderStatus(OrderStates.READY_FOR_PICKUP);
+		orderStatus.setSuccess(true);
+
+		
+//		if (OrderStates.PREPARING.equals(order.getOrderState())){
+//			Util.sendSMS(order.getUser().getPhone(),String.format(Constants.SMS_ORDER_CREATED_TEXT,order.getUser().getName(), order.getShop().getShopName(), order.getCustomerOrderId()));
+//		}else if (OrderStates.CANCELLED.equals(order.getOrderState())){
+//			Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_CANCELLED_TEXT,order.getCustomerOrderId(), orderStatus.getCancelReason()));
+//		}else if (OrderStates.READY_FOR_PICKUP.equals(order.getOrderState())){
+//			Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_ORDER_READY_TEXT,order.getUser().getName(), order.getCustomerOrderId()));
+//		}
+
+		return orderStatus;
 	}
 
 }
