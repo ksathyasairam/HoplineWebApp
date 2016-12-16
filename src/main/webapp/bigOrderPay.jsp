@@ -108,6 +108,9 @@
 <div id="sideSpacing">
 	
 	<div style="border-radius:3px;box-shadow:0px 0px  6px #888888; background:#ffffff;color:#6d6c6c;padding-top:4%;opacity:0.7;padding-bottom:7%;height:81vh;">
+		<div style="color:#c22929;font-size:27px;text-align:center;margin-top:-10px">
+			Order No.
+		</div>
 		<div style="position:relative;margin-left:-50px;left:50%;margin-top:2%;height:100px;width:100px;border-radius:50px;box-shadow:0px 0px  0px #888888; background:none;color:#c22929;border:2px solid #c22929;">
 			<div style="position:relative;left:50%;top:50%;margin-left:-32px;margin-top:-26px;font-size:38px;vertical-align:middle;">
 				<s:property value="order.customerOrderId"/>

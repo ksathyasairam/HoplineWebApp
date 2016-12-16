@@ -50,7 +50,7 @@
 
 <s:form action="/orderSummaryNext">
  
-<s:submit value="Confirm Order" class="bigBack" style="border:none; background:#4fb66d" onclick="clearLocalStorage()"  />
+<s:submit value="Place Order" class="bigBack" style="border:none; background:#4fb66d" onclick="clearLocalStorage()"  />
 </s:form> 
 <div style="padding-top:20px;">
 </div>

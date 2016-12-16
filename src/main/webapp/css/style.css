@@ -217,12 +217,12 @@ body h1,h2,h3,h4,h5,h6{
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
-#fullcart i {
+#fullcart span {
     color: #fff;
     display: block;
     position: relative;
-    top: 50%;
-    left: 50%;
+    top: 84%;
+    left: 40%;
     
     margin-left: -13px;
     margin-top:-12px;
