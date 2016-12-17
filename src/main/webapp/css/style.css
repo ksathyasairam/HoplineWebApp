@@ -72,6 +72,15 @@ body h1,h2,h3,h4,h5,h6{
    color:gold;
 }
 
+.clickClass:hover {
+	opacity:0.8;
+	box-shadow:0px 0px  0px #3d3f3d
+}
+
+.clickClass {
+	box-shadow:0px 1px  3px #3d3f3d;width:92%;padding:5px;text-align:center;font-size:12px;color:#ffffff;margin-top:-5px;;background:#89c08d;border-radius:4px;
+}
+
 #return-to-top {
     position: fixed;
     bottom: 5px;

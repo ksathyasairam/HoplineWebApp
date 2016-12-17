@@ -18,20 +18,7 @@
  <meta name="keywords" content="" />
 
 </head>
- <s:if test="%{afterLoginURL.equalsIgnoreCase('yourOrders')}">
-	<div id="loginPopUp" style="font-family: 'Raleway', sans-serif;text-align:center;z-index:90;position:fixed;width:90%;bottom:3%;font-size:20px;height:80px;margin-left:5%;margin-right:5%;border-radius:3px;box-shadow:0px 0px  6px #888888; background:#c22929;color:#ffffff;padding-top:3%;opacity:0.7;">
-	
-		Hey there, you have login before you can view your orders.
-		
-	</div>
-</s:if>
- <s:if test="%{afterLoginURL.equalsIgnoreCase('orderSummaryOnLoad')}">
-	<div id="loginPopUp" style="font-family: 'Raleway', sans-serif;text-align:center;z-index:90;position:fixed;width:90%;bottom:3%;font-size:20px;height:80px;margin-left:5%;margin-right:5%;border-radius:3px;box-shadow:0px 0px  6px #888888; background:#c22929;color:#ffffff;padding-top:3%;opacity:0.7;">
-	
-		Hey there, you have login before you can place orders.
-		
-	</div>
-</s:if>
+
 	<body ng-app="mainApp" ng-controller="EventCtrl as event" > 
 
 				
@@ -66,6 +53,20 @@
     <br>
     <br>
     <form action="/loginNext.action">
+         <s:if test="%{afterLoginURL.equalsIgnoreCase('yourOrders')}">
+			<div id="loginPopUp" style="font-family: 'Raleway', sans-serif;text-align:center;bottom:3%;font-size:14px; background:none;color:grey;padding-top:3%;">
+			
+				<strong>Hey there, you have login </br>before you can view your orders.</strong>
+				
+			</div>
+		 </s:if>
+		 <s:if test="%{afterLoginURL.equalsIgnoreCase('orderSummaryOnLoad')}">
+			<div id="loginPopUp" style="font-family: 'Raleway', sans-serif;text-align:center;bottom:3%;font-size:14px; background:none;color:grey;padding-top:3%;">
+			
+				Hey there, you have login </br>before you can place orders.
+				
+			</div>
+		</s:if>
     	<div style="text-align:center;">
       		<h3>Hopline Register</h3>
     	</div>
@@ -93,6 +94,7 @@
 				});
 			</script>
     	</div>
+
     </form>
 </div>
 

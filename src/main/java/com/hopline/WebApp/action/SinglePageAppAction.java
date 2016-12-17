@@ -12,7 +12,7 @@ public class SinglePageAppAction extends BaseAction {
 	private boolean loggedIn;
 	public String execute() throws Exception {
 		UserVo user = (UserVo) getSession().get(SecurityInterceptor.SESSION_USER);
-		loggedIn = user != null;
+		setLoggedIn(user != null);
 //		setMenuJsonString(ServiceLocator .getInstance().getService(CategoryServiceImpl.class).retrieveMenuPageJson(user));
 		return "success";
 	}
@@ -42,4 +42,8 @@ public class SinglePageAppAction extends BaseAction {
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
 	}
+
+
+	
+
 }

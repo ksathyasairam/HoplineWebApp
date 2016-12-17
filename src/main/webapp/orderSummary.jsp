@@ -21,15 +21,6 @@
 	<body ng-app="mainApp" ng-controller="EventCtrl as event" style="background-image: url(../images/checks.png);min-height:100vh;> 
 
 	<a id="return-to-top" style="z-index:11; "><i><img src="images/up.png" alt=" " / ></i></a>
-	
-	<div id="paymentOptions" style="box-shadow:0px 0px  6px #888888;border-radius:3px;display:none;position:fixed;color:white;background:#c22929;height:120px;width:98%;top:99%;left:50%;margin-top:-120px;margin-left:-49%;z-index:9;opacity:0.8">
-		<div style="text-align:center;font-size:20px">
-			Payment Options
-		</div>
-		<form action="">
-		  <input type="radio" name="paymentMethod" value="cash" style="margin-left:2%;margin-top:3%"> Pay cash on pickup <br>
-		</form>
-	</div>
 		
 	<a  class="addedtoast" style=" z-index:9;" ><b>Item Added</b></a>
 				
@@ -59,9 +50,9 @@
 
 <s:form action="/orderSummaryNext">
  <div id="place" class="bigBack" style="border:none; background:#4fb66d;z-index:999999">
- 	Place order
+ 	Place Order
  </div>
-<s:submit value="Continue" class="bigBack" style="border:none; background:#4fb66d" onclick="clearLocalStorage()"  />
+<s:submit id="placeOrder" value="Place Order" class="bigBack" style="border:none; background:#4fb66d" onclick="clearLocalStorage()"  />
 </s:form> 
 <div style="padding-top:20px;">
 </div>
@@ -110,6 +101,25 @@
 				</div>
 				<div class="clearfix"> </div>
 </div>
+	<div id="paymentOptions" style="box-shadow:0px 0px  6px #888888;border-radius:5px;color:grey;background:rgba(253, 246, 246, 1);height:80px;width:96%;z-index:9;margin-left:2%">
+		<div style="text-align:center;font-size:20px;margin-top:4px;padding-bottom:4px">
+			Payment Options
+		</div>
+		<div style="background:grey;height:1px;width:100%">
+		
+		</div>
+		<form action="">
+		   <div><div id="cashPay" style="width:50%;float:left;margin-top:2.5%;padding-left:2%">Pay cash on pickup</div> <input id="pay" type="checkbox" name="paymentMethod" value="cash" style="margin-left:2%;margin-top:4%;float:right;margin-right:2%"></div>
+		</form>
+	</div>
+	<div id="paymentOptionsPopUp2" style="display:none;margin-left:20px;width: 20px; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #c22929;opacity:0.8"></div>
+	<div id="paymentOptionsPopUp" style="display:none;padding-top:7px;opacity:0.8;text-align:center;border-radius:5px;color:white;background:#c22929;height:40px;width:96%;z-index:9;margin-left:2%">
+		Please select a method of payment.
+	</div>
+	<div style="height:80px;">
+	
+	</div>
+
 		</div>
 	</div>
 
@@ -129,9 +139,16 @@ $(document).ready(function(){
 </script>
 <script>
 $("#place").click(function(){
-	$("#paymentOptions").css({display:'block'});
-	$("#place").css({display:'none'});
-	console.log("hello");
+	if($('#pay').is(':checked')){
+		$("#place").css({display:'none'});
+		$('#placeOrder').trigger('click');
+	}
+	else{
+		$("html, body").animate({ scrollTop: $(document).height() },0);
+		$("#cashPay").css({color:'red'})
+		$("#paymentOptionsPopUp").css({display:'block'});
+		$("#paymentOptionsPopUp2").css({display:'block'});
+	}
 });
 </script>
 <script src="./app/angular.min.js"></script>

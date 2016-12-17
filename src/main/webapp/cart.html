@@ -1,5 +1,12 @@
-<img  src="images/rubbish-bin.png" alt=" " style="position:fixed;right:0%;height:31px;  top:16px; float:right; margin-right:15px;z-index:999999;" ng-click="event.clearCart();" ng-show="event.checkList.length>0" />
+<img id="clearBin" src="images/rubbish-bin.png" alt=" " style="position:fixed;right:0%;height:31px;  top:16px; float:right; margin-right:15px;z-index:999999;"  ng-show="event.checkList.length>0" />
 
+<div id="clearCartPopUp" style="position:fixed;width:100vh;height:100vh;background:grey;z-index:0;display:none;opacity:0.5;">
+
+</div>
+<div id="clearCartPopUp2" style="padding:5px;border-radius:3px;font-size:20px;z-index:10;position:fixed;width:300px;height:200px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-top:-100px;margin-left:-150px;display:none;">
+	<div style="height:80%">Are you sure you want to remove all items from the cart?</div>
+	<div style="height:20%"><div id="okClear" style="width:50%;float:left;color:#89c08d"  ng-click="event.clearCart();">Ok</div><div id="cancelClear" style="width:50%;float:right;color:#c22929;">Cancel</div></div>
+</div>
 
 <div ng-show="event.checkList.length==0" class="bigBack"  ui-sref="home" >
 	Back
@@ -110,5 +117,19 @@
 $(document).ready(function(){
 	
 	$("#menubutton").css({"opacity":"0","pointer-events": "none","cursor": "default"});
+})
+</script>
+<script>
+$("#clearBin").click(function(){
+	$("#clearCartPopUp").css({display:'block'});
+	$("#clearCartPopUp2").css({display:'block'});
+})
+$("#cancelClear").click(function(){
+	$("#clearCartPopUp").css({display:'none'});
+	$("#clearCartPopUp2").css({display:'none'});
+})
+$("#okClear").click(function(){
+	$("#clearCartPopUp").css({display:'none'});
+	$("#clearCartPopUp2").css({display:'none'});
 })
 </script>

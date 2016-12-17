@@ -59,14 +59,6 @@
 		<div class="rating" style="font-size:60px;text-align:center;">
 			<span>&#9734; </span><span>&#9734; </span><span>&#9734; </span><span>&#9734; </span><span>&#9734; </span>
 		</div>
-		<div style="margin-left:2%;position:relative;margin-top:8%;height:50px;width:96%;box-shadow:0px 0px  0px #888888; background:none;color:#6d6c6c;border-bottom:1px solid #c22929; ">
-			<label for="male" style="color:#c22929;">What did you like?</label>
-			<input type="text" name="like" style="border:none;margin-top:-1%;width:100%"/>
-		</div>
-		<div style="margin-left:2%;position:relative;margin-top:8%;height:50px;width:96%;box-shadow:0px 0px  0px #888888; background:none;color:#6d6c6c;border-bottom:1px solid #c22929; ">
-			<label for="male" style="color:#c22929;">What did you dislike?</label>
-			<input type="text" name="like" style="border:none;margin-top:-2%;width:100%"/>
-		</div>
 		<div style="margin-left:2%;position:relative;margin-top:8%;height:50px;width:96%; background:none;color:#6d6c6c; ">
 			<label for="like" style="color:#c22929;">Share your ideas on how we can improve</label>
 			<textarea rows="4" cols="50" name="lik" style="text-align:left;border:1px solid #c22929;margin-top:-1%;width:100%">
