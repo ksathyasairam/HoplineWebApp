@@ -21,6 +21,15 @@
 	<body ng-app="mainApp" ng-controller="EventCtrl as event" style="background-image: url(../images/checks.png);min-height:100vh;> 
 
 	<a id="return-to-top" style="z-index:11; "><i><img src="images/up.png" alt=" " / ></i></a>
+	
+	<div id="paymentOptions" style="box-shadow:0px 0px  6px #888888;border-radius:3px;display:none;position:fixed;color:white;background:#c22929;height:120px;width:98%;top:99%;left:50%;margin-top:-120px;margin-left:-49%;z-index:9;opacity:0.8">
+		<div style="text-align:center;font-size:20px">
+			Payment Options
+		</div>
+		<form action="">
+		  <input type="radio" name="paymentMethod" value="cash" style="margin-left:2%;margin-top:3%"> Pay cash on pickup <br>
+		</form>
+	</div>
 		
 	<a  class="addedtoast" style=" z-index:9;" ><b>Item Added</b></a>
 				
@@ -49,8 +58,10 @@
 			
 
 <s:form action="/orderSummaryNext">
- 
-<s:submit value="Place Order" class="bigBack" style="border:none; background:#4fb66d" onclick="clearLocalStorage()"  />
+ <div id="place" class="bigBack" style="border:none; background:#4fb66d;z-index:999999">
+ 	Place order
+ </div>
+<s:submit value="Continue" class="bigBack" style="border:none; background:#4fb66d" onclick="clearLocalStorage()"  />
 </s:form> 
 <div style="padding-top:20px;">
 </div>
@@ -113,9 +124,16 @@
 $(document).ready(function(){
 	
 	$("#menubutton").css({"opacity":"0","pointer-events": "none","cursor": "default"});
+	
 })
 </script>
-
+<script>
+$("#place").click(function(){
+	$("#paymentOptions").css({display:'block'});
+	$("#place").css({display:'none'});
+	console.log("hello");
+});
+</script>
 <script src="./app/angular.min.js"></script>
 <script src="./app/angular-route.js"></script>
 <script src="./app/mainApp.js"></script>

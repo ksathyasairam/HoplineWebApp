@@ -45,11 +45,15 @@
           				else if(f.orderState=="PREPARING")
           					{
               				var tblRow = "<div id="+ rep + "><div><img src='images/chef.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "The chefs are working their magic! Your food will be ready soon." +"</div></div>";
-              				$("#progress"+f.idorder).css({width:"49%"});
-              				$("#two").css({border:'6px solid #46a060'});
+              				$("#progress"+f.idorder).css({width:"48%"});
+              				$("#one"+f.idorder).css({border:'6px solid #46a060'})
+              				$("#two"+f.idorder).css({border:'6px solid #46a060'});
           					}
               			else if(f.orderState=="COMPLETED")
               				{
+              				$("#one"+f.idorder).css({border:'6px solid #46a060'})
+              				$("#two"+f.idorder).css({border:'6px solid #46a060'});
+                      		$("#three"+f.idorder).css({border:'6px solid #46a060'})
               				$("#progress"+f.idorder).css({width:"100%"});
           					var tblRow = "<div id="+ rep + "><div style='font-size:40px;text-align:center;color:#4fb66d;'>:)</div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;'>"+ " Your order is complete." +"</div></div>";
           					
@@ -65,7 +69,9 @@
                   			{
                       		var tblRow = "<div id="+ rep + "><div><img src='images/ready.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='margin-top:1%;text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your food is ready for pick-up and awaits you!" +"</div></div>";
                       		$("#progress"+f.idorder).css({width:"73.5%"});
-                      		$("#three").css({border:'6px solid #46a060'})
+                      		$("#one"+f.idorder).css({border:'6px solid #46a060'})
+              				$("#two"+f.idorder).css({border:'6px solid #46a060'});
+                      		$("#three"+f.idorder).css({border:'6px solid #46a060'})
                   			}
                       	else if(f.orderState=="UNPICKED")
                       		{
@@ -75,7 +81,7 @@
                         	 {
                              var tblRow = "<div id="+ rep + "><div><img src='images/okorder2.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-22px;' / ></div><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order has been successfully accepted.The chef will start preparing soon." +"</div></div>"; 	
                              $("#progress"+f.idorder).css({width:"24.3%"});
-                             $("#one").css({border:'6px solid #46a060'})
+                             $("#one"+f.idorder).css({border:'6px solid #46a060'})
                         	 }
                          else if(f.orderState=="BIG_ORDER_PAY")
 	               			{
@@ -168,13 +174,13 @@
 				<div id="progress<s:property value="idorder"/>" style="width:0%;background:#4fb66d;height:100%;border-radius:4px">
 					
 				</div>
-				<div id="one" style="border-radius:10px;width:20px;height:20px;border:6px solid #c8c3c3;position:relative;float:left;margin-left:22.5%;margin-top:-14px;">
+				<div id="one<s:property value="idorder"/>" style="border-radius:10px;width:20px;height:20px;border:6px solid #c8c3c3;position:relative;float:left;margin-left:22.5%;margin-top:-14px;">
 				
 				</div>
-				<div id="two" style="border-radius:10px;width:20px;height:20px;border:6px solid #c8c3c3;position:relative;float:left;margin-left:18%;margin-top:-14px;">
+				<div id="two<s:property value="idorder"/>" style="border-radius:10px;width:20px;height:20px;border:6px solid #c8c3c3;position:relative;float:left;margin-left:18%;margin-top:-14px;">
 					
 				</div>
-				<div id="three" style="border-radius:10px;width:20px;height:20px;border:6px solid #c8c3c3;position:relative;float:left;margin-left:18%;margin-top:-14px;">
+				<div id="three<s:property value="idorder"/>" style="border-radius:10px;width:20px;height:20px;border:6px solid #c8c3c3;position:relative;float:left;margin-left:18%;margin-top:-14px;">
 					
 				</div>
 			
@@ -182,10 +188,9 @@
 			
 		</div>
 		<div id="info<s:property value="idorder"/>"  style="padding-top:2%;font-size:14px;z-index:99999;font-family: 'Roboto', sans-serif;color:#7d7b79;">
-			<a href="tel: 0120 433 3737"><div style="border-radius:2px;width:30%;float:left;border:1px solid #388dad; color:#388dad; text-align:center">Call Restaurant</div></a>
-			<div style="z-index:99999;width:30%;;text-align:right;float:right;color:white;">&#8377 <s:property value="totalPrice"/></div>
+			<a href="tel: 0120 433 3737"><div style="border-radius:2px;width:30%;float:left;border:1px solid #388dad; color:#388dad; text-align:center;padding-top:1px;">Call Restaurant</div></a>
 		</div>
-		<div style="float:right;margin-right:-2%;margin-top:-7%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 20px solid transparent; border-right: 0px solid transparent; border-bottom: 30px solid #388dad;color:white;font-size:14px;padding-left:10%;"><div style="margin-top:5px;">&#8377 <s:property value="totalPrice"/></div></div>
+		<div style="float:right;margin-right:-2%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 20px solid transparent; border-right: 0px solid transparent; border-bottom: 30px solid #388dad;color:white;font-size:14px;padding-left:10%;"><div style="margin-top:5px;">&#8377 <s:property value="totalPrice"/></div></div>
 		
 	</div>
 	</div>
