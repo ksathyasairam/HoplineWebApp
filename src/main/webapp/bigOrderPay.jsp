@@ -112,7 +112,7 @@
 			Order No.
 		</div>
 		<div style="position:relative;margin-left:-50px;left:50%;margin-top:2%;height:100px;width:100px;border-radius:50px;box-shadow:0px 0px  0px #888888; background:none;color:#c22929;border:2px solid #c22929;">
-			<div style="position:relative;left:50%;top:50%;margin-left:-32px;margin-top:-26px;font-size:38px;vertical-align:middle;">
+			<div style="text-align:center;position:relative;top:50%;margin-top:-27px;font-size:38px;vertical-align:middle;">
 				<s:property value="order.customerOrderId"/>
 			</div>
 		</div>

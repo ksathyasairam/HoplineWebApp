@@ -102,6 +102,7 @@
 	  $scope.min=1;
 	  $scope.sec=60;
 	  var mytimeout=null;
+	  this.addOnTot=0;
 
 	  this.category=[
 	  {
@@ -242,6 +243,25 @@
 	  console.log(value);
 	};
 
+	this.changeOnRadio = function(food,id) {
+		
+		  // iterate over your whole list
+		  for(var i=0;i<food.addOns.length;i++){
+			  if(food.addOns[i].idaddOn!=id && food.addOns[i].price==0){
+				  food.addOns[i].selected=false;
+			  }
+		  }
+		};
+	this.addOnTotal = function(food) {
+		  this.addOnTot=0;			
+		  // iterate over your whole list
+		  for(var i=0;i<food.addOns.length;i++){
+			  if(food.addOns[i].selected==true){
+				  this.addOnTot=this.addOnTot + food.addOns[i].price;
+			  }
+		  }
+		};
+	
 	this.totalOrder=function()
 	{
 	  this.totalQuantity=0;
@@ -253,7 +273,8 @@
 	    this.totalQuantity= this.totalQuantity+this.checkList[i].quantity;
 	    for(var j = 0; j < this.checkList[i].addOns.length; j++)
 	    {
-	      tot= tot + (this.checkList[i].addOns[j].price*this.checkList[i].quantity*this.checkList[i].addOns[j].selected);
+	    	if(this.checkList[i].addOns[j].price>0)
+	      		tot= tot + (this.checkList[i].addOns[j].price*this.checkList[i].quantity*this.checkList[i].addOns[j].selected);
 	      
 	    }
 	    this.totalCost= this.totalCost+tot;
@@ -287,8 +308,10 @@
 		  			}
 		  	}
 		  }
-	  if(alreadyInList==0)
+	  if(alreadyInList==0){
 	  	check.push(obj);
+	  	console.log(check);
+	  }
 	  obj.quantity=1;
 	  localStorage.setItem('checkList', JSON.stringify(check));
 	  this.checkList= JSON.parse(localStorage.getItem('checkList'));
@@ -306,10 +329,7 @@
 	  $("#qty").css({'font-size':"15px"});		  
 	  $("#qty").animate({'font-size':"12px"}, 800, function() {
 	  	$("#qty").css({'color':"#ffffff"});
-	  });
-	  
-	  
-	  
+	  });	  
 	  //$('.addedtoast').animate({top: '85'},1000);
 	  //$('.addedtoast').fadeOut(1500);
 	  //$('.addedtoast').css({top: '4%'});

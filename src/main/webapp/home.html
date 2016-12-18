@@ -136,19 +136,42 @@
 										<div id="clearCartPopUp" style="position:fixed;top:0%;left:0%;width:100vh;height:100vh;background:grey;z-index:0;opacity:0.5;">
 										
 										</div>
-										<div id="clearCartPopUp2" style="padding:5px;border-radius:3px;font-size:17px;z-index:10;position:fixed;width:300px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-top:-100px;margin-left:-150px;margin-top:-170px">
-											<div style="max-height:300px;overflow:scroll;">
-												<div  ng-repeat="customize in fooditem.addOns" style="text-align:left;border-bottom: 1px dotted white;color:grey;padding-left:10%;background-color:#ffffff;opacity:0.9;padding-top:2%;padding-bottom:4%; " >
-													{{customize.name}}
-													<label class="switch" > 
-														<input type="checkbox" ng-model="customize.selected;"> 
-														<div class="slider round" >
-														</div> 
-													</label>
-													<br>
-													<div style="font-size:13px;">
-														&#8377 {{customize.price}}
+										<div id="clearCartPopUp2" style="padding:5px;border-radius:3px;font-size:17px;z-index:10;position:fixed;width:300px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-left:-150px;margin-top:-240px">
+											<div style="padding-top:2%;padding-bottom:2%;background:orange;color:white;">Customize</div>
+											<div style="padding-left:3%;padding-top:2%;padding-bottom:2%;background:#edf1f4;color:grey;text-align:left;font-family: 'Raleway', sans-serif; ">{{fooditem.name}}</div>
+											<div style="padding-left:3%;background:#edf1f4;text-align:left;color:grey;font-size:14px;">
+												<div style="width:40%;display:inline;">
+													Base Price
+												</div>
+												<div style="width:40%;display:inline;text-align:right;float:right;padding-right:3%;">
+													&#8377 {{fooditem.price}}
+												</div>
+											</div>
+											<div style="max-height:300px;overflow:scroll;margin-top:2%;">	
+												<form>										
+													<div  ng-repeat="customize in fooditem.addOns" style="font-size:14px;text-align:left;border-bottom: 1px dotted white;color:grey;padding-left:3%;background-color:#ffffff;opacity:0.9;padding-top:2%;padding-bottom:2%; " >
+														{{customize.name}}
+														<label class="switch"  ng-show="{{customize.price}}"> 
+															<input  type="checkbox" ng-model="customize.selected;" ng-change='event.addOnTotal(fooditem);'> 
+															<div class="slider round" >
+															</div> 
+														</label>
+														<label style="float:right;margin-right:3%;margin-top:1%;position: relative;display: inline-block;width: 32px;height: 18px;"  ng-show="{{customize.price}}==0"> 
+															<input name="addOnItems" type="radio" ng-model="customize.selected;" value="'true'" ng-change='event.changeOnRadio(fooditem,customize.idaddOn); event.addOnTotal(fooditem);'> 															
+														</label>
+														<br>
+														<div style="font-size:13px;">
+															&#8377 {{customize.price}}
+														</div>
 													</div>
+												</form>
+											</div>
+											<div style="padding-left:3%;background:#edf1f4;text-align:left;color:grey;font-size:14px;">
+												<div style="width:40%;display:inline;">
+													Total Price
+												</div>
+												<div style="width:40%;display:inline;text-align:right;float:right;padding-right:3%;">
+													&#8377 {{event.addOnTot}}
 												</div>
 											</div>
 											<div style="height:20%;padding-top:5%"  ng-click="fooditem.isExpanded=!fooditem.isExpanded;" ng-show="fooditem.isExpanded==true"><div id="okClear2" style=";padding-bottom:5%;width:50%;float:left;color:#89c08d" ng-click="fooditem.quantity=fooditem.quantity+1;event.addCheckList($index,cat.name,fooditem);">Add</div><div id="cancelClear2" style=";padding-bottom:5%;width:50%;float:right;color:#c22929;">Cancel</div></div>

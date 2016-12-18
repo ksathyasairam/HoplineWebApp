@@ -21,6 +21,14 @@
 	<body ng-app="mainApp" ng-controller="EventCtrl as event" style="background-image: url(../images/checks.png);min-height:100vh;> 
 
 	<a id="return-to-top" style="z-index:11; "><i><img src="images/up.png" alt=" " / ></i></a>
+	
+	<div id="clearCartPopUp" style="display:none;position:fixed;top:0%;left:0%;width:100vh;height:100vh;background:grey;z-index:9;opacity:0.5;">
+										
+	</div>
+	<div id="clearCartPopUp2" style="padding:5px;border-radius:3px;font-size:20px;z-index:10;position:fixed;width:300px;height:200px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-top:-100px;margin-left:-150px;display:none;">
+		<div style="height:80%">You need to pickup your food, so please be there when food is ready.</div>
+		<div style="height:20%"><div id="okClear" style="width:50%;float:left;color:#89c08d"  ng-click="event.clearCart();">Ok</div><div id="cancelClear" style="width:50%;float:right;color:#c22929;">Cancel</div></div>
+	</div>
 		
 	<a  class="addedtoast" style=" z-index:9;" ><b>Item Added</b></a>
 				
@@ -101,8 +109,8 @@
 				</div>
 				<div class="clearfix"> </div>
 </div>
-	<div id="paymentOptions" style="box-shadow:0px 0px  6px #888888;border-radius:5px;color:grey;background:rgba(253, 246, 246, 1);height:80px;width:96%;z-index:9;margin-left:2%">
-		<div style="text-align:center;font-size:20px;margin-top:4px;padding-bottom:4px">
+	<div id="paymentOptions" style="box-shadow:0px 0px  6px #888888;border-radius:5px;color:grey;background:rgba(253, 246, 246, 1);height:90px;width:96%;z-index:9;margin-left:2%">
+		<div style="text-align:center;font-size:20px;margin-top:16px;padding-bottom:8px;padding-top:8px">
 			Payment Options
 		</div>
 		<div style="background:grey;height:1px;width:100%">
@@ -140,8 +148,9 @@ $(document).ready(function(){
 <script>
 $("#place").click(function(){
 	if($('#pay').is(':checked')){
-		$("#place").css({display:'none'});
-		$('#placeOrder').trigger('click');
+		$("#clearCartPopUp").css({display:'block'});
+		$("#clearCartPopUp2").css({display:'block'});
+		
 	}
 	else{
 		$("html, body").animate({ scrollTop: $(document).height() },0);
@@ -150,6 +159,17 @@ $("#place").click(function(){
 		$("#paymentOptionsPopUp2").css({display:'block'});
 	}
 });
+$("#okClear").click(function(){	
+	$("#clearCartPopUp").css({display:'none'});
+	$("#clearCartPopUp2").css({display:'none'});
+	$("#place").css({display:'none'});
+	$('#placeOrder').trigger('click');
+});
+$("#cancelClear").click(function(){
+	$("#clearCartPopUp").css({display:'none'});
+	$("#clearCartPopUp2").css({display:'none'});
+})
+
 </script>
 <script src="./app/angular.min.js"></script>
 <script src="./app/angular-route.js"></script>

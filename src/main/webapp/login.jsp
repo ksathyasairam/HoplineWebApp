@@ -63,7 +63,7 @@
 		 <s:if test="%{afterLoginURL.equalsIgnoreCase('orderSummaryOnLoad')}">
 			<div id="loginPopUp" style="font-family: 'Raleway', sans-serif;text-align:center;bottom:3%;font-size:14px; background:none;color:grey;padding-top:3%;">
 			
-				Hey there, you have login </br>before you can place orders.
+				<strong>Hey there, you have login </br>before you can place orders.</strong>
 				
 			</div>
 		</s:if>
@@ -106,11 +106,11 @@
 	$("#menubutton").css({"opacity":"0","pointer-events": "none","cursor": "default"});
 	})
 </script>
-<script>
+<!--<script>
 	$('body').click(function(){
 		$('#loginPopUp').css({display:'none'});
 	})
-</script>
+</script> -->
 <script src="./app/angular.min.js"></script>
 <script src="./app/angular-route.js"></script>
 <script src="./app/mainApp.js"></script>
