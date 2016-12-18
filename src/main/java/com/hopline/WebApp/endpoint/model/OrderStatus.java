@@ -11,6 +11,8 @@ public class OrderStatus {
 	private String cancelReason;
 	private Integer numUnitInProgressBar;
 	private Integer currentProgress;
+	private Integer orderCompleteTime;
+
 	
 	private List<OrderProductVo> products;
 	
@@ -49,6 +51,12 @@ public class OrderStatus {
 	}
 	public void setProducts(List<OrderProductVo> products) {
 		this.products = products;
+	}
+	public Integer getOrderCompleteTime() {
+		return orderCompleteTime;
+	}
+	public void setOrderCompleteTime(Integer orderCompleteTime) {
+		this.orderCompleteTime = orderCompleteTime;
 	}
 
 
