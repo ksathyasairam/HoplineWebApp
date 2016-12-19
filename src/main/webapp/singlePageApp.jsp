@@ -36,12 +36,13 @@
 					<div class="logo" style="position:fixed;left:1em;">
 						<!-- <h1 id="head">HOPLINE</h1> -->
 						<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
+						<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b id="head">HOPLINE</b></div>
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
 						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px; opacity:0;" ></span>
 						<nav class="link-effect-3" id="link-effect-3" >
 							<ul class="nav1 nav nav-wil" style="background:#a79e9d; padding:1% 1% 1% 1%;  box-shadow:0px 0px  6px #888888;"  >
-								<li class="active" ng-repeat="item in event.category" ng-click="event.takeMeTo(item.name)" style=" background:#b22e1b;width:48%;margin:1% 1% 1% 1%;  height: 100px; float:left; border-radius:3px 3px 3px 3px; "><img src="{{item.img}}" style="position:absolute; 
+								<li class="active" ng-repeat="item in event.category" ng-click="event.takeMeTo(item.name)" style=" background:#be1e2d;width:48%;margin:1% 1% 1% 1%;  height: 100px; float:left; border-radius:3px 3px 3px 3px; "><img src="{{item.img}}" style="position:absolute; 
 								left:50%;height:60px;margin-left:-30px;"><br><br><a>{{item.name}}</a></li>
 
 
@@ -362,8 +363,8 @@
 		  }
 	  if(abc>1)
 		  {
-		  $("#instantCheckPopUp").css({display:'block'});
-		  $("#instantCheckPopUp").fadeOut(3500);
+		  $("#clearCartPopUp").css({display:'block'});
+			$("#clearCartPopUp2").css({display:'block'});
 		  }
 	  else if(abc==1){
 		  if(check[ind].quantity>1){
@@ -491,6 +492,7 @@
 			 // Animation complete.
 			  });
 		$("#instantCheckPopUp2").css({display:'none'});
+		$("#instantCheckPopUp").css({display:'none'});
 	};
 	
 	this.instantCheckPopUp=function(){

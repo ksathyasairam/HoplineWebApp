@@ -36,6 +36,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   src: url('OpenSans-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Futura';
+  src: url('futura medium condensed bt.ttf') format('truetype');
+}
+
 
 
 html, body{
@@ -1342,6 +1347,33 @@ ul.address-text b {
 	margin-right:0%;
 	}
 
+}
+
+.rate {
+	margin-top:10px;
+    float: left;
+    margin-left:10%;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:50px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
 }
 
 

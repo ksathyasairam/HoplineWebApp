@@ -2,6 +2,14 @@
 	<img  src="images/invoice-4.png" alt=" " / style="position:fixed;right:0%;height:32px;  top:16px; float:right; margin-right:62px;z-index:9999999;" >
 </a>
 
+<div id="clearCartPopUp" style="position:fixed;width:100vh;height:100vh;background:grey;z-index:0;display:none;opacity:0.5;">
+
+</div>
+<div id="clearCartPopUp2" style="padding:5px;border-radius:3px;font-size:20px;z-index:10;position:fixed;width:300px;height:200px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-top:-100px;margin-left:-150px;display:none;">
+	<div style="height:80%">You have added different variations of this item.Please visit the cart to remove them separately.</div>
+	<div style="height:20%"><div id="okClear" style="width:50%;float:left;color:#89c08d"  ui-sref="cart">Cart</div><div id="cancelClear" style="width:50%;float:right;color:#c22929;">Cancel</div></div>
+</div>
+
 <a id="fullcart" style="z-index:12;font-size:8px" ng-click="event.post1();"><img src="images/instantforward.png" alt=" "  style="height:25px;float:left;margin-top:8px;margin-left:13px"/ ><span>Checkout</span></a>
 
 <a id="fullcart2" style="z-index:12; display:none" ><i><img src="images/instantforward.png" alt=" " style="height:30px;" / ></i></a>
@@ -147,7 +155,8 @@
 													&#8377 {{fooditem.price}}
 												</div>
 											</div>
-											<div style="max-height:300px;overflow:scroll;margin-top:2%;">	
+											<div style="padding-left:3%;padding-top:2%;padding-bottom:1%;background:#ffffff;color:grey;text-align:left;font-family: 'Raleway', sans-serif; "><strong>Add ons</strong></div>
+											<div style="max-height:250px;overflow:scroll;margin-top:2%;">	
 												<form>										
 													<div  ng-repeat="customize in fooditem.addOns" style="font-size:14px;text-align:left;border-bottom: 1px dotted white;color:grey;padding-left:3%;background-color:#ffffff;opacity:0.9;padding-top:2%;padding-bottom:2%; " >
 														{{customize.name}}
@@ -243,5 +252,13 @@ $("#head").text("BISTRO 37");
 	$(document).ready(function()
 		{
 			$("#menubutton").css({"opacity":"1","pointer-events": "auto","cursor": "pointer"});
+		})
+		$("#cancelClear").click(function(){
+		$("#clearCartPopUp").css({display:'none'});
+		$("#clearCartPopUp2").css({display:'none'});
+		})
+		$("#okClear").click(function(){
+			$("#clearCartPopUp").css({display:'none'});
+			$("#clearCartPopUp2").css({display:'none'});
 		})
 </script>

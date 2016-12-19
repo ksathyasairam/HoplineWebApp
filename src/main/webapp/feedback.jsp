@@ -25,7 +25,9 @@
 			Item Added
 		</b>
 	</a>
-				
+		<div style="color:white;position:fixed;right:0%;height:24px;  top:28px; float:right; margin-right:15px;z-index:999999;border:1px solid #ffffff;border-radius:3px;padding-left:8px;padding-right:8px;font-size:14px;padding-top:2px;">
+			<a href="/singlePageApp#/home" style="color:white;">Back</a>
+		</div>		
 		<!-- container -->
 			<!-- header -->
 			<div id="home" class="header" style="padding-bottom:50px;" >
@@ -38,7 +40,9 @@
 				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #be1e2d ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
 					<div class="navigation">
 						<div class="logo" style="position:fixed;left:1em;">
-							<h1 ><a href="#">FEEDBACK</a></h1>
+							<!-- <h1 ><a href="#" >FEEDBACK</a></h1> -->
+							<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
+							<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>FEEDBACK</b></div>
 						</div>
 						<div class="navigation-right" style="margin-right:1em;" >
 							<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" "  style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" /></span>
@@ -53,27 +57,27 @@
 <div id="sideSpacing">
 	
 	<div style="border-radius:3px;box-shadow:0px 0px  6px #888888; background:#ffffff;color:#6d6c6c;padding-top:4%;opacity:0.7;padding-bottom:7%;height:95vh;">
-		<div style="text-align:center;color:#c22929;">
-			<b>How do you feel about the app?</b>
+		<div style="text-align:center;color:#c22929;padding-bottom:10px">
+			<b style="margin-top:-15px">How do you feel about the app?</b>
 		</div>
-		<div class="rating" style="font-size:60px;text-align:center;">
-			<span>&#9734; </span><span>&#9734; </span><span>&#9734; </span><span>&#9734; </span><span>&#9734; </span>
-		</div>
+		<div class="rate">
+	        <input type="radio" id="star5" name="rate" value="5" /><label for="star5" title="text" style="margin-top:-30px">&#x02729;</label>
+	        <input type="radio" id="star4" name="rate" value="4" /><label for="star4" title="text" style="margin-top:-30px">&#x02729;</label>
+	        <input type="radio" id="star3" name="rate" value="3" /><label for="star3" title="text" style="margin-top:-30px">&#x02729;</label>
+	        <input type="radio" id="star2" name="rate" value="2" /><label for="star2" title="text" style="margin-top:-30px">&#x02729;</label>
+	        <input type="radio" id="star1" name="rate" value="1" /><label for="star1" title="text" style="margin-top:-30px">&#x02729;</label>
+	    </div>
 		<div style="margin-left:2%;position:relative;margin-top:8%;height:50px;width:96%; background:none;color:#6d6c6c; ">
 			<label for="like" style="color:#c22929;">Share your ideas on how we can improve</label>
-			<textarea rows="4" cols="50" name="lik" style="text-align:left;border:1px solid #c22929;margin-top:-1%;width:100%">
+			<textarea rows="4" cols="40" placeholder="text here" name="lik" style="border:1px solid #c22929;margin-top:-1%;width:100%">
 			</textarea>
 		</div>
 		<div>
-			<div style="width:70px;background:#3e92d3;border-radius:3px;color:white;position:relative;margin-left:2%;margin-top:25%;text-align:center;padding:1%">
+			<div style="width:70px;background:#3e92d3;border-radius:3px;color:white;position:relative;margin-left:2%;margin-top:33%;text-align:center;padding:1%">
 				Submit
 			</div>
 		<div>
-		<a   href="/singlePageApp#/home">
-		<div  class="bigBack">
-			Back to Menu
-		</div>
-	</a>
+		
 				
 	</div>
 </div>

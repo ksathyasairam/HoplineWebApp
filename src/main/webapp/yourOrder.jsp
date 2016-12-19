@@ -111,9 +111,9 @@
 			<img src="images/up.png" alt=" " / >
 		</i>
 	</a>
-	<a   href="/singlePageApp#/home">
+	<a onclick="goBack()">
 		<div  class="bigBack">
-			Back to Menu
+			Back
 		</div>
 	</a>
 		
@@ -137,7 +137,8 @@
 				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #be1e2d ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
 				<div class="navigation">
 					<div class="logo" style="position:fixed;left:1em;">
-						<h1 ><a href="#">ORDERS</a></h1>
+						<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
+						<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>ORDERS</b></div>
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
 						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>						
@@ -191,7 +192,7 @@
 			</div>
 		</div>
 		<div id="info<s:property value="idorder"/>"  style="padding-top:2%;font-size:14px;z-index:99999;font-family: 'Roboto', sans-serif;color:#7d7b79;">
-			<a href="tel: 0120 433 3737"><div style="border-radius:2px;width:30%;float:left;border:1px solid #388dad; color:#388dad; text-align:center;padding-top:1px;">Call Restaurant</div></a>
+			<a href="tel: 0120 433 3737"><div style="border-radius:2px;width:30%;float:left;border:1px solid #388dad; color:#388dad; text-align:center;padding-top:1px;">Call Bistro 37</div></a>
 		</div>
 		<div style="float:right;margin-right:-2%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 20px solid transparent; border-right: 0px solid transparent; border-bottom: 30px solid #388dad;color:white;font-size:14px;padding-left:10%;"><div style="margin-top:5px;">&#8377 <s:property value="totalPrice"/></div></div>	
 	</div>
@@ -265,6 +266,11 @@ $(document).ready(function(){
 	
 	$("#menubutton").css({"opacity":"0","pointer-events": "none","cursor": "default"});
 })
+</script>
+<script>
+function goBack() {
+    window.history.back();
+}
 </script>
 
 

@@ -44,7 +44,9 @@
 				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #be1e2d ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
 				<div class="navigation">
 					<div class="logo" style="position:fixed;left:1em;">
-						<h1 ><a href="#">HOPLINE</a></h1>
+						<!-- <h1 ><a href="#">HOPLINE</a></h1> -->
+						<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
+						<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>BISTRO 37</b></div>
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
 						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
@@ -109,15 +111,13 @@
 				</div>
 				<div class="clearfix"> </div>
 </div>
-	<div id="paymentOptions" style="box-shadow:0px 0px  6px #888888;border-radius:5px;color:grey;background:rgba(253, 246, 246, 1);height:90px;width:96%;z-index:9;margin-left:2%">
-		<div style="text-align:center;font-size:20px;margin-top:16px;padding-bottom:8px;padding-top:8px">
+	<div id="paymentOptions" style="box-shadow:0px 0px  6px #888888;border-radius:5px;color:grey;background:rgba(253, 246, 246, 1);height:90px;width:96%;z-index:9;margin-left:2%;padding-left:3%;padding-right:3%;">
+		<div style="text-align:center;font-size:20px;margin-top:16px;padding-bottom:8px;padding-top:8px;border-bottom: 1px solid #AFAFAF;">
 			Payment Options
 		</div>
-		<div style="background:grey;height:1px;width:100%">
-		
-		</div>
+
 		<form action="">
-		   <div><div id="cashPay" style="width:50%;float:left;margin-top:2.5%;padding-left:2%">Pay cash on pickup</div> <input id="pay" type="checkbox" name="paymentMethod" value="cash" style="margin-left:2%;margin-top:4%;float:right;margin-right:2%"></div>
+		   <div><div id="cashPay" style="width:50%;float:left;margin-top:2.5%;padding-left:2%;">Pay cash on pickup</div> <input id="pay" type="checkbox" name="paymentMethod" value="cash" style="margin-left:2%;margin-top:4%;float:right;margin-right:2%"></div>
 		</form>
 	</div>
 	<div id="paymentOptionsPopUp2" style="display:none;margin-left:20px;width: 20px; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #c22929;opacity:0.8"></div>
