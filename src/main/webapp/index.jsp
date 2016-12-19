@@ -5,5 +5,6 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 
 
-<s:action name="singlePageApp" executeResult="true" />
-
+<%  
+response.sendRedirect("/singlePageApp");
+%> 

@@ -3,6 +3,7 @@ package com.hopline.WebApp.action;
 import com.hopline.WebApp.constants.SessionConstants;
 import com.hopline.WebApp.interceptors.SecurityInterceptor;
 import com.hopline.WebApp.model.vo.UserVo;
+import com.hopline.WebApp.rest.framework.Constants;
 import com.hopline.WebApp.rest.framework.ServiceLocator;
 import com.hopline.WebApp.rest.framework.Util;
 import com.hopline.WebApp.service.LoginServiceImpl;
@@ -36,6 +37,11 @@ public class OTPVerificationAction extends BaseAction {
 			
 			UserVo user = (UserVo) getSession().get(SessionConstants.TEMP_USER);
 			if (Util.isInvalidUserData(user)) return "login";
+			
+			if (CaptivePortal.ACTION_NAME.equals(afterLoginURL)){
+				user.setMac((String) getSession().get(SessionConstants.USER_MAC_ID));
+				Util.sendSMS(user.getPhone(), Constants.SMS_HOPLINE_URL);
+			}
 			
 			user = ServiceLocator.getInstance().getService(LoginServiceImpl.class).login(user);
 			getSession().put(SecurityInterceptor.SESSION_USER, user);

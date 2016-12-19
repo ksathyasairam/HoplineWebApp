@@ -27,7 +27,8 @@ public class SecurityInterceptor implements Interceptor {
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		Map<String, Object> session = invocation.getInvocationContext().getSession();
-
+		
+		java.util.Enumeration headerNames  = ServletActionContext.getRequest().getHeaderNames();
 		
 		if (invocation.getProxy().getMethod().equals("executeOrderSummaryOnLoad")) orderSummaryRedirectDataStore(invocation, session);
 		

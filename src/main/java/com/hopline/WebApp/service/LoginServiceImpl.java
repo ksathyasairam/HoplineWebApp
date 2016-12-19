@@ -16,10 +16,27 @@ public class LoginServiceImpl extends IService{
 			user = UserTranslator.toDao(userVo);
 			Integer id = userDao.saveUser(user);
 			user.setIduser(id);
+		} else if (user.getMac() == null && userVo.getMac() != null) {
+			user.setMac(userVo.getMac());
+			userDao.udpateUser(user);
+			user = userDao.getUserByPhone(userVo.getPhone());
 		}
 			
 		return UserTranslator.toVO(user);
 	}
+	
+	public UserVo retrieveUserByMacId(String macId) {
+		User user = userDao.getUserByMacId(macId);
+		
+		if (user != null) {
+			return UserTranslator.toVO(user);
+		}
+		
+		return null;
+			
+	}
+	
+	
 	
 	public UserDao getUserDao() {
 		return userDao;

@@ -12,6 +12,7 @@ public class User implements java.io.Serializable {
 	private Integer iduser;
 	private String phone;
 	private String name;
+	private String mac;
 	private Set<Order> orders = new HashSet<Order>(0);
 	private Set<SecurityToken> securityTokens = new HashSet<SecurityToken>(0);
 
@@ -67,6 +68,14 @@ public class User implements java.io.Serializable {
 
 	public void setSecurityTokens(Set<SecurityToken> securityTokens) {
 		this.securityTokens = securityTokens;
+	}
+
+	public String getMac() {
+		return mac;
+	}
+
+	public void setMac(String mac) {
+		this.mac = mac;
 	}
 
 }

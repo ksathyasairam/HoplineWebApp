@@ -26,6 +26,11 @@
 
 
 			</result>
+
+			<result name="gen204" type="httpheader">
+				<param name="status">204</param>
+			</result>
+
 		</global-results>
 	</package>
 
@@ -44,6 +49,13 @@
 
 
 
+	<package name="captiveeee" extends="hopline-basic" namespace="/captive">
+		<action name="form" class="com.hopline.WebApp.action.CaptivePortal"
+			method="execute">
+			<result name="message">/captivePortal.jsp</result>
+		</action>
+		
+	</package>
 
 
 	<package name="hopline-vendor-services" extends="hopline-vendor-services-basic">
@@ -122,13 +134,12 @@
 
 
 	<package name="helloworld" extends="hopline-basic">
-		<action name="hello" class="com.hopline.WebApp.action.HelloWorldAction"
-			method="execute">
-			<result name="success">/HelloWorld.jsp</result>
-		</action>
+		
 		<action name="loginOnLoad" class="com.hopline.WebApp.action.LoginAction"
 			method="executeLoginOnLoad">
 			<result name="success">/login.jsp</result>
+			<result name="redirectMacLogin">/redirectMacLogin.jsp</result>
+			<result name="alreadyLoggedIn" type="redirectAction">${afterLoginURL}</result>
 		</action>
 
 		<action name="loginNext" class="com.hopline.WebApp.action.LoginAction"
@@ -175,6 +186,14 @@
 		<action name="orderState" class="com.hopline.WebApp.endpoint.OrderStatusAction"
 			method="execute">
 		</action>
+		
+		<action name="macManager" class="com.hopline.captive.MacAddressManage"
+			method="execute">
+		</action>
+		<action name="cleanMac" class="com.hopline.captive.MacAddressManage"
+			method="clearAll">
+		</action>
+		
 		<action name="OTPVerifyOnLoad" class="com.hopline.WebApp.action.OTPVerificationAction"
 			method="executeVerificationOnload">
 			<result name="success">/OTPVerification.jsp</result>

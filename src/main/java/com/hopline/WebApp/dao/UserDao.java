@@ -30,9 +30,23 @@ public class UserDao {
 
 		return null;
 	}
+	
+	public User getUserByMacId(String mac) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class, "user");
+		criteria.add(Restrictions.eq("user.mac", mac));
+
+		Object obj = criteria.uniqueResult();
+
+		if (obj != null)
+			return (User) obj;
+
+		return null;
+	}
 
 	public Integer saveUser(User user) {
 		return (Integer) getSessionFactory().getCurrentSession().save(user);
 	}
-
+	public void udpateUser(User user) {
+		getSessionFactory().getCurrentSession().update(user);
+	}
 }

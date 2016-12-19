@@ -1,0 +1,315 @@
+
+/*mobile 0-720 -----------------------------------------------*/
+
+
+/*---------------------------------------------------*/
+.show_on_mobile{
+	display: block !important;
+}
+span.show_on_mobile{
+	display: inline !important;
+}
+.hide_on_mobile{
+	display: none !important;
+}
+/*---------------------------------------------------*/
+.button1{
+	font-size: 18px;
+	text-transform: none;
+	font-weight: normal;
+	max-width: 100%;
+	height: 45px;
+	line-height: 45px;
+}
+
+.button2{
+	font-size: 18px;
+	text-transform: none;
+	font-weight: normal;
+	width:100%;
+	height: auto;
+	line-height: 30px;
+	text-align:center;
+	padding:0;
+	min-width: 0;
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	
+}
+
+.buttontext{margin:0;max-width:80%;margin-left:10%; text-align:center; }
+
+.button1.disabled{
+	background-color: #CCCCCC;
+	cursor: default;
+}
+
+#sms_login
+{display:none; margin-top:-0px;margin-bottom:30px;}
+
+/*---------------Layout------------------------------*/
+.main_center{	
+	width: auto !important;
+	padding: 0 9.375% !important;
+}
+#center{
+	padding: 60px 0;
+}
+/*---------------------------------------------------*/
+.textcontent img.f-left{
+	margin-right: 0;
+	display: block;
+	max-width: 100%;
+	float: none !important;
+}
+/*---------------------------------------------------*/
+#top{
+	padding: 60px 0; padding-bottom:20px;
+	 
+	 
+ 
+}
+.combinedtop {
+	margin-top: -110px;
+ 
+ 
+}
+ 
+.ltop{
+	padding-top: 30px !important;
+	padding-bottom:	30px !important; 
+}
+#top .logo{
+	background-size: 100% auto  ;
+	position:  relative;
+	left:50%;
+	margin-left:-100%;
+ 
+	 
+	background-position:center;
+	  max-width:100%;
+	 max-height:100%;
+
+	
+}
+
+#top .big_header{
+	font-size: 36px;	
+	margin-top: 30px;
+	margin-bottom: 10px;	
+}
+#top p{
+	font-size: 20px;
+}
+
+#hlogo
+{
+ 
+		 }
+ 
+/*---------------------------------------------------*/
+.main_panels{
+	width: auto;	
+	padding: 0 9.375% !important;
+}
+.main_panels a.openbutton{
+	font-size: 14px;
+}
+/*---------------------------------------------------*/
+.langselect_container{
+	width: auto;
+}
+/*---------------------------------------------------*/
+#bottom .links{
+	font-size: 15px;
+	line-height: 1.5;
+}
+#bottom .copyright{
+	font-size: 15px;
+}
+/*---------------------------------------------------*/
+.over_panel{
+
+}
+.over_panel header{
+	font-size: 24px;	
+	text-align: left;
+	padding: 30px 0;
+}
+.over_panel header strong{
+	width: 85%;
+	font-weight: normal;
+}
+.over_panel header a.close{
+	right: 9.375%;
+}
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  .over_panel header a.close {
+    background-image: url(/customer/responsive/images/bg_close@2x.png);
+    background-size: 15px 15px;
+  }
+}
+
+.over_panel .content{
+	padding: 30px 0;
+}
+/*.over_panel .content .header{
+	font-size: 18px;
+	margin-bottom: 30px;
+	text-align: left;
+}*/
+/*---------------------------------------------------*/
+.border_panel{
+	border: none;
+	padding: 0;
+}
+/*---------------------------------------------------*/
+.dataform .field {
+	margin-bottom: 20px;
+}
+.dataform select{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.dataform .field input[type=text],
+.dataform .field input[type=password]{
+	height: 40px;
+	line-height: 40px;
+	font-size: 18px;
+}
+.dataform .btn_container{
+	margin: 20px 0;
+	text-align: left;
+}
+.dataform .btn_container .button1{
+	min-width: 0;
+	width: 100%;
+	padding: 0;
+}
+/*---------------------------------------------------*/
+.pay_panel{
+	
+}
+.pay_panel .items .item{
+	width: auto;
+	height: auto;
+	display: block;
+	margin: 0 0 20px 0;
+	border: 1px solid #ccc;
+}
+
+.pay_panel .items .item .header{ 
+border: 5px solid #f3f3f3;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.pay_panel .accept{
+	text-align: left;
+}
+/*---------------------------------------------------*/
+.user_login{
+	margin-top: -40px;
+	margin-bottom: 30px;
+	padding: 30px 9.375% !important;
+   width: auto !important;
+}
+.user_login .btn_container{
+	margin-bottom: 0;
+}
+.user_login .btn_container a.forgot_password{
+	margin: 20px 0 0 0;
+	display: block;
+}
+/*---------------------------------------------------*/
+.new_customer .dataform select{
+	padding: 5px 2%;
+	width: 101%;
+}
+.new_customer .btn_container{
+	margin-bottom: 0;
+}
+
+.new_customer .dataitems .item{
+	padding: 10px 0;
+}
+.new_customer .dataitems .item .col1{
+	float: none;
+	width: auto;
+	padding-right: 0;
+	margin-bottom: 10px;
+}
+.new_customer .dataitems .item .col2{
+	float: none;
+	width: auto;
+}
+
+.new_customer .payment{
+	text-align: left;
+}
+.new_customer .payment .col1{
+	float: none;
+	width: auto;
+	margin-bottom: 30px;
+}
+
+.new_customer .payment .col0{
+	 
+	float: none;
+	width: auto;
+}
+.new_customer .payment .col2{
+	float: none;
+	width: auto;
+}
+/*---------------------------------------------------*/
+.sms_panel{
+	
+}
+.sms_panel .dataform select{
+	padding: 5px 2%;
+	width: 101%;
+}
+.sms_panel .progress .loader{
+	width: auto;
+	margin-bottom: 15px;
+}
+
+.topmain{	margin-top:-7em;}
+
+.autologin_center {margin-top:30px;}
+
+
+h1{
+	font-size: 16px;
+	margin: 0;
+}
+  
+ .fb-like-box{  
+  
+ } 
+ 
+.social_topright{
+	margin-top:50px !important;
+	margin-bottom:-70px !important;
+}
+
+.over_panel header a.close_prelogin{
+	right: 9.375%;
+}
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  .over_panel header a.close_prelogin {
+    background-image: url(/customer/responsive/images/bg_close@2x.png);
+    background-size: 15px 15px;
+  }
+}
+
+ #topright{
+ 
+	margin-top: 55px;
+	margin-bottom:-45px;
+ 
+	
+	
+}
