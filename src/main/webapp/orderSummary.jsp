@@ -25,8 +25,8 @@
 	<div id="clearCartPopUp" style="display:none;position:fixed;top:0%;left:0%;width:100vh;height:100vh;background:grey;z-index:9;opacity:0.5;">
 										
 	</div>
-	<div id="clearCartPopUp2" style="padding:5px;border-radius:3px;font-size:20px;z-index:10;position:fixed;width:300px;height:200px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-top:-100px;margin-left:-150px;display:none;">
-		<div style="height:80%">You need to pickup your food, so please be there when food is ready.</div>
+	<div id="clearCartPopUp2" style="padding:5px;border-radius:3px;font-size:20px;z-index:10;position:fixed;width:300px;height:170px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-top:-100px;margin-left:-150px;display:none;">
+		<div style="height:75%">You need to pickup your food, so please be there when food is ready.</div>
 		<div style="height:20%"><div id="okClear" style="width:50%;float:left;color:#89c08d"  ng-click="event.clearCart();">Ok</div><div id="cancelClear" style="width:50%;float:right;color:#c22929;">Cancel</div></div>
 	</div>
 		
@@ -41,10 +41,10 @@
 					<!-- /logo -->
 					<!--top-nav---->
 
-				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #cf3721 ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
+				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #be1e2d ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
 				<div class="navigation">
 					<div class="logo" style="position:fixed;left:1em;">
-						<h1 ><a href="/singlePageApp#/restaurant">HOPLINE</a></h1>
+						<h1 ><a href="#">HOPLINE</a></h1>
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
 						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
@@ -150,7 +150,6 @@ $("#place").click(function(){
 	if($('#pay').is(':checked')){
 		$("#clearCartPopUp").css({display:'block'});
 		$("#clearCartPopUp2").css({display:'block'});
-		
 	}
 	else{
 		$("html, body").animate({ scrollTop: $(document).height() },0);
@@ -168,8 +167,14 @@ $("#okClear").click(function(){
 $("#cancelClear").click(function(){
 	$("#clearCartPopUp").css({display:'none'});
 	$("#clearCartPopUp2").css({display:'none'});
-})
-
+});
+$("#pay").click(function(){
+if($('#pay').is(':checked')){
+	$("#paymentOptionsPopUp").css({display:'none'});
+	$("#paymentOptionsPopUp2").css({display:'none'});
+	$("#cashPay").css({color:'grey'});
+}
+});
 </script>
 <script src="./app/angular.min.js"></script>
 <script src="./app/angular-route.js"></script>

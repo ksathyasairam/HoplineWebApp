@@ -31,10 +31,11 @@
 					<!-- /logo -->
 					<!--top-nav---->
 
-				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #cf3721 ; padding-top:1em; padding-bottom:1em;z-index: 99999; ">
+				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #be1e2d ; padding-top:1em; padding-bottom:1em;z-index: 99999; ">
 				<div class="navigation">
 					<div class="logo" style="position:fixed;left:1em;">
-						<h1 id="head" ui-sref="restaurant">HOPLINE</h1>
+						<!-- <h1 id="head">HOPLINE</h1> -->
+						<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
 						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px; opacity:0;" ></span>
@@ -103,6 +104,7 @@
 	  $scope.sec=60;
 	  var mytimeout=null;
 	  this.addOnTot=0;
+	  this.addOnLength=1;
 
 	  this.category=[
 	  {
@@ -220,10 +222,10 @@
 		  //$("#checkcartNotify").css({opacity:1});
 	  //});
 	  //$("#qty").css({color:"#79d75f"});
-	  $("#qty").css({'font-size':"15px"});		  
-	  $("#qty").animate({'font-size':"12px"}, 1000, function() {
-	  	$("#qty").css({'color':"#ffffff"});
-	  });
+	  //$("#qty").css({'font-size':"15px"});		  
+	 // $("#qty").animate({'font-size':"12px"}, 1000, function() {
+	  	//$("#qty").css({'color':"#ffffff"});
+	  //});
 	  
 	  
 
@@ -261,7 +263,13 @@
 			  }
 		  }
 		};
-	
+	this.addOnLen=function(food){
+		this.addOnLength=food.addOns.length;
+		console.log(this.addOnLength)
+		var ab="-" + (((this.addOnLength-1)*50)/2 +115) + "px";
+		console.log("#clearCartPopUp2-"+food.productId);
+		$("#clearCartPopUp2-"+food.productId).css({'margin-top':ab});
+	};
 	this.totalOrder=function()
 	{
 	  this.totalQuantity=0;
@@ -326,10 +334,10 @@
 	  //$("#checkcartNotify").css({opacity:1});
 	  //});	  
 	 // $("#qty").css({color:"#79d75f"});
-	  $("#qty").css({'font-size':"15px"});		  
-	  $("#qty").animate({'font-size':"12px"}, 800, function() {
-	  	$("#qty").css({'color':"#ffffff"});
-	  });	  
+	  //$("#qty").css({'font-size':"15px"});		  
+	  //$("#qty").animate({'font-size':"12px"}, 800, function() {
+	  	//$("#qty").css({'color':"#ffffff"});
+	  //});	  
 	  //$('.addedtoast').animate({top: '85'},1000);
 	  //$('.addedtoast').fadeOut(1500);
 	  //$('.addedtoast').css({top: '4%'});

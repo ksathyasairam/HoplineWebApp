@@ -31,10 +31,10 @@
 					<!-- /logo -->
 					<!--top-nav---->
 
-				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #cf3721 ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
+				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #be1e2d ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
 				<div class="navigation">
 					<div class="logo" style="position:fixed;left:1em;">
-						<h1 ><a href="/singlePageApp#/restaurant">HOPLINE</a></h1>
+						<h1 ><a href="#">HOPLINE</a></h1>
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
 						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
@@ -47,8 +47,8 @@
 			
 
 <div style="position:absolute; top:25%; left:50%; background: #eeeeee; padding-top:18px; padding-bottom:18px; padding-left:10px; padding-right:10px; border-radius:  3px; margin-left:-160px; box-shadow:0px 0px  6px #888888; border: 1px solid #AFAFAF;">
-    <div style=" position:absolute;left:50%;height:90px; width:90px; -webkit-border-radius: 60px;-moz-border-radius: 60px; border-radius: 60px; background: #b2301d; margin-top:-60px; margin-left:-45px;box-shadow:0px -1px  2px #888888;">
-      
+    <div style=" position:absolute;left:50%;height:90px; width:90px; -webkit-border-radius: 60px;-moz-border-radius: 60px; border-radius: 60px; background: #be1e2d; margin-top:-60px; margin-left:-45px;box-shadow:0px -1px  2px #888888;">
+      <img src="images/hoplogo.png" alt=" " style="height:60px;margin-left:15px;margin-top:15px" / >
     </div>
     <br>
     <br>
