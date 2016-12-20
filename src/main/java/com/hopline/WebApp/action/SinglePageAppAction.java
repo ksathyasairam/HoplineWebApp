@@ -13,7 +13,7 @@ public class SinglePageAppAction extends BaseAction {
 	public String execute() throws Exception {
 		UserVo user = (UserVo) getSession().get(SecurityInterceptor.SESSION_USER);
 		setLoggedIn(user != null);
-//		setMenuJsonString(ServiceLocator .getInstance().getService(CategoryServiceImpl.class).retrieveMenuPageJson(user));
+		setMenuJsonString(ServiceLocator .getInstance().getService(CategoryServiceImpl.class).retrieveMenuPageJson(user));
 		return "success";
 	}
 

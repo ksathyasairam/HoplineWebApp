@@ -63,7 +63,7 @@
 		 <s:if test="%{afterLoginURL.equalsIgnoreCase('orderSummaryOnLoad')}">
 			<div id="loginPopUp" style="font-family: 'Raleway', sans-serif;text-align:center;bottom:3%;font-size:14px; background:none;color:grey;padding-top:3%;">
 			
-				<strong>Hey there, you have login </br>before you can place orders.</strong>
+				<strong>Lets quickly get you signed up</br>before you can place orders!</strong>
 				
 			</div>
 		</s:if>

@@ -2,25 +2,27 @@ package com.hopline.WebApp.service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 
 import com.hopline.WebApp.constants.OrderStates;
 import com.hopline.WebApp.dao.OrderDao;
 import com.hopline.WebApp.endpoint.model.OrderStatus;
 import com.hopline.WebApp.endpoint.model.OrderStatusList;
-import com.hopline.WebApp.model.dao.AddOn;
+import com.hopline.WebApp.model.dao.Feedback;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.OrderProductAddon;
 import com.hopline.WebApp.model.dao.OrderStatusLog;
+import com.hopline.WebApp.model.vo.FeedbackVo;
 import com.hopline.WebApp.model.vo.OrderVo;
 import com.hopline.WebApp.model.vo.UserVo;
 import com.hopline.WebApp.rest.framework.Constants;
 import com.hopline.WebApp.rest.framework.IService;
 import com.hopline.WebApp.rest.framework.Util;
 import com.hopline.WebApp.translator.OrderTranslator;
-import com.mysql.fabric.xmlrpc.base.Array;
 
 public class OrderService extends IService {
 //TODO : testing defaulter function and testng overall submit order.
@@ -259,6 +261,16 @@ public class OrderService extends IService {
 
 	public void setReturnPage(String returnPage) {
 		this.returnPage = returnPage;
+	}
+
+
+
+	public void createFeedback(FeedbackVo feedbackVo) {
+		Mapper mapper = new DozerBeanMapper();
+		Feedback feedback =  
+		    mapper.map(feedbackVo, Feedback.class);
+		
+		orderDao.saveFeedback(feedback);
 	}
 
 

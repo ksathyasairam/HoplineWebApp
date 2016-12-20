@@ -36,6 +36,8 @@ public class Constants {
 
 	public static final String SMS_ORDER_READY_TEXT = "Hi %s, your order #%s is ready for pick up. Enjoy your food!!";
 	
-	public static final String SMS_ORDER_CREATED_TEXT = "Hi %s, your order has been successfully accepted by %s. Your order no. is #%s. Thank you for your order!";
+	//public static final String SMS_ORDER_CREATED_TEXT = "Hi %s, your order has been successfully accepted by %s. Your order no. is #%s. Thank you for your order!";
+	public static final String SMS_ORDER_CREATED_TEXT = "Hi %s, your order #%s has been successfully accepted by %s.We will notify you once your order is ready.Thank you for your order!";
+	public static final String SMS_PARTIAL_ORDER_READY_TEXT = "Hi %s, your order #%s is ready for pick up. Enjoy your food!!";
 
 }

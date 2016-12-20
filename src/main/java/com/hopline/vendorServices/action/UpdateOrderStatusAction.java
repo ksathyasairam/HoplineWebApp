@@ -12,8 +12,8 @@ public class UpdateOrderStatusAction extends BaseRestAction{
 	
 	public String execute() {
 		if (invalidInput()) throw new IllegalArgumentException();
-		if ("markItemsPrepared".equals(orderStatus.getAction())) {
-			orderStatus = ServiceLocator .getInstance().getService(VorderService.class).markItemsPrepared(orderStatus);
+		if ("notifyUserPartialOrder".equals(orderStatus.getAction())) {
+			orderStatus = ServiceLocator .getInstance().getService(VorderService.class).notifyUserPartialOrder(orderStatus);
 		} else {
 			orderStatus = ServiceLocator .getInstance().getService(VorderService.class).udpateOrderStatus(orderStatus);
 		}

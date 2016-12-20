@@ -26,7 +26,7 @@
 										
 	</div>
 	<div id="clearCartPopUp2" style="padding:5px;border-radius:3px;font-size:20px;z-index:10;position:fixed;width:300px;height:170px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-top:-100px;margin-left:-150px;display:none;">
-		<div style="height:75%">You need to pickup your food, so please be there when food is ready.</div>
+		<div style="height:75%"> Please make sure to pickup your delicious food from the restaurant when it's ready!</div>
 		<div style="height:20%"><div id="okClear" style="width:50%;float:left;color:#89c08d"  ng-click="event.clearCart();">Ok</div><div id="cancelClear" style="width:50%;float:right;color:#c22929;">Cancel</div></div>
 	</div>
 		

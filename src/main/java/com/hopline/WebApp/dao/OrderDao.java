@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
 import com.hopline.WebApp.constants.OrderStates;
+import com.hopline.WebApp.model.dao.Feedback;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.OrderProductAddon;
@@ -164,6 +165,9 @@ public class OrderDao {
 		return (Integer) getSessionFactory().getCurrentSession().save(orderStatusLog);
 	}
 	
+	public Integer saveFeedback(Feedback feedback) {
+		return (Integer) getSessionFactory().getCurrentSession().save(feedback);
+	}
 //	public Shop retrieveShopById(int shopId) {
 //		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Shop.class, "s");
 //		criteria.add(Restrictions.eq("s.idshop", shopId));

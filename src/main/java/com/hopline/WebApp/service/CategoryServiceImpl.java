@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.hopline.WebApp.dao.CategoryDao;
 import com.hopline.WebApp.model.dao.Category;
 import com.hopline.WebApp.model.dao.Product;
+import com.hopline.WebApp.model.vo.AddOnVo;
 import com.hopline.WebApp.model.vo.CategoryVo;
 import com.hopline.WebApp.model.vo.MenuPage;
 import com.hopline.WebApp.model.vo.ProductVo;
@@ -70,6 +71,10 @@ public class CategoryServiceImpl extends IService{
 		
 		for (CategoryVo categoryVo : categoryVos) {
 	        Collections.sort(categoryVo.getProducts(), new ProductVenNvegComparator());
+	        
+	        for (ProductVo product : categoryVo.getProducts()) {
+	        	Collections.sort(product.getAddOns(), new AddonPriceComprator());
+	        }
 		}
 		
 		return categoryVos;
@@ -80,6 +85,13 @@ public class CategoryServiceImpl extends IService{
 	    public int compare(ProductVo a, ProductVo b) {
 	        return a.getVegYn().compareToIgnoreCase(b.getVegYn()) == 0 ? 
 	        		a.getName().compareToIgnoreCase(b.getName()) : a.getVegYn().compareToIgnoreCase(b.getVegYn()) * -1  ;
+	    }
+	}
+	
+	class AddonPriceComprator implements Comparator<AddOnVo> {
+	    @Override
+	    public int compare(AddOnVo a, AddOnVo b) {
+	        return a.getPrice().compareTo(b.getPrice());
 	    }
 	}
 

@@ -61,7 +61,7 @@ public class VorderService extends IService {
 		orderDao.saveOrderStatusLog(OrderService.getOrderStatusLog(order));
 		
 		if (OrderStates.PREPARING.equals(order.getOrderState())){
-			Util.sendSMS(order.getUser().getPhone(),String.format(Constants.SMS_ORDER_CREATED_TEXT,order.getUser().getName(), order.getShop().getShopName(), order.getCustomerOrderId()));
+			Util.sendSMS(order.getUser().getPhone(),String.format(Constants.SMS_ORDER_CREATED_TEXT,order.getUser().getName(), order.getCustomerOrderId(), order.getShop().getShopName()));
 		}else if (OrderStates.CANCELLED.equals(order.getOrderState())){
 			Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_CANCELLED_TEXT,order.getCustomerOrderId(), orderStatus.getCancelReason()));
 		}else if (OrderStates.READY_FOR_PICKUP.equals(order.getOrderState())){
@@ -134,7 +134,7 @@ public class VorderService extends IService {
 		order.setOrderCreator(Constants.ORDER_CREATOR_VENDOR);
 		order = ServiceLocator.getInstance().getService(OrderService.class).createOrder(order);
 		
-		Util.sendSMS(order.getUser().getPhone(),String.format(Constants.SMS_ORDER_CREATED_TEXT,order.getUser().getName(), order.getShop().getShopName(), order.getCustomerOrderId()));	
+		Util.sendSMS(order.getUser().getPhone(),String.format(Constants.SMS_ORDER_CREATED_TEXT,order.getUser().getName(), order.getCustomerOrderId(), order.getShop().getShopName()));	
 		
 		orderVo = OrderTranslator.toOrderVo(order);
 		
@@ -208,6 +208,13 @@ public class VorderService extends IService {
 //			Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_ORDER_READY_TEXT,order.getUser().getName(), order.getCustomerOrderId()));
 //		}
 
+		return orderStatus;
+	}
+
+	public OrderStatusTo notifyUserPartialOrder(OrderStatusTo orderStatus) {
+		Order order = orderDao.getOrder(orderStatus.getOrderId());
+		Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_ORDER_READY_TEXT,order.getUser().getName(), order.getCustomerOrderId()));
+		orderStatus.setSuccess(true);
 		return orderStatus;
 	}
 

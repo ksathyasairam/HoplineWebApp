@@ -137,8 +137,15 @@
 					<img src="images/fork1.png" alt=" " style="height:60px;"/>
 				</div>
 				<div >
-					It seems your order amount exceeded Rs.1000,kindly pay this amount at the counter.
+					
+					Kindly pre-pay <s:property value="order.totalPrice"/> amount at the restaurant counter.<br>Your order will be accepted only after the payment is complete.
 				</div>
+				<br>
+				<div >
+					
+					*Please note that if the total amount of all your orders exceeds Rs.1000 the you need to prepay the amount to the resturaunt.
+				</div>
+				
 			</div>
 			<div>
 				<img src="images/bg2.png" alt=" " style="height:95px;margin-top:1%;"/>

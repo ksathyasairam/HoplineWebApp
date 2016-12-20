@@ -23,6 +23,8 @@
    <mapping resource="hibernate/hbms/User.hbm.xml"/>
    <mapping resource="hibernate/hbms/OrderProductAddon.hbm.xml"/>
    <mapping resource="hibernate/hbms/OfflineOrderLog.hbm.xml"/>
+   <mapping resource="hibernate/hbms/Feedback.hbm.xml"/>
+
 
 
 </session-factory>
