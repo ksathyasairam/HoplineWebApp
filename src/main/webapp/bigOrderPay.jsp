@@ -126,7 +126,7 @@
 			</div>
 		</div>
 		<div style="position:absolute;bottom:11%;">
-			<div style="text-align:center; margin-left:1%; padding-left:2%;padding-right:2%;padding-top:2%;padding-bottom:6%; box-shadow:0px 0px  0px #888888; background:#c22929;opacity:1; width:96%;height:110px;color:#ffffff;border-radius:3px;">
+			<div style="text-align:center; margin-left:1%; padding-left:2%;padding-right:2%;padding-top:2%;padding-bottom:6%; box-shadow:0px 0px  0px #888888; background:#c22929;opacity:1; width:96%;height:127px;color:#ffffff;border-radius:3px;">
 				<div style="float:left;">
 					<img src="images/spoon.png" alt=" " style="height:60px;margin-top"/>
 				</div>	
@@ -134,13 +134,10 @@
 				<div style="float:right;">
 					<img src="images/fork1.png" alt=" " style="height:60px;"/>
 				</div>
-				<div >
+				<div  style="font-size:13px;">
 					
-					Kindly pre-pay <s:property value="order.totalPrice"/> amount at the restaurant counter.<br>Your order will be accepted only after the payment is complete.
-				</div>
-				<br>
-				<div >
-					
+					Kindly pre-pay <s:property value="order.totalPrice"/> amount at the restaurant counter.Your order will be accepted only after the payment is complete.</br>
+
 					*Please note that if the total amount of all your orders exceeds Rs.1000 the you need to prepay the amount to the resturaunt.
 				</div>
 				

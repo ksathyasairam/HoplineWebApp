@@ -134,8 +134,9 @@
 					<div class="logo" style="position:fixed;left:1em;">
 						<a href="singlePageApp#/restaurant">
 							<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
-							<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>ORDERS</b></div>
 						</a>
+							<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>ORDERS</b></div>
+						
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
 						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>						
