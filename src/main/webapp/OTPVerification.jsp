@@ -32,7 +32,10 @@
 				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #be1e2d ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
 				<div class="navigation">
 					<div class="logo" style="position:fixed;left:1em;">
-						<h1 ><a href="#">HOPLINE</a></h1>
+						<a href="singlePageApp#/restaurant">
+							<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
+							<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>Bistro 37</b></div>
+						</a>
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
 						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
@@ -58,7 +61,7 @@
 
   		</div>
   		<div  style="padding-bottom:5%; ">
-      		<input type="submit" value="Verify" ui-sref="order" style=" color:white;width:100%; background:#4fb66d; border:none ; border-radius:  2px; height:35px;"/>
+      		<input type="submit" value="Verify" style=" color:white;width:100%; background:#4fb66d; border:none ; border-radius:  2px; height:35px;"/>
   		</div>
   	</form>
 

@@ -64,11 +64,7 @@
 			});
     	
 		</script>
-	<a id="return-to-top" style="z-index:11; ">
-		<i>
-			<img src="images/up.png" alt=" " / >
-		</i>
-	</a>
+
 	<a   href="/singlePageApp#/home">
 		<div class="bigBack" style="border:none;">
 			Back to Menu
@@ -94,8 +90,10 @@
 					<div class="navigation">
 						<div class="logo" style="position:fixed;left:1em;">
 							<!-- <h1 ><a href="#">HOPLINE</a></h1> -->
-							<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
-						<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>BISTRO 37</b></div>
+							<a href="singlePageApp#/restaurant">
+								<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
+								<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>FEEDBACK</b></div>
+							</a>
 						</div>
 						
 						<div class="navigation-right" style="margin-right:1em;" >
@@ -128,7 +126,7 @@
 			</div>
 		</div>
 		<div style="position:absolute;bottom:11%;">
-			<div style="text-align:center; margin-left:1%; padding-left:2%;padding-right:2%;padding-top:2%;padding-bottom:6%; box-shadow:0px 0px  0px #888888; background:#c22929;opacity:1; width:96%;height:80px;color:#ffffff;border-radius:3px;">
+			<div style="text-align:center; margin-left:1%; padding-left:2%;padding-right:2%;padding-top:2%;padding-bottom:6%; box-shadow:0px 0px  0px #888888; background:#c22929;opacity:1; width:96%;height:110px;color:#ffffff;border-radius:3px;">
 				<div style="float:left;">
 					<img src="images/spoon.png" alt=" " style="height:60px;margin-top"/>
 				</div>	

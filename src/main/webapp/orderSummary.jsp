@@ -20,7 +20,7 @@
 </head>
 	<body ng-app="mainApp" ng-controller="EventCtrl as event" style="background-image: url(../images/checks.png);min-height:100vh;> 
 
-	<a id="return-to-top" style="z-index:11; "><i><img src="images/up.png" alt=" " / ></i></a>
+	<a id="return-to-top" style="z-index:11; "><i> </i></a>
 	
 	<div id="clearCartPopUp" style="display:none;position:fixed;top:0%;left:0%;width:100vh;height:100vh;background:grey;z-index:9;opacity:0.5;">
 										
@@ -45,8 +45,10 @@
 				<div class="navigation">
 					<div class="logo" style="position:fixed;left:1em;">
 						<!-- <h1 ><a href="#">HOPLINE</a></h1> -->
-						<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
-						<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>BISTRO 37</b></div>
+						<a href="href="singlePageApp#/restaurant"">
+							<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
+							<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>BISTRO 37</b></div>
+						</a>
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
 						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>
@@ -73,10 +75,10 @@
 					<ul class="address">
 						<s:iterator value="order.orderProducts">
 						 <li  id="cartItem-{{$index}}" style="border-bottom: 1.5px dotted #AFAFAF;margin-top:2%;padding-bottom:2%;">
-						 	<div style="color:#525a54;float:left;">
+						 	<div style="color:#525a54;max-width:260px;display:inline-block;">
 						 		<s:property value="product.name"/>
 						 	</div>
-						 	<div style="color:#525a54;float:right;">
+						 	<div style="color:#525a54;float:right;width:40px;display:inline-block;text-align:right">
 						 		x <s:property value="count"/> 
 						 		
 						 		
@@ -111,13 +113,13 @@
 				</div>
 				<div class="clearfix"> </div>
 </div>
-	<div id="paymentOptions" style="box-shadow:0px 0px  6px #888888;border-radius:5px;color:grey;background:rgba(253, 246, 246, 1);height:90px;width:96%;z-index:9;margin-left:2%;padding-left:3%;padding-right:3%;">
-		<div style="text-align:center;font-size:20px;margin-top:16px;padding-bottom:8px;padding-top:8px;border-bottom: 1px solid #AFAFAF;">
+	<div id="paymentOptions" style="box-shadow:0px 0px  6px #888888;border-radius:5px;color:#C7C7C7;background:rgba(253, 246, 246, 1);height:90px;width:96%;z-index:9;margin-left:2%;padding-left:3%;padding-right:3%;">
+		<div style="text-align:center;font-size:1.3em;margin-top:16px;padding-bottom:8px;padding-top:8px;border-bottom: 1px solid #AFAFAF;letter-spacing: 3px;text-transform: uppercase;">
 			Payment Options
 		</div>
 
 		<form action="">
-		   <div><div id="cashPay" style="width:50%;float:left;margin-top:2.5%;padding-left:2%;">Pay cash on pickup</div> <input id="pay" type="checkbox" name="paymentMethod" value="cash" style="margin-left:2%;margin-top:4%;float:right;margin-right:2%"></div>
+		   <div><div id="cashPay" style="color:grey;width:50%;float:left;margin-top:2.5%;padding-left:2%;">Pay cash on pickup</div> <input id="pay" type="checkbox" name="paymentMethod" value="cash" style="margin-left:2%;margin-top:4%;float:right;margin-right:2%"></div>
 		</form>
 	</div>
 	<div id="paymentOptionsPopUp2" style="display:none;margin-left:20px;width: 20px; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #c22929;opacity:0.8"></div>
@@ -180,10 +182,6 @@ if($('#pay').is(':checked')){
 <script src="./app/angular-route.js"></script>
 <script src="./app/mainApp.js"></script>
 <script src="./app/ui.router.js"></script>
-<script src="./app/event/eventModule.js"></script>
-<script type="text/javascript">
-    console.log("angular object",angular);
-</script>
 
 	</body>
 </html>

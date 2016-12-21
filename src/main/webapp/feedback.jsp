@@ -55,28 +55,28 @@
 <div class="spacing">
 </div>
 <div id="sideSpacing">
-	<s:form action="/feedbackOnNext">	
+	<form action="/feedbackOnNext">	
 		<div style="border-radius:3px;box-shadow:0px 0px  6px #888888; background:#ffffff;color:#6d6c6c;padding-top:4%;opacity:0.7;padding-bottom:7%;height:95vh;">
 			<div style="text-align:center;color:#c22929;padding-bottom:10px">
 				<b style="margin-top:-15px">How do you feel about the app?</b>
 			</div>
-			<div class="rate">
-		        <input type="radio" id="star5" name="rate" value="5" /><label for="star5" title="text" style="margin-top:-30px">&#x02729;</label>
-		        <input type="radio" id="star4" name="rate" value="4" /><label for="star4" title="text" style="margin-top:-30px">&#x02729;</label>
-		        <input type="radio" id="star3" name="rate" value="3" /><label for="star3" title="text" style="margin-top:-30px">&#x02729;</label>
-		        <input type="radio" id="star2" name="rate" value="2" /><label for="star2" title="text" style="margin-top:-30px">&#x02729;</label>
-		        <input type="radio" id="star1" name="rate" value="1" /><label for="star1" title="text" style="margin-top:-30px">&#x02729;</label>
+			<div class="rate" method="POST">
+		        <input type="radio" id="star5" name="feedback.rating" value="5" /><label for="star5" title="text" style="margin-top:-30px">&#x02729;</label>
+		        <input type="radio" id="star4" name="feedback.rating" value="4" /><label for="star4" title="text" style="margin-top:-30px">&#x02729;</label>
+		        <input type="radio" id="star3" name="feedback.rating" value="3" /><label for="star3" title="text" style="margin-top:-30px">&#x02729;</label>
+		        <input type="radio" id="star2" name="feedback.rating" value="2" /><label for="star2" title="text" style="margin-top:-30px">&#x02729;</label>
+		        <input type="radio" id="star1" name="feedback.rating" value="1" /><label for="star1" title="text" style="margin-top:-30px">&#x02729;</label>
 		    </div>
 			<div style="margin-left:2%;position:relative;margin-top:8%;height:50px;width:96%; background:none;color:#6d6c6c; ">
 				<label for="like" style="color:#c22929;">Share your ideas on how we can improve</label>
-				<textarea rows="4" cols="40" placeholder="text here" name="lik" style="border:1px solid #c22929;margin-top:-1%;width:100%">
+				<textarea rows="4" cols="40" placeholder="text here" name="feedback.fedText" style="border:1px solid #c22929;margin-top:-1%;width:100%">
 				</textarea>
 			</div>
 			<div>
 				<input type="submit" value="Submit" style="width:70px;background:#3e92d3;border-radius:3px;border:none;color:white;position:relative;margin-left:2%;margin-top:33%;text-align:center;padding:1%">
 			<div>				
 		</div>
-	</s:form>
+	</form>
 </div>
 <div style="height:50px; width:100%; float:left;">
 </div>

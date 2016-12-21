@@ -106,11 +106,6 @@
 			});
 		</script>
 		
-	<a id="return-to-top" style="z-index:11; ">
-		<i>
-			<img src="images/up.png" alt=" " / >
-		</i>
-	</a>
 	<a onclick="goBack()">
 		<div  class="bigBack">
 			Back
@@ -137,8 +132,10 @@
 				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #be1e2d ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
 				<div class="navigation">
 					<div class="logo" style="position:fixed;left:1em;">
-						<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
-						<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>ORDERS</b></div>
+						<a href="singlePageApp#/restaurant">
+							<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
+							<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>ORDERS</b></div>
+						</a>
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >
 						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" ></span>						
@@ -208,11 +205,11 @@
 						<s:iterator value="orderProducts">
 						 <li  style="border-bottom: 1.5px dotted #AFAFAF; padding-bottom:3%;padding-top:2%;">
 						 	
-						 	<div style="color:#525a54;float:left;">
+						 	<div style="color:#525a54;max-width:260px;display:inline-block;">
 						 		<s:property value="product.name"/>
 						 	</div>
 						 	
-						 	<div style="color:#525a54;float:right;">
+						 	<div style="color:#525a54;float:right;width:40px;display:inline-block;text-align:right">
 						 		x <s:property value="count"/> 
 						 		
 						 		
