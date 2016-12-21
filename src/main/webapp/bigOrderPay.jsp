@@ -92,7 +92,7 @@
 							<!-- <h1 ><a href="#">HOPLINE</a></h1> -->
 							<a href="singlePageApp#/restaurant">
 								<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
-								<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>FEEDBACK</b></div>
+								<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>Bistro 37</b></div>
 							</a>
 						</div>
 						
