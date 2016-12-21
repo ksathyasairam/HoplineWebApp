@@ -6,8 +6,22 @@
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password">newyearnewlife</property>
+        
+        <!-- Database -->
+        
+        <!-- Development -->
+        
+        <!-- 
         <property name="hibernate.connection.url">jdbc:mysql://hopline.c4njdrsmog9r.us-east-1.rds.amazonaws.com:3306/hopline</property>
-        <property name="hibernate.connection.username">hopline</property>
+        <property name="hibernate.connection.username">hopline</property> -->
+        
+        
+        <!-- Production -->
+        
+        <property name="hibernate.connection.url">jdbc:mysql://hopline-prod-db.cm80oa1oxjco.ap-south-1.rds.amazonaws.com:3306/hopline</property>
+        <property name="hibernate.connection.username">hopline2</property>
+        
+        
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
 

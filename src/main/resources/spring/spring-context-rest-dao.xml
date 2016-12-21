@@ -29,9 +29,23 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://hopline.c4njdrsmog9r.us-east-1.rds.amazonaws.com:3306/hopline" />
-		<property name="username" value="hopline" />
+		
+		<!-- Database -->
+        
+        <!-- Development -->
+		
+		<!-- <property name="url" value="jdbc:mysql://hopline.c4njdrsmog9r.us-east-1.rds.amazonaws.com:3306/hopline" />
+		<property name="username" value="hopline" /> -->
+		
+		
+		 <!-- Production -->
+		        
+		<property name="url" value="jdbc:mysql://hopline-prod-db.cm80oa1oxjco.ap-south-1.rds.amazonaws.com:3306/hopline" />
+		<property name="username" value="hopline2" />
+		
+		
+		
+		
 		<property name="password" value="newyearnewlife" />
 	</bean>
 

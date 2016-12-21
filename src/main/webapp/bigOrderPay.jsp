@@ -33,7 +33,7 @@
     			var hiddenField = document.createElement("input");
     			            hiddenField.setAttribute("type", "hidden");
     			            hiddenField.setAttribute("name", "orderId");
-    			            hiddenField.setAttribute("value",'<s:property value="order.customerOrderId"/>');
+    			            hiddenField.setAttribute("value",'<s:property value="order.idorder"/>');
 
     			            form.appendChild(hiddenField);
     			            document.body.appendChild(form);
