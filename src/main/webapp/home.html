@@ -1,6 +1,14 @@
 <a href="/yourOrders">
 	<img  src="images/invoice-4.png" alt=" " / style="position:fixed;right:0%;height:32px;  top:16px; float:right; margin-right:62px;z-index:9999999;" >
-</a>p 
+</a>
+
+<div id="restaurantClosed" style="position:fixed;width:100vh;height:100vh;background:grey;z-index:0;opacity:0.5;" ng-show="event.isRestaurantClosed">
+
+</div>
+<div id="restaurantClosed2" style="padding:5px;border-radius:3px;font-size:20px;z-index:10;position:fixed;width:300px;height:140px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-top:-100px;margin-left:-150px;" ng-show="event.isRestaurantClosed">
+	<div style="height:80%">The restaurant has closed for the day. Please come again later.</div>
+	<div style="height:20%"><div  style="width:100%;color:#89c08d;text-align:center;"  ui-sref="restaurant">Back</div></div>
+</div>
 
 <div id="clearCartPopUp" style="position:fixed;width:100vh;height:100vh;background:grey;z-index:0;display:none;opacity:0.5;">
 

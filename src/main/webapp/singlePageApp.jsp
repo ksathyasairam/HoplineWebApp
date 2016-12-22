@@ -159,6 +159,13 @@
 	  this.favourites=this.foodIt.favourites;
 	  this.favList=[];
 	  
+	  this.isRestaurantClosed=false;
+	  
+	  var date = new Date();
+	    if(date.getHours() >= 22){ 
+	    	this.isRestaurantClosed=true;
+	    }
+	  
 	this.checkMenuWithCart=function(){
 		var check1 = JSON.parse(localStorage.getItem('checkList')) || [];
 		
