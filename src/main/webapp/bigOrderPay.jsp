@@ -138,7 +138,7 @@
 					
 					Kindly pre-pay <s:property value="order.totalPrice"/> amount at the restaurant counter.Your order will be accepted only after the payment is complete.</br>
 
-					*Please note that if the total amount of all your orders exceeds Rs.1000 the you need to prepay the amount to the resturaunt.
+					*Please note that if the total amount of all your orders exceeds Rs.1000 then you need to prepay the amount to the resturaunt.
 				</div>
 				
 			</div>

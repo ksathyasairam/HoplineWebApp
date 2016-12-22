@@ -34,15 +34,15 @@
         
         <!-- Development -->
 		
-		<!-- <property name="url" value="jdbc:mysql://hopline.c4njdrsmog9r.us-east-1.rds.amazonaws.com:3306/hopline" />
-		<property name="username" value="hopline" /> -->
+		<property name="url" value="jdbc:mysql://hopline.c4njdrsmog9r.us-east-1.rds.amazonaws.com:3306/hopline" />
+		<property name="username" value="hopline" />
 		
 		
 		 <!-- Production -->
-		        
+<!-- 		        
 		<property name="url" value="jdbc:mysql://hopline-prod-db.cm80oa1oxjco.ap-south-1.rds.amazonaws.com:3306/hopline" />
 		<property name="username" value="hopline2" />
-		
+ -->		
 		
 		
 		
