@@ -161,10 +161,11 @@
 	  
 	  this.isRestaurantClosed=false;
 	  
-	  //var date = new Date();
-	    //if(date.getHours() >= 22){ 
-	    	//this.isRestaurantClosed=true;
-	    //}
+	  var date = new Date();
+	    if(date.getHours() >= 22 || date.getHours() < 11){ 
+	    	this.isRestaurantClosed=true;
+	    }
+
 	  
 	this.checkMenuWithCart=function(){
 		var check1 = JSON.parse(localStorage.getItem('checkList')) || [];
