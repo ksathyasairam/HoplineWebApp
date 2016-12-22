@@ -161,10 +161,10 @@
 	  
 	  this.isRestaurantClosed=false;
 	  
-	  var date = new Date();
-	    if(date.getHours() >= 22){ 
-	    	this.isRestaurantClosed=true;
-	    }
+	  //var date = new Date();
+	    //if(date.getHours() >= 22){ 
+	    	//this.isRestaurantClosed=true;
+	    //}
 	  
 	this.checkMenuWithCart=function(){
 		var check1 = JSON.parse(localStorage.getItem('checkList')) || [];
@@ -511,6 +511,7 @@
 	};
 
 	this.post1=function() {
+		console.log("kamehameha");
 		if(this.checkList.length==0)
 			{
 			$("#instantCheckPopUp2").css({display:'block'});
@@ -558,8 +559,9 @@
 	            var k=0;
 	    for(var j = 0; j < this.checkList[i].addOns.length; j++)
 	    { 
-	      if(this.checkList[i].addOns[j].selected==true)
+	      if(this.checkList[i].addOns[j].selected==true || this.checkList[i].addOns[j].selected=="true")
 	        {
+	    	  	console.log(this.checkList[i].addOns[j]);
 	            var hiddenField1 = document.createElement("input");
 	            hiddenField1.setAttribute("type", "hidden");
 	            hiddenField1.setAttribute("name", "order.orderProducts["+i+"].orderProductAddons["+k+"].addOn.idaddOn");
