@@ -58,9 +58,7 @@
 
 				</div>
 				</div>
-
-			
-
+		
 <s:form action="/orderSummaryNext">
  <div id="place" class="bigBack" style="border:none; background:#4fb66d;z-index:999999">
  	Place Order
