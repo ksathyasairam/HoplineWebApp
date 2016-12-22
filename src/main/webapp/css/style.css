@@ -82,9 +82,6 @@ body h1,h2,h3,h4,h5,h6{
 	box-shadow:0px 0px  0px #3d3f3d
 }
 
-.clickClass {
-	box-shadow:0px 1px  3px #3d3f3d;width:92%;padding:5px;text-align:center;font-size:12px;color:#ffffff;margin-top:-5px;;background:#89c08d;border-radius:4px;
-}
 
 #return-to-top {
     position: fixed;
@@ -812,6 +809,62 @@ ul.address-text b {
 	margin-left:1%;
 	margin-right:1%;
 	}
+	.restaurant_page_image{
+	height:123px;
+	width:123px;
+	}
+	.restaurant_page_card_img{
+	float:right;
+	margin-top:-107px;
+	}
+	.restaurant_page_heading{
+	margin-top:13px
+	}
+	.restaurant_page_spoonplate{
+	height:60px;
+	}
+	.clickClass {
+	box-shadow:0px 1px  3px #3d3f3d;width:92%;padding:5px;text-align:center;font-size:12px;color:#ffffff;margin-top:-5px;;background:#89c08d;border-radius:4px;
+	}
+	.menu_item_description{
+	font-size:12px; 
+	font-family: 'Raleway', sans-serif;
+	}
+	.menu_item_price{
+	font-size:14px;
+	clear:both;
+	width:60%;
+	margin-left:18px;
+	}
+	.customize_button{
+	margin-top:-20px; height:20px;font-size:12px;border:none; border-radius: 3px 3px 3px 3px; text-align:center; color:#67baca;
+	}
+	.customize_options{
+	max-height:250px;
+	overflow:scroll;
+	margin-top:2%;
+	}
+	.customize{
+	padding:5px;border-radius:3px;font-size:17px;z-index:10;position:fixed;width:300px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-left:-150px;
+	}
+	.cart_item_name{
+	color:#525a54;float:left;padding-left:1%;font-size:16px;font-family: 'Raleway', sans-serif;max-width:210px;display:inline-block;
+	}
+	.cart_remove{
+	width:54px; height:20px; border-radius:3px;border:1px solid #cf3721;line-height:normal; margin-right:6px; text-align:center; color:#cf3721; font-size:12px; margin-top:6px;
+	}
+	.cart_veg_nveg{
+	float:left;opacity:0.8; margin-top:6px;
+	}
+	.order_summary_name{
+	color:#525a54;max-width:260px;display:inline-block;
+	}
+	.order_summary_addon{
+	font-size: 13px;
+	}
+	.feedback_submit{
+	width:70px;background:#3e92d3;border-radius:3px;border:none;color:white;position:relative;margin-left:2%;margin-top:33%;text-align:center;padding:1%
+	}
 	
     
 }
@@ -886,6 +939,63 @@ ul.address-text b {
 	margin-left:1%;
 	margin-right:1%;
 	}
+	.restaurant_page_image{
+	height:123px;
+	width:123px;
+	}
+	.restaurant_page_card_img{
+	float:right;
+	margin-top:-107px;
+	}
+	.restaurant_page_heading{
+	margin-top:13px
+	}
+	.restaurant_page_spoonplate{
+	height:60px;
+	}
+	.clickClass {
+	box-shadow:0px 1px  3px #3d3f3d;width:92%;padding:5px;text-align:center;font-size:12px;color:#ffffff;margin-top:-5px;;background:#89c08d;border-radius:4px;
+	}
+	.menu_item_description{
+	font-size:12px; 
+	font-family: 'Raleway', sans-serif;
+	}
+	.menu_item_price{
+	font-size:14px;
+	clear:both;
+	width:60%;
+	margin-left:18px;
+	}
+	.customize_button{
+	margin-top:-20px; height:20px;font-size:12px;border:none; border-radius: 3px 3px 3px 3px; text-align:center; color:#67baca;
+	}
+	.customize_options{
+	max-height:250px;
+	overflow:scroll;
+	margin-top:2%;
+	}
+	.customize{
+	padding:5px;border-radius:3px;font-size:17px;z-index:10;position:fixed;width:300px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-left:-150px;
+	}
+	.cart_item_name{
+	color:#525a54;float:left;padding-left:1%;font-size:16px;font-family: 'Raleway', sans-serif;max-width:210px;display:inline-block;
+	}
+	.cart_remove{
+	width:54px; height:20px; border-radius:3px;border:1px solid #cf3721;line-height:normal; margin-right:6px; text-align:center; color:#cf3721; font-size:12px; margin-top:6px;
+	}
+	.cart_veg_nveg{
+	float:left;opacity:0.8; margin-top:6px;
+	}
+	.order_summary_name{
+	color:#525a54;max-width:260px;display:inline-block;
+	}
+	.order_summary_addon{
+	font-size: 13px;
+	}
+	.feedback_submit{
+	width:70px;background:#3e92d3;border-radius:3px;border:none;color:white;position:relative;margin-left:2%;margin-top:33%;text-align:center;padding:1%
+	}
+	
     
 }
 @media(max-width:1280px){
@@ -1345,6 +1455,158 @@ ul.address-text b {
 	margin-bottom:3%;
 	margin-left:0%;
 	margin-right:0%;
+	}
+
+}
+
+@media(max-width:350px){
+    .banner-info {
+        margin-top: 1.2em;
+    }
+    .logo h1 {
+        font-size: 1.7em;
+    }
+    span.menu img {
+        width:85%;
+        margin-top: 8px;
+    }
+	.spacing{
+	padding-top:9%;
+	}
+	.navigation-right ul {
+        position: fixed;
+        left: 0%;
+        top:4em;
+        width: 100%;
+        z-index: 999;
+        text-align: center;
+        padding: 0px;
+        
+    }
+	.imageAlign{
+	margin-top:-3%;
+	}
+	#sideSpacing{
+	margin-left:7px;
+	margin-right:7px;
+	}
+	.bigBack{
+	 position:fixed;
+	 left:51%;
+	 bottom:5px;
+	 line-height:40px;
+	 background:#67baca; 
+	 opacity:0.9; 
+	 height:40px;
+	 font-size:initial; 
+	 text-align:center;
+	 border-radius:3px 3px 3px 3px;
+	 color:white;
+	 width:98%;
+	 z-index:11;
+	 margin-left:-50%;
+	}
+	.smallBack{
+	position:fixed; 
+	left:1%; 
+	bottom:5px; 
+	line-height:40px; 
+	background:#67baca; 
+	opacity:0.9; 
+	height:40px;
+	font-size:initial; 
+	text-align:center;
+	border-radius:3px 3px 3px 3px;
+	color:white;
+	width:39%;
+	z-index:11;
+	}
+	.proceedToCheckout{
+	position:fixed; 
+	right:1%; 
+	bottom:5px; 
+	line-height:40px; 
+	background:#4fb66d; 
+	opacity:0.9; 
+	height:40px;
+	font-size:initial; 
+	text-align:center;
+	border-radius:3px 3px 3px 3px;
+	color:white;
+	width:58%;
+	z-index:11;
+	}
+	.dottedLining{
+	border-bottom: 1px dotted #AFAFAF;
+	}
+	.webMenu{}
+	.cancelAndAddToCart{
+	opacity:0.9;
+	margin-bottom:3%;
+	margin-left:0%;
+	margin-right:0%;
+	}
+	.restaurant_page_image{
+	height:110px;
+	width:110px;
+	}
+	.restaurant_page_card_img{
+	float:right;
+	margin-top:-105px;
+	}
+	.restaurant_page_heading{
+	margin-top:5px;
+	}
+	.restaurant_page_spoonplate{
+	height:51px;
+	}
+	.clickClass {
+	box-shadow:0px 1px  3px #3d3f3d;width:86%;padding:3px;text-align:center;font-size:10px;color:#ffffff;margin-top:-6px;;background:#89c08d;border-radius:4px;
+	}
+	.menu_item_description{
+	font-size:10px; 
+	font-family: 'Raleway', sans-serif;
+	}
+	.menu_item_price{
+	font-size:12px;
+	clear:both;
+	width:60%;
+	margin-left:18px;
+	}
+	.menu_item_name{
+	font-size:14px;
+	}
+	.customize_button{
+	margin-top:-20px; height:20px;font-size:11px;border:none; border-radius: 3px 3px 3px 3px; text-align:center; color:#67baca;
+	}
+	.customize_options{
+	max-height:214px;
+	overflow:scroll;
+	margin-top:2%;
+	}
+	.customize{
+	padding:5px;border-radius:3px;font-size:17px;z-index:10;position:fixed;width:300px;text-align:center;color:grey;background:white;top:54%;left:50%;margin-left:-150px;
+	}
+	.cart_item_name{
+	color:#525a54;float:left;padding-left:1%;font-size:13px;font-family: 'Raleway', sans-serif;max-width:176px;display:inline-block;
+	}
+	.cart_plus_minus{
+	margin-top:5px;
+	}
+	.cart_remove{
+	width:54px; height:18px; border-radius:3px;border:1px solid #cf3721;line-height:normal; margin-right:6px; text-align:center; color:#cf3721; font-size:10px; margin-top:6px;
+	}
+	.cart_veg_nveg{
+	float:left;opacity:0.8; margin-top:4px;
+	}
+	.order_summary_name{
+	color:#525a54;max-width:230px;display:inline-block;font-size:14px;
+	}
+	.order_summary_addon{
+	font-size: 12px;
+	}
+	.feedback_submit{
+	width:70px;background:#3e92d3;border-radius:3px;border:none;color:white;position:relative;margin-left:2%;margin-top:43%;text-align:center;padding:1%
 	}
 
 }

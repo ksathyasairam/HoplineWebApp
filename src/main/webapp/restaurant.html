@@ -20,15 +20,15 @@ $(document).ready(function(){
 </div>
 <div style="opacity:0.9;margin-left:2%;margin-top:7px; margin-right:2%; padding-left:2%; box-shadow:0px 0px  5px #888888; background:#c24747;color:#ffffff; float:left; width:96%;border-radius:3px;" ng-repeat="restaurant in event.restaurants" ui-sref="home">
 	<div style="float:left; width:35%;">
-		<img src="{{restaurant.image}}" alt=" " / style="height:123px; width:123px; " >
+		<img class=restaurant_page_image src="{{restaurant.image}}" alt=" " /  >
 	</div>
 	<div style="float:right;width:60%;">
-		<h3 style="margin-top:13px">{{restaurant.name}}</h3>
+		<h3  class="restaurant_page_heading">{{restaurant.name}}</h3>
 		<p style="font-size:12px;margin-top:-9px">{{restaurant.description}}</p>
 		<p style="font-size:10px;margin-top:-7px;color:#86ea4a">THIS RESTAURANT ACCEPTS ONLY CASH</p>
 		<div class="clickClass" style="">Show Menu</div>
-		<div style="float:right;margin-top:-107px;">
-			<img src="images/spoonplate.png" alt=" " style="height:60px;"/>
+		<div  class="restaurant_page_card_img">
+			<img src="images/spoonplate.png" alt=" " class="restaurant_page_spoonplate"/>
 		</div>	
 	</div>
 			

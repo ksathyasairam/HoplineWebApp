@@ -18,9 +18,9 @@
  <meta name="keywords" content="" />
 
 </head>
-	<body ng-app="mainApp" ng-controller="EventCtrl as event" style="background-image: url(../images/checks.png);min-height:100vh;> 
+	<body ng-app="mainApp" ng-controller="EventCtrl as event" style="background-image: url(../images/checks.png)";min-height:100vh;> 
 
-	<a id="return-to-top" style="z-index:11; "><i> </i></a>
+	<a id="return-to-top" style="z-index:11;"><i> </i></a>
 	
 	<div id="clearCartPopUp" style="display:none;position:fixed;top:0%;left:0%;width:100vh;height:100vh;background:grey;z-index:9;opacity:0.5;">
 										
@@ -76,7 +76,7 @@
 					<ul class="address">
 						<s:iterator value="order.orderProducts">
 						 <li  id="cartItem-{{$index}}" style="border-bottom: 1.5px dotted #AFAFAF;margin-top:2%;padding-bottom:2%;">
-						 	<div style="color:#525a54;max-width:260px;display:inline-block;">
+						 	<div class="order_summary_name">
 						 		<s:property value="product.name"/>
 						 	</div>
 						 	<div style="color:#525a54;float:right;width:40px;display:inline-block;text-align:right">
@@ -86,9 +86,9 @@
 						 	</div>
 						 	<br>
 						 	<s:iterator value="orderProductAddons">
-						 		<div style="font-size: 13px;">
+						 		<div class="order_summary_addon">
 						 			<div style="color:#525a54;float:left;">
-						 				<s:property value="addOn.name"/>
+						 				+ <s:property value="addOn.name"/>
 						 			</div>
 						 			<br>
 						 		</div>
@@ -120,7 +120,7 @@
 		</div>
 
 		<form action="">
-		   <div><div id="cashPay" style="color:grey;width:50%;float:left;margin-top:2.5%;padding-left:2%;">Pay cash on pickup</div> <input id="pay" type="checkbox" name="paymentMethod" value="cash" style="margin-left:2%;margin-top:4%;float:right;margin-right:2%"></div>
+		   <div><div id="cashPay" style="color:grey;width:53%;float:left;margin-top:2.5%;padding-left:2%;">Pay cash on pickup</div> <input id="pay" type="checkbox" name="paymentMethod" value="cash" style="margin-left:2%;margin-top:4%;float:right;margin-right:2%"></div>
 		</form>
 	</div>
 	<div id="paymentOptionsPopUp2" style="display:none;margin-left:20px;width: 20px; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #c22929;opacity:0.8"></div>

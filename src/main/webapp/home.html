@@ -58,7 +58,7 @@
 											
 											</div>
 										</div>
-										<div style="float:left; width:60%; margin-left:6px; font-family: 'Raleway', sans-serif; ">
+										<div style="float:left; width:60%; margin-left:6px; font-family: 'Raleway', sans-serif; " class="menu_item_name">
 											{{fooditem.name}} 
 										</div>
 										<div ng-show="fooditem.stockYn=='N'">
@@ -121,19 +121,19 @@
 											</div>
 										</div>
 										<br>
-										<div style="font-size:14px;clear:both;width:60%;margin-left:18px;">
+										<div class="menu_item_price">
 											<p style="color:green;margin: 0px 0px 0px;">
 												&#8377 {{fooditem.price}}
 											</p>
 										</div>
 										
 										<div style="margin-left:18px;width:70%;">
-											<i style="font-size:12px; font-family: 'Raleway', sans-serif;" ng-show="fooditem.shortDesc.length();">
+											<i class="menu_item_description" ng-show="fooditem.shortDesc.length();">
 												"{{fooditem.shortDesc}}"
 											</i>
 										</div>
 										<div  style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.addOnLen(fooditem);" ng-show="fooditem.isExpanded==false && fooditem.addOns.length>0">
-												<div style=";margin-top:-20px; height:20px;font-size:12px;border:none; border-radius: 3px 3px 3px 3px; text-align:center; color:#67baca;">
+												<div class="customize_button">
 													<div>
 														<!--  img src="images/downdown.png" alt=" " style="height:7px;margin-top:5px;"/-->	
 														<div style="color:#67baca;border-radius:3px;border:1px solid #67baca;padding-bottom:1px;padding-left:2px;padding-right:2px">
@@ -143,7 +143,7 @@
 												</div>
 										</div>
 										<div style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;" ng-show="fooditem.isExpanded==true">
-												<div style="margin-top:-20px; height:20px;font-size:12px;border:none; border-radius: 3px 3px 3px 3px; text-align:center; color:#67baca;">
+												<div class="customize_button">
 													<div>
 														<!-- img src="images/upup.png" alt=" " style="height:7px;margin-top:5px;"/-->
 														<div style="color:#67baca;border-radius:3px;border:1px solid #67baca;padding-bottom:1px;">
@@ -160,7 +160,7 @@
 										<div id="clearCartPopUp" style="position:fixed;top:0%;left:0%;width:100vh;height:100vh;background:grey;z-index:0;opacity:0.5;">
 										
 										</div>
-										<div id="clearCartPopUp2-{{fooditem.productId}}" style="padding:5px;border-radius:3px;font-size:17px;z-index:10;position:fixed;width:300px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-left:-150px;">
+										<div id="clearCartPopUp2-{{fooditem.productId}}" class="customize">
 											<div style="padding-top:2%;padding-bottom:2%;background:orange;color:white;">Customize</div>
 											<div style="padding-left:3%;padding-top:2%;padding-bottom:2%;background:#edf1f4;color:grey;text-align:left;font-family: 'Raleway', sans-serif; ">{{fooditem.name}}</div>
 											<div style="padding-left:3%;background:#edf1f4;text-align:left;color:grey;font-size:14px;">
@@ -172,7 +172,7 @@
 												</div>
 											</div>
 											<div style="padding-left:3%;padding-top:2%;padding-bottom:1%;background:#ffffff;color:grey;text-align:left;font-family: 'Raleway', sans-serif; "><strong>Add ons</strong></div>
-											<div style="max-height:250px;overflow:scroll;margin-top:2%;">	
+											<div class="customize_options">	
 												<form>										
 													<div  ng-repeat="customize in fooditem.addOns" style="font-size:14px;text-align:left;border-bottom: 1px dotted white;color:grey;padding-left:3%;background-color:#ffffff;opacity:0.9;padding-top:2%;padding-bottom:2%; " >
 														{{customize.name}}

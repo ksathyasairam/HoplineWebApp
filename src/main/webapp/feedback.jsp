@@ -73,8 +73,8 @@
 				</textarea>
 			</div>
 			<div>
-				<input type="submit" value="Submit" style="width:70px;background:#3e92d3;border-radius:3px;border:none;color:white;position:relative;margin-left:2%;margin-top:33%;text-align:center;padding:1%">
-			<div>				
+				<input type="submit" value="Submit" class="feedback_submit" >
+			</div>				
 		</div>
 	</form>
 </div>

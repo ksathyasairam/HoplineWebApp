@@ -206,7 +206,7 @@
 						<s:iterator value="orderProducts">
 						 <li  style="border-bottom: 1.5px dotted #AFAFAF; padding-bottom:3%;padding-top:2%;">
 						 	
-						 	<div style="color:#525a54;max-width:260px;display:inline-block;">
+						 	<div class="order_summary_name">
 						 		<s:property value="product.name"/>
 						 	</div>
 						 	
@@ -217,9 +217,9 @@
 						 	</div>
 						 	<br>
 						 	<s:iterator value="orderProductAddons">
-						 		<div style="font-size: 13px;">
+						 		<div class="order_summary_addon">
 						 			<div style="color:#525a54;float:left;">
-						 				<s:property value="addOn.name"/> 
+						 				+ <s:property value="addOn.name"/> 
 						 			</div>
 						 			<br>
 						 		</div>

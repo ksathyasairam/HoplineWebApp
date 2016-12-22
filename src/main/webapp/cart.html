@@ -31,7 +31,7 @@
 					<h6 style="text-align:center;">Your Cart</h6>
 					<ul class="address">
 						 <li ng-repeat="food in event.checkList" id="cartItem-{{$index}}" style="border-bottom: 1.5px dotted #AFAFAF;margin-top:5%;padding-bottom:1%;" ng-init="event.addOnsPrice(food)">
-						 	<div style="float:left;opacity:0.8; margin-top:6px;" ng-show="food.vegYn=='Y'" >
+						 	<div class="cart_veg_nveg" ng-show="food.vegYn=='Y'" >
 											<div style="width:12px; height:12px;border:1px solid #4fb66d; border-radius: 1px 1px 1px 1px; text-align:center;">
 												<div style="position:relative; left:50%; margin-left:-3px;top:50%; margin-top:-3px; width:6px; height:6px; border-radius: 6px 6px 6px 6px; background:#4fb66d;">
 													
@@ -39,7 +39,7 @@
 											
 											</div>
 							</div>
-							<div style="float:left;opacity:0.8; margin-top:6px;" ng-show="food.vegYn=='N'" >
+							<div class="cart_veg_nveg" ng-show="food.vegYn=='N'" >
 											<div style="width:12px; height:12px;border:1px solid #cf3721; border-radius: 1px 1px 1px 1px; text-align:center;">
 												<div style="position:relative; left:50%; margin-left:-3px;top:50%; margin-top:-3px; width:6px; height:6px; border-radius: 6px 6px 6px 6px; background:#cf3721;">
 													
@@ -47,10 +47,10 @@
 											
 											</div>
 							</div>
-						 	<div style="color:#525a54;float:left;padding-left:1%;font-size:16px;font-family: 'Raleway', sans-serif;max-width:210px;display:inline-block;"">
+						 	<div  class="cart_item_name">
 						 		{{food.name}}
 						 	</div>
-						 	<div style="height:20px;float:right;text-align:right;" >
+						 	<div style="height:20px;float:right;text-align:right;" class="cart_plus_minus" >
 												<div style="float:left; height:20px; width:20px; border-radius:10px 10px 10px 10px; background:#e64539; " ng-click="event.decItemFromCart($index);">
 													<div style="margin-top:1px;margin-left:1px;height:18px; width:18px; border-radius:9px 9px 9px 9px; background:rgba(253, 246, 246, 1);">
 														<div style="width:12px; height:2px;position:relative;top:45%;left:50%;margin-left:-6px;background:#e64539;">
@@ -81,7 +81,7 @@
 						 	</div>	
 							<div style="clear:both;width:100%;">
 							 	<div style="width:40%;float:left">			 		
-								 	<div style="width:54px; height:20px; border-radius:3px;border:1px solid #cf3721;line-height:normal; margin-right:6px; text-align:center; color:#cf3721; font-size:12px; margin-top:6px;" id="remove-{{$index}}" ng-click="event.removeCartItem($index);">
+								 	<div class="cart_remove" id="remove-{{$index}}" ng-click="event.removeCartItem($index);">
 								 			
 								 		Remove
 								 			
