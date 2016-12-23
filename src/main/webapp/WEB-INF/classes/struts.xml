@@ -73,6 +73,14 @@
 			</result>
 
 		</action>
+		
+		<action name="fetchOrderBistro" method="executeBistro"
+			class="com.hopline.vendorServices.action.FetchOrderHistory">
+			<result type="json">
+				<param name="root">fetchOrder</param>
+			</result>
+
+		</action>
 
 
 		<action name="createWalkinOrder" method="execute"

@@ -8,10 +8,19 @@ public class FetchOrderHistory extends BaseRestAction{
 	
 	private FetchOrderTo fetchOrder;
 	
-	
     public String execute()
     {
     	if (invalidInput()) throw new IllegalArgumentException();
+		fetchOrder = ServiceLocator .getInstance().getService(VorderService.class).retrieveOrderHistory(fetchOrder);
+		
+		return SUCCESS;
+    }
+    
+    public String executeBistro()
+    {
+//    	if (invalidInput()) throw new IllegalArgumentException();
+    	fetchOrder = new FetchOrderTo();
+    	fetchOrder.setShopId(1);
 		fetchOrder = ServiceLocator .getInstance().getService(VorderService.class).retrieveOrderHistory(fetchOrder);
 		
 		return SUCCESS;
