@@ -9,6 +9,7 @@ import org.apache.struts2.ServletActionContext;
 import com.hopline.WebApp.action.BaseAction;
 import com.hopline.WebApp.model.dao.SecurityToken;
 import com.hopline.WebApp.model.vo.UserVo;
+import com.hopline.WebApp.rest.framework.M;
 import com.hopline.WebApp.rest.framework.ServiceLocator;
 import com.hopline.WebApp.service.SecurityService;
 import com.opensymphony.xwork2.ActionContext;
@@ -48,8 +49,11 @@ public class SecurityInterceptor implements Interceptor {
 		
 		if (rememberMeCookie != null && sessionUser == null) {
 			UserVo user = getUserFromDb(rememberMeCookie.getValue());
-			if (user == null)
+			
+			if (user == null) {
 				deleteCookie(rememberMeCookie);
+				M.W("SecurityInterceptor", "cookie deleted");
+			}
 			else {
 				session.put(SESSION_USER, user);
 				sessionUser = user;

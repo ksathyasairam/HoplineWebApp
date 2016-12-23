@@ -106,7 +106,7 @@
 			});
 		</script>
 		
-	<a onclick="goBack()">
+	<a href="/singlePageApp">
 		<div  class="bigBack">
 			Back
 		</div>

@@ -12,6 +12,7 @@ import com.hopline.WebApp.model.vo.UserVo;
 import com.hopline.WebApp.rest.framework.ConversionUtil;
 import com.hopline.WebApp.rest.framework.EncryptionUtil;
 import com.hopline.WebApp.rest.framework.IService;
+import com.hopline.WebApp.rest.framework.M;
 import com.hopline.WebApp.rest.framework.Util;
 import com.hopline.WebApp.translator.UserTranslator;
 
@@ -20,11 +21,17 @@ public class SecurityService extends IService{
 	private SecurityDao securityDao;
 	
 	public SecurityToken createSecurityToken(int userId) throws Exception {
-		securityDao.delete(userId);
+
+		SecurityToken securityToken = securityDao.getTokenbyUserId(userId);
+		if (securityToken != null) {
+			M.D("SecurityService","Returning old security token success!");
+			return securityToken;
+		}
+
 		
 		String tokenString = generateToken(userId);
 		
-		SecurityToken securityToken = new SecurityToken();
+		securityToken = new SecurityToken();
 		securityToken.setSecurityToken(tokenString);
 		User user = new User();
 		user.setIduser(userId);

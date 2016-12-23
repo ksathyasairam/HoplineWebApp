@@ -36,7 +36,7 @@ public class OrderSummaryAction extends BaseAction {
 	}
 	
 	public String executeOrderSummaryNext() {
-		if (getSession().get("order") == null) return INVALID_INPUT;
+		if (getSession().get("order") == null) return REDIRECT_HOME;
 		OrderService service = ServiceLocator.getInstance().getService(OrderService.class);
 		setOrder(service.submitOrder((OrderVo)getSession().get("order")));
 		getSession().put("order", null);

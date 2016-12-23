@@ -39,8 +39,9 @@ public abstract class BaseAction extends ActionSupport implements SessionAware {
 	public void disableBrowserCache(){
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setHeader("Pragma", "no-cache");
-		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-		response.setHeader("Expires", "0");
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate, max-age=0");
+		response.setHeader("Expires", "0, Tue, 01 Jan 1980 1:00:00 GMT");
+		
 	}
 
 		
