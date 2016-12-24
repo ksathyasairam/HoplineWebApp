@@ -35,7 +35,7 @@
 				<div class="navigation">
 					<div class="logo" style="position:fixed;left:1em;">
 						<!-- <h1 id="head">HOPLINE</h1> -->
-						<a ui-sref="restaurant">
+						<a href="/shops">
 							<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
 						</a>
 							<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b id="head">HOPLINE</b></div>
@@ -157,6 +157,8 @@
 	  this.foodIt=  <s:property escape="false"  value="menuJsonString"/>	
 	  this.foodItems=this.foodIt.categories;
 	  this.favourites=this.foodIt.favourites;
+	  this.shopDetails=this.foodIt.shop;
+	  console.log(this.shopDetails);
 	  this.favList=[];
 	  
 	  this.isRestaurantClosed=false;
@@ -509,6 +511,10 @@
 		$('#fullcart').css({display:'none'});
 		$('#fullcart2').css({display:'block'});
 		
+	};
+	
+	this.changeHeading=function(){
+		$("#head").text(this.shopDetails.shopName);		
 	};
 
 	this.post1=function() {

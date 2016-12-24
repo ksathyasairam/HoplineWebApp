@@ -30,13 +30,13 @@
 
 <a id="totalorder" style="z-index:3; " ><div id="qty" style="float:left;"><b>Qty:{{event.totalQuantity}}</b></div><div id="cost" style="float:right;"><b>₹ {{event.totalCost}}.00</b></div></a>
 
-<a id="returnBackTo" style="z-index:12;" ui-sref="restaurant"><i><img src="images/rere.png" alt=" " style="height:24px;"/ ></i></a>
+<a id="returnBackTo" style="z-index:12;" href="/shops"><i><img src="images/rere.png" alt=" " style="height:24px;"/ ></i></a>
 
 <div id="instantCheckPopUp" style="z-index:999999;padding-top:3%;">You have added different variations of this item.Please visit the cart to remove them separately.</div>
 
 <div id="instantCheckPopUp2" style="z-index:999999;padding-top:3%;">Your food basket is empty. Place your order, get choosing!</div>
 
-<div ng-init="event.checkMenuWithCart();">
+<div ng-init="event.checkMenuWithCart();event.changeHeading();">
 <div style="padding-top:20px;">
 </div>
 <div class="banner-info" ng-repeat="cat in event.foodItems"  style="margin-left:7px;margin-right:7px;"ng-click="event.hide();" >
@@ -268,9 +268,6 @@ $('#return-to-top').click(function() {      // When arrow is clicked
 
 });
 
-</script>
-<script>
-$("#head").text("BISTRO 37");
 </script>
 <script>
 	$(document).ready(function()
