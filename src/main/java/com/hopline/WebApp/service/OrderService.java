@@ -34,7 +34,7 @@ public class OrderService extends IService {
 
 		Order order = orderDao.getOrder(orderVo.getIdorder());
 
-		Double activeOrderPrice = activeOrderPrice(orderVo.getUser().getIduser());
+		Double activeOrderPrice = activeOrderPrice(orderVo.getUser().getIduser(), order.getShop().getIdshop());
 
 		if (activeOrderPrice + orderVo.getTotalPrice() > Constants.BIG_ORDER_PAY_PRICE) {
 			order.setOrderState(OrderStates.BIG_ORDER_PAY);
@@ -52,7 +52,7 @@ public class OrderService extends IService {
 
 		order.setOrderTime(Util.getCurrentDateTimeIndia());
 		order.setOrderCompleteTime(null);
-		order.setOrdersInQueue(orderDao.getNumbeOrdersInQueue(order.getIdorder()));
+		order.setOrdersInQueue(orderDao.getNumbeOrdersInQueue(order.getIdorder(), order.getShop().getIdshop()));
 		orderDao.updateOrder(order);
 
 		orderDao.saveOrderStatusLog(getOrderStatusLog(order));
@@ -64,7 +64,7 @@ public class OrderService extends IService {
 
 	private boolean isDefaulter(OrderVo orderVo) {
 
-		Order lastOrder = orderDao.getLastUserOrder(orderVo.getUser().getIduser());
+		Order lastOrder = orderDao.getLastUserOrder(orderVo.getUser().getIduser(), orderVo.getShop().getIdshop());
 
 		if (lastOrder == null)
 			return false;
@@ -78,9 +78,9 @@ public class OrderService extends IService {
 						&& lastOrder.getOrderTime().compareTo(Util.getUserSessionStartTime()) < 0));
 	}
 
-	private Double activeOrderPrice(int userId) {
+	private Double activeOrderPrice(int userId, Integer shopId) {
 
-		List<Order> orders = orderDao.getActiveUnpaidOrders(userId);
+		List<Order> orders = orderDao.getActiveUnpaidOrders(userId, shopId);
 
 		Double sum = 0.0;
 		for (Order order : orders) {
@@ -141,7 +141,7 @@ public class OrderService extends IService {
 		order = orderDao.retrieveOrderById(orderId);
 		order.setCustomerOrderId(orderId % 1000);
 
-		order.setOrdersInQueue(orderDao.getNumbeOrdersInQueue(order.getIdorder()));
+		order.setOrdersInQueue(orderDao.getNumbeOrdersInQueue(order.getIdorder(), order.getShop().getIdshop()));
 		order.setOrderCompleteTime(null);
 		
 		populateItemCountAndPrice(order);
@@ -215,7 +215,7 @@ public class OrderService extends IService {
 	
 	
 	private Integer getCurrentProgressBar(Order order) {
-		Integer currentProgress = order.getOrdersInQueue() - orderDao.getNumbeOrdersInQueue(order.getIdorder());
+		Integer currentProgress = order.getOrdersInQueue() - orderDao.getNumbeOrdersInQueue(order.getIdorder(), order.getShop().getIdshop());
 		if (OrderStates.READY_FOR_PICKUP.equals(order.getOrderState()) || OrderStates.COMPLETED.equals(order.getOrderState()) ||
 				OrderStates.CANCELLED.equals(order.getOrderState()) || OrderStates.UNPICKED.equals(order.getOrderState()) ){
 			currentProgress = order.getOrdersInQueue();

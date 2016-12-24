@@ -10,8 +10,8 @@ public class Constants {
 	public static String SMS_AUTH_KEY = "127476A79wH6TQYos57f60529";
 	public static String SENDER_ID = "Hoplin";
 
-	public static final double BIG_ORDER_CALL_PRICE = 500;
-	public static final double BIG_ORDER_PAY_PRICE = 1000;
+	public static final double BIG_ORDER_CALL_PRICE = 1000;
+	public static final double BIG_ORDER_PAY_PRICE = 1500;
 	
 	
 	public static final String BIG_ORDER_PAY = "bigOrderPay";

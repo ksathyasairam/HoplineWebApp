@@ -163,7 +163,7 @@
 	  
 	  var date = new Date();
 	    if(date.getHours() >= 22 || date.getHours() < 11){ 
-	    	this.isRestaurantClosed=true;
+	    	this.isRestaurantClosed=false;
 	    }
 
 	  

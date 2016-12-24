@@ -12,7 +12,7 @@
         <!-- Development -->
         
         
-        <property name="hibernate.connection.url">jdbc:mysql://hopline.c4njdrsmog9r.us-east-1.rds.amazonaws.com:3306/hopline</property>
+        <property name="hibernate.connection.url">jdbc:mysql://hopline.c64s3f5yfluw.ap-south-1.rds.amazonaws.com:3306/hopline</property>
         <property name="hibernate.connection.username">hopline</property> 
         
         

@@ -207,6 +207,11 @@
 			method="executeOnNext">
 			<result name="success">/feedbackDone.jsp</result>
 		</action>
+		
+		<action name="shops" class="com.hopline.WebApp.action.ShopAction"
+			method="execute">
+			<result name="success">/shops.jsp</result>
+		</action>
 
 	</package>
 </struts>

@@ -32,11 +32,15 @@ public class OrderDao {
 		sessionFactory.getCurrentSession().flush();
 	}
 
-	public Order getLastUserOrder(int userId) {
+	//TODO : test
+	public Order getLastUserOrder(int userId, Integer shopId) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Order.class, "order");
 		criteria.add(Restrictions.not(Restrictions.eq("order.orderState", OrderStates.TEMP_SUBMIT)));
 		criteria.createCriteria("order.user", "user");
 		criteria.add(Restrictions.eq("user.iduser", userId));
+		
+		criteria.createCriteria("order.shop", "shop");
+		criteria.add(Restrictions.eq("shop.idshop", shopId));
 		
 		criteria.addOrder(org.hibernate.criterion.Order.desc("order.orderTime"));
 		criteria.setMaxResults(1);
@@ -53,20 +57,22 @@ public class OrderDao {
 		return order.getIdorder();
 	}
 
-	public List<Order> getActiveUnpaidOrders(int userId) {
-		String queryString = "from com.hopline.WebApp.model.dao.Order r where r.user.iduser = ? and (r.orderState = ? or r.orderState = ? or r.orderState = ?"
+	//TODO : test
+	public List<Order> getActiveUnpaidOrders(int userId, Integer shopId) {
+		String queryString = "from com.hopline.WebApp.model.dao.Order r where r.user.iduser = ? and r.shop.idshop = ? and (r.orderState = ? or r.orderState = ? or r.orderState = ?"
 				+ "or r.orderState = ? or r.orderState = ? or ( r.orderState = ? and r.orderTime > ?)) and r.paidYn='N' ";
 
 		Query query = sessionFactory.getCurrentSession().createQuery(queryString);
 
 		query.setParameter(0, userId);
-		query.setParameter(1, OrderStates.BIG_ORDER_PAY);
-		query.setParameter(2, OrderStates.BIG_ORDER_CALL);
-		query.setParameter(3, OrderStates.DEFAULTER_CALL);
-		query.setParameter(4, OrderStates.OK_ORDER);
-		query.setParameter(5, OrderStates.PREPARING);
-		query.setParameter(6, OrderStates.READY_FOR_PICKUP);
-		query.setParameter(7, Util.getUserSessionStartTime());
+		query.setParameter(1, shopId);
+		query.setParameter(2, OrderStates.BIG_ORDER_PAY);
+		query.setParameter(3, OrderStates.BIG_ORDER_CALL);
+		query.setParameter(4, OrderStates.DEFAULTER_CALL);
+		query.setParameter(5, OrderStates.OK_ORDER);
+		query.setParameter(6, OrderStates.PREPARING);
+		query.setParameter(7, OrderStates.READY_FOR_PICKUP);
+		query.setParameter(8, Util.getUserSessionStartTime());
 
 		return (List<Order>) query.list();
 	}
@@ -82,20 +88,21 @@ public class OrderDao {
 
 		return (List<Order>) query.list();
 	}
-	
-	public int getNumbeOrdersInQueue(int idOrder) {
-		String queryString = "select count(*) from com.hopline.WebApp.model.dao.Order r where r.idorder <= ? and r.orderTime > ? and (r.orderState = ? or r.orderState = ? or r.orderState = ?"
+	//TODO : test
+	public int getNumbeOrdersInQueue(int idOrder, Integer shopId) {
+		String queryString = "select count(*) from com.hopline.WebApp.model.dao.Order r where r.shop.idshop = ? and r.idorder <= ? and r.orderTime > ? and (r.orderState = ? or r.orderState = ? or r.orderState = ?"
 				+ "or r.orderState = ? or r.orderState = ?)";
 
 		Query query = sessionFactory.getCurrentSession().createQuery(queryString);
 
 		query.setParameter(0, idOrder);
-		query.setParameter(1, Util.getUserSessionStartTime());
-		query.setParameter(2, OrderStates.BIG_ORDER_CALL);
-		query.setParameter(3, OrderStates.DEFAULTER_CALL);
-		query.setParameter(4, OrderStates.OK_ORDER);
-		query.setParameter(5, OrderStates.PREPARING);
-		query.setParameter(6, OrderStates.BIG_ORDER_PAY);
+		query.setParameter(1, idOrder);
+		query.setParameter(2, Util.getUserSessionStartTime());
+		query.setParameter(3, OrderStates.BIG_ORDER_CALL);
+		query.setParameter(4, OrderStates.DEFAULTER_CALL);
+		query.setParameter(5, OrderStates.OK_ORDER);
+		query.setParameter(6, OrderStates.PREPARING);
+		query.setParameter(7, OrderStates.BIG_ORDER_PAY);
 
 		Long res = (Long)query.uniqueResult();
 		if (res == null) return 0;

@@ -11,90 +11,76 @@ import org.dozer.Mapper;
 import com.google.gson.Gson;
 import com.hopline.WebApp.dao.CategoryDao;
 import com.hopline.WebApp.model.dao.Category;
-import com.hopline.WebApp.model.dao.Product;
+import com.hopline.WebApp.model.dao.Shop;
 import com.hopline.WebApp.model.vo.AddOnVo;
 import com.hopline.WebApp.model.vo.CategoryVo;
 import com.hopline.WebApp.model.vo.MenuPage;
 import com.hopline.WebApp.model.vo.ProductVo;
+import com.hopline.WebApp.model.vo.ShopVo;
 import com.hopline.WebApp.model.vo.UserVo;
 import com.hopline.WebApp.rest.framework.IService;
+import com.hopline.WebApp.translator.OrderTranslator;
 
-public class CategoryServiceImpl extends IService{
+public class CategoryServiceImpl extends IService {
 	private CategoryDao categoryDao;
-	
-	public String retrieveMenuPageJson(UserVo user) {
-		
-		List<CategoryVo> categoryVos = retrieveAllCategory();
-		List<Integer> favourites = null;
-		
-		if (user != null) {
-			favourites = categoryDao.getFavouriteItems(user.getIduser());
-		} else {
-			favourites = new ArrayList<Integer>();
-		}
+
+	public String retrieveMenuPageJson(UserVo user, Integer shopId) {
+
+		List<CategoryVo> categoryVos = retrieveAllCategory(shopId);
+//		List<Integer> favourites = null;
+//
+//		if (user != null) {
+//			favourites = categoryDao.getFavouriteItems(user.getIduser(),shopId);
+//		} else {
+//			favourites = new ArrayList<Integer>();
+//		}
+
 		MenuPage menuPage = new MenuPage();
 		menuPage.setCategories(categoryVos);
-		menuPage.setFavourites(favourites);
-		
+//		menuPage.setFavourites(favourites);
+
 		Gson gson = new Gson();
 		String s = gson.toJson(menuPage);
-		
-		
-		
-		
-		
-//		List<CategoryVo> categoryVos = retrieveAllCategory();
-//		Gson gson = new Gson();
-//		String s = gson.toJson(categoryVos);
-		
-		
-		
-		
-		
-		
-		
 
 		return s;
 	}
-	
-	public List<CategoryVo> retrieveAllCategory() {
-		List<Category> categories =  getCategoryDao().retriveAllCategory();
-		
+
+	public List<CategoryVo> retrieveAllCategory(Integer shopId) {
+		List<Category> categories = getCategoryDao().retriveAllCategory(shopId);
+
 		List<CategoryVo> categoryVos = new ArrayList<CategoryVo>();
-		
-		for(Category category : categories) {
+
+		for (Category category : categories) {
 			Mapper mapper = new DozerBeanMapper();
-			CategoryVo destObject =  
-			    mapper.map(category, CategoryVo.class);
+			CategoryVo destObject = mapper.map(category, CategoryVo.class);
 			categoryVos.add(destObject);
 		}
-		
+
 		for (CategoryVo categoryVo : categoryVos) {
-	        Collections.sort(categoryVo.getProducts(), new ProductVenNvegComparator());
-	        
-	        for (ProductVo product : categoryVo.getProducts()) {
-	        	Collections.sort(product.getAddOns(), new AddonPriceComprator());
-	        }
+			Collections.sort(categoryVo.getProducts(), new ProductVenNvegComparator());
+
+			for (ProductVo product : categoryVo.getProducts()) {
+				Collections.sort(product.getAddOns(), new AddonPriceComprator());
+			}
 		}
-		
+
 		return categoryVos;
 	}
-	
+
 	class ProductVenNvegComparator implements Comparator<ProductVo> {
-	    @Override
-	    public int compare(ProductVo a, ProductVo b) {
-	        return a.getVegYn().compareToIgnoreCase(b.getVegYn()) == 0 ? 
-	        		a.getName().compareToIgnoreCase(b.getName()) : a.getVegYn().compareToIgnoreCase(b.getVegYn()) * -1  ;
-	    }
-	}
-	
-	class AddonPriceComprator implements Comparator<AddOnVo> {
-	    @Override
-	    public int compare(AddOnVo a, AddOnVo b) {
-	        return a.getPrice().compareTo(b.getPrice());
-	    }
+		@Override
+		public int compare(ProductVo a, ProductVo b) {
+			return a.getVegYn().compareToIgnoreCase(b.getVegYn()) == 0 ? a.getName().compareToIgnoreCase(b.getName())
+					: a.getVegYn().compareToIgnoreCase(b.getVegYn()) * -1;
+		}
 	}
 
+	class AddonPriceComprator implements Comparator<AddOnVo> {
+		@Override
+		public int compare(AddOnVo a, AddOnVo b) {
+			return a.getPrice().compareTo(b.getPrice());
+		}
+	}
 
 	public CategoryDao getCategoryDao() {
 		return categoryDao;
@@ -104,5 +90,17 @@ public class CategoryServiceImpl extends IService{
 		this.categoryDao = categoryDao;
 	}
 
-	
+	public List<ShopVo> retrieveAllShops() {
+		List<Shop> shops = categoryDao.retrieveAllShops();
+		List<ShopVo> shopVos = new ArrayList<ShopVo>();
+		
+		for (Shop shop : shops) {
+			shopVos.add(OrderTranslator.convert(shop,ShopVo.class));
+		}
+		
+		return shopVos;
+
+		
+	}
+
 }

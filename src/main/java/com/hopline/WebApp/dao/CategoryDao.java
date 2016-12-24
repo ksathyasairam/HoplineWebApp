@@ -3,10 +3,13 @@ package com.hopline.WebApp.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import com.hopline.WebApp.model.dao.Category;
+import com.hopline.WebApp.model.dao.Shop;
 
 public class CategoryDao {
 	
@@ -27,12 +30,21 @@ public class CategoryDao {
 	
 	
 	
-	public List<Category> retriveAllCategory() {
-		return (List<Category>) sessionFactory.getCurrentSession().createCriteria(Category.class).list();
+	//TODO : test
+	public List<Category> retriveAllCategory(Integer shopId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Category.class, "category");
+		
+		criteria.createCriteria("category.shop", "shop");
+		criteria.add(Restrictions.eq("shop.idshop", shopId));
+		
+		criteria.addOrder(org.hibernate.criterion.Order.asc("category.sortId"));
+		return (List<Category>) criteria.list();
+
 	}
 
 
-	public List<Integer> getFavouriteItems(Integer iduser) {
+	//TODO : ShopId not integrated
+	public List<Integer> getFavouriteItems(Integer iduser, Integer shopId) {
 
 		String subQueryString = "select o.idorder from com.hopline.WebApp.model.dao.Order o where o.user.iduser=?";
 		String queryString = "select p.product.productId, count(p.product.productId) from com.hopline.WebApp.model.dao.OrderProduct p where p.order.idorder  IN ("+subQueryString+")"
@@ -59,6 +71,15 @@ public class CategoryDao {
 	
 	private class OrderItemCount{
 			
+	}
+
+	public List<Shop> retrieveAllShops() {
+		String queryString = "from com.hopline.WebApp.model.dao.Shop s where s.activeYn = 'Y'";
+
+		Query query = sessionFactory.getCurrentSession().createQuery(queryString);
+
+		return (List<Shop>) query.list();
+
 	}
 	
 //	@Override
