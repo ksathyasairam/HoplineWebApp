@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 6 Oct, 2016 1:14:12 AM by Hibernate Tools 5.2.0.Beta1 -->
+<!-- Generated 24 Dec, 2016 12:33:54 PM by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
     <class name="com.hopline.WebApp.model.dao.Shop" table="shop" catalog="hopline" optimistic-lock="version">
         <id name="idshop" type="java.lang.Integer">
@@ -20,17 +20,14 @@
         <property name="activeYn" type="string">
             <column name="activeYN" length="45" not-null="true" />
         </property>
-        <set name="categories" table="category" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="shopId" not-null="true" />
-            </key>
-            <one-to-many class="com.hopline.WebApp.model.dao.Category" />
-        </set>
-        <set name="orders" table="order" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="shopId" not-null="true" />
-            </key>
-            <one-to-many class="com.hopline.WebApp.model.dao.Order" />
-        </set>
+        <property name="username" type="string">
+            <column name="username" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" not-null="true" />
+        </property>
+        <property name="onlinePayYn" type="string">
+            <column name="onlinePayYn" length="45" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>
