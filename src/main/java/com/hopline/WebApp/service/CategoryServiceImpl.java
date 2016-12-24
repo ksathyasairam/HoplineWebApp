@@ -36,6 +36,7 @@ public class CategoryServiceImpl extends IService {
 //		}
 
 		MenuPage menuPage = new MenuPage();
+		menuPage.setShop(OrderTranslator.convert(categoryDao.retrieveShop(shopId), ShopVo.class));
 		menuPage.setCategories(categoryVos);
 //		menuPage.setFavourites(favourites);
 

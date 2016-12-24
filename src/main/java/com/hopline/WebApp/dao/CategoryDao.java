@@ -82,6 +82,16 @@ public class CategoryDao {
 
 	}
 	
+	public Shop retrieveShop(Integer shopId) {
+		String queryString = "from com.hopline.WebApp.model.dao.Shop s where s.idshop = ? ";
+
+		Query query = sessionFactory.getCurrentSession().createQuery(queryString);
+		query.setParameter(0, shopId);
+
+		return (Shop) query.uniqueResult();
+
+	}
+	
 //	@Override
 //	public List<BmwAgreement> retrieveAgreement(int hceId) {
 //		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(BmwAgreement.class, "bmwAgreement");

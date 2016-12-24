@@ -6,6 +6,7 @@ public class MenuPage {
 	
 	private List<CategoryVo> categories;
 	private List<Integer> favourites;
+	private ShopVo shop;
 	
 	
 	public List<CategoryVo> getCategories() {
@@ -19,6 +20,12 @@ public class MenuPage {
 	}
 	public void setFavourites(List<Integer> favourites) {
 		this.favourites = favourites;
+	}
+	public ShopVo getShop() {
+		return shop;
+	}
+	public void setShop(ShopVo shop) {
+		this.shop = shop;
 	}
 
 }
