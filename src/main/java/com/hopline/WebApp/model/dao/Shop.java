@@ -15,6 +15,7 @@ public class Shop implements java.io.Serializable {
 	private String username;
 	private String password;
 	private String onlinePayYn;
+	private String description;
 
 	public Shop() {
 	}
@@ -100,6 +101,14 @@ public class Shop implements java.io.Serializable {
 
 	public void setOnlinePayYn(String onlinePayYn) {
 		this.onlinePayYn = onlinePayYn;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

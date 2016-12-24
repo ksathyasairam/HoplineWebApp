@@ -29,5 +29,8 @@
         <property name="onlinePayYn" type="string">
             <column name="onlinePayYn" length="45" not-null="true" />
         </property>
+        <property name="description" type="string">
+            <column name="description" length="1000" />
+        </property>
     </class>
 </hibernate-mapping>

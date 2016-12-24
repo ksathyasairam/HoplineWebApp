@@ -10,6 +10,11 @@ public class ShopVo implements java.io.Serializable {
 	private String username;
 	private String password;
 	private String onlinePayYn;
+	private String description;
+	
+	
+	private Boolean success;
+	private String msg;
 
 	public ShopVo() {
 	}
@@ -95,6 +100,30 @@ public class ShopVo implements java.io.Serializable {
 
 	public void setOnlinePayYn(String onlinePayYn) {
 		this.onlinePayYn = onlinePayYn;
+	}
+
+	public Boolean getSuccess() {
+		return success;
+	}
+
+	public void setSuccess(Boolean success) {
+		this.success = success;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }
