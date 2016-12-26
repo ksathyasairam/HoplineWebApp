@@ -13,6 +13,7 @@ import com.hopline.WebApp.dao.CategoryDao;
 import com.hopline.WebApp.model.dao.Category;
 import com.hopline.WebApp.model.dao.Shop;
 import com.hopline.WebApp.model.vo.AddOnVo;
+import com.hopline.WebApp.model.vo.CategoryDropdownItem;
 import com.hopline.WebApp.model.vo.CategoryVo;
 import com.hopline.WebApp.model.vo.MenuPage;
 import com.hopline.WebApp.model.vo.ProductVo;
@@ -39,13 +40,19 @@ public class CategoryServiceImpl extends IService {
 		menuPage.setShop(OrderTranslator.convert(categoryDao.retrieveShop(shopId), ShopVo.class));
 		menuPage.setCategories(categoryVos);
 
-		List<String> categoriesName = new ArrayList<String>();
+		List<CategoryDropdownItem> dropdown = new ArrayList<CategoryDropdownItem>();
 		for (CategoryVo category : categoryVos) {
-			if (!categoriesName.contains(category.getName())) {
-				categoriesName.add(category.getName());
+			
+			CategoryDropdownItem dropdownItem = new CategoryDropdownItem();
+			dropdownItem.setImgUrl(category.getImgUrl());
+			dropdownItem.setName(category.getName());
+			
+			if (!dropdown.contains(dropdownItem)) {
+				dropdown.add(dropdownItem);
 			}
 		}
-		menuPage.setCategoriesName(categoriesName);
+		
+		menuPage.setCategoryDropdown(dropdown);
 
 		// menuPage.setFavourites(favourites);
 

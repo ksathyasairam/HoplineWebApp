@@ -8,7 +8,7 @@ public class MenuPage {
 	private List<CategoryVo> categories;
 	private List<Integer> favourites;
 	private ShopVo shop;
-	private List<String> categoriesName;
+	private List<CategoryDropdownItem> categoryDropdown;
 	
 	public List<CategoryVo> getCategories() {
 		return categories;
@@ -28,12 +28,13 @@ public class MenuPage {
 	public void setShop(ShopVo shop) {
 		this.shop = shop;
 	}
-	public List<String> getCategoriesName() {
-		return categoriesName;
+	public List<CategoryDropdownItem> getCategoryDropdown() {
+		return categoryDropdown;
 	}
-	public void setCategoriesName(List<String> categoriesName) {
-		this.categoriesName = categoriesName;
+	public void setCategoryDropdown(List<CategoryDropdownItem> categoryDropdown) {
+		this.categoryDropdown = categoryDropdown;
 	}
+	
 	
 
 }
