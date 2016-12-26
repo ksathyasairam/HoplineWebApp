@@ -27,18 +27,27 @@ public class CategoryServiceImpl extends IService {
 	public String retrieveMenuPageJson(UserVo user, Integer shopId) {
 
 		List<CategoryVo> categoryVos = retrieveAllCategory(shopId);
-//		List<Integer> favourites = null;
-//
-//		if (user != null) {
-//			favourites = categoryDao.getFavouriteItems(user.getIduser(),shopId);
-//		} else {
-//			favourites = new ArrayList<Integer>();
-//		}
+		// List<Integer> favourites = null;
+		//
+		// if (user != null) {
+		// favourites = categoryDao.getFavouriteItems(user.getIduser(),shopId);
+		// } else {
+		// favourites = new ArrayList<Integer>();
+		// }
 
 		MenuPage menuPage = new MenuPage();
 		menuPage.setShop(OrderTranslator.convert(categoryDao.retrieveShop(shopId), ShopVo.class));
 		menuPage.setCategories(categoryVos);
-//		menuPage.setFavourites(favourites);
+
+		List<String> categoriesName = new ArrayList<String>();
+		for (CategoryVo category : categoryVos) {
+			if (!categoriesName.contains(category.getName())) {
+				categoriesName.add(category.getName());
+			}
+		}
+		menuPage.setCategoriesName(categoriesName);
+
+		// menuPage.setFavourites(favourites);
 
 		Gson gson = new Gson();
 		String s = gson.toJson(menuPage);
@@ -94,14 +103,13 @@ public class CategoryServiceImpl extends IService {
 	public List<ShopVo> retrieveAllShops() {
 		List<Shop> shops = categoryDao.retrieveAllShops();
 		List<ShopVo> shopVos = new ArrayList<ShopVo>();
-		
+
 		for (Shop shop : shops) {
-			shopVos.add(OrderTranslator.convert(shop,ShopVo.class));
+			shopVos.add(OrderTranslator.convert(shop, ShopVo.class));
 		}
-		
+
 		return shopVos;
 
-		
 	}
 
 }
