@@ -18,7 +18,15 @@
  <meta name="keywords" content="" />
 
 </head>
-	<body ng-app="mainApp" ng-controller="EventCtrl as event" style="background-image: url(../images/checks.png);min-height:100vh;"> 
+	<body ng-app="mainApp" ng-controller="EventCtrl as event" style="background-image: url(../images/checks.png);min-height:100vh;" ng-init="event.switchRestaurantClearCart()"> 
+	
+	<div id="switchRestaurantClearCart" style="position:fixed;width:100vh;height:100vh;background:grey;z-index:9998;display:none;opacity:0.7;">
+
+	</div>
+	<div id="switchRestaurantClearCart2" style="padding:5px;border-radius:3px;font-size:20px;z-index:9999;position:fixed;width:300px;height:200px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-top:-100px;margin-left:-150px;display:none;">
+		<div style="height:80%">You already have items in your cart from a different restaurant.Do you want to clear your cart?</div>
+		<div style="height:20%"><div id="okClear" style="width:50%;float:left;color:#89c08d" ng-click="event.clearCart(); event.setShopId()">Ok</div><div id="cancelClear" style="width:50%;float:right;color:#c22929;"><a href="/shops">Go Back</a></div></div>
+	</div>
 
 	<a  class="addedtoast" style=" z-index:9;" ><b>Item Added</b></a>
 				
@@ -45,7 +53,7 @@
 						<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" " / style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px; opacity:0;" ></span>
 						<nav class="link-effect-3" id="link-effect-3" >
 							<ul class="nav1 nav nav-wil" style="background:#a79e9d; padding:1% 1% 1% 1%;  box-shadow:0px 0px  6px #888888;"  >
-								<li class="active" ng-repeat="item in event.category" ng-click="event.takeMeTo(item.name)" style=" background:#be1e2d;width:48%;margin:1% 1% 1% 1%;  height: 100px; float:left; border-radius:3px 3px 3px 3px; "><img src="{{item.img}}" style="position:absolute; 
+								<li class="active" ng-repeat="item in event.category" ng-click="event.takeMeTo(item.name)" style=" background:#be1e2d;width:48%;margin:1% 1% 1% 1%;  height: 100px; float:left; border-radius:3px 3px 3px 3px; "><img src="{{item.imgUrl}}" style="position:absolute; 
 								left:50%;height:60px;margin-left:-30px;"><br><br><a>{{item.name}}</a></li>
 
 							</ul>
@@ -100,6 +108,7 @@
 	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || [];
 	  this.totalCost=localStorage.getItem('totalCost')|| 0;
 	  this.totalQuantity=localStorage.getItem('totalQuantity')|| 0;
+	  this.shopId=localStorage.getItem('shopId')|| 0;
 	  this.master=[];
 	  this.toast=false;
 	  this.orderSummary=false;
@@ -107,39 +116,7 @@
 	  $scope.sec=60;
 	  var mytimeout=null;
 	  this.addOnTot=0;
-	  this.addOnLength=1;
-
-	  this.category=[
-	  {
-	      name:"Sandwiches",
-	      img:"images/sandwich vector.png"
-	  },
-	  {
-	      name:"Burgers",
-	      img:"images/burger.png"
-	  },
-	  {
-	      name:"Hoagie",
-	      img:"images/hoagieee.png"
-	  },
-	  {
-	      name:"Munchies",
-	      img:"images/munchies.png"
-	  },
-	  {
-	      name:"Salad",
-	      img:"images/salad.png"
-	  },
-	  {
-	      name:"Street Chinese ",
-	      img:"images/streetchinese.png"
-	  },
-	  {
-	      name:"Pasta",
-	      img:"images/pasta.png"
-	  },
-	      
-	  ]
+	  this.addOnLength=1;	  
 
 	this.restaurants=[
 	{
@@ -158,8 +135,9 @@
 	  this.foodItems=this.foodIt.categories;
 	  this.favourites=this.foodIt.favourites;
 	  this.shopDetails=this.foodIt.shop;
-	  console.log(this.shopDetails);
 	  this.favList=[];
+	  
+	  this.category=this.foodIt.categoryDropdown;
 	  
 	  this.isRestaurantClosed=false;
 	  
@@ -204,7 +182,6 @@
 	}  
 	this.showContent=function(id,name,val)
 	  {
-	    console.log(name);
 	        var elementToShow = '#item-' + name + '-' + id;
 
 	        $(elementToShow).slideToggle(500,'swing');
@@ -215,7 +192,6 @@
 	this.takeMeTo=function(name)
 	  {
 		name=name.split(' ').join('');
-	    console.log(name);
 	    var element='#' + name;
 	      $("body, html").animate({ 
 	        scrollTop: $( element ).offset().top - 105
@@ -253,8 +229,6 @@
 	  for(var i = 0; i < value.addOns.length; i++){
 	  value.addOns[i].selected=false;  
 	  }
-
-	  console.log(value);
 	};
 
 	this.changeOnRadio = function(food,id) {
@@ -277,9 +251,7 @@
 		};
 	this.addOnLen=function(food){
 		this.addOnLength=food.addOns.length;
-		console.log(this.addOnLength)
 		var ab="-" + (((this.addOnLength-1)*50)/2 +115) + "px";
-		console.log("#clearCartPopUp2-"+food.productId);
 		$("#clearCartPopUp2-"+food.productId).css({'margin-top':ab});
 	};
 	this.totalOrder=function()
@@ -319,7 +291,6 @@
 		  				a=a+1;
 		  			}
 		  		}
-		  		console.log(a);
 		  		if(obj.addOns.length==a)
 		  			{
 			  		check[i].quantity=check[i].quantity+1;
@@ -330,7 +301,6 @@
 		  }
 	  if(alreadyInList==0){
 	  	check.push(obj);
-	  	console.log(check);
 	  }
 	  obj.quantity=1;
 	  localStorage.setItem('checkList', JSON.stringify(check));
@@ -369,7 +339,6 @@
 			  {
 			  abc=abc+1;
 			  ind=i;
-			  console.log(abc);
 			  }
 		  }
 	  if(abc>1)
@@ -447,7 +416,6 @@
 	  var elementToRemove = '#cartItem-'+ index;
 	  $(elementToRemove).hide();
 	  var check1 = JSON.parse(localStorage.getItem('checkList')) || [];
-	  console.log(check1[index].productId);
 	  for(var i=0;i<this.foodItems.length;i++)
 	  {
 	  	for(var j=0;j<this.foodItems[i].products.length;j++)
@@ -487,6 +455,33 @@
 	  }
 	};
 	
+	this.switchRestaurantClearCart=function(){
+		if(this.shopId!=0){
+			if(this.shopId!=this.shopDetails.idshop && this.checkList.length>0){
+				$("#switchRestaurantClearCart").css({display:'block'});
+				$("#switchRestaurantClearCart2").css({display:'block'});
+				
+			}
+			else if(this.shopId!=this.shopDetails.idshop && this.checkList.length==0){
+				localStorage.setItem('shopId',this.shopDetails.idshop);
+				 this.shopId=this.shopDetails.idshop;
+			}
+			
+		}
+		else{
+			 localStorage.setItem('shopId',this.shopDetails.idshop);
+			 this.shopId=this.shopDetails.idshop;
+		}
+			
+	};
+	
+	this.setShopId=function(){
+		localStorage.setItem('shopId',this.shopDetails.idshop);
+		 this.shopId=this.shopDetails.idshop;
+		 $("#switchRestaurantClearCart").css({display:'none'});
+		 $("#switchRestaurantClearCart2").css({display:'none'});
+		 
+	}
 	
 	this.addOnsPrice=function(checkListItem){
 		var count=0;
@@ -518,7 +513,6 @@
 	};
 
 	this.post1=function() {
-		console.log("kamehameha");
 		if(this.checkList.length==0)
 			{
 			$("#instantCheckPopUp2").css({display:'block'});
@@ -568,7 +562,6 @@
 	    { 
 	      if(this.checkList[i].addOns[j].selected==true || this.checkList[i].addOns[j].selected=="true")
 	        {
-	    	  	console.log(this.checkList[i].addOns[j]);
 	            var hiddenField1 = document.createElement("input");
 	            hiddenField1.setAttribute("type", "hidden");
 	            hiddenField1.setAttribute("name", "order.orderProducts["+i+"].orderProductAddons["+k+"].addOn.idaddOn");
