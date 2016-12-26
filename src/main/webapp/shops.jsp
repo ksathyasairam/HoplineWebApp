@@ -80,7 +80,7 @@
 			<a  ng-repeat="restaurant in event.restaurants" ng-href="/singlePageApp?shopId={{restaurant.idshop}}" >
 				<div style="opacity:0.9;margin-left:2%;margin-top:7px; margin-right:2%; padding-left:2%; box-shadow:0px 0px  5px #888888; background:#ffffff;color:#c24747; float:left; width:96%;border-radius:3px;" >
 					<div style="float:left; width:35%;">
-						<img class=restaurant_page_image src="images/bistro37.png" alt=" " /  >
+						<img class=restaurant_page_image src={{restaurant.imgUrl}} alt=" " /  >
 					</div>
 					<div style="float:right;width:60%;">
 						<h3  class="restaurant_page_heading">{{restaurant.shopName}}</h3>
