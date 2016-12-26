@@ -78,23 +78,24 @@
 			<div class="spacing" >
 			</div>
 			<a  ng-repeat="restaurant in event.restaurants" ng-href="/singlePageApp?shopId={{restaurant.idshop}}" >
-				<div style="opacity:0.9;margin-left:2%;margin-top:7px; margin-right:2%; padding-left:2%; box-shadow:0px 0px  5px #888888; background:#c24747;color:#ffffff; float:left; width:96%;border-radius:3px;" >
+				<div style="opacity:0.9;margin-left:2%;margin-top:7px; margin-right:2%; padding-left:2%; box-shadow:0px 0px  5px #888888; background:#ffffff;color:#c24747; float:left; width:96%;border-radius:3px;" >
 					<div style="float:left; width:35%;">
 						<img class=restaurant_page_image src="images/bistro37.png" alt=" " /  >
 					</div>
 					<div style="float:right;width:60%;">
 						<h3  class="restaurant_page_heading">{{restaurant.shopName}}</h3>
 						<p style="font-size:12px;margin-top:-9px">{{restaurant.description}}</p>
-						<p style="font-size:10px;margin-top:-7px;color:#86ea4a">THIS RESTAURANT ACCEPTS ONLY CASH</p>
+						<p style="font-size:11px;margin-top:-7px;color:#f47442">THIS RESTAURANT ACCEPTS ONLY CASH</p>
 						<div class="clickClass" style="">Show Menu</div>
-						<div  class="restaurant_page_card_img">
+					<!--  	<div  class="restaurant_page_card_img">
 							<img src="images/spoonplate.png" alt=" " class="restaurant_page_spoonplate"/>
 						</div>	
+					-->
 					</div>
 							
 				</div>
 			</a>
-			<div style="position:fixed;bottom:1%;text-align:center;margin-top:7px; margin-right:2%;border:none; float:left; width:100%;height:70px;padding-top:8px;color:#c22929;border-radius:3px;">
+	<!--  		<div style="position:fixed;bottom:1%;text-align:center;margin-top:7px; margin-right:2%;border:none; float:left; width:100%;height:70px;padding-top:8px;color:#c22929;border-radius:3px;">
 				<div style="float:left;">
 					<img src="images/knife2.png" alt=" " style="height:60px;margin-top"/>
 				</div>	
@@ -106,7 +107,7 @@
 					More restaurants to be added soon!
 				</div>	
 			</div>
-			
+	-->		
 		</div>
 	</div>
 
