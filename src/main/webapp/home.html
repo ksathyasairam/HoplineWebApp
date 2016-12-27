@@ -140,7 +140,7 @@
 												"{{fooditem.shortDesc}}"
 											</i>
 										</div>
-										<div  style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.addOnLen(fooditem);" ng-show="fooditem.isExpanded==false && fooditem.addOns.length>0">
+										<div  style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.addOnLen(fooditem);" ng-show="fooditem.isExpanded==false && fooditem.addOns.length>0 && fooditem.stockYn=='Y'">
 												<div class="customize_button">
 													<div>
 														<!--  img src="images/downdown.png" alt=" " style="height:7px;margin-top:5px;"/-->	

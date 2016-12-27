@@ -61,7 +61,6 @@
               				}
               			else if(f.orderState=="DEFAULTER_CALL")
 	          				{
-	          				$("#progressBar"+f.idorder).css({display:'none'});
 	      					$("#info"+f.idorder).css({display:'none'});
 	      					var tblRow = "<div id="+ rep + "><div><img src='images/defaulter.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='text-align:center;font-size:14px;padding-bottom:3%;font-family: 'Raleway', sans-serif;'>"+ "Your last order was not picked up by you. You will recieve a call shortly, to verify your order" +"</div></div>";
 	      					
