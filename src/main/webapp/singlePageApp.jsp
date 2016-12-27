@@ -25,7 +25,9 @@
 	</div>
 	<div id="switchRestaurantClearCart2" style="padding:5px;border-radius:3px;font-size:20px;z-index:9999;position:fixed;width:300px;height:200px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-top:-100px;margin-left:-150px;display:none;">
 		<div style="height:80%">You already have items in your cart from a different restaurant.Do you want to clear your cart?</div>
-		<div style="height:20%"><div id="okC" style="width:50%;float:left;color:#89c08d" ng-click="event.clearCart(); event.setShopId()">Ok</div><div style="width:50%;float:right;color:#c22929;"><a href="/shops">Go Back</a></div></div>
+		<!-- <div style="height:20%"><div id="okClear" style="width:50%;float:left;color:#89c08d" ng-click="event.clearCart(); event.setShopId()">Clear Cart</div><div id="cancelClear" style="width:50%;float:right;color:#c22929;"><a href="/shops">Go Back</a></div></div> -->
+		<div style="height:20%"><div id="okC" style="width:50%;float:left;color:#89c08d" ng-click="event.clearCart(); event.setShopId()">Clear Cart</div><div style="width:50%;float:right;color:#c22929;"><a href="/shops">Go Back</a></div></div>
+		
 	</div>
 
 	<a  class="addedtoast" style=" z-index:9;" ><b>Item Added</b></a>
@@ -171,7 +173,7 @@
 	  
 	  var date = new Date();
 	    if(date.getHours() >= 22 || date.getHours() < 11){ 
-	    	this.isRestaurantClosed=false;
+	    	this.isRestaurantClosed=true;
 	    }
 
 	  
@@ -590,7 +592,7 @@
 	var hiddenField = document.createElement("input");
 	            hiddenField.setAttribute("type", "hidden");
 	            hiddenField.setAttribute("name", "order.shop.idshop");
-	            hiddenField.setAttribute("value", 1);
+	            hiddenField.setAttribute("value", this.foodIt.shop.idshop);
 
 	            form.appendChild(hiddenField);
 

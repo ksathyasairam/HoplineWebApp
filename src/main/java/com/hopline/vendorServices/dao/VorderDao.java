@@ -15,6 +15,7 @@ import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.OrderProductAddon;
 import com.hopline.WebApp.model.dao.OrderStatusLog;
 import com.hopline.WebApp.model.dao.Product;
+import com.hopline.WebApp.model.dao.Shop;
 import com.hopline.WebApp.rest.framework.Util;
 
 public class VorderDao {
@@ -190,6 +191,18 @@ public class VorderDao {
 	public Integer saveOfflineOrderLog(OfflineOrderLog offlineOrderLog) {
 		return (Integer) getSessionFactory().getCurrentSession().save(offlineOrderLog);
 		
+	}
+
+	public Shop retrieveShop(String username, String password) {
+
+		String queryString = "from com.hopline.WebApp.model.dao.Shop s where s.username = ? and s.password = ?";
+
+		Query query = sessionFactory.getCurrentSession().createQuery(queryString);
+
+		query.setParameter(0, username);
+		query.setParameter(1, password);
+
+		return (Shop) query.uniqueResult();
 	}
 	
 

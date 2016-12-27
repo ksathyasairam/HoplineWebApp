@@ -8,10 +8,11 @@ import java.util.List;
 import com.hopline.WebApp.constants.OrderStates;
 import com.hopline.WebApp.model.dao.OfflineOrderLog;
 import com.hopline.WebApp.model.dao.Order;
-import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.Product;
+import com.hopline.WebApp.model.dao.Shop;
 import com.hopline.WebApp.model.vo.OrderProductVo;
 import com.hopline.WebApp.model.vo.OrderVo;
+import com.hopline.WebApp.model.vo.ShopVo;
 import com.hopline.WebApp.model.vo.UserVo;
 import com.hopline.WebApp.rest.framework.Constants;
 import com.hopline.WebApp.rest.framework.IService;
@@ -65,7 +66,7 @@ public class VorderService extends IService {
 		}else if (OrderStates.CANCELLED.equals(order.getOrderState())){
 			Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_CANCELLED_TEXT,order.getCustomerOrderId(), orderStatus.getCancelReason()));
 		}else if (OrderStates.READY_FOR_PICKUP.equals(order.getOrderState())){
-			Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_ORDER_READY_TEXT,order.getUser().getName(), order.getCustomerOrderId()));
+			Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_ORDER_READY_TEXT,order.getUser().getName(), order.getCustomerOrderId(), order.getShop().getShopName()));
 		}
 
 		orderStatus.setSuccess(true);
@@ -213,9 +214,25 @@ public class VorderService extends IService {
 
 	public OrderStatusTo notifyUserPartialOrder(OrderStatusTo orderStatus) {
 		Order order = orderDao.getOrder(orderStatus.getOrderId());
-		Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_ORDER_READY_TEXT,order.getUser().getName(), order.getCustomerOrderId()));
+		Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_ORDER_READY_TEXT,order.getUser().getName(), order.getCustomerOrderId(), order.getShop().getShopName()));
 		orderStatus.setSuccess(true);
 		return orderStatus;
+	}
+
+	public ShopVo loginVendor(ShopVo shopVo) {
+		
+		Shop shop = orderDao.retrieveShop(shopVo.getUsername(), shopVo.getPassword());
+		
+		if (shop == null) {
+			shopVo.setSuccess(false);
+			shopVo.setMsg("Invalind username Password combination");
+			return shopVo;
+		} else  {
+			shopVo = OrderTranslator.convert(shop, ShopVo.class);
+			shopVo.setSuccess(true);
+		}
+		
+		return shopVo; 
 	}
 
 }

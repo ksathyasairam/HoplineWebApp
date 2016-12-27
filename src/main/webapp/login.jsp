@@ -34,10 +34,10 @@
 				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #be1e2d ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
 				<div class="navigation">
 					<div class="logo" style="position:fixed;left:1em;">
-					<a href="singlePageApp#/restaurant">
+					<a href="shops">
 						<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
 					</a>
-						<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>Bistro 37</b></div>
+						<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>HOPLINE</b></div>
 					
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >

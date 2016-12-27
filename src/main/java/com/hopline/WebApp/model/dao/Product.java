@@ -18,6 +18,7 @@ public class Product implements java.io.Serializable {
 	private String vegYn;
 	private String stockYn;
 	private String singleAddonYN;
+	private String timeUnavailable;
 	private Set<AddOn> addOns = new HashSet<AddOn>(0);
 	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>(0);
 	private Set<Category> categories = new HashSet<Category>(0);
@@ -131,6 +132,14 @@ public class Product implements java.io.Serializable {
 
 	public void setSingleAddonYN(String singleAddonYN) {
 		this.singleAddonYN = singleAddonYN;
+	}
+
+	public String getTimeUnavailable() {
+		return timeUnavailable;
+	}
+
+	public void setTimeUnavailable(String timeUnavailable) {
+		this.timeUnavailable = timeUnavailable;
 	}
 
 	

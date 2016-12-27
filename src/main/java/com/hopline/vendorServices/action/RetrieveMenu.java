@@ -7,13 +7,12 @@ import com.hopline.WebApp.rest.framework.ServiceLocator;
 import com.hopline.WebApp.service.CategoryServiceImpl;
 
 public class RetrieveMenu extends BaseRestAction{
-	//TODO : only implemented for sngle shop;
 	private List<CategoryVo> categoryVos;
-	
+	private Integer shopId; 
 	
     public String execute()
     {
-		setCategoryVos(ServiceLocator.getInstance().getService(CategoryServiceImpl.class).retrieveAllCategory());
+		setCategoryVos(ServiceLocator.getInstance().getService(CategoryServiceImpl.class).retrieveAllCategory(getShopId()));
 		return SUCCESS;
     }
 
@@ -25,6 +24,16 @@ public class RetrieveMenu extends BaseRestAction{
 
 	public void setCategoryVos(List<CategoryVo> categoryVos) {
 		this.categoryVos = categoryVos;
+	}
+
+
+	public Integer getShopId() {
+		return shopId;
+	}
+
+
+	public void setShopId(Integer shopId) {
+		this.shopId = shopId;
 	}
 
 }

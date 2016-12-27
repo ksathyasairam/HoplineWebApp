@@ -85,7 +85,7 @@
 					<div style="float:right;width:60%;">
 						<h3  class="restaurant_page_heading">{{restaurant.shopName}}</h3>
 						<p style="font-size:12px;margin-top:-9px">{{restaurant.description}}</p>
-						<p style="font-size:11px;margin-top:-7px;color:#f47442">THIS RESTAURANT ACCEPTS ONLY CASH</p>
+						<p style="font-size:10px;margin-top:-7px;color:#f47442">THIS RESTAURANT ACCEPTS ONLY CASH</p>
 						<div class="clickClass" style="">Show Menu</div>
 					<!--  	<div  class="restaurant_page_card_img">
 							<img src="images/spoonplate.png" alt=" " class="restaurant_page_spoonplate"/>

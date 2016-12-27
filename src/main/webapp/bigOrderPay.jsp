@@ -65,9 +65,9 @@
     	
 		</script>
 
-	<a   href="/singlePageApp#/home">
+	<a   href="/shops">
 		<div class="bigBack" style="border:none;">
-			Back to Menu
+			Back
 		</div>
 	</a>
 		
@@ -90,9 +90,9 @@
 					<div class="navigation">
 						<div class="logo" style="position:fixed;left:1em;">
 							<!-- <h1 ><a href="#">HOPLINE</a></h1> -->
-							<a href="singlePageApp#/restaurant">
+							<a href="shops">
 								<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
-								<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>Bistro 37</b></div>
+								<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b><s:property value="order.shop.shopName"/></b></div>
 							</a>
 						</div>
 						
@@ -138,7 +138,7 @@
 					
 					Kindly pre-pay <s:property value="order.totalPrice"/> amount at the restaurant counter.Your order will be accepted only after the payment is complete.</br>
 
-					*Please note that if the total amount of all your orders exceeds Rs.1000 then you need to prepay the amount to the resturaunt.
+					*Please note that if the total amount of all your orders exceeds Rs.1500 then you need to prepay the amount to the restaurant.
 				</div>
 				
 			</div>

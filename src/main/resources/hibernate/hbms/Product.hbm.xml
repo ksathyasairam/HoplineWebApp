@@ -30,6 +30,12 @@
 		<property name="singleAddonYN" type="string">
 			<column name="singleAddonYN" length="45" />
 		</property>
+		
+		<property name="timeUnavailable" type="string">
+			<column name="timeUnavailable" length="100" />
+		</property>
+		 
+		
 
 		<set name="addOns" table="productAddon" inverse="false" lazy="true"
 			fetch="select">

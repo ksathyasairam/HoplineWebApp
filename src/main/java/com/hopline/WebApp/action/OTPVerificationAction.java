@@ -35,7 +35,7 @@ public class OTPVerificationAction extends BaseAction {
 		afterLoginURL = (String) getSession().get(SessionConstants.AFTER_LOGIN_REDIRECT_URL);
 		if (afterLoginURL == null){
 			M.E("OTPVerification", "afterlogin url is null");
-			afterLoginURL = "singlePageApp";
+			afterLoginURL = "shops";
 		}
 		
 		

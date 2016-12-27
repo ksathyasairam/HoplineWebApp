@@ -69,7 +69,7 @@
 			<img src="images/up.png" alt=" " / >
 		</i>
 	</a>
-	<a   href="/singlePageApp#/home">
+	<a   href="/shops">
 		<div class="bigBack" style="border:none;">
 			Back to Menu
 		</div>
@@ -92,7 +92,7 @@
 				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #cf3721 ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
 					<div class="navigation">
 						<div class="logo" style="position:fixed;left:1em;">
-							<h1 ><a href="/singlePageApp#/restaurant">HOPLINE</a></h1>
+							<h1 ><a href="/shops">HOPLINE</a></h1>
 						</div>
 						<div class="navigation-right" style="margin-right:1em;" >
 							<span class="menu"><img id="menubutton" src="images/menubutton.png" alt=" "  style="height:35px; width:35px; margin-top:-2px; float:right; margin-right:2px;" /></span>

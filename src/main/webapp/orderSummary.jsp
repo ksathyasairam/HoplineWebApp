@@ -45,10 +45,10 @@
 				<div class="navigation">
 					<div class="logo" style="position:fixed;left:1em;">
 						<!-- <h1 ><a href="#">HOPLINE</a></h1> -->
-						<a href="singlePageApp#/restaurant">
+						<a href="shops">
 							<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
 						</a>	
-							<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>BISTRO 37</b></div>
+							<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b><s:property value="order.shop.shopName"/></b></div>
 						
 					</div>
 					<div class="navigation-right" style="margin-right:1em;" >

@@ -24,8 +24,8 @@
 				<param name="afterLoginURL">${requestAction}</param>
 
 			</result>
-			<result name="redirectHome" type="redirectAction">singlePageApp</result>
-			
+			<result name="redirectHome" type="redirectAction">shops</result>
+
 		</global-results>
 	</package>
 
@@ -47,6 +47,13 @@
 
 
 	<package name="hopline-vendor-services" extends="hopline-vendor-services-basic">
+
+		<action name="vendorLogin" method="execute"
+			class="com.hopline.vendorServices.action.VendorLoginAction">
+			<result type="json">
+				<param name="root">shop</param>
+			</result>
+		</action>
 
 
 		<action name="udpateOrderStatus" method="execute"
@@ -73,7 +80,7 @@
 			</result>
 
 		</action>
-		
+
 		<action name="fetchOrderBistro" method="executeBistro"
 			class="com.hopline.vendorServices.action.FetchOrderHistory">
 			<result type="json">
@@ -147,14 +154,12 @@
 			<result name="success" type="redirectAction">orderSummaryOnLoadGet</result>
 			<result name="input">orderSummaryOnLoad</result>
 			<result name="invalidInput">/invalidInput.jsp</result>
-			<result name="redirectHome" type="redirectAction">singlePageApp</result>
 		</action>
 
 		<action name="orderSummaryOnLoadGet" class="com.hopline.WebApp.action.OrderSummaryAction"
 			method="executeOrderSummaryOnLoadGetRequest">
 			<result name="success">/orderSummary.jsp</result>
 			<result name="invalidInput">/invalidInput.jsp</result>
-			<result name="redirectHome" type="redirectAction">singlePageApp</result>
 		</action>
 
 		<action name="orderSummaryNext" class="com.hopline.WebApp.action.OrderSummaryAction"
@@ -183,7 +188,6 @@
 		<action name="OTPVerifyOnLoad" class="com.hopline.WebApp.action.OTPVerificationAction"
 			method="executeVerificationOnload">
 			<result name="success">/OTPVerification.jsp</result>
-			<result name="redirectHome" type="redirectAction">singlePageApp</result>
 		</action>
 
 		<action name="OTPVerifyOnNext" class="com.hopline.WebApp.action.OTPVerificationAction"
@@ -191,7 +195,6 @@
 			<result name="success" type="redirectAction">${afterLoginURL}</result>
 			<result name="login" type="redirectAction">loginOnLoad</result>
 			<result name="input">/OTPVerification.jsp</result>
-			<result name="redirectHome" type="redirectAction">singlePageApp</result>
 		</action>
 
 		<action name="resendOTP" class="com.hopline.WebApp.action.OTPVerificationAction"
@@ -202,12 +205,12 @@
 			method="executeOnLoad">
 			<result name="success">/feedback.jsp</result>
 		</action>
-		
+
 		<action name="feedbackOnNext" class="com.hopline.WebApp.action.FeedbackAction"
 			method="executeOnNext">
 			<result name="success">/feedbackDone.jsp</result>
 		</action>
-		
+
 		<action name="shops" class="com.hopline.WebApp.action.ShopAction"
 			method="execute">
 			<result name="success">/shops.jsp</result>

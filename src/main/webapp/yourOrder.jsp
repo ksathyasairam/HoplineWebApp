@@ -85,11 +85,11 @@
                         	 }
                          else if(f.orderState=="BIG_ORDER_PAY")
 	               			{
-	                   		var tblRow = "<div id="+ rep + "><div><img src='images/bigorder.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='margin-top:1%;text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "It seems your order amount exceeded Rs.1000,kindly pay this amount at the counter." +"</div></div>";
+	                   		var tblRow = "<div id="+ rep + "><div><img src='images/bigorder.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='margin-top:1%;text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "It seems your order amount exceeded Rs. 1500,kindly pay amount at the counter." +"</div></div>";
 	               			}
                          else if(f.orderState=="BIG_ORDER_CALL")
 	               			{
-	                   		var tblRow = "<div id="+ rep + "><div><img src='images/bigorder.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='margin-top:1%;text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Since your order has exceeded Rs 500, you will receive a call shortly to verify the order." +"</div></div>";
+	                   		var tblRow = "<div id="+ rep + "><div><img src='images/bigorder.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-30px;' / ></div><div style='margin-top:1%;text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Since your order has exceeded Rs. 1000, you will receive a call shortly to verify the order." +"</div></div>";
 	               			}
           				$( "#replaceStatus"+f.idorder ).replaceWith( tblRow );
           				if(f.orderCompleteTime )
@@ -131,7 +131,7 @@
 				<div class="top-nav" style="position:fixed; top:0;width:100% ;background: #be1e2d ; padding-top:1em; padding-bottom:1em;z-index: 10; ">
 				<div class="navigation">
 					<div class="logo" style="position:fixed;left:1em;">
-						<a href="singlePageApp#/restaurant">
+						<a href="shops">
 							<img src="images/hoplogo.png" alt=" " style="height:50px;margin-top:-10px;" / >
 						</a>
 							<div style="color:white;margin-top:-26px;margin-left:55px;font-size:18px;font-family: 'Asap', sans-serif;"><b>ORDERS</b></div>
@@ -155,49 +155,43 @@
 	
 </div>
 <s:iterator value="orders">
-<div>
-	<div style="margin-top:7px;float:right;margin-right:1%;display:inline-block;width: 150px; height: 0; border-left: 20px solid transparent; border-right: 0px solid transparent; border-bottom: 30px solid #d15644;color:white;font-size:17px;padding-left:10%;">
-			<strong>Bistro 37</strong>
-	</div>
-	<div  style="margin-bottom:5%;margin-left:1%; margin-right:1%;  box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); float:left; width:98%;">
+<div  style="margin-bottom:5%;margin-left:1%;margin-top:7px; margin-right:1%; padding-left:2%;padding-right:2%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); float:left; width:98%;">
+	<div  style="float:left; width:100%">
+		<div style="margin-left:-2%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 0px solid transparent; border-right: 20px solid transparent; border-top: 30px solid #d15644;"></div>
+		<div id='yoyo<s:property value="idorder"/>' style="margin-top:-27px" >
+			<div style="color:white;width:48%;display:inline-block;font-size:15px;"><b>Order No: #<s:property value="customerOrderId"/></b></div>
+			<div id='estTime<s:property value="idorder"/>' style="width:50%;display:inline-block;text-align:right;color:#7d7b79;font-size:14px;font-family: 'Roboto', sans-serif;"></div>
 		
-		<div  style="float:left; width:100%;padding-left:2%;padding-right:2%;">
-			<div style="margin-left:-2%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 0px solid transparent; border-right: 20px solid transparent; border-top: 30px solid #d15644;"></div>
-			<div id='yoyo<s:property value="idorder"/>' style="margin-top:-27px" >
-				<div style="color:white;width:48%;display:inline-block;font-size:15px;"><b>Order No: #<s:property value="customerOrderId"/></b></div>
-				<div id='estTime<s:property value="idorder"/>' style="width:50%;display:inline-block;text-align:right;color:#7d7b79;font-size:14px;font-family: 'Roboto', sans-serif;"></div>
-			
-				<div style="width:100%;display:inline-block;">
-					<div id="replaceStatus<s:property value="idorder"/>" style="text-align:center;">
-						<div style="padding-top:2%;">
-							<img src='images/11.gif' alt=' ' style='' / >
-						</div>
+			<div style="width:100%;display:inline-block;">
+				<div id="replaceStatus<s:property value="idorder"/>" style="text-align:center;">
+					<div style="padding-top:2%;">
+						<img src='images/11.gif' alt=' ' style='' / >
 					</div>
 				</div>
-				<div style="width:100%;padding-top:3%;display:inline-block;padding-bottom:3%;">
-					<div id="progressBar<s:property value="idorder"/>" style="height:8px;width:90%;position:relative;left:50%;margin-left:-45%;border-radius:4px;background:#e4e4e4;">
-						<div id="progress<s:property value="idorder"/>" style="width:0%;background:#4fb66d;height:100%;border-radius:4px">
-							
-						</div>
-						<div id="one<s:property value="idorder"/>" style="border-radius:10px;width:20px;height:20px;border:6px solid #c8c3c3;position:relative;float:left;margin-left:22.5%;margin-top:-14px;">
+			</div>
+			<div style="width:100%;padding-top:3%;display:inline-block;padding-bottom:3%;">
+				<div id="progressBar<s:property value="idorder"/>" style="height:8px;width:90%;position:relative;left:50%;margin-left:-45%;border-radius:4px;background:#e4e4e4;">
+					<div id="progress<s:property value="idorder"/>" style="width:0%;background:#4fb66d;height:100%;border-radius:4px">
 						
-						</div>
-						<div id="two<s:property value="idorder"/>" style="border-radius:10px;width:20px;height:20px;border:6px solid #c8c3c3;position:relative;float:left;margin-left:18%;margin-top:-14px;">
-							
-						</div>
-						<div id="three<s:property value="idorder"/>" style="border-radius:10px;width:20px;height:20px;border:6px solid #c8c3c3;position:relative;float:left;margin-left:18%;margin-top:-14px;">
-							
-						</div>
+					</div>
+					<div id="one<s:property value="idorder"/>" style="border-radius:10px;width:20px;height:20px;border:6px solid #c8c3c3;position:relative;float:left;margin-left:22.5%;margin-top:-14px;">
 					
 					</div>
-					
+					<div id="two<s:property value="idorder"/>" style="border-radius:10px;width:20px;height:20px;border:6px solid #c8c3c3;position:relative;float:left;margin-left:18%;margin-top:-14px;">
+						
+					</div>
+					<div id="three<s:property value="idorder"/>" style="border-radius:10px;width:20px;height:20px;border:6px solid #c8c3c3;position:relative;float:left;margin-left:18%;margin-top:-14px;">
+						
+					</div>
+				
 				</div>
+				
 			</div>
-			<div id="info<s:property value="idorder"/>"  style="padding-top:2%;font-size:14px;z-index:99999;font-family: 'Roboto', sans-serif;color:#7d7b79;">
-				<a href="tel: 0120 433 3737"><div style="border-radius:2px;width:30%;float:left;border:1px solid #388dad; color:#388dad; text-align:center;padding-top:1px;">Call Bistro 37</div></a>
-			</div>
-			<div style="float:right;margin-right:-2%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 20px solid transparent; border-right: 0px solid transparent; border-bottom: 30px solid #388dad;color:white;font-size:14px;padding-left:10%;"><div style="margin-top:5px;">&#8377 <s:property value="totalPrice"/></div></div>	
 		</div>
+		<div id="info<s:property value="idorder"/>"  style="padding-top:2%;font-size:14px;z-index:99999;font-family: 'Roboto', sans-serif;color:#7d7b79;">
+			<a href="tel: <s:property value="shop.phone"/>" ><div style="border-radius:2px;width:30%;float:left;border:1px solid #388dad; color:#388dad; text-align:center;padding-top:1px;">Call <s:property value="shop.shopName"/></div></a>
+		</div>
+		<div style="float:right;margin-right:-2%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 20px solid transparent; border-right: 0px solid transparent; border-bottom: 30px solid #388dad;color:white;font-size:14px;padding-left:10%;"><div style="margin-top:5px;">&#8377 <s:property value="totalPrice"/></div></div>	
 	</div>
 </div>
 

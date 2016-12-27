@@ -26,7 +26,7 @@
 		</b>
 	</a>
 		<div style="color:white;position:fixed;right:0%;height:24px;  top:28px; float:right; margin-right:15px;z-index:999999;border:1px solid #ffffff;border-radius:3px;padding-left:8px;padding-right:8px;font-size:14px;padding-top:2px;">
-			<a href="/singlePageApp#/home" style="color:white;">Back</a>
+			<a href="/shops" style="color:white;">Back</a>
 		</div>		
 		<!-- container -->
 			<!-- header -->

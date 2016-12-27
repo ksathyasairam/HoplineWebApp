@@ -1,6 +1,7 @@
 package com.hopline.vendorServices.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import com.hopline.WebApp.model.vo.OrderVo;
@@ -14,6 +15,7 @@ public class FetchOrderTo implements Serializable {
 	private Integer shopId;
 	private List<String> orderStates;
 	private List<OrderVo> orders;
+	
 	private boolean success;
 	
 	public List<String> getOrderStates() {
@@ -42,8 +44,5 @@ public class FetchOrderTo implements Serializable {
 	public void setOrders(List<OrderVo> orders) {
 		this.orders = orders;
 	}
-	
-	
-	
 
 }
