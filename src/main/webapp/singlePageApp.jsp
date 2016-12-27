@@ -25,7 +25,7 @@
 	</div>
 	<div id="switchRestaurantClearCart2" style="padding:5px;border-radius:3px;font-size:20px;z-index:9999;position:fixed;width:300px;height:200px;text-align:center;color:grey;background:white;top:50%;left:50%;margin-top:-100px;margin-left:-150px;display:none;">
 		<div style="height:80%">You already have items in your cart from a different restaurant.Do you want to clear your cart?</div>
-		<div style="height:20%"><div id="okClear" style="width:50%;float:left;color:#89c08d" ng-click="event.clearCart(); event.setShopId()">Ok</div><div id="cancelClear" style="width:50%;float:right;color:#c22929;"><a href="/shops">Go Back</a></div></div>
+		<div style="height:20%"><div id="okC" style="width:50%;float:left;color:#89c08d" ng-click="event.clearCart(); event.setShopId()">Ok</div><div style="width:50%;float:right;color:#c22929;"><a href="/shops">Go Back</a></div></div>
 	</div>
 
 	<a  class="addedtoast" style=" z-index:9;" ><b>Item Added</b></a>
@@ -84,11 +84,14 @@
 <script src="./app/angular-route.js"></script>
 <script src="./app/mainApp.js"></script>
 <script src="./app/ui.router.js"></script>
+<script src="./app/angular-cookies.js"></script>
+<script src="./js/store.min.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-cookies.js"></script>
 <script>
 
 (function(){
 
-	angular.module('eventModule', [])
+	angular.module('eventModule', ['ngCookies'])
 	.factory('MainTitle', [function () {
 	  
 
@@ -102,13 +105,38 @@
 	.run([function () {
 	  console.log("Event Module::running");
 	}])
-	.controller('EventCtrl', ['$scope', 'MainTitle','$timeout','$http',function ($scope,mainTitle,$timeout,$http) {
+	.controller('EventCtrl', ['$scope', 'MainTitle','$timeout','$http','$cookies','$cookieStore',function ($scope,mainTitle,$timeout,$http,$cookies,$cookieStore) {
 
 	  this.title="All Food Items";
-	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || [];
-	  this.totalCost=localStorage.getItem('totalCost')|| 0;
-	  this.totalQuantity=localStorage.getItem('totalQuantity')|| 0;
-	  this.shopId=localStorage.getItem('shopId')|| 0;
+	  
+	  function lsTest(){
+		    var test = 'test';
+		    try {
+		        localStorage.setItem(test, test);
+		        localStorage.removeItem(test);
+		        return true;
+		    } catch(e) {
+		        return false;
+		    }
+		}
+
+		if(lsTest() === true){
+		    this.localStorageAvailability=true;
+		}else{
+			this.localStorageAvailability=false;
+		}
+	  
+	  if($cookieStore.get("checkList")){
+		  console.log("gege")
+	  }
+	  else{
+		  $cookieStore.put("checkList",null); 
+	  }
+	  console.log("svve",$cookieStore.get("checkList"));
+	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || JSON.parse($cookieStore.get("checkList")) || [];
+	  this.totalCost=localStorage.getItem('totalCost')|| ($cookieStore.get("totalCost")) || 0;
+	  this.totalQuantity=localStorage.getItem('totalQuantity')||($cookieStore.get("totalQuantity")) || 0;
+	  this.shopId=localStorage.getItem('shopId')|| ($cookieStore.get("shopId")) || 0;
 	  this.master=[];
 	  this.toast=false;
 	  this.orderSummary=false;
@@ -148,7 +176,7 @@
 
 	  
 	this.checkMenuWithCart=function(){
-		var check1 = JSON.parse(localStorage.getItem('checkList')) || [];
+		var check1 = JSON.parse(localStorage.getItem('checkList')) || JSON.parse($cookieStore.get("checkList")) ||  [];
 		
 			for(var j=0;j<this.foodItems.length;j++)
 			  {
@@ -272,13 +300,19 @@
 	    this.totalCost= this.totalCost+tot;
 	    
 	  }
-	  localStorage.setItem('totalCost',this.totalCost);
-	  localStorage.setItem('totalQuantity',this.totalQuantity);
+	  if(this.localStorageAvailability){
+		  localStorage.setItem('totalCost',this.totalCost);
+		  localStorage.setItem('totalQuantity',this.totalQuantity);
+	  }
+	  else{
+	  $cookieStore.put("totalCost", this.totalCost);
+	  $cookieStore.put("totalQuantity", this.totalQuantity);
+	  }
 	};
 	
 	this.addCheckList=function(id,name,value)
 	  {
-	  var check = JSON.parse(localStorage.getItem('checkList')) || [];
+	  var check = JSON.parse(localStorage.getItem('checkList')) || JSON.parse($cookieStore.get("checkList")) || [];
 	  obj = angular.copy(value);
 	  var alreadyInList=0;
 	  for(var i=0;i<check.length;i++)
@@ -303,8 +337,12 @@
 	  	check.push(obj);
 	  }
 	  obj.quantity=1;
-	  localStorage.setItem('checkList', JSON.stringify(check));
-	  this.checkList= JSON.parse(localStorage.getItem('checkList'));
+	  if(this.localStorageAvailability)
+	  	localStorage.setItem('checkList', JSON.stringify(check));
+	  else
+	  	$cookieStore.put("checkList", JSON.stringify(check));
+	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || JSON.parse($cookieStore.get("checkList"));
+
 	  //value.quantity=1;
 	  
 	  for(var i=0;i<value.addOns.length;i++){
@@ -329,7 +367,7 @@
 	
 	this.removeCheckList=function(id,name,value)
 	  {
-	  var check = JSON.parse(localStorage.getItem('checkList')) || [];
+	  var check = JSON.parse(localStorage.getItem('checkList')) || JSON.parse($cookieStore.get("checkList")) || [];
 	  obj = angular.copy(value);
 	  var abc=0;
 	  var ind=0;
@@ -356,14 +394,17 @@
 			  this.decreaseItemCount(value);
 		  }
 	  }
-	  localStorage.setItem('checkList', JSON.stringify(check));
-	  this.checkList= JSON.parse(localStorage.getItem('checkList'));
+	  if(this.localStorageAvailability)
+	  	localStorage.setItem('checkList', JSON.stringify(check));
+	  else
+	  	$cookieStore.put("checkList", JSON.stringify(check));
+	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || JSON.parse($cookieStore.get("checkList"));
 	  this.totalOrder();
 	};
 	
 	this.decItemFromCart=function(index)
 	  {
-	  var check = JSON.parse(localStorage.getItem('checkList')) || [];
+	  var check = JSON.parse(localStorage.getItem('checkList')) || JSON.parse($cookieStore.get("checkList")) || [];
 	  if(check[index].quantity>0)
 		  {
 		  check[index].quantity=check[index].quantity-1;
@@ -385,14 +426,17 @@
 		  $(elementToRemove).hide();
 		  check.splice(index, 1);
 		  }
-	  localStorage.setItem('checkList', JSON.stringify(check));
-	  this.checkList= JSON.parse(localStorage.getItem('checkList'));
+	  if(this.localStorageAvailability)
+	  	localStorage.setItem('checkList', JSON.stringify(check));
+	  else
+	  	$cookieStore.put("checkList", JSON.stringify(check));
+	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || JSON.parse($cookieStore.get("checkList"));
 	  this.totalOrder();
 	};
 	
 	this.incItemFromCart=function(index)
 	  {
-	  var check = JSON.parse(localStorage.getItem('checkList')) || [];
+	  var check = JSON.parse(localStorage.getItem('checkList')) || JSON.parse($cookieStore.get("checkList")) || [];
 	  check[index].quantity=check[index].quantity+1; 
 	  for(var i=0;i<this.foodItems.length;i++)
 	  {
@@ -405,8 +449,11 @@
 	  			}
 	  		}
 	  }
-	  localStorage.setItem('checkList', JSON.stringify(check));
-	  this.checkList= JSON.parse(localStorage.getItem('checkList'));
+	  if(this.localStorageAvailability)
+	  	localStorage.setItem('checkList', JSON.stringify(check));
+	  else
+	  	$cookieStore.put("checkList", JSON.stringify(check));
+	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || JSON.parse($cookieStore.get("checkList"));
 	  this.totalOrder();
 	};
 
@@ -415,7 +462,7 @@
 	{
 	  var elementToRemove = '#cartItem-'+ index;
 	  $(elementToRemove).hide();
-	  var check1 = JSON.parse(localStorage.getItem('checkList')) || [];
+	  var check1 = JSON.parse(localStorage.getItem('checkList')) || JSON.parse($cookieStore.get("checkList")) || [];
 	  for(var i=0;i<this.foodItems.length;i++)
 	  {
 	  	for(var j=0;j<this.foodItems[i].products.length;j++)
@@ -428,8 +475,11 @@
 	  		}
 	  }
 	  check1.splice(index, 1);
-	  localStorage.setItem('checkList', JSON.stringify(check1));
-	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || [];
+	  if(this.localStorageAvailability)
+	  	localStorage.setItem('checkList', JSON.stringify(check1));
+	  else
+	  	$cookieStore.put("checkList", JSON.stringify(check1));
+	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || JSON.parse($cookieStore.get("checkList")) || [];
 
 	  this.totalOrder();
 	};
@@ -441,8 +491,11 @@
 	  $(elementToRemove).hide();
 	  }
 	  check1=[];
-	  localStorage.setItem('checkList', JSON.stringify(check1));
-	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || [];
+	  if(this.localStorageAvailability)
+	  	localStorage.setItem('checkList', JSON.stringify(check1));
+	  else
+	  	$cookieStore.put("checkList", JSON.stringify(check1));
+	  this.checkList= JSON.parse(localStorage.getItem('checkList')) || JSON.parse($cookieStore.get("checkList")) || [];
 	  this.totalOrder();
 	  for(var i=0;i<this.foodItems.length;i++)
 	  {
@@ -463,20 +516,29 @@
 				
 			}
 			else if(this.shopId!=this.shopDetails.idshop && this.checkList.length==0){
-				localStorage.setItem('shopId',this.shopDetails.idshop);
+				if(this.localStorageAvailability)
+					localStorage.setItem('shopId',this.shopDetails.idshop);
+				else
+					$cookieStore.put("shopId", this.shopDetails.idshop);
 				 this.shopId=this.shopDetails.idshop;
 			}
 			
 		}
 		else{
-			 localStorage.setItem('shopId',this.shopDetails.idshop);
-			 this.shopId=this.shopDetails.idshop;
+			if(this.localStorageAvailability)
+			 	localStorage.setItem('shopId',this.shopDetails.idshop);
+			else
+			 	$cookieStore.put("shopId", this.shopDetails.idshop);
+		    this.shopId=this.shopDetails.idshop;
 		}
 			
 	};
 	
 	this.setShopId=function(){
-		localStorage.setItem('shopId',this.shopDetails.idshop);
+		if(this.localStorageAvailability)
+			localStorage.setItem('shopId',this.shopDetails.idshop);
+		else
+			$cookieStore.put("shopId", this.shopDetails.idshop);
 		 this.shopId=this.shopDetails.idshop;
 		 $("#switchRestaurantClearCart").css({display:'none'});
 		 $("#switchRestaurantClearCart2").css({display:'none'});

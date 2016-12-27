@@ -71,7 +71,7 @@
 										</div>
 										<div ng-show="fooditem.stockYn=='N'">
 											<div style="float:right;">
-												<div style="width:80px; height:26px;font-size:12px;padding-top:3px;border:1px solid #67baca; border-radius: 3px 3px 3px 3px; text-align:center; color:#67baca;">
+												<div class="out_of_stock">
 													Out of Stock
 												</div>
 											</div>
@@ -140,7 +140,7 @@
 												"{{fooditem.shortDesc}}"
 											</i>
 										</div>
-										<div  style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.addOnLen(fooditem);" ng-show="fooditem.isExpanded==false && fooditem.addOns.length>0">
+										<div  style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.addOnLen(fooditem);" ng-show="fooditem.isExpanded==false && fooditem.addOns.length>0 && fooditem.stockYn=='Y'">
 												<div class="customize_button">
 													<div>
 														<!--  img src="images/downdown.png" alt=" " style="height:7px;margin-top:5px;"/-->	
@@ -159,8 +159,7 @@
 														</div>
 													</div>
 												</div>
-										</div>
-										
+										</div>										
 									</div>
 									
 
@@ -211,7 +210,7 @@
 													&#8377 {{event.addOnTot + fooditem.price}}
 												</div>
 											</div>
-											<div style="height:20%;padding-top:5%"  ng-click="fooditem.isExpanded=!fooditem.isExpanded;" ng-show="fooditem.isExpanded==true"><div id="okClear2" style=";padding-bottom:5%;width:50%;float:left;color:#89c08d" ng-click="fooditem.quantity=fooditem.quantity+1;event.addCheckList($index,cat.name,fooditem);">Add</div><div id="cancelClear2" style=";padding-bottom:5%;width:50%;float:right;color:#c22929;">Cancel</div></div>
+											<div style="height:20%;padding-top:5%"  ng-click="fooditem.isExpanded=!fooditem.isExpanded;" ng-show="fooditem.isExpanded==true"><div id="okClear2" style=";padding-bottom:5%;width:50%;float:left;color:#89c08d" ng-click="fooditem.quantity=fooditem.quantity+1;event.addCheckList($index,cat.name,fooditem);">Add</div><div id="cancelClear2" style="padding-bottom:5%;width:50%;float:right;color:#c22929;">Cancel</div></div>
 										</div>
 										
 										<!-- <div class="cancelAndAddToCart" >

@@ -63,7 +63,7 @@
  <div id="place" class="bigBack" style="border:none; background:#4fb66d;z-index:999999">
  	Place Order
  </div>
-<s:submit id="placeOrder" value="Place Order" class="bigBack" style="border:none; background:#4fb66d" onclick="clearLocalStorage()"  />
+<s:submit id="placeOrder" value="Place Order" class="bigBack" style="border:none; background:#4fb66d" onclick="clearLocalStorage(); deleteAllCookies()"  />
 </s:form> 
 <div style="padding-top:20px;">
 </div>
@@ -134,9 +134,27 @@
 
 <script>
 	function clearLocalStorage() {
-		localStorage.clear();
+		localStorage.clear();	
 	}
-			
+</script>
+
+<script>
+function deleteAllCookies() {
+    /*var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        console.log(name);
+        if(name=="checkList" || name=="totalQuantity" || name=="totalCost" || name=="shopId")
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }*/
+	 document.cookie = 'shopId' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+	 document.cookie = 'totalQuantity' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+	 document.cookie = 'totalCost' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+	 document.cookie = 'checkList' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
 </script>
 
 <script>
