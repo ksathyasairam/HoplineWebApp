@@ -95,6 +95,9 @@
 							
 				</div>
 			</a>
+			<div style="width:100%;height:20px;padding-top:20px">
+			
+			</div>
 	<!--  		<div style="position:fixed;bottom:1%;text-align:center;margin-top:7px; margin-right:2%;border:none; float:left; width:100%;height:70px;padding-top:8px;color:#c22929;border-radius:3px;">
 				<div style="float:left;">
 					<img src="images/knife2.png" alt=" " style="height:60px;margin-top"/>
