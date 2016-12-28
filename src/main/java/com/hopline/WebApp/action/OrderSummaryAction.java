@@ -10,6 +10,7 @@ import com.opensymphony.xwork2.Action;
 
 public class OrderSummaryAction extends BaseAction {
 	private OrderVo order;
+	private Boolean lastPaymentFailed;
 	
 	@Override
 	public boolean loginRequired() {
@@ -43,6 +44,13 @@ public class OrderSummaryAction extends BaseAction {
 		
 		return service.getReturnPage();
 	}
+	
+	
+	public String executeOnlinePaymentNext() {
+		if (getSession().get("order") == null) return REDIRECT_HOME;
+		order = (OrderVo) getSession().get("order");
+		return SUCCESS;
+	}
 
 	private boolean validateOnLoad() {
 		boolean valid = Util.validateOrder(order); 
@@ -57,6 +65,14 @@ public class OrderSummaryAction extends BaseAction {
 
 	public void setOrder(OrderVo order) {
 		this.order = order;
+	}
+
+	public Boolean getLastPaymentFailed() {
+		return lastPaymentFailed;
+	}
+
+	public void setLastPaymentFailed(Boolean lastPaymentFailed) {
+		this.lastPaymentFailed = lastPaymentFailed;
 	}
 
 	

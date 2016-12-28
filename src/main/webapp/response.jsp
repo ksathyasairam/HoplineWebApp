@@ -17,6 +17,14 @@
     <body>
         <%
             Map<String, String[]> parameters = request.getParameterMap();
+            
+            if ("success".equals(parameters.get("status")[0].toString())) {
+            	response.sendRedirect("/orderSummaryNext?lastPaymentFailed=false");
+            } else {
+            	response.sendRedirect("/orderSummaryOnLoadGet?lastPaymentFailed=true");
+            }
+            
+            
             for(String parameter : parameters.keySet()) {
                 out.print(parameter+" : "+parameters.get(parameter)[0].toString()+"<br/>");
             }
