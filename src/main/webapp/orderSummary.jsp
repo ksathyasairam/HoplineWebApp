@@ -69,11 +69,22 @@
 </div>
 
 <div class="banner-info" id="sideSpacing" >
-                <% if(request.getParameter("lastPaymentFailed")=="true"){
-                	out.print("Failed");
-                }
-                %></b>
-                    
+                <%
+	                if(request.getParameter("lastPaymentFailed")!=null)
+	                {
+		                if(request.getParameter("lastPaymentFailed").equals("true") ) {
+		         %>    
+		         	
+		         		   	<div class="header-right"> 	
+		                 		<div  style="text-align:center;color: red;font-size: 120%">
+		                 			Sorry Payment Failed
+		                		</div>
+		                	</div>
+		         
+		         <%
+		                } 
+	                }
+                %>  
                 <div class=" header-right">
                 	<h6  style="text-align:center;">Order Summary</h6>
                     <ul class="address">
@@ -117,7 +128,7 @@
                 </div>
                 <div class="clearfix"> </div>
 </div>
-    <div id="paymentOptions" style="box-shadow:0px 0px  6px #888888;border-radius:5px;color:#C7C7C7;background:rgba(253, 246, 246, 1);height:90px;width:96%;z-index:9;margin-left:2%;padding-left:3%;padding-right:3%;">
+    <div id="paymentOptions" style="box-shadow:0px 0px  6px #888888;border-radius:5px;color:#C7C7C7;background:rgba(253, 246, 246, 1);height:125px;width:96%;z-index:9;margin-left:2%;padding-left:3%;padding-right:3%;">
         <div style="text-align:center;font-size:1.3em;margin-top:16px;padding-bottom:8px;padding-top:8px;border-bottom: 1px solid #AFAFAF;letter-spacing: 3px;text-transform: uppercase;">
             Payment Options
         </div>
@@ -161,19 +172,40 @@
                                 float:right;
                                 margin-right:2%">
             </div>
+
 <!-- Payment End -->
         </form>
+
     </div>
-    <div id="paymentOptionsPopUp2" style="display:none;margin-left:20px;width: 20px; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #c22929;opacity:0.8"></div>
-    <div id="paymentOptionsPopUp" style="display:none;padding-top:7px;opacity:0.8;text-align:center;border-radius:5px;color:white;background:#c22929;height:40px;width:96%;z-index:9;margin-left:2%">
+	
+    	<div id="paymentOptionsPopUp2" style="display:none;margin-left:20px;width: 20px; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #c22929;opacity:0.8"></div>
+    	<div id="paymentOptionsPopUp" style="display:none;padding-top:7px;opacity:0.8;text-align:center;border-radius:5px;color:white;background:#c22929;height:40px;width:96%;z-index:9;margin-left:2%">
         Please select a method of payment.
-    </div>
-    <div style="height:80px;">
     
     </div>
-
+    
+                 <%
+	                if(request.getParameter("lastPaymentFailed")!=null)
+	                {
+		                if(request.getParameter("lastPaymentFailed").equals("true") ) {
+		         %> 
+    		<div id="paymentOptions" style="box-shadow:0px 0px  6px #888888;border-radius:5px;color:#C7C7C7;background:rgba(253, 246, 246, 1);height:120px;width:96%;z-index:9;margin-left:2%;padding-left:3%;padding-right:3%;">
+       		<div style="letter-spacing: 1px;font-weight: bold;color:black;text-align:center;font-size:1em;margin-top:16px;padding-bottom:8px;padding-top:8px;border-bottom: 1px solid #AFAFAF;">
+           			
+           			We regret for inconvenience caused, in case your money has been deducted by bank please write to us at mail.hopline@gmail.com
+				
+    		</div>
+    		         <%
+		                } 
+	                }
+                %> 
+    	<div style="height:80px;">
+    
+    </div>
+	
         </div>
     </div>
+    
 
 <script>
     function clearLocalStorage() {

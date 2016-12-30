@@ -79,7 +79,7 @@
                       		}
                          else if(f.orderState=="OK_ORDER")
                         	 {
-                             var tblRow = "<div id="+ rep + "><div><img src='images/okorder2.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-22px;' / ></div><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order has been successfully accepted.The chef will start preparing soon." +"</div></div>"; 	
+                             var tblRow = "<div id="+ rep + "><div><img src='images/okorder2.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-22px;' / ></div><img src='images/paidStamp.png' alt=''  style='height:70px;'/><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order has been successfully accepted.The chef will start preparing soon." +"</div></div>"; 	
                              $("#progress"+f.idorder).css({width:"24.3%"});
                              $("#one"+f.idorder).css({border:'6px solid #46a060'})
                         	 }
@@ -161,14 +161,19 @@
 		<div id='yoyo<s:property value="idorder"/>' style="margin-top:-27px" >
 			<div style="color:white;width:48%;display:inline-block;font-size:15px;"><b>Order No: #<s:property value="customerOrderId"/></b></div>
 			<div id='estTime<s:property value="idorder"/>' style="width:50%;display:inline-block;text-align:right;color:#7d7b79;font-size:14px;font-family: 'Roboto', sans-serif;"></div>
-		
+			
 			<div style="width:100%;display:inline-block;">
 				<div id="replaceStatus<s:property value="idorder"/>" style="text-align:center;">
 					<div style="padding-top:2%;">
+					
 						<img src='images/11.gif' alt=' ' style='' / >
 					</div>
+					
+
 				</div>
+				
 			</div>
+			
 			<div style="width:100%;padding-top:3%;display:inline-block;padding-bottom:3%;">
 				<div id="progressBar<s:property value="idorder"/>" style="height:8px;width:90%;position:relative;left:50%;margin-left:-45%;border-radius:4px;background:#e4e4e4;">
 					<div id="progress<s:property value="idorder"/>" style="width:0%;background:#4fb66d;height:100%;border-radius:4px">

@@ -10,7 +10,8 @@ import com.opensymphony.xwork2.Action;
 
 public class OrderSummaryAction extends BaseAction {
 	private OrderVo order;
-	private Boolean lastPaymentFailed;
+
+	private String lastPaymentFailed;
 	
 	@Override
 	public boolean loginRequired() {
@@ -67,11 +68,11 @@ public class OrderSummaryAction extends BaseAction {
 		this.order = order;
 	}
 
-	public Boolean getLastPaymentFailed() {
+	public String getLastPaymentFailed() {
 		return lastPaymentFailed;
 	}
 
-	public void setLastPaymentFailed(Boolean lastPaymentFailed) {
+	public void setLastPaymentFailed(String lastPaymentFailed) {
 		this.lastPaymentFailed = lastPaymentFailed;
 	}
 
