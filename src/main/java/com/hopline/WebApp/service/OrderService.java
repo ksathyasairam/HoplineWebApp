@@ -3,7 +3,9 @@ package com.hopline.WebApp.service;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.struts2.ServletActionContext;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
@@ -12,6 +14,7 @@ import com.hopline.WebApp.dao.OrderDao;
 import com.hopline.WebApp.endpoint.model.OrderStatus;
 import com.hopline.WebApp.endpoint.model.OrderStatusList;
 import com.hopline.WebApp.model.dao.Feedback;
+import com.hopline.WebApp.model.dao.OnlineTransaction;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.OrderProductAddon;
@@ -30,26 +33,36 @@ public class OrderService extends IService {
 
 	private String returnPage;
 
-	public OrderVo submitOrder(OrderVo orderVo) {
+	public OrderVo submitOrder(OrderVo orderVo, String paymentMethod) {
 
 		Order order = orderDao.getOrder(orderVo.getIdorder());
-
-		Double activeOrderPrice = activeOrderPrice(orderVo.getUser().getIduser(), order.getShop().getIdshop());
-
-		if (activeOrderPrice + orderVo.getTotalPrice() > Constants.BIG_ORDER_PAY_PRICE) {
-			order.setOrderState(OrderStates.BIG_ORDER_PAY);
-			setReturnPage(Constants.BIG_ORDER_PAY);
-		} else if (activeOrderPrice + orderVo.getTotalPrice() > Constants.BIG_ORDER_CALL_PRICE) {
-			order.setOrderState(OrderStates.BIG_ORDER_CALL);
-			setReturnPage(Constants.YOUR_ORDER);
-		} else if (isDefaulter(orderVo)) {
-			order.setOrderState(OrderStates.DEFAULTER_CALL);
-			setReturnPage(Constants.YOUR_ORDER);
-		} else {
+		
+		if (Constants.PAYMENT_METHOD_ONLINE.equals(paymentMethod)) {
+			order.setPaymentMethod(Constants.PAYMENT_METHOD_ONLINE);
+			order.setPaidYn("Y");
 			order.setOrderState(OrderStates.OK_ORDER);
 			setReturnPage(Constants.YOUR_ORDER);
-		}								
+		} else {
+			order.setPaymentMethod(Constants.PAYMENT_METHOD_PICKUP_CASH);
+			order.setPaidYn("N");
 
+			Double activeOrderPrice = activeOrderPrice(orderVo.getUser().getIduser(), order.getShop().getIdshop());
+			
+			if (activeOrderPrice + orderVo.getTotalPrice() > Constants.BIG_ORDER_PAY_PRICE) {
+				order.setOrderState(OrderStates.BIG_ORDER_PAY);
+				setReturnPage(Constants.BIG_ORDER_PAY);
+			} else if (activeOrderPrice + orderVo.getTotalPrice() > Constants.BIG_ORDER_CALL_PRICE) {
+				order.setOrderState(OrderStates.BIG_ORDER_CALL);
+				setReturnPage(Constants.YOUR_ORDER);
+			} else if (isDefaulter(orderVo)) {
+				order.setOrderState(OrderStates.DEFAULTER_CALL);
+				setReturnPage(Constants.YOUR_ORDER);
+			} else {
+				order.setOrderState(OrderStates.OK_ORDER);
+				setReturnPage(Constants.YOUR_ORDER);
+			}								
+			
+		}
 		order.setOrderTime(Util.getCurrentDateTimeIndia());
 		order.setOrderCompleteTime(null);
 		order.setOrdersInQueue(orderDao.getNumbeOrdersInQueue(order.getIdorder(), order.getShop().getIdshop()));
@@ -100,6 +113,7 @@ public class OrderService extends IService {
 	public OrderVo createTempOrder(OrderVo orderVo) {
 		Order order = OrderTranslator.toOrder(orderVo);
 		order.setOrderState(OrderStates.TEMP_SUBMIT);
+		order.setPaymentMethod(Constants.TEMP_PAYMENT);
 		order.setPaidYn("N");
 		order.setOrderCreator(Constants.ORDER_CREATOR_WEBSITE_CUSTOMER);
 		order = createOrder(order);
@@ -248,6 +262,42 @@ public class OrderService extends IService {
 	public String retrieveSingleOrderStatus(Integer orderId) {
 		Order order = orderDao.retrieveOrderById(orderId);
 		return order.getOrderState();
+	}
+	
+	public void saveOnlineTransaction() {
+		 Map<String, String[]> parameters =  ServletActionContext.getRequest().getParameterMap();
+		 OnlineTransaction transaction = new OnlineTransaction(
+				 parameters.get("txnid")[0].toString(),
+				 parameters.get("firstname")[0].toString(),
+				 parameters.get("phone")[0].toString(),
+				 parameters.get("key")[0].toString(),
+				 parameters.get("mode")[0].toString(),
+				 parameters.get("status")[0].toString(),
+				 parameters.get("unmappedstatus")[0].toString(),
+				 parameters.get("cardCategory")[0].toString(),
+				 parameters.get("addedon")[0].toString(),
+				 parameters.get("payment_source")[0].toString(),
+				 parameters.get("PG_TYPE")[0].toString(),
+				 parameters.get("bank_ref_num")[0].toString(),
+				 parameters.get("bankcode")[0].toString(),
+				 parameters.get("error")[0].toString(),
+				 parameters.get("error_Message")[0].toString(),
+				 parameters.get("name_on_card")[0].toString(),
+				 parameters.get("cardnum")[0].toString(),
+				 parameters.get("issuing_bank")[0].toString(),
+				 parameters.get("card_type")[0].toString(),
+				 parameters.get("easepayid")[0].toString(),
+				 Double.valueOf(parameters.get("amount")[0].toString()),
+				 Double.valueOf(parameters.get("net_amount_debit")[0].toString()),
+				 parameters.get("cash_back_percentage")[0].toString(),
+				 Double.valueOf(parameters.get("deduction_percentage")[0].toString()),
+				 parameters.get("surl")[0].toString(),
+				 parameters.get("furl")[0].toString(),
+				 parameters.get("hash")[0].toString(),
+				 Integer.valueOf(parameters.get("productinfo")[0])
+				 );
+		 
+		orderDao.saveOnlineTransaction(transaction);
 	}
 	
 

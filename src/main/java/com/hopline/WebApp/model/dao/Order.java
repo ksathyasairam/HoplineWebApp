@@ -24,6 +24,8 @@ public class Order implements java.io.Serializable {
 	private String orderCreator;
 	private Integer ordersInQueue;
 	private Integer orderCompleteTime;
+	private String paymentMethod;
+	private String paymentSettledYN;
 	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>(0);
 
 	public Order() {
@@ -151,6 +153,22 @@ public class Order implements java.io.Serializable {
 
 	public void setOrderCompleteTime(Integer orderCompleteTime) {
 		this.orderCompleteTime = orderCompleteTime;
+	}
+
+	public String getPaymentSettledYN() {
+		return paymentSettledYN;
+	}
+
+	public void setPaymentSettledYN(String paymentSettledYN) {
+		this.paymentSettledYN = paymentSettledYN;
+	}
+
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
 	}
 
 }

@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31 Dec, 2016 1:55:15 AM by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.hopline.WebApp.model.dao.OnlineTransaction" table="onlineTransaction" catalog="hopline" optimistic-lock="version">
+        <id name="txnid" type="string">
+            <column name="txnid" length="100" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="firstName" length="100" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="45" />
+        </property>
+        <property name="key" type="string">
+            <column name="key_c" length="100" />
+        </property> 
+        <property name="mode" type="string">
+            <column name="mode_c" length="100" />
+        </property>
+        <property name="status" type="string">
+            <column name="status_c" length="100" />
+        </property>
+        <property name="unmappedstatus" type="string">
+            <column name="unmappedstatus" length="100" />
+        </property>
+        <property name="cardCategory" type="string">
+            <column name="cardCategory" length="100" />
+        </property>
+        <property name="addedon" type="string">
+            <column name="addedon" length="100" />
+        </property>
+        <property name="paymentSoucre" type="string">
+            <column name="paymentSoucre" length="100" />
+        </property>
+        <property name="pgType" type="string">
+            <column name="pgType" length="100" />
+        </property>
+        <property name="bankRefNo" type="string">
+            <column name="bankRefNo" length="100" />
+        </property>
+        <property name="bankCode" type="string">
+            <column name="bankCode" length="100" />
+        </property>
+        <property name="error" type="string">
+            <column name="error_c" length="100" />
+        </property>
+        <property name="errorMsg" type="string">
+            <column name="errorMsg" length="100" />
+        </property>
+        <property name="nameOnCard" type="string">
+            <column name="nameOnCard" length="100" />
+        </property>
+        <property name="cardNum" type="string">
+            <column name="cardNum" length="100" />
+        </property>
+        <property name="issuingBank" type="string">
+            <column name="issuingBank" length="100" />
+        </property>
+        <property name="cardType" type="string">
+            <column name="cardType" length="100" />
+        </property>
+        <property name="easePayId" type="string">
+            <column name="easePayId" length="100" />
+        </property>
+        <property name="amount" type="java.lang.Double">
+            <column name="amount" precision="22" scale="0" />
+        </property>
+        <property name="netAmountDebit" type="java.lang.Double">
+            <column name="netAmountDebit" precision="22" scale="0" />
+        </property>
+        <property name="cashBackPercentage" type="string">
+            <column name="cashBackPercentage" length="100" />
+        </property>
+        <property name="deductionPercentage" type="java.lang.Double">
+            <column name="deductionPercentage" precision="22" scale="0" />
+        </property>
+        <property name="surl" type="string">
+            <column name="surl" length="500" />
+        </property>
+        <property name="furl" type="string">
+            <column name="furl" length="500" />
+        </property>
+        <property name="hash" type="string">
+            <column name="hash_c" length="500" />
+        </property>
+        <property name="orderId" type="int">
+            <column name="orderId" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

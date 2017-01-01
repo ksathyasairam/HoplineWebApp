@@ -152,7 +152,7 @@
 		<action name="orderSummaryOnLoad" class="com.hopline.WebApp.action.OrderSummaryAction"
 			method="executeOrderSummaryOnLoad">
 			<result name="success" type="redirectAction">orderSummaryOnLoadGet</result>
-			<result name="input">orderSummaryOnLoad</result>
+<!-- 			<result name="input">orderSummaryOnLoad</result> -->
 			<result name="invalidInput">/invalidInput.jsp</result>
 		</action>
 
@@ -166,13 +166,20 @@
 			method="executeOrderSummaryNext">
 			<result name="yourOrder" type="redirectAction">yourOrders</result>
 			<result name="bigOrderPay">/bigOrderPay.jsp</result>
+			<result name="input">orderSummaryOnLoadGet</result>
+			<result name="paymentFailed" type="redirectAction">
+				   
+				<param name="actionName">orderSummaryOnLoadGet</param>
+				<param name="lastPaymentFailed">true</param>
+
+			</result>
 		</action>
-		
+
 		<action name="onlinePayment" class="com.hopline.WebApp.action.OrderSummaryAction"
 			method="executeOnlinePaymentNext">
 			<result name="success">/pay.jsp</result>
 		</action>
-		
+
 		<action name="yourOrders" class="com.hopline.WebApp.action.YourOrdersAction"
 			method="execute">
 			<result name="success">/yourOrder.jsp</result>

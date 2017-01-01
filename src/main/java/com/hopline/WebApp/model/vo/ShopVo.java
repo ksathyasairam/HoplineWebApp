@@ -11,6 +11,8 @@ public class ShopVo implements java.io.Serializable {
 	private String password;
 	private String onlinePayYn;
 	private String description;
+	private double ourCutOnline;
+	private double ourCutCash;
 	
 	
 	private Boolean success;
@@ -124,6 +126,22 @@ public class ShopVo implements java.io.Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public double getOurCutOnline() {
+		return ourCutOnline;
+	}
+
+	public void setOurCutOnline(double ourCutOnline) {
+		this.ourCutOnline = ourCutOnline;
+	}
+
+	public double getOurCutCash() {
+		return ourCutCash;
+	}
+
+	public void setOurCutCash(double ourCutCash) {
+		this.ourCutCash = ourCutCash;
 	}
 	
 }

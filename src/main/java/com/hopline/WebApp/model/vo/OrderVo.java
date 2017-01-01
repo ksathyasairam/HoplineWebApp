@@ -17,7 +17,8 @@ public class OrderVo implements java.io.Serializable {
 	private Double totalPrice;
 	private List<OrderProductVo> orderProducts;
 	private String orderCreator;
-	
+	private String paymentMethod;
+	private String paymentSettledYN;
 	
 	private Integer numUnitInProgressBar;
 	private Integer currentProgress;
@@ -114,6 +115,18 @@ public class OrderVo implements java.io.Serializable {
 	}
 	public void setOrderCompleteTime(Integer orderCompleteTime) {
 		this.orderCompleteTime = orderCompleteTime;
+	}
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+	public String getPaymentSettledYN() {
+		return paymentSettledYN;
+	}
+	public void setPaymentSettledYN(String paymentSettledYN) {
+		this.paymentSettledYN = paymentSettledYN;
 	}
 		
 }

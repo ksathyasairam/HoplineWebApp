@@ -132,6 +132,7 @@ public class VorderService extends IService {
 		Order order = OrderTranslator.toOrder(orderVo);
 		order.setOrderState(OrderStates.PREPARING);
 		order.setPaidYn("Y");
+		order.setPaymentMethod(Constants.TEMP_PAYMENT);
 		order.setOrderCreator(Constants.ORDER_CREATOR_VENDOR);
 		order = ServiceLocator.getInstance().getService(OrderService.class).createOrder(order);
 		

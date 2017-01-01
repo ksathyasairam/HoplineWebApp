@@ -1,3 +1,4 @@
+<%@page import="com.hopline.WebApp.rest.framework.Config"%>
 <%@page import="com.hopline.WebApp.model.vo.OrderVo"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
@@ -55,10 +56,10 @@ public boolean empty(String s)
 	OrderVo order = (OrderVo)session.getAttribute("order"); 
 	System.out.println(order.getOrderCreator());
 
-	String merchant_key="UF8HGBIITP";
-	String salt="DENRVYD5WI";
+	String merchant_key= Config.EZEBUZZ_MERCHANT_KEY;
+	String salt= Config.EZEBUZZ_SALT;
 	String action1 ="";
-	String base_url="https://testpay.easebuzz.in/";
+	String base_url= Config.EZEBUZZ_BASE_URL;
 	int error=0;
 	String hashString="";
 	
@@ -66,8 +67,11 @@ public boolean empty(String s)
 	String productinfo = order.getCustomerOrderId() + "";
 	String firstname = order.getUser().getName();
 	String email = "niks@Live.in";
-	String surl ="http://localhost:8080/response.jsp";
-	String furl ="http://localhost:8080/response.jsp";
+	
+	/* DEPLOY */
+	
+	String surl = Config.LOCAL_URL + "/orderSummaryNext";
+	String furl = Config.LOCAL_URL + "/orderSummaryNext";
 	String phone = order.getUser().getPhone();
 	
  
@@ -168,9 +172,7 @@ public boolean empty(String s)
                         if(obj.get("status").toString().equals("1")){
                             response.sendRedirect(base_url+"pay/"+obj.get("data").toString());
                         }else{
-                            //out.print(obj.get("data").toString());
                         	response.sendRedirect("/orderSummaryOnLoadGet?lastPaymentFailed=true");
-                        	
                         }
 		}
 	}

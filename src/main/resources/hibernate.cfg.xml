@@ -7,7 +7,7 @@
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password">newyearnewlife</property>
         
-        <!-- Database -->
+        <!-- DEPLOY -->
         
         <!-- Development -->
         
@@ -38,6 +38,7 @@
    <mapping resource="hibernate/hbms/OrderProductAddon.hbm.xml"/>
    <mapping resource="hibernate/hbms/OfflineOrderLog.hbm.xml"/>
    <mapping resource="hibernate/hbms/Feedback.hbm.xml"/>
+   <mapping resource="hibernate/hbms/OnlineTransaction.hbm.xml"/>
 
 
 

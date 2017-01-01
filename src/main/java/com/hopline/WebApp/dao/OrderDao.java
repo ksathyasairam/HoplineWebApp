@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 
 import com.hopline.WebApp.constants.OrderStates;
 import com.hopline.WebApp.model.dao.Feedback;
+import com.hopline.WebApp.model.dao.OnlineTransaction;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.OrderProductAddon;
@@ -198,6 +199,10 @@ public class OrderDao {
 //		criteria.add(Restrictions.eq("a.idaddOn", userId));
 //		return (AddOn) criteria.uniqueResult();
 //	}
+
+	public void saveOnlineTransaction(OnlineTransaction transaction) {
+		getSessionFactory().getCurrentSession().save(transaction);
+	}
 	
 
 	// public SecurityToken getTokenbyUserId(Integer userId) {
