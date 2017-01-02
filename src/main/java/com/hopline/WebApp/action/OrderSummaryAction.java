@@ -51,13 +51,20 @@ public class OrderSummaryAction extends BaseAction {
 			return REDIRECT_HOME;
 
 		if (isOnlinePayment()) {
+
+			Map<String, String[]> parameters = ServletActionContext.getRequest().getParameterMap();
+			OrderVo orderVo = (OrderVo) getSession().get("order");
+
+			if (!Integer.valueOf(parameters.get("productinfo")[0]).equals(orderVo.getIdorder()))
+				return "paymentFailed";
+
 			service.saveOnlineTransaction();
 
 			if (!paymentSucessful())
 				return "paymentFailed";
 
 			setOrder(service.submitOrder((OrderVo) getSession().get("order"), Constants.PAYMENT_METHOD_ONLINE));
-		} else	{
+		} else {
 			setOrder(service.submitOrder((OrderVo) getSession().get("order"), Constants.PAYMENT_METHOD_PICKUP_CASH));
 		}
 
@@ -67,8 +74,7 @@ public class OrderSummaryAction extends BaseAction {
 	}
 
 	private boolean paymentSucessful() {
-		 Map<String, String[]> parameters =  ServletActionContext.getRequest().getParameterMap();
-
+		Map<String, String[]> parameters = ServletActionContext.getRequest().getParameterMap();
 
 		String hashSequence = "status|udf10|udf9|udf8|udf7|udf6|udf5|udf4|udf3|udf2|udf1|email|firstname|productinfo|amount|txnid|key";
 
@@ -84,18 +90,18 @@ public class OrderSummaryAction extends BaseAction {
 
 		String hash = Util.hashCal("SHA-512", hashString);
 
-		
-		return (hash.equals(parameters.get("hash")[0].toString()) && "success".equals(parameters.get("status")[0].toString()));
-//			response.sendRedirect("/orderSummaryNext?lastPaymentFailed=false");
-//		} else {
-//			response.sendRedirect("/orderSummaryOnLoadGet?lastPaymentFailed=true");
-//		} 
+		return (hash.equals(parameters.get("hash")[0].toString())
+				&& "success".equals(parameters.get("status")[0].toString()));
+		// response.sendRedirect("/orderSummaryNext?lastPaymentFailed=false");
+		// } else {
+		// response.sendRedirect("/orderSummaryOnLoadGet?lastPaymentFailed=true");
+		// }
 
 	}
 
 	private boolean isOnlinePayment() {
-		 Map<String, String[]> parameters =  ServletActionContext.getRequest().getParameterMap();
-		 return parameters.containsKey("txnid");
+		Map<String, String[]> parameters = ServletActionContext.getRequest().getParameterMap();
+		return parameters.containsKey("txnid");
 	}
 
 	public String executeOnlinePaymentNext() {
@@ -127,6 +133,5 @@ public class OrderSummaryAction extends BaseAction {
 	public void setLastPaymentFailed(String lastPaymentFailed) {
 		this.lastPaymentFailed = lastPaymentFailed;
 	}
-
 
 }
