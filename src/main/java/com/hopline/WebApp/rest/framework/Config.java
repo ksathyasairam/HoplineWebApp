@@ -2,9 +2,9 @@ package com.hopline.WebApp.rest.framework;
 
 public class Config {
 	public static boolean DISABLE_SMS  = false;
-	public static String  EZEBUZZ_SALT = "DENRVYD5WI";
-	public static String  EZEBUZZ_MERCHANT_KEY = "UF8HGBIITP";
-	public static String  EZEBUZZ_BASE_URL = "https://testpay.easebuzz.in/";
+	public static String  EZEBUZZ_SALT = "72Z4FLIL64";
+	public static String  EZEBUZZ_MERCHANT_KEY = "DOEDX8GZQQ";
+	public static String  EZEBUZZ_BASE_URL = "https://pay.easebuzz.in/";
 	
 	
 	public static String PROD_URL = "http://hopline.in";

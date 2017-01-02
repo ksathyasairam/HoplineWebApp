@@ -30,10 +30,10 @@ public class OnlineTransaction implements java.io.Serializable {
 	private String issuingBank;
 	private String cardType;
 	private String easePayId;
-	private Double amount;
-	private Double netAmountDebit;
+	private String amount;
+	private String netAmountDebit;
 	private String cashBackPercentage;
-	private Double deductionPercentage;
+	private String deductionPercentage;
 	private String surl;
 	private String furl;
 	private String hash;
@@ -51,8 +51,8 @@ public class OnlineTransaction implements java.io.Serializable {
 	public OnlineTransaction(String txnid, String firstName, String phone, String key, String mode, String status,
 			String unmappedstatus, String cardCategory, String addedon, String paymentSoucre, String pgType,
 			String bankRefNo, String bankCode, String error, String errorMsg, String nameOnCard, String cardNum,
-			String issuingBank, String cardType, String easePayId, Double amount, Double netAmountDebit,
-			String cashBackPercentage, Double deductionPercentage, String surl, String furl, String hash, int orderId, Date createTimestamp) {
+			String issuingBank, String cardType, String easePayId, String amount, String netAmountDebit,
+			String cashBackPercentage, String deductionPercentage, String surl, String furl, String hash, int orderId, Date createTimestamp) {
 		this.txnid = txnid;
 		this.firstName = firstName;
 		this.phone = phone;
@@ -244,19 +244,19 @@ public class OnlineTransaction implements java.io.Serializable {
 		this.easePayId = easePayId;
 	}
 
-	public Double getAmount() {
+	public String getAmount() {
 		return this.amount;
 	}
 
-	public void setAmount(Double amount) {
+	public void setAmount(String amount) {
 		this.amount = amount;
 	}
 
-	public Double getNetAmountDebit() {
+	public String getNetAmountDebit() {
 		return this.netAmountDebit;
 	}
 
-	public void setNetAmountDebit(Double netAmountDebit) {
+	public void setNetAmountDebit(String netAmountDebit) {
 		this.netAmountDebit = netAmountDebit;
 	}
 
@@ -268,11 +268,11 @@ public class OnlineTransaction implements java.io.Serializable {
 		this.cashBackPercentage = cashBackPercentage;
 	}
 
-	public Double getDeductionPercentage() {
+	public String getDeductionPercentage() {
 		return this.deductionPercentage;
 	}
 
-	public void setDeductionPercentage(Double deductionPercentage) {
+	public void setDeductionPercentage(String deductionPercentage) {
 		this.deductionPercentage = deductionPercentage;
 	}
 
