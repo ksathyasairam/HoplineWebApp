@@ -1,5 +1,6 @@
 package com.hopline.WebApp.action;
 
+import java.text.ParseException;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
@@ -58,7 +59,12 @@ public class OrderSummaryAction extends BaseAction {
 			if (!Integer.valueOf(parameters.get("productinfo")[0]).equals(orderVo.getIdorder()))
 				return "paymentFailed";
 
-			service.saveOnlineTransaction();
+			try {
+				service.saveOnlineTransaction();
+			} catch (ParseException e) {
+				e.printStackTrace();
+				return "paymentFailed";
+			}
 
 			if (!paymentSucessful())
 				return "paymentFailed";

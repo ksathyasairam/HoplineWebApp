@@ -29,8 +29,8 @@
             <column name="cardCategory" length="100" />
         </property>
         <property name="addedon" type="string">
-            <column name="addedon" length="100" />
-        </property>
+			<column name="addedon" length="100" />
+		</property>
         <property name="paymentSoucre" type="string">
             <column name="paymentSoucre" length="100" />
         </property>
@@ -88,5 +88,8 @@
         <property name="orderId" type="int">
             <column name="orderId" not-null="true" />
         </property>
+         <property name="createTimestamp" type="timestamp">
+			<column name="createTimestamp" length="19"  not-null="true"/>
+		</property>
     </class>
 </hibernate-mapping>

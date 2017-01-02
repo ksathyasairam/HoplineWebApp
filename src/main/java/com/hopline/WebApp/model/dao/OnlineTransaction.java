@@ -1,4 +1,7 @@
 package com.hopline.WebApp.model.dao;
+
+import java.util.Date;
+
 // default package
 // Generated 31 Dec, 2016 1:55:15 AM by Hibernate Tools 5.2.0.Beta1
 
@@ -35,6 +38,7 @@ public class OnlineTransaction implements java.io.Serializable {
 	private String furl;
 	private String hash;
 	private int orderId;
+	private Date createTimestamp;
 
 	public OnlineTransaction() {
 	}
@@ -48,7 +52,7 @@ public class OnlineTransaction implements java.io.Serializable {
 			String unmappedstatus, String cardCategory, String addedon, String paymentSoucre, String pgType,
 			String bankRefNo, String bankCode, String error, String errorMsg, String nameOnCard, String cardNum,
 			String issuingBank, String cardType, String easePayId, Double amount, Double netAmountDebit,
-			String cashBackPercentage, Double deductionPercentage, String surl, String furl, String hash, int orderId) {
+			String cashBackPercentage, Double deductionPercentage, String surl, String furl, String hash, int orderId, Date createTimestamp) {
 		this.txnid = txnid;
 		this.firstName = firstName;
 		this.phone = phone;
@@ -77,6 +81,7 @@ public class OnlineTransaction implements java.io.Serializable {
 		this.furl = furl;
 		this.hash = hash;
 		this.orderId = orderId;
+		this.setCreateTimestamp(createTimestamp);
 	}
 
 	public String getTxnid() {
@@ -301,6 +306,14 @@ public class OnlineTransaction implements java.io.Serializable {
 
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
+	}
+
+	public Date getCreateTimestamp() {
+		return createTimestamp;
+	}
+
+	public void setCreateTimestamp(Date createTimestamp) {
+		this.createTimestamp = createTimestamp;
 	}
 
 }

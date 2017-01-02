@@ -68,6 +68,15 @@ public class Util {
 		Date date = cal.getTime();
 		return date;
 	}
+	
+	public static Date gmtToAsia(Date dateGmt) {
+		long gmtTime = dateGmt.getTime();
+
+		long timezoneAlteredTime = gmtTime + TimeZone.getTimeZone("Asia/Calcutta").getRawOffset();
+		Calendar cSchedStartCal1 = Calendar.getInstance(TimeZone.getTimeZone("Asia/Calcutta"));
+		cSchedStartCal1.setTimeInMillis(timezoneAlteredTime);
+		return cSchedStartCal1.getTime();
+	}
 
 	public static Date getCurrentDateTimeIndia() {
 		Calendar cSchedStartCal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));

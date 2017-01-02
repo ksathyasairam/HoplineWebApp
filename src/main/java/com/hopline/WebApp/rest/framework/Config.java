@@ -7,12 +7,15 @@ public class Config {
 	public static String  EZEBUZZ_BASE_URL = "https://testpay.easebuzz.in/";
 	
 	
-	
-	
-	
 	public static String PROD_URL = "http://hopline.in";
 	public static String DEV_URL = "http://demo.hopline.in";
-	public static String LOCAL_URL = "http://localhost:8090";
+	public static String LOCAL_URL = "http://192.168.0.12:8090";
+	
+	
 
+	/*deploy*/
+	public static String EZEBUZZ_RESPONSE_URL = LOCAL_URL;
+
+	
 	
 }

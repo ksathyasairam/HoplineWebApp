@@ -64,14 +64,13 @@ public boolean empty(String s)
 	String hashString="";
 	
 	String amount = order.getTotalPrice()+"";
-	String productinfo = order.getCustomerOrderId() + "";
+	String productinfo = order.getIdorder() + "";
 	String firstname = order.getUser().getName();
 	String email = "niks@Live.in";
 	
-	/* DEPLOY */
 	
-	String surl = Config.LOCAL_URL + "/orderSummaryNext";
-	String furl = Config.LOCAL_URL + "/orderSummaryNext";
+	String surl = Config.EZEBUZZ_RESPONSE_URL + "/orderSummaryNext";
+	String furl = Config.EZEBUZZ_RESPONSE_URL + "/orderSummaryNext";
 	String phone = order.getUser().getPhone();
 	
  

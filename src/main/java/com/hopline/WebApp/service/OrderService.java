@@ -1,7 +1,11 @@
 package com.hopline.WebApp.service;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -264,8 +268,13 @@ public class OrderService extends IService {
 		return order.getOrderState();
 	}
 	
-	public void saveOnlineTransaction() {
+	public void saveOnlineTransaction() throws ParseException {
 		 Map<String, String[]> parameters =  ServletActionContext.getRequest().getParameterMap();
+		 
+//		 DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"); 
+//		 Date addedOnd = Util.gmtToAsia(df.parse( parameters.get("addedon")[0].toString()));
+		 
+		 
 		 OnlineTransaction transaction = new OnlineTransaction(
 				 parameters.get("txnid")[0].toString(),
 				 parameters.get("firstname")[0].toString(),
@@ -294,7 +303,8 @@ public class OrderService extends IService {
 				 parameters.get("surl")[0].toString(),
 				 parameters.get("furl")[0].toString(),
 				 parameters.get("hash")[0].toString(),
-				 Integer.valueOf(parameters.get("productinfo")[0])
+				 Integer.valueOf(parameters.get("productinfo")[0]),
+				 Util.getCurrentDateTimeIndia()
 				 );
 		 
 		orderDao.saveOnlineTransaction(transaction);
