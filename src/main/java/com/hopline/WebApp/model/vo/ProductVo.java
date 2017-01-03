@@ -22,9 +22,34 @@ public class ProductVo implements java.io.Serializable {
 	//For UI frontEnd
 	private boolean isExpanded;
 	private int quantity = 1;
-	
+	private String menuDisplayName;
+	private String variationName;
+	private Integer variationGroupId;
 	 
-	
+	public String getMenuDisplayName() {
+		return menuDisplayName;
+	}
+
+	public void setMenuDisplayName(String menuDisplayName) {
+		this.menuDisplayName = menuDisplayName;
+	}
+
+	public String getVariationName() {
+		return variationName;
+	}
+
+	public void setVariationName(String variationName) {
+		this.variationName = variationName;
+	}
+
+	public Integer getVariationGroupId() {
+		return variationGroupId;
+	}
+
+	public void setVariationGroupId(Integer variationGroupId) {
+		this.variationGroupId = variationGroupId;
+	}
+
 	public int getQuantity() {
 		return quantity;
 	}

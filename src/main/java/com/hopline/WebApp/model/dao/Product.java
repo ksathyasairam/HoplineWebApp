@@ -19,9 +19,37 @@ public class Product implements java.io.Serializable {
 	private String stockYn;
 	private String singleAddonYN;
 	private String timeUnavailable;
+	private String menuDisplayName;
+	private String variationName;
+	private Integer variationGroupId;
+	
 	private Set<AddOn> addOns = new HashSet<AddOn>(0);
 	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>(0);
 	private Set<Category> categories = new HashSet<Category>(0);
+
+	public String getMenuDisplayName() {
+		return menuDisplayName;
+	}
+
+	public void setMenuDisplayName(String menuDisplayName) {
+		this.menuDisplayName = menuDisplayName;
+	}
+
+	public String getVariationName() {
+		return variationName;
+	}
+
+	public void setVariationName(String variationName) {
+		this.variationName = variationName;
+	}
+
+	public Integer getVariationGroupId() {
+		return variationGroupId;
+	}
+
+	public void setVariationGroupId(Integer variationGroupId) {
+		this.variationGroupId = variationGroupId;
+	}
 
 	public Product() {
 	}

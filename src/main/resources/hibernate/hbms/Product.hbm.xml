@@ -34,7 +34,15 @@
 		<property name="timeUnavailable" type="string">
 			<column name="timeUnavailable" length="100" />
 		</property>
-		 
+		 <property name="menuDisplayName" type="string">
+			<column name="menuDisplayName" length="400" />
+		</property>
+		<property name="variationName" type="string">
+			<column name="variationName" length="45" />
+		</property>
+		 <property name="variationGroupId" type="int">
+            <column name="variationGroupId" />
+        </property>
 		
 
 		<set name="addOns" table="productAddon" inverse="false" lazy="true"
