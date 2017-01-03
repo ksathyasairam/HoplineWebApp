@@ -171,9 +171,9 @@ public class CategoryServiceImpl extends IService {
 			for (ProductGroupVo productGroup : categoryVo.getProductGroups()) {
 				Collections.sort(productGroup.getProducts(), new PriceComparator());
 
-				for (ProductVo product : productGroup.getProducts()) {
-					Collections.sort(product.getAddOns(), new AddonPriceComprator());
-				}
+//				for (ProductVo product : productGroup.getProducts()) {
+//					Collections.sort(product.getAddOns(), new AddonPriceComprator());
+//				}
 			}
 		}
 

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3 Jan, 2017 4:42:03 PM by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.hopline.WebApp.model.dao.AddonGroup" table="addonGroup" catalog="hopline" optimistic-lock="version">
+        <id name="idaddonGroup" type="java.lang.Integer">
+            <column name="idaddonGroup" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <property name="desc" type="string">
+            <column name="desc" length="1000" />
+        </property>
+        <property name="radioYn" type="string">
+            <column name="radioYN" length="45" not-null="true" />
+        </property>
+        <property name="minSelect" type="java.lang.Integer">
+            <column name="minSelect" />
+        </property>
+        <set name="addOns" table="addonMapAddonGroup" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="addonGroupId" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.hopline.WebApp.model.dao.AddOn">
+                <column name="addonId" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="products" table="productAddonGroup" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="addonGroupId" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.hopline.WebApp.model.dao.Product">
+                <column name="porductId" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

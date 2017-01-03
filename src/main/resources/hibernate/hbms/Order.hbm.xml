@@ -60,5 +60,8 @@
 		<property name="paymentSettledYN" type="string">
 			<column name="paymentSettledYN" length="45" />
 		</property>
+		<property name="settledDate" type="timestamp">
+			<column name="settledDate" length="19" />
+		</property>
 	</class>
 </hibernate-mapping>

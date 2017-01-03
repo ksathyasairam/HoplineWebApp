@@ -26,6 +26,7 @@ public class Order implements java.io.Serializable {
 	private Integer orderCompleteTime;
 	private String paymentMethod;
 	private String paymentSettledYN;
+	private Date settledDate;
 	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>(0);
 
 	public Order() {
@@ -169,6 +170,14 @@ public class Order implements java.io.Serializable {
 
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
+	}
+
+	public Date getSettledDate() {
+		return settledDate;
+	}
+
+	public void setSettledDate(Date settledDate) {
+		this.settledDate = settledDate;
 	}
 
 }
