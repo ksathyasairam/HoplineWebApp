@@ -19,9 +19,37 @@ public class Product implements java.io.Serializable {
 	private String stockYn;
 	private String singleAddonYN;
 	private String timeUnavailable;
-	private Set<AddOn> addOns = new HashSet<AddOn>(0);
+	private String menuDisplayName;
+	private String variationName;
+	private Integer variationGroupId;
+	
+	private Set<AddonGroup> addonGroups = new HashSet<AddonGroup>(0);
 	private Set<OrderProduct> orderProducts = new HashSet<OrderProduct>(0);
 	private Set<Category> categories = new HashSet<Category>(0);
+
+	public String getMenuDisplayName() {
+		return menuDisplayName;
+	}
+
+	public void setMenuDisplayName(String menuDisplayName) {
+		this.menuDisplayName = menuDisplayName;
+	}
+
+	public String getVariationName() {
+		return variationName;
+	}
+
+	public void setVariationName(String variationName) {
+		this.variationName = variationName;
+	}
+
+	public Integer getVariationGroupId() {
+		return variationGroupId;
+	}
+
+	public void setVariationGroupId(Integer variationGroupId) {
+		this.variationGroupId = variationGroupId;
+	}
 
 	public Product() {
 	}
@@ -33,18 +61,7 @@ public class Product implements java.io.Serializable {
 		this.stockYn = stockYn;
 	}
 
-	public Product(String name, String shortDesc, String longDesc, BigDecimal price, String vegYn, String stockYn,
-			Set<AddOn> addOns, Set<OrderProduct> orderProducts, Set<Category> categories) {
-		this.name = name;
-		this.shortDesc = shortDesc;
-		this.longDesc = longDesc;
-		this.price = price;
-		this.vegYn = vegYn;
-		this.stockYn = stockYn;
-		this.addOns = addOns;
-		this.orderProducts = orderProducts;
-		this.categories = categories;
-	}
+	
 
 	public Integer getProductId() {
 		return this.productId;
@@ -102,13 +119,6 @@ public class Product implements java.io.Serializable {
 		this.stockYn = stockYn;
 	}
 
-	public Set<AddOn> getAddOns() {
-		return this.addOns;
-	}
-
-	public void setAddOns(Set<AddOn> addOns) {
-		this.addOns = addOns;
-	}
 
 	public Set<OrderProduct> getOrderProducts() {
 		return this.orderProducts;
@@ -140,6 +150,14 @@ public class Product implements java.io.Serializable {
 
 	public void setTimeUnavailable(String timeUnavailable) {
 		this.timeUnavailable = timeUnavailable;
+	}
+
+	public Set<AddonGroup> getAddonGroups() {
+		return addonGroups;
+	}
+
+	public void setAddonGroups(Set<AddonGroup> addonGroups) {
+		this.addonGroups = addonGroups;
 	}
 
 	

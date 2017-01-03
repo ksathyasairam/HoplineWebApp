@@ -15,7 +15,7 @@ public class AddOn implements java.io.Serializable {
 	private BigDecimal price;
 	private String stockYn;
 	private Set<OrderProductAddon> orderProductAddons = new HashSet<OrderProductAddon>(0);
-	private Set<Product> products = new HashSet<Product>(0);
+	private Set<AddonGroup> addonGroups = new HashSet<AddonGroup>(0);
 	public Integer getIdaddOn() {
 		return idaddOn;
 	}
@@ -46,12 +46,13 @@ public class AddOn implements java.io.Serializable {
 	public void setOrderProductAddons(Set<OrderProductAddon> orderProductAddons) {
 		this.orderProductAddons = orderProductAddons;
 	}
-	public Set<Product> getProducts() {
-		return products;
+	public Set<AddonGroup> getAddonGroups() {
+		return addonGroups;
 	}
-	public void setProducts(Set<Product> products) {
-		this.products = products;
+	public void setAddonGroups(Set<AddonGroup> addonGroups) {
+		this.addonGroups = addonGroups;
 	}
+	
 
 
 }

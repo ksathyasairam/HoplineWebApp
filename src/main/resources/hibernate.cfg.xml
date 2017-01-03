@@ -39,6 +39,7 @@
    <mapping resource="hibernate/hbms/OfflineOrderLog.hbm.xml"/>
    <mapping resource="hibernate/hbms/Feedback.hbm.xml"/>
    <mapping resource="hibernate/hbms/OnlineTransaction.hbm.xml"/>
+   <mapping resource="hibernate/hbms/AddonGroup.hbm.xml"/>
 
 
 

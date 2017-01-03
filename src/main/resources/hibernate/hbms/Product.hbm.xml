@@ -34,18 +34,25 @@
 		<property name="timeUnavailable" type="string">
 			<column name="timeUnavailable" length="100" />
 		</property>
-		 
+		 <property name="menuDisplayName" type="string">
+			<column name="menuDisplayName" length="400" />
+		</property>
+		<property name="variationName" type="string">
+			<column name="variationName" length="45" />
+		</property>
+		 <property name="variationGroupId" type="int">
+            <column name="variationGroupId" />
+        </property>
 		
 
-		<set name="addOns" table="productAddon" inverse="false" lazy="true"
-			fetch="select">
-			<key>
-				<column name="productId" not-null="true" />
-			</key>
-			<many-to-many entity-name="com.hopline.WebApp.model.dao.AddOn">
-				<column name="addonId" not-null="true" />
-			</many-to-many>
-		</set>
+		 <set name="addonGroups" table="productAddonGroup" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="porductId" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.hopline.WebApp.model.dao.AddonGroup">
+                <column name="addonGroupId" not-null="true" />
+            </many-to-many>
+        </set>
 		<set name="orderProducts" table="orderProduct" inverse="true"
 			lazy="true" fetch="select">
 			<key>
