@@ -71,12 +71,14 @@
 												</div>
 											</div>
 							<div style="clear:both;width:100%;">
-							 	<div ng-repeat="addons in food.addOns | filter:{ selected: true }" style="font-size: 12px;">
-							 		<div style="color:#525a54;float:left;">
-							 			+ {{addons.name}}
-							 		</div>
-							 		
-							 		<br>
+								<div ng-repeat="add in food.addonGroups">
+								 	<div ng-repeat="addons in add.addOns | filter:{ selected: true }" style="font-size: 12px;">
+								 		<div style="color:#525a54;float:left;">
+								 			+ {{addons.name}}
+								 		</div>
+								 		
+								 		<br>
+								 	</div>
 							 	</div>
 						 	</div>	
 							<div style="clear:both;width:100%;">

@@ -146,7 +146,8 @@
 	  $scope.sec=60;
 	  var mytimeout=null;
 	  this.addOnTot=0;
-	  this.addOnLength=1;	  
+	  this.addOnLength=1;
+	  $scope.sizeOptions=0;
 
 	this.restaurants=[
 	{
@@ -166,6 +167,7 @@
 	  this.favourites=this.foodIt.favourites;
 	  this.shopDetails=this.foodIt.shop;
 	  this.favList=[];
+	  console.log(this.foodItems);
 	  
 	  this.category=this.foodIt.categoryDropdown;
 	  
@@ -183,17 +185,19 @@
 		
 			for(var j=0;j<this.foodItems.length;j++)
 			  {
-			  	for(var k=0;k<this.foodItems[j].products.length;k++)
+			  	for(var k=0;k<this.foodItems[j].productGroups.length;k++)
 			  		{
-			  		this.foodItems[j].products[k].quantity=1;
-			  		for(var i=0;i<check1.length;i++){
-				  			
-				  		if(this.foodItems[j].products[k].productId==check1[i].productId)
-				  			{	
-				  				this.foodItems[j].products[k].quantity=this.foodItems[j].products[k].quantity+check1[i].quantity;
-				  				
-				  			}
-				  		}
+			  		for(var l=0;l<this.foodItems[j].productGroups[k].products.length;l++){
+				  		this.foodItems[j].productGroups[k].products[l].quantity=1;
+				  		for(var i=0;i<check1.length;i++){
+					  			
+					  		if(this.foodItems[j].productGroups[k].products[l].productId==check1[i].productId)
+					  			{	
+					  				this.foodItems[j].productGroups[k].products[l].quantity=this.foodItems[j].productGroups[k].products[l].quantity+check1[i].quantity;
+					  				
+					  			}
+					  		}
+			  			}
 			  		}
 			  }
 		
@@ -211,6 +215,11 @@
 			  }
 		}*/
 	}  
+	
+	this.setSizeOptionToZero=function(){
+		$scope.sizeOptions=0;
+	};
+	
 	this.showContent=function(id,name,val)
 	  {
 	        var elementToShow = '#item-' + name + '-' + id;
@@ -257,31 +266,40 @@
 	this.cancelOrder=function(value)
 	{
 	  value.quantity=1;
-	  for(var i = 0; i < value.addOns.length; i++){
-	  value.addOns[i].selected=false;  
+	  for(var i=0;i<value.addonGroups.length;i++){
+		  for(var j=0;j<obj.addonGroups[i].addOns.length;j++){
+	    	value.addonGroups[i].addOns[j].selected=false;
+		  }
 	  }
 	};
 
 	this.changeOnRadio = function(food,id) {
 		
 		  // iterate over your whole list
-		  for(var i=0;i<food.addOns.length;i++){
-			  if(food.addOns[i].idaddOn!=id && food.addOns[i].price==0){
-				  food.addOns[i].selected=false;
+		  for(var i=0;i<food.addonGroups.length;i++){
+			  for(var j=0;j<food.addonGroups[i].addOns.length;j++){
+				  if(food.addonGroups[i].addOns[j].idaddOn!=id && food.addonGroups[i].radioYn=='Y'){
+					  food.addonGroups[i].addOns[j].selected=false;
+				  }
 			  }
 		  }
 		};
 	this.addOnTotal = function(food) {
 		  this.addOnTot=0;			
 		  // iterate over your whole list
-		  for(var i=0;i<food.addOns.length;i++){
-			  if(food.addOns[i].selected==true){
-				  this.addOnTot=this.addOnTot + food.addOns[i].price;
+		  for(var i=0;i<food.addonGroups.length;i++){
+			  for(var j=0;j<food.addonGroups[i].addOns.length;j++){
+				  if(food.addonGroups[i].addOns[j].selected==true){
+					  this.addOnTot=this.addOnTot + food.addonGroups[i].addOns[j].price;
+				  }
 			  }
 		  }
 		};
 	this.addOnLen=function(food){
-		this.addOnLength=food.addOns.length;
+		var len=0;
+		for(var i=0;i<food.addonGroups.length;i++)
+			len=len+food.addonGroups[i].addOns.length;
+		this.addOnLength=len;
 		var ab="-" + (((this.addOnLength-1)*50)/2 +115) + "px";
 		$("#clearCartPopUp2-"+food.productId).css({'margin-top':ab});
 	};
@@ -294,10 +312,12 @@
 	    this.totalCost= this.totalCost+(this.checkList[i].quantity*this.checkList[i].price);
 	    var tot=0;
 	    this.totalQuantity= this.totalQuantity+this.checkList[i].quantity;
-	    for(var j = 0; j < this.checkList[i].addOns.length; j++)
+	    for(var j = 0; j < this.checkList[i].addonGroups.length; j++)
 	    {
-	    	if(this.checkList[i].addOns[j].price>0)
-	      		tot= tot + (this.checkList[i].addOns[j].price*this.checkList[i].quantity*this.checkList[i].addOns[j].selected);
+	    	for(var k=0;k< this.checkList[i].addonGroups[j].addOns.length;k++){
+		    	if(this.checkList[i].addonGroups[j].addOns[k].price>0)
+		      		tot= tot + (this.checkList[i].addonGroups[j].addOns[k].price*this.checkList[i].quantity*this.checkList[i].addonGroups[j].addOns[k].selected);
+	    	}
 	      
 	    }
 	    this.totalCost= this.totalCost+tot;
@@ -321,14 +341,18 @@
 	  for(var i=0;i<check.length;i++)
 		  {
 			var a=0;
+			var b=0;
 		  	if(check[i].productId==obj.productId){
 		  		
-		  		for(var j=0;j<obj.addOns.length;j++){
-		  			if(obj.addOns[j].selected==check[i].addOns[j].selected){
-		  				a=a+1;
+		  		for(var j=0;j<obj.addonGroups.length;j++){
+		  			for(var k=0;k<obj.addonGroups[j].addOns.length;k++){
+			  			if(obj.addonGroups[j].addOns[k].selected==check[i].addonGroups[j].addOns[k].selected){
+			  				a=a+1;
+			  			}
+			  			b=b+1;
 		  			}
 		  		}
-		  		if(obj.addOns.length==a)
+		  		if(b==a)
 		  			{
 			  		check[i].quantity=check[i].quantity+1;
 			  		alreadyInList=1;
@@ -348,8 +372,10 @@
 
 	  //value.quantity=1;
 	  
-	  for(var i=0;i<value.addOns.length;i++){
-	    value.addOns[i].selected=false;
+	  for(var i=0;i<value.addonGroups.length;i++){
+		  for(var j=0;j<obj.addonGroups[i].addOns.length;j++){
+	    	value.addonGroups[i].addOns[j].selected=false;
+		  }
 	  }
 	  //$("#checkcartNotify").css({display:'block'});
 	  //$("#checkcartNotify").animate({opacity:0}, 1500, function() {
@@ -366,6 +392,7 @@
 	  //$('.addedtoast').css({top: '4%'});
 	  //$('.addedtoast').show();   
 	  this.totalOrder();
+	  this.setSizeOptionToZero();
 	};
 	
 	this.removeCheckList=function(id,name,value)
@@ -414,13 +441,15 @@
 		  }
 	  for(var i=0;i<this.foodItems.length;i++)
 	  {
-	  	for(var j=0;j<this.foodItems[i].products.length;j++)
+	  	for(var j=0;j<this.foodItems[i].productGroups.length;j++)
 	  		{
-	  		if(this.foodItems[i].products[j].productId==check[index].productId)
-	  			{	
-	  				this.foodItems[i].products[j].quantity=check[index].quantity+1;
-	  				break;
-	  			}
+				for(var k=0;k<this.foodItems[i].productGroups[j].length;k++){
+			  		if(this.foodItems[i].productGroups[j].products[k].productId==check[index].productId)
+			  			{	
+			  				this.foodItems[i].productGroups[j].products[k].quantity=check[index].quantity+1;
+			  				break;
+			  			}
+				}
 	  		}
 	  }
 	  if(check[index].quantity==0)
@@ -443,13 +472,15 @@
 	  check[index].quantity=check[index].quantity+1; 
 	  for(var i=0;i<this.foodItems.length;i++)
 	  {
-	  	for(var j=0;j<this.foodItems[i].products.length;j++)
+	  	for(var j=0;j<this.foodItems[i].productGroups.length;j++)
 	  		{
-	  		if(this.foodItems[i].products[j].productId==check[index].productId)
-	  			{	
-	  				this.foodItems[i].products[j].quantity=check[index].quantity+1;
-	  				break;
-	  			}
+				for(var k=0;k<this.foodItems[i].productGroups[j].length;k++){
+			  		if(this.foodItems[i].productGroups[j].product[k].productId==check[index].productId)
+			  			{	
+			  				this.foodItems[i].productGroups[j].products[k].quantity=check[index].quantity+1;
+			  				break;
+			  			}
+			  		}
 	  		}
 	  }
 	  if(this.localStorageAvailability)
@@ -468,13 +499,15 @@
 	  var check1 = JSON.parse(localStorage.getItem('checkList')) || JSON.parse($cookieStore.get("checkList")) || [];
 	  for(var i=0;i<this.foodItems.length;i++)
 	  {
-	  	for(var j=0;j<this.foodItems[i].products.length;j++)
+	  	for(var j=0;j<this.foodItems[i].productGroups.length;j++)
 	  		{
-	  		if(this.foodItems[i].products[j].productId==check1[index].productId)
-	  			{	
-	  				this.foodItems[i].products[j].quantity=this.foodItems[i].products[j].quantity-check1[index].quantity;
-	  				break;
-	  			}
+				for(var k=0;k<this.foodItems[i].productGroups[j].length;k++){
+			  		if(this.foodItems[i].productGroups[j].products[k].productId==check1[index].productId)
+			  			{	
+			  				this.foodItems[i].productGroups[j].products[k].quantity=this.foodItems[i].productGroups[j].products[k].quantity-check1[index].quantity;
+			  				break;
+			  			}
+				}
 	  		}
 	  }
 	  check1.splice(index, 1);
@@ -502,10 +535,11 @@
 	  this.totalOrder();
 	  for(var i=0;i<this.foodItems.length;i++)
 	  {
-	  	for(var j=0;j<this.foodItems[i].products.length;j++)
+	  	for(var j=0;j<this.foodItems[i].productGroups.length;j++)
 	  		{
-	  		
-	  			this.foodItems[i].products[j].quantity=1;
+	  			for(var k=0;k<this.foodItems[i].productGroups[j].length;k++){
+	  				this.foodItems[i].productGroups[j].products[k].quantity=1;
+	  			}
 	  			
 	  		}
 	  }
@@ -550,9 +584,11 @@
 	
 	this.addOnsPrice=function(checkListItem){
 		var count=0;
-		for(var i=0;i<checkListItem.addOns.length;i++){
-			if(checkListItem.addOns[i].selected==true)
-				count=count+checkListItem.addOns[i].price;
+		for(var i=0;i<checkListItem.addonGroups.length;i++){
+			for(var j=0;j<checkListItem.addonGroups[i].addOns.length;j++){
+				if(checkListItem.addonGroups[i].addOns[j].selected==true)
+					count=count+checkListItem.addonGroups[i].addOns[j].price;
+			}
 		}
 		checkListItem.price=checkListItem.price + count;
 	}

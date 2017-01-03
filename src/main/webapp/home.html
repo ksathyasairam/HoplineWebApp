@@ -45,12 +45,12 @@
 					<p style="margin-left:2%;color:#b4b2b2;text-transform: uppercase;font-weight: 500;font-size:13px;font-family: 'Asap', sans-serif;margin-top:-9px;display:block;float:left;letter-spacing: 1px;">{{cat.subCategoryName}}</p>
 					<ul class="address">
 					
-					    <li ng-repeat="fooditem in cat.products track by $index" class="webMenu" style="display:inline-block;" >
+					    <li ng-repeat="fooditem in cat.productGroups track by $index" class="webMenu" style="display:inline-block;" >
 					    		
 								<div  class="dottedLining" >
 
 									<div id="div-{{cat.name}}-{{$index}}" style="color:#525a54; padding-left:2%; padding-top:2%; padding-bottom:3%;padding-right:2%;">
-										<div style="float:left;opacity:0.8; margin-top:6px;" ng-show="fooditem.vegYn=='Y'" >
+										<div style="float:left;opacity:0.8; margin-top:6px;" ng-show="fooditem.products[0].vegYn=='Y'" >
 											<div style="width:12px; height:12px;border:1px solid #4fb66d; border-radius: 1px 1px 1px 1px; text-align:center;">
 												<div style="position:relative; left:50%; margin-left:-3px;top:50%; margin-top:-3px; width:6px; height:6px; border-radius: 6px 6px 6px 6px; background:#4fb66d;">
 													
@@ -58,7 +58,7 @@
 											
 											</div>
 										</div>
-										<div style="float:left;opacity:0.8; margin-top:6px;" ng-show="fooditem.vegYn=='N'" >
+										<div style="float:left;opacity:0.8; margin-top:6px;" ng-show="fooditem.products[0].vegYn=='N'" >
 											<div style="width:12px; height:12px;border:1px solid #cf3721; border-radius: 1px 1px 1px 1px; text-align:center;">
 												<div style="position:relative; left:50%; margin-left:-3px;top:50%; margin-top:-3px; width:6px; height:6px; border-radius: 6px 6px 6px 6px; background:#cf3721;">
 													
@@ -67,23 +67,23 @@
 											</div>
 										</div>
 										<div style="float:left; width:60%; margin-left:6px; font-family: 'Raleway', sans-serif; " class="menu_item_name">
-											{{fooditem.name}} 
+											{{fooditem.products[0].menuDisplayName}} 
 										</div>
-										<div ng-show="fooditem.stockYn=='N'">
+										<div ng-show="fooditem.products[0].stockYn=='N'">
 											<div style="float:right;">
 												<div class="out_of_stock">
 													Out of Stock
 												</div>
 											</div>
 										</div>
-										<div ng-show="fooditem.stockYn=='Y'">
+										<div ng-show="fooditem.products[0].stockYn=='Y'">
 											<!-- <div style="float:right;">
-												<div style="width:60px; height:26px;font-size:14px;padding-top:2px;border:1px solid #67baca; border-radius: 3px 3px 3px 3px; text-align:center;background:#67baca; color:white;"  ng-show="!fooditem.isExpanded;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;">
+												<div style="width:60px; height:26px;font-size:14px;padding-top:2px;border:1px solid #67baca; border-radius: 3px 3px 3px 3px; text-align:center;background:#67baca; color:white;"  ng-show="!fooditem.products[0].isExpanded;" ng-click="fooditem.products[0].isExpanded=!fooditem.products[0].isExpanded;">
 													ADD
 												</div>
 											</div> -->
 											<div style="height:26px;float:right;text-align:right;">
-												<div style="float:left; height:22px; width:22px; border-radius:11px 11px 11px 11px; background:#e64539; " ng-click="event.removeCheckList($index,cat.name,fooditem);">
+												<div style="float:left; height:22px; width:22px; border-radius:11px 11px 11px 11px; background:#e64539; " ng-click="event.removeCheckList($index,cat.name,fooditem.products[0]);">
 													<div style="margin-top:1px;margin-left:1px;height:20px; width:20px; border-radius:10px 10px 10px 10px; background:rgba(253, 246, 246, 1);">
 														<div style="width:12px; height:2px;position:relative;top:45%;left:50%;margin-left:-6px;background:#e64539;">
 															
@@ -93,8 +93,8 @@
 														
 													</div> -->
 												</div>
-											 	<div style="float:left">&emsp;{{fooditem.quantity-1}}&emsp;</div>
-												<div style="float:left; height:22px; width:22px; border-radius:11px 11px 11px 11px; background:#4fb66d;" ng-click="fooditem.quantity=fooditem.quantity+1;event.addCheckList($index,cat.name,fooditem);" ng-show="cat.subCategoryName!='Salads for the soul'";>
+											 	<div style="float:left">&emsp;{{fooditem.products[0].quantity-1}}&emsp;</div>
+												<div style="float:left; height:22px; width:22px; border-radius:11px 11px 11px 11px; background:#4fb66d;" ng-click="fooditem.products[0].quantity=fooditem.products[0].quantity+1;event.addCheckList($index,cat.name,fooditem.products[0]);" ng-show="cat.subCategoryName!='Salads for the soul'";>
 													<div style="margin-top:1px;margin-left:1px;height:20px; width:20px; border-radius:10px 10px 10px 10px; background:rgba(253, 246, 246, 1);">
 														<div style="width:12px; height:2px;position:relative;top:45%;left:50%;margin-left:-6px;background:#4fb66d;">
 															
@@ -110,7 +110,7 @@
 														
 													</div> -->
 												</div>
-												<div style="float:left; height:22px; width:22px; border-radius:11px 11px 11px 11px; background:#4fb66d;"  ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.addOnLen(fooditem);" ng-show="cat.subCategoryName=='Salads for the soul'"; >
+												<div style="float:left; height:22px; width:22px; border-radius:11px 11px 11px 11px; background:#4fb66d;"  ng-click="fooditem.products[0].isExpanded=!fooditem.products[0].isExpanded;event.addOnLen(fooditem.products[0]);" ng-show="cat.subCategoryName=='Salads for the soul'"; >
 													<div style="margin-top:1px;margin-left:1px;height:20px; width:20px; border-radius:10px 10px 10px 10px; background:rgba(253, 246, 246, 1);">
 														<div style="width:12px; height:2px;position:relative;top:45%;left:50%;margin-left:-6px;background:#4fb66d;">
 															
@@ -131,16 +131,16 @@
 										<br>
 										<div class="menu_item_price">
 											<p style="color:green;margin: 0px 0px 0px;">
-												&#8377 {{fooditem.price}}
+												&#8377 {{fooditem.products[0].price}}
 											</p>
 										</div>
 										
 										<div style="margin-left:18px;width:70%;">
-											<i class="menu_item_description" ng-show="fooditem.shortDesc.length();">
-												"{{fooditem.shortDesc}}"
+											<i class="menu_item_description" ng-show="fooditem.products[0].shortDesc.length();">
+												"{{fooditem.products[0].shortDesc}}"
 											</i>
 										</div>
-										<div  style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.addOnLen(fooditem);" ng-show="fooditem.isExpanded==false && fooditem.addOns.length>0 && fooditem.stockYn=='Y'">
+										<div  style="float:right;" ng-click="fooditem.products[0].isExpanded=!fooditem.products[0].isExpanded;event.addOnLen(fooditem.products[0]);" ng-show="fooditem.products[0].isExpanded==false && fooditem.products[0].addonGroups.length>0 && fooditem.products[0].stockYn=='Y'">
 												<div class="customize_button">
 													<div>
 														<!--  img src="images/downdown.png" alt=" " style="height:7px;margin-top:5px;"/-->	
@@ -150,7 +150,7 @@
 													</div>
 												</div>
 										</div>
-										<div style="float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;" ng-show="fooditem.isExpanded==true">
+										<div style="float:right;" ng-click="fooditem.products[0].isExpanded=!fooditem.products[0].isExpanded;" ng-show="fooditem.products[0].isExpanded==true">
 												<div class="customize_button">
 													<div>
 														<!-- img src="images/upup.png" alt=" " style="height:7px;margin-top:5px;"/-->
@@ -163,61 +163,73 @@
 									</div>
 									
 
-									<div id="item-{{cat.name}}-{{$index}}"  ng-show="fooditem.isExpanded;">
+									<div id="item-{{cat.name}}-{{$index}}"  ng-show="fooditem.products[0].isExpanded;">
 										<div id="clearCartPopUp" style="position:fixed;top:0%;left:0%;width:100vh;height:100vh;background:grey;z-index:0;opacity:0.5;">
 										
 										</div>
-										<div id="clearCartPopUp2-{{fooditem.productId}}" class="customize">
+										<div id="clearCartPopUp2-{{fooditem.products[0].productId}}" class="customize">
 											<div style="padding-top:2%;padding-bottom:2%;background:orange;color:white;">Customize</div>
-											<div style="padding-left:3%;padding-top:2%;padding-bottom:2%;background:#edf1f4;color:grey;text-align:left;font-family: 'Raleway', sans-serif; ">{{fooditem.name}}</div>
+											<div style="padding-left:3%;padding-top:2%;padding-bottom:2%;background:#edf1f4;color:grey;text-align:left;font-family: 'Raleway', sans-serif; ">{{fooditem.products[0].name}}</div>
 											<div style="padding-left:3%;background:#edf1f4;text-align:left;color:grey;font-size:14px;">
 												<div style="width:40%;display:inline;">
 													Base Price
 												</div>
 												<div style="width:40%;display:inline;text-align:right;float:right;padding-right:3%;">
-													&#8377 {{fooditem.price}}
+													&#8377 {{fooditem.products[sizeOptions].price}}
 												</div>
 											</div>
-											<div style="padding-left:3%;padding-top:2%;padding-bottom:1%;background:#ffffff;color:grey;text-align:left;font-family: 'Raleway', sans-serif; "><strong>Add ons</strong></div>
-											<div class="customize_options">	
-												<form>										
-													<div  ng-repeat="customize in fooditem.addOns" style="font-size:14px;text-align:left;border-bottom: 1px dotted white;color:grey;padding-left:3%;background-color:#ffffff;opacity:0.9;padding-top:2%;padding-bottom:2%; " >
-														{{customize.name}}
-														<!-- <label class="switch"  ng-show="{{customize.price}}"> 
-															<input  type="checkbox" ng-model="customize.selected;" ng-change='event.addOnTotal(fooditem);'> 
-															<div class="slider round" >
-															</div> 
-														</label> -->
-														<label style="float:right;margin-right:3%;margin-top:1%;position: relative;display: inline-block;width: 32px;height: 18px;"  ng-show="{{customize.price}}"> 
-															<input  type="checkbox" ng-model="customize.selected;" ng-change='event.addOnTotal(fooditem);'> 
+											<div class="customize_options">
+												<div>
+													Select Size:
+													<select ng-model="sizeOptions" ng-show="fooditem.products.length>1">
+														<option value="0">Small</option>
+														<option value="1">Medium</option>
+														<option value="2">Large</option>
+													</select>
+												</div>
+												<div ng-repeat="cust in fooditem.products[sizeOptions].addonGroups">
+													<div style="padding-left:3%;padding-top:2%;padding-bottom:1%;background:#ffffff;color:grey;text-align:left;font-family: 'Raleway', sans-serif; "><strong>{{cust.name}}</strong></div>
+														
+														<form>										
+															<div  ng-repeat="customize in cust.addOns" style="font-size:14px;text-align:left;border-bottom: 1px dotted white;color:grey;padding-left:3%;background-color:#ffffff;opacity:0.9;padding-top:2%;padding-bottom:2%; " >
+																{{customize.name}}
+																<!-- <label class="switch"  ng-show="{{customize.price}}"> 
+																	<input  type="checkbox" ng-model="customize.selected;" ng-change='event.addOnTotal(fooditem.products[0]);'> 
+																	<div class="slider round" >
+																	</div> 
+																</label> -->
+																<label style="float:right;margin-right:3%;margin-top:1%;position: relative;display: inline-block;width: 32px;height: 18px;"  ng-show="cust.radioYn=='N'"> 
+																	<input  type="checkbox" ng-model="customize.selected;" ng-change='event.addOnTotal(fooditem.products[sizeOptions]);'> 
+																	
+																</label>
+																<label style="float:right;margin-right:3%;margin-top:1%;position: relative;display: inline-block;width: 32px;height: 18px;"  ng-show="cust.radioYn=='Y'"> 
+																	<input name="addOnItems" type="radio" ng-model="customize.selected;" value="true" ng-change='event.changeOnRadio(fooditem.products[sizeOptions],customize.idaddOn); event.addOnTotal(fooditem.products[sizeOptions]);'> 															
+																</label>
+																<br>
+																<div style="font-size:13px;">
+																	&#8377 {{customize.price}}
+																</div>
 															
-														</label>
-														<label style="float:right;margin-right:3%;margin-top:1%;position: relative;display: inline-block;width: 32px;height: 18px;"  ng-show="{{customize.price}}==0"> 
-															<input name="addOnItems" type="radio" ng-model="customize.selected;" value="true" ng-change='event.changeOnRadio(fooditem,customize.idaddOn); event.addOnTotal(fooditem);'> 															
-														</label>
-														<br>
-														<div style="font-size:13px;">
-															&#8377 {{customize.price}}
-														</div>
+														</form>
 													</div>
-												</form>
+												</div>
 											</div>
 											<div style="padding-left:3%;background:#edf1f4;text-align:left;color:grey;font-size:14px;">
 												<div style="width:40%;display:inline;">
 													Total Price
 												</div>
 												<div style="width:40%;display:inline;text-align:right;float:right;padding-right:3%;">
-													&#8377 {{event.addOnTot + fooditem.price}}
+													&#8377 {{event.addOnTot + fooditem.products[sizeOptions].price}}
 												</div>
 											</div>
-											<div style="height:20%;padding-top:5%"  ng-click="fooditem.isExpanded=!fooditem.isExpanded;" ng-show="fooditem.isExpanded==true"><div id="okClear2" style=";padding-bottom:5%;width:50%;float:left;color:#89c08d" ng-click="fooditem.quantity=fooditem.quantity+1;event.addCheckList($index,cat.name,fooditem);">Add</div><div id="cancelClear2" style="padding-bottom:5%;width:50%;float:right;color:#c22929;">Cancel</div></div>
+											<div style="height:20%;padding-top:5%"  ng-click="fooditem.products[0].isExpanded=!fooditem.products[0].isExpanded;" ng-show="fooditem.products[0].isExpanded==true"><div id="okClear2" style=";padding-bottom:5%;width:50%;float:left;color:#89c08d" ng-click="fooditem.products[sizeOptions].quantity=fooditem.products[sizeOptions].quantity+1;event.addCheckList($index,cat.name,fooditem.products[sizeOptions]);">Add</div><div id="cancelClear2" style="padding-bottom:5%;width:50%;float:right;color:#c22929;" ng-click="event.setSizeOptionToZero()">Cancel</div></div>
 										</div>
 										
 										<!-- <div class="cancelAndAddToCart" >
-											<div style="border-radius: 3px 3px 3px 3px; background:#cf3721; width:39.5%;text-align:center;color:white ;padding-top:2%;padding-bottom:2%;display: inline-block;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.cancelOrder(fooditem);">
+											<div style="border-radius: 3px 3px 3px 3px; background:#cf3721; width:39.5%;text-align:center;color:white ;padding-top:2%;padding-bottom:2%;display: inline-block;" ng-click="fooditem.products[0].isExpanded=!fooditem.products[0].isExpanded;event.cancelOrder(fooditem.products[0]);">
 												Cancel
 											</div>
-											<div style="border-radius: 3px 3px 3px 3px; background:#f2c057; width:59%;text-align:center;color:white;padding-top:2%;padding-bottom:2%;display: inline-block; float:right;" ng-click="fooditem.isExpanded=!fooditem.isExpanded;event.addCheckList($index,cat.name,fooditem);">
+											<div style="border-radius: 3px 3px 3px 3px; background:#f2c057; width:59%;text-align:center;color:white;padding-top:2%;padding-bottom:2%;display: inline-block; float:right;" ng-click="fooditem.products[0].isExpanded=!fooditem.products[0].isExpanded;event.addCheckList($index,cat.name,fooditem.products[0]);">
 												Add to Cart
 											</div>
 										</div> -->
