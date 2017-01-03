@@ -659,18 +659,20 @@
 	            form.appendChild(hiddenField1);
 
 	            var k=0;
-	    for(var j = 0; j < this.checkList[i].addOns.length; j++)
+	    for(var j = 0; j < this.checkList[i].addonGroups.length; j++)
 	    { 
-	      if(this.checkList[i].addOns[j].selected==true || this.checkList[i].addOns[j].selected=="true")
-	        {
-	            var hiddenField1 = document.createElement("input");
-	            hiddenField1.setAttribute("type", "hidden");
-	            hiddenField1.setAttribute("name", "order.orderProducts["+i+"].orderProductAddons["+k+"].addOn.idaddOn");
-	            hiddenField1.setAttribute("value",this.checkList[i].addOns[j].idaddOn);
-
-	            form.appendChild(hiddenField1);
-	            k=k+1;
-	        }
+	    	for(var k=0;k<this.checkList[i].addonGroups[j].addOns.length;k++){
+		      if(this.checkList[i].addonGroups[j].addOns[k].selected==true || this.checkList[i].addonGroups[j].addOns[k].selected=="true")
+		        {
+		            var hiddenField1 = document.createElement("input");
+		            hiddenField1.setAttribute("type", "hidden");
+		            hiddenField1.setAttribute("name", "order.orderProducts["+i+"].orderProductAddons["+k+"].addOn.idaddOn");
+		            hiddenField1.setAttribute("value",this.checkList[i].addonGroups[j].addOns[k].idaddOn);
+	
+		            form.appendChild(hiddenField1);
+		            k=k+1;
+		        }
+	    	}
 	    }
 
 
