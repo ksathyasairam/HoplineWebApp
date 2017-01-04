@@ -186,7 +186,7 @@
 											<div class="customize_options">
 												<div>
 													Select Size:
-													<select ng-model="sizeOptions" ng-options="fooditem.products.indexOf(sizeOptions) as sizeOptions.name for sizeOptions in fooditem.products" ng-show="fooditem.products.length>1" style="font-size:13px;margin-bottom:5px;">
+													<select ng-model="sizeOptions" ng-options="fooditem.products.indexOf(sizeOptions) as sizeOptions.variationName for sizeOptions in fooditem.products" ng-show="fooditem.products.length>1" style="font-size:13px;margin-bottom:5px;">
 													</select>
 												</div>
 												<div ng-repeat="cust in fooditem.products[sizeOptions].addonGroups">
