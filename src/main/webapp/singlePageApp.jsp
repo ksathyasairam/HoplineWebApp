@@ -295,12 +295,23 @@
 			  }
 		  }
 		};
+		
+	this.quantityForOptions=function(food){
+	var k=0;
+		for(var i=0;i<food.length;i++)
+			k=k+food[i].quantity-1;
+		return k;
+	};
+		
 	this.addOnLen=function(food){
 		var len=0;
 		for(var i=0;i<food.addonGroups.length;i++)
 			len=len+food.addonGroups[i].addOns.length;
 		this.addOnLength=len;
-		var ab="-" + (((this.addOnLength-1)*50)/2 +115) + "px";
+		var len1=(((this.addOnLength-1)*50)/2 +125)
+		if(len1>210)
+			len1=210;
+		var ab="-" + len1  + "px";
 		$("#clearCartPopUp2-"+food.productId).css({'margin-top':ab});
 	};
 	this.totalOrder=function()
