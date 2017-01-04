@@ -658,7 +658,7 @@
 
 	            form.appendChild(hiddenField1);
 
-	            var k=0;
+	            var f=0;
 	    for(var j = 0; j < this.checkList[i].addonGroups.length; j++)
 	    { 
 	    	for(var k=0;k<this.checkList[i].addonGroups[j].addOns.length;k++){
@@ -666,11 +666,11 @@
 		        {
 		            var hiddenField1 = document.createElement("input");
 		            hiddenField1.setAttribute("type", "hidden");
-		            hiddenField1.setAttribute("name", "order.orderProducts["+i+"].orderProductAddons["+k+"].addOn.idaddOn");
+		            hiddenField1.setAttribute("name", "order.orderProducts["+i+"].orderProductAddons["+f+"].addOn.idaddOn");
 		            hiddenField1.setAttribute("value",this.checkList[i].addonGroups[j].addOns[k].idaddOn);
 	
 		            form.appendChild(hiddenField1);
-		            k=k+1;
+		            f=f+1;
 		        }
 	    	}
 	    }

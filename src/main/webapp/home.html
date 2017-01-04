@@ -93,8 +93,9 @@
 														
 													</div> -->
 												</div>
-											 	<div style="float:left">&emsp;{{fooditem.products[0].quantity-1}}&emsp;</div>
-												<div style="float:left; height:22px; width:22px; border-radius:11px 11px 11px 11px; background:#4fb66d;" ng-click="fooditem.products[0].quantity=fooditem.products[0].quantity+1;event.addCheckList($index,cat.name,fooditem.products[0]);" ng-show="cat.subCategoryName!='Salads for the soul'";>
+											 	<div style="float:left" ng-show="fooditem.products.length==1" >&emsp;{{fooditem.products[0].quantity-1}}&emsp;</div>
+											 	<div style="float:left" ng-show="fooditem.products.length>1" >&emsp;{{fooditem.products[0].quantity+fooditem.products[1].quantity+fooditem.products[2].quantity-3}}&emsp;</div>
+												<div style="float:left; height:22px; width:22px; border-radius:11px 11px 11px 11px; background:#4fb66d;" ng-click="fooditem.products[0].quantity=fooditem.products[0].quantity+1;event.addCheckList($index,cat.name,fooditem.products[0]);" ng-show="fooditem.products.length==1 && cat.subCategoryName!='Salads for the soul'">
 													<div style="margin-top:1px;margin-left:1px;height:20px; width:20px; border-radius:10px 10px 10px 10px; background:rgba(253, 246, 246, 1);">
 														<div style="width:12px; height:2px;position:relative;top:45%;left:50%;margin-left:-6px;background:#4fb66d;">
 															
@@ -110,7 +111,7 @@
 														
 													</div> -->
 												</div>
-												<div style="float:left; height:22px; width:22px; border-radius:11px 11px 11px 11px; background:#4fb66d;"  ng-click="fooditem.products[0].isExpanded=!fooditem.products[0].isExpanded;event.addOnLen(fooditem.products[0]);" ng-show="cat.subCategoryName=='Salads for the soul'"; >
+												<div style="float:left; height:22px; width:22px; border-radius:11px 11px 11px 11px; background:#4fb66d;"  ng-click="fooditem.products[0].isExpanded=!fooditem.products[0].isExpanded;event.addOnLen(fooditem.products[0]);" ng-show="fooditem.products.length>1 || cat.subCategoryName=='Salads for the soul'" >
 													<div style="margin-top:1px;margin-left:1px;height:20px; width:20px; border-radius:10px 10px 10px 10px; background:rgba(253, 246, 246, 1);">
 														<div style="width:12px; height:2px;position:relative;top:45%;left:50%;margin-left:-6px;background:#4fb66d;">
 															
@@ -129,9 +130,14 @@
 											</div>
 										</div>
 										<br>
-										<div class="menu_item_price">
+										<div class="menu_item_price" ng-show="fooditem.products[0].price>=0">
 											<p style="color:green;margin: 0px 0px 0px;">
 												&#8377 {{fooditem.products[0].price}}
+											</p>
+										</div>
+										<div class="menu_item_price" ng-show="fooditem.products[0].price==-1">
+											<p style="color:green;margin: 0px 0px 0px;">
+												M.R.P
 											</p>
 										</div>
 										
@@ -140,7 +146,7 @@
 												"{{fooditem.products[0].shortDesc}}"
 											</i>
 										</div>
-										<div  style="float:right;" ng-click="fooditem.products[0].isExpanded=!fooditem.products[0].isExpanded;event.addOnLen(fooditem.products[0]);" ng-show="fooditem.products[0].isExpanded==false && fooditem.products[0].addonGroups.length>0 && fooditem.products[0].stockYn=='Y'">
+										<div  style="float:right;" ng-click="fooditem.products[0].isExpanded=!fooditem.products[0].isExpanded;event.addOnLen(fooditem.products[0]);" ng-show="fooditem.products[0].isExpanded==false && fooditem.products[0].addonGroups.length>0 && fooditem.products[0].stockYn=='Y' && fooditem.products.length==1">
 												<div class="customize_button">
 													<div>
 														<!--  img src="images/downdown.png" alt=" " style="height:7px;margin-top:5px;"/-->	
@@ -168,7 +174,7 @@
 										</div>
 										<div id="clearCartPopUp2-{{fooditem.products[0].productId}}" class="customize">
 											<div style="padding-top:2%;padding-bottom:2%;background:orange;color:white;">Customize</div>
-											<div style="padding-left:3%;padding-top:2%;padding-bottom:2%;background:#edf1f4;color:grey;text-align:left;font-family: 'Raleway', sans-serif; ">{{fooditem.products[0].name}}</div>
+											<div style="padding-left:3%;padding-top:2%;padding-bottom:2%;background:#edf1f4;color:grey;text-align:left;font-family: 'Raleway', sans-serif; ">{{fooditem.products[0].menuDisplayName}}</div>
 											<div style="padding-left:3%;background:#edf1f4;text-align:left;color:grey;font-size:14px;">
 												<div style="width:40%;display:inline;">
 													Base Price
