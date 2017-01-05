@@ -840,7 +840,8 @@ ul.address-text b {
 	margin-top:-20px; height:20px;font-size:12px;border:none; border-radius: 3px 3px 3px 3px; text-align:center; color:#67baca;
 	}
 	.customize_options{
-	max-height:250px;
+	z-index:999;
+	max-height:240px;
 	overflow:scroll;
 	margin-top:2%;
 	}
