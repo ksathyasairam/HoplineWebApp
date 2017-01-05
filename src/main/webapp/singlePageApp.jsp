@@ -218,6 +218,7 @@
 	
 	this.setSizeOptionToZero=function(){
 		$scope.sizeOptions=0;
+		this.addOnTot =0;
 	};
 	
 	this.showContent=function(id,name,val)
