@@ -79,7 +79,7 @@
                       		}
                          else if(f.orderState=="OK_ORDER")
                         	 {
-                             var tblRow = "<div id="+ rep + "><div><img src='images/okorder2.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-22px;' / ></div><img src='images/paidStamp.png' alt=''  style='height:70px;'/><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order has been successfully accepted.The chef will start preparing soon." +"</div></div>"; 	
+                             var tblRow = "<div id="+ rep + "><div><img src='images/okorder2.png' alt=' ' style='height:50px;position:relative;left:50%;margin-left:-22px;' / ></div><div style='text-align:center;font-size:14px;font-family: 'Raleway', sans-serif;'>"+ "Your order has been successfully accepted.The chef will start preparing soon." +"</div></div>"; 	
                              $("#progress"+f.idorder).css({width:"24.3%"});
                              $("#one"+f.idorder).css({border:'6px solid #46a060'})
                         	 }
@@ -155,7 +155,14 @@
 	
 </div>
 <s:iterator value="orders">
-<div  style="margin-bottom:5%;margin-left:1%;margin-top:7px; margin-right:1%; padding-left:2%;padding-right:2%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); float:left; width:98%;">
+<div style="margin-top:7px;margin-right:1%;float:right;display:inline-block;font-size:17px;min-width: 150px; height: 0; border-left: 0px solid transparent; border-left: 20px solid transparent; border-bottom: 30px solid #d15644;color:white;text-align:center;text-transform:uppercase">
+	<strong style="margin-top:3px"><s:property value="shop.shopName"/></strong>
+	<s:set name="avalue" value="paidYn" />
+	<s:if test='%{#avalue.equals("N")}'>
+		<img src='images/paidStamp.png' alt=''  style='height:30px;float:right'/>
+	</s:if>
+</div>
+<div  style="margin-bottom:5%;margin-left:1%; margin-right:1%; padding-left:2%;padding-right:2%; box-shadow:0px 0px  6px #888888; background: rgba(253, 246, 246, 1); float:left; width:98%;">
 	<div  style="float:left; width:100%">
 		<div style="margin-left:-2%;display:inline-block;font-size:15px;width: 150px; height: 0; border-left: 0px solid transparent; border-right: 20px solid transparent; border-top: 30px solid #d15644;"></div>
 		<div id='yoyo<s:property value="idorder"/>' style="margin-top:-27px" >

@@ -154,6 +154,8 @@
             </div>
             
 <!-- Payment Start -->
+		<s:set name="avalue" value="order.shop.onlinePayYn" />
+		<s:if test='%{#avalue.equals("Y")}'>
             <div>
                 <div id="onlinePay"
                      style="color:grey;
@@ -172,10 +174,10 @@
                                 float:right;
                                 margin-right:2%">
             </div>
+        </s:if>
 
 <!-- Payment End -->
         </form>
-
     </div>
 	
     	<div id="paymentOptionsPopUp2" style="display:none;margin-left:20px;width: 20px; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #c22929;opacity:0.8"></div>
