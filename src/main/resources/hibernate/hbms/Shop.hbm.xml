@@ -39,5 +39,8 @@
 		<property name="ourCutCash" type="double">
 			<column name="ourCutCash" precision="22" scale="0" not-null="true" />
 		</property>
+		<property name="firebaseId" type="string">
+			<column name="firebaseId" length="500" />
+		</property>
 	</class>
 </hibernate-mapping>

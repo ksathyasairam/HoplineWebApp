@@ -105,6 +105,13 @@
 			</result>
 
 		</action>
+		
+		<action name="updateFirebaseId" method="execute"
+			class="com.hopline.vendorServices.action.UpdateFirebaseId">
+			<result type="json">
+				<param name="root">success</param>
+			</result>
+		</action>
 
 		<action name="retrieveMenu" method="execute"
 			class="com.hopline.vendorServices.action.RetrieveMenu">
