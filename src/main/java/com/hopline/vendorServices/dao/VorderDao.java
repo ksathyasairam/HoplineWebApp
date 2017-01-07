@@ -29,8 +29,8 @@ public class VorderDao {
 	public VorderDao(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
-	public void flush(){
+
+	public void flush() {
 		sessionFactory.getCurrentSession().flush();
 	}
 
@@ -47,7 +47,7 @@ public class VorderDao {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Order.class, "order");
 		criteria.setMaxResults(1);
 		Order order = (Order) criteria.uniqueResult();
-		
+
 		if (order == null)
 			return 1;
 		return order.getIdorder();
@@ -70,7 +70,7 @@ public class VorderDao {
 
 		return (List<Order>) query.list();
 	}
-	
+
 	public List<Order> getAllOrders(int userId) {
 		String queryString = "from com.hopline.WebApp.model.dao.Order r where r.user.iduser = ? and r.orderTime > ?";
 
@@ -85,36 +85,36 @@ public class VorderDao {
 	public Integer saveOrder(Order order) {
 		return (Integer) getSessionFactory().getCurrentSession().save(order);
 	}
-	
+
 	public Integer saveOrderProduct(OrderProduct orderProduct) {
 		return (Integer) getSessionFactory().getCurrentSession().save(orderProduct);
 	}
-	
+
 	public void updateOrder(Order order) {
 		getSessionFactory().getCurrentSession().update(order);
 	}
-	
+
 	public void refresh(Object obj) {
 		sessionFactory.getCurrentSession().refresh(obj);
 	}
-	
+
 	public Order retrieveOrderById(int orderId) {
-	Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Order.class, "o");
-	criteria.add(Restrictions.eq("o.idorder", orderId));
-	Order order = (Order) criteria.uniqueResult();
-	return order;
-}
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Order.class, "o");
+		criteria.add(Restrictions.eq("o.idorder", orderId));
+		Order order = (Order) criteria.uniqueResult();
+		return order;
+	}
 
 	public Integer saveOrderProductAddon(OrderProductAddon orderProductAddon) {
 		return (Integer) getSessionFactory().getCurrentSession().save(orderProductAddon);
-		
+
 	}
-	
+
 	public Integer saveProduct(Product product) {
 		return (Integer) getSessionFactory().getCurrentSession().save(product);
-		
+
 	}
-	
+
 	public Product getProductByid(Integer id) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class, "p");
 		criteria.add(Restrictions.eq("p.productId", id));
@@ -130,21 +130,21 @@ public class VorderDao {
 	public List<Order> retrieveOrdersByStates(Integer shopId, List<String> orderStates) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Order.class, "order");
 		criteria.addOrder(org.hibernate.criterion.Order.desc("order.idorder"));
-		criteria.createCriteria("order.shop","shop");
+		criteria.createCriteria("order.shop", "shop");
 		criteria.add(Restrictions.eq("shop.idshop", shopId));
 		criteria.add(Restrictions.in("order.orderState", orderStates));
 		return (List<Order>) criteria.list();
 	}
-	
+
 	public List<Order> retrieveOrderHistory(Integer shopId) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Order.class, "order");
 		criteria.addOrder(org.hibernate.criterion.Order.desc("order.idorder"));
-		
-		criteria.createCriteria("order.shop","shop");
+
+		criteria.createCriteria("order.shop", "shop");
 		criteria.add(Restrictions.eq("shop.idshop", shopId));
-		
+
 		List<String> orderStates = new ArrayList<String>();
-		
+
 		orderStates.add("BIG_ORDER_PAY");
 		orderStates.add("BIG_ORDER_CALL");
 		orderStates.add("DEFAULTER_CALL");
@@ -154,7 +154,7 @@ public class VorderDao {
 		orderStates.add("COMPLETED");
 		orderStates.add("UNPICKED");
 		orderStates.add("CANCELLED");
-		
+
 		criteria.add(Restrictions.in("order.orderState", orderStates));
 		criteria.setMaxResults(100);
 
@@ -164,33 +164,37 @@ public class VorderDao {
 	public Integer saveOrderStatusLog(OrderStatusLog orderStatusLog) {
 		return (Integer) getSessionFactory().getCurrentSession().save(orderStatusLog);
 	}
-//	public Shop retrieveShopById(int shopId) {
-//		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Shop.class, "s");
-//		criteria.add(Restrictions.eq("s.idshop", shopId));
-//		return (Shop) criteria.uniqueResult();
-//	}
-//	
-//	public Product retrieveProductById(int productId) {
-//		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class, "p");
-//		criteria.add(Restrictions.eq("p.productId", productId));
-//		return (Product) criteria.uniqueResult();
-//	}
-//	
-//	public AddOn retrieveAddonId(int addonId) {
-//		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AddOn.class, "a");
-//		criteria.add(Restrictions.eq("a.idaddOn", addonId));
-//		return (AddOn) criteria.uniqueResult();
-//	}
-//	
-//	public AddOn retrieveUserById(int userId) {
-//		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(AddOn.class, "a");
-//		criteria.add(Restrictions.eq("a.idaddOn", userId));
-//		return (AddOn) criteria.uniqueResult();
-//	}
+	// public Shop retrieveShopById(int shopId) {
+	// Criteria criteria =
+	// sessionFactory.getCurrentSession().createCriteria(Shop.class, "s");
+	// criteria.add(Restrictions.eq("s.idshop", shopId));
+	// return (Shop) criteria.uniqueResult();
+	// }
+	//
+	// public Product retrieveProductById(int productId) {
+	// Criteria criteria =
+	// sessionFactory.getCurrentSession().createCriteria(Product.class, "p");
+	// criteria.add(Restrictions.eq("p.productId", productId));
+	// return (Product) criteria.uniqueResult();
+	// }
+	//
+	// public AddOn retrieveAddonId(int addonId) {
+	// Criteria criteria =
+	// sessionFactory.getCurrentSession().createCriteria(AddOn.class, "a");
+	// criteria.add(Restrictions.eq("a.idaddOn", addonId));
+	// return (AddOn) criteria.uniqueResult();
+	// }
+	//
+	// public AddOn retrieveUserById(int userId) {
+	// Criteria criteria =
+	// sessionFactory.getCurrentSession().createCriteria(AddOn.class, "a");
+	// criteria.add(Restrictions.eq("a.idaddOn", userId));
+	// return (AddOn) criteria.uniqueResult();
+	// }
 
 	public Integer saveOfflineOrderLog(OfflineOrderLog offlineOrderLog) {
 		return (Integer) getSessionFactory().getCurrentSession().save(offlineOrderLog);
-		
+
 	}
 
 	public Shop retrieveShop(String username, String password) {
@@ -204,7 +208,20 @@ public class VorderDao {
 
 		return (Shop) query.uniqueResult();
 	}
-	
+
+	public void updateShop(Shop shop) {
+		getSessionFactory().getCurrentSession().update(shop);
+	}
+
+	public Shop getShop(Integer shopId) {
+		String queryString = "from com.hopline.WebApp.model.dao.Shop s where s.idshop= ?";
+
+		Query query = sessionFactory.getCurrentSession().createQuery(queryString);
+
+		query.setParameter(0, shopId);
+
+		return (Shop) query.uniqueResult();
+	}
 
 	// public SecurityToken getTokenbyUserId(Integer userId) {
 	// Criteria criteria =
@@ -242,4 +259,3 @@ public class VorderDao {
 	// }
 
 }
-

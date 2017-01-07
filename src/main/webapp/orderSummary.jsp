@@ -194,7 +194,7 @@
     		<div id="paymentOptions" style="box-shadow:0px 0px  6px #888888;border-radius:5px;color:#C7C7C7;background:rgba(253, 246, 246, 1);height:120px;width:96%;z-index:9;margin-left:2%;padding-left:3%;padding-right:3%;">
        		<div style="letter-spacing: 1px;font-weight: bold;color:black;text-align:center;font-size:1em;margin-top:16px;padding-bottom:8px;padding-top:8px;border-bottom: 1px solid #AFAFAF;">
            			
-           			We regret for inconvenience caused, in case your money has been deducted by bank please write to us at mail.hopline@gmail.com
+           			We regret for inconvenience caused, in case your money has been deducted by bank please write to us with your details(Mobile No) at mail.hopline@gmail.com
 				
     		</div>
     		         <%

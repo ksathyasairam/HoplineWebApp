@@ -18,6 +18,7 @@ public class Shop implements java.io.Serializable {
 	private String description;
 	private double ourCutOnline;
 	private double ourCutCash;
+	private String firebaseId;
 
 	public Shop() {
 	}
@@ -127,6 +128,14 @@ public class Shop implements java.io.Serializable {
 
 	public void setOurCutCash(double ourCutCash) {
 		this.ourCutCash = ourCutCash;
+	}
+
+	public String getFirebaseId() {
+		return firebaseId;
+	}
+
+	public void setFirebaseId(String firebaseId) {
+		this.firebaseId = firebaseId;
 	}
 
 }

@@ -236,4 +236,11 @@ public class VorderService extends IService {
 		return shopVo; 
 	}
 
+	public boolean updateFirebaseId(String firebaseId, Integer shopId) {
+		Shop shop = orderDao.getShop(shopId);
+		shop.setFirebaseId(firebaseId);
+		orderDao.updateShop(shop);
+		return true;
+	}
+
 }

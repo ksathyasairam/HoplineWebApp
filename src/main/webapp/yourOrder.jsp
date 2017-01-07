@@ -157,7 +157,7 @@
 <s:iterator value="orders">
 	<div style="margin-top:7px;margin-right:1%;float:right;display:inline-block;font-size:17px;min-width: 150px; height: 0; border-left: 0px solid transparent; border-left: 20px solid transparent; border-bottom: 30px solid #d15644;color:white;text-align:center;text-transform:uppercase">
 	<s:set name="avalue" value="paidYn" />
-	<s:if test='%{#avalue.equals("N")}'>
+	<s:if test='%{#avalue.equals("Y")}'>
 		<div class="paid">
 			<strong style="margin-top:3px">PAID</strong>
 		</div>
