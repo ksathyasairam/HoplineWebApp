@@ -132,13 +132,6 @@
 
 	<tx:advice id="vOrderServicetxAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="retrieve*" read-only="true" propagation="REQUIRED"
-				isolation="READ_UNCOMMITTED" />
-			<tx:method name="load*" read-only="true" propagation="REQUIRED"
-				isolation="READ_UNCOMMITTED" />
-			<tx:method name="create*" propagation="REQUIRED" />
-			<tx:method name="submit*" propagation="REQUIRED" />
-			<tx:method name="update*" propagation="REQUIRED" />
 			<tx:method name="*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>

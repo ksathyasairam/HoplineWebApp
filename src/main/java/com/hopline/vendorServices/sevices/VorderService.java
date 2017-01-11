@@ -9,6 +9,7 @@ import com.hopline.WebApp.constants.OrderStates;
 import com.hopline.WebApp.model.dao.OfflineOrderLog;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.Product;
+import com.hopline.WebApp.model.dao.ReqResLog;
 import com.hopline.WebApp.model.dao.Shop;
 import com.hopline.WebApp.model.vo.OrderProductVo;
 import com.hopline.WebApp.model.vo.OrderVo;
@@ -75,6 +76,9 @@ public class VorderService extends IService {
 	}
 
 	public FetchOrderTo retrieveOrders(FetchOrderTo fetchOrder) {
+		ReqResLog log = new ReqResLog();
+		log.setRequest(Util.toJson(fetchOrder));
+		
 		List<Order> orders = orderDao.retrieveOrdersByStates(fetchOrder.getShopId(), fetchOrder.getOrderStates());
 
 		List<OrderVo> orderVos = new ArrayList<OrderVo>();
@@ -88,6 +92,11 @@ public class VorderService extends IService {
 		}
 
 		fetchOrder.setSuccess(true);
+		log.setResponse(Util.toJson(fetchOrder));
+		log.setCreateTimestamp(Util.getCurrentDateTimeIndia());
+		log.setActionName("FetchOrdersAction.execute");
+		log.setShopId(fetchOrder.getShopId());
+		orderDao.saveReqResLog(log);
 		return fetchOrder;
 	}
 	

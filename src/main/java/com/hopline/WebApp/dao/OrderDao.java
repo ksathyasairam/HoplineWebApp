@@ -1,6 +1,5 @@
 package com.hopline.WebApp.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -15,6 +14,7 @@ import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.OrderProductAddon;
 import com.hopline.WebApp.model.dao.OrderStatusLog;
+import com.hopline.WebApp.model.dao.ReqResLog;
 import com.hopline.WebApp.rest.framework.Util;
 
 public class OrderDao {
@@ -175,6 +175,10 @@ public class OrderDao {
 	
 	public Integer saveFeedback(Feedback feedback) {
 		return (Integer) getSessionFactory().getCurrentSession().save(feedback);
+	}
+	
+	public Integer saveReqResLog(ReqResLog reqResLog) {
+		return (Integer) getSessionFactory().getCurrentSession().save(reqResLog);
 	}
 //	public Shop retrieveShopById(int shopId) {
 //		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Shop.class, "s");

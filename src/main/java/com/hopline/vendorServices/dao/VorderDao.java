@@ -15,6 +15,7 @@ import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.OrderProductAddon;
 import com.hopline.WebApp.model.dao.OrderStatusLog;
 import com.hopline.WebApp.model.dao.Product;
+import com.hopline.WebApp.model.dao.ReqResLog;
 import com.hopline.WebApp.model.dao.Shop;
 import com.hopline.WebApp.rest.framework.Util;
 
@@ -222,7 +223,10 @@ public class VorderDao {
 
 		return (Shop) query.uniqueResult();
 	}
-
+	
+	public Integer saveReqResLog(ReqResLog reqResLog) {
+		return (Integer) getSessionFactory().getCurrentSession().save(reqResLog);
+	}
 	// public SecurityToken getTokenbyUserId(Integer userId) {
 	// Criteria criteria =
 	// sessionFactory.getCurrentSession().createCriteria(SecurityToken.class,
