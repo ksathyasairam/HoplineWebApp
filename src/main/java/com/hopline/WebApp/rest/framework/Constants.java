@@ -44,5 +44,7 @@ public class Constants {
 //	public static final String SMS_PARTIAL_ORDER_READY_TEXT = "Hi %s, your order #%s from %s is ready for pick up. Enjoy your food!!";
 
 	public static final String TEMP_PAYMENT = "TEMP PAYMENT";
+	
+	public static final String ADMIN_NO = "9818715517";
 
 }

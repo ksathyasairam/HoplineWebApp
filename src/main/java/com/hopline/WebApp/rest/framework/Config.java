@@ -14,7 +14,7 @@ public class Config {
 	
 
 	/*deploy*/
-	public static String EZEBUZZ_RESPONSE_URL = LOCAL_URL;
+	public static String EZEBUZZ_RESPONSE_URL = DEV_URL;
 
 
 	public static String FIREBASE_API_KEY = "key= AAAAzXvmicg:APA91bHZDeIxYIDgpIgiu8sEshYW-IHUCMsqU3M0D9pnvykjBz1d-pq296z8jHsn0qXT27Y7GOqJ-_Lf8c1ea7kPI2-GssCw4LF4gmZqidm463nhigBWmXrb7QHWQfkM38-dyda8GJ_Vj0dBBTBh-GDUa7iH4z6mkw";
