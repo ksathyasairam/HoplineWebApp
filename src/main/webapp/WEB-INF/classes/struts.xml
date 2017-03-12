@@ -72,6 +72,14 @@
 			</result>
 
 		</action>
+		
+		<action name="fetchOrdersWeb" method="execute"
+			class="com.hopline.vendorServices.action.FetchOrdersWebAction">
+			<result type="json">
+				<param name="root">fetchOrder</param>
+			</result>
+
+		</action>
 
 		<action name="fetchOrderHistory" method="execute"
 			class="com.hopline.vendorServices.action.FetchOrderHistory">

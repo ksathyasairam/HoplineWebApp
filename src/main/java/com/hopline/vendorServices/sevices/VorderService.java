@@ -24,6 +24,7 @@ import com.hopline.WebApp.service.OrderService;
 import com.hopline.WebApp.translator.OrderTranslator;
 import com.hopline.vendorServices.dao.VorderDao;
 import com.hopline.vendorServices.model.FetchOrderTo;
+import com.hopline.vendorServices.model.FetchOrderWebTo;
 import com.hopline.vendorServices.model.OfflineOrderLogTo;
 import com.hopline.vendorServices.model.OrderStatusTo;
 import com.hopline.vendorServices.model.Stock;
@@ -102,6 +103,26 @@ public class VorderService extends IService {
 		log.setShopId(fetchOrder.getShopId());
 		orderDao.saveReqResLog(log);
 		return fetchOrder;
+	}
+	
+	public FetchOrderWebTo retrieveOrdersAndFinishedOrders(FetchOrderWebTo fetchOrderWebTo){
+
+		fetchOrderWebTo = (FetchOrderWebTo) retrieveOrders(fetchOrderWebTo);
+		
+		List<Order> orders = orderDao.retrieveFinishedOrders(fetchOrderWebTo.getShopId());
+
+		List<OrderVo> orderVos = new ArrayList<OrderVo>();
+		fetchOrderWebTo.setFinishedOrders(orderVos);
+
+		if (orders != null) {
+			for (Order order : orders) {
+				OrderVo vo = OrderTranslator.convert(order, OrderVo.class);
+				Collections.sort(vo.getOrderProducts(), new SortOrderProductByName());
+				orderVos.add(vo);
+			}
+		}
+		
+		return fetchOrderWebTo;
 	}
 	
 	private OrderVo toOrderVo(Order order) {
