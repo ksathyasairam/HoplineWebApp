@@ -15,6 +15,7 @@ import com.hopline.WebApp.model.dao.OrderProduct;
 import com.hopline.WebApp.model.dao.OrderProductAddon;
 import com.hopline.WebApp.model.dao.OrderStatusLog;
 import com.hopline.WebApp.model.dao.Product;
+import com.hopline.WebApp.model.dao.ReqResLog;
 import com.hopline.WebApp.model.dao.Shop;
 import com.hopline.WebApp.rest.framework.Util;
 
@@ -160,6 +161,26 @@ public class VorderDao {
 
 		return (List<Order>) criteria.list();
 	}
+	
+	public List<Order> retrieveFinishedOrders(Integer shopId) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Order.class, "order");
+		criteria.addOrder(org.hibernate.criterion.Order.desc("order.idorder"));
+
+		criteria.createCriteria("order.shop", "shop");
+		criteria.add(Restrictions.eq("shop.idshop", shopId));
+
+		List<String> orderStates = new ArrayList<String>();
+
+		orderStates.add("COMPLETED");
+		orderStates.add("UNPICKED");
+		orderStates.add("CANCELLED");
+
+		criteria.add(Restrictions.in("order.orderState", orderStates));
+		criteria.setMaxResults(5);
+
+		return (List<Order>) criteria.list();
+	}
+
 
 	public Integer saveOrderStatusLog(OrderStatusLog orderStatusLog) {
 		return (Integer) getSessionFactory().getCurrentSession().save(orderStatusLog);
@@ -222,7 +243,10 @@ public class VorderDao {
 
 		return (Shop) query.uniqueResult();
 	}
-
+	
+	public Integer saveReqResLog(ReqResLog reqResLog) {
+		return (Integer) getSessionFactory().getCurrentSession().save(reqResLog);
+	}
 	// public SecurityToken getTokenbyUserId(Integer userId) {
 	// Criteria criteria =
 	// sessionFactory.getCurrentSession().createCriteria(SecurityToken.class,

@@ -76,7 +76,8 @@ public class OrderService extends IService {
 
 		}
 		
-		
+		Util.sendSMS(Constants.ADMIN_NO, order.getUser().getName() +", " + order.getUser().getPhone() +", " + order.getCustomerOrderId() + ", " +order.getShop().getShopName() + ", " + order.getShop().getPhone());
+
 		order.setOrderTime(Util.getCurrentDateTimeIndia());
 		order.setOrderCompleteTime(null);
 		order.setOrdersInQueue(orderDao.getNumbeOrdersInQueue(order.getIdorder(), order.getShop().getIdshop()));

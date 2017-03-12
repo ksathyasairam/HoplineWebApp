@@ -34,6 +34,10 @@ public class Util {
 		else
 			return false;
 	}
+	
+	public static String toJson(Object obj) {
+		return new Gson().toJson(obj);
+	}
 
 	public static String hashCal(String type, String str) {
 		byte[] hashseq = str.getBytes();

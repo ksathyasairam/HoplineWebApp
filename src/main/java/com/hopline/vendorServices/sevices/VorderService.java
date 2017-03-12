@@ -9,6 +9,7 @@ import com.hopline.WebApp.constants.OrderStates;
 import com.hopline.WebApp.model.dao.OfflineOrderLog;
 import com.hopline.WebApp.model.dao.Order;
 import com.hopline.WebApp.model.dao.Product;
+import com.hopline.WebApp.model.dao.ReqResLog;
 import com.hopline.WebApp.model.dao.Shop;
 import com.hopline.WebApp.model.vo.OrderProductVo;
 import com.hopline.WebApp.model.vo.OrderVo;
@@ -23,6 +24,7 @@ import com.hopline.WebApp.service.OrderService;
 import com.hopline.WebApp.translator.OrderTranslator;
 import com.hopline.vendorServices.dao.VorderDao;
 import com.hopline.vendorServices.model.FetchOrderTo;
+import com.hopline.vendorServices.model.FetchOrderWebTo;
 import com.hopline.vendorServices.model.OfflineOrderLogTo;
 import com.hopline.vendorServices.model.OrderStatusTo;
 import com.hopline.vendorServices.model.Stock;
@@ -63,10 +65,14 @@ public class VorderService extends IService {
 		
 		if (OrderStates.PREPARING.equals(order.getOrderState())){
 			Util.sendSMS(order.getUser().getPhone(),String.format(Constants.SMS_ORDER_CREATED_TEXT,order.getUser().getName(), order.getCustomerOrderId(), order.getShop().getShopName()));
+			Util.sendSMS(Constants.ADMIN_NO,String.format(Constants.SMS_ORDER_CREATED_TEXT,order.getUser().getName(), order.getCustomerOrderId(), order.getShop().getShopName()));
 		}else if (OrderStates.CANCELLED.equals(order.getOrderState())){
 			Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_CANCELLED_TEXT,order.getCustomerOrderId(), orderStatus.getCancelReason()));
+			Util.sendSMS(Constants.ADMIN_NO, String.format(Constants.SMS_CANCELLED_TEXT,order.getCustomerOrderId(), orderStatus.getCancelReason()));
+
 		}else if (OrderStates.READY_FOR_PICKUP.equals(order.getOrderState())){
 			Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_ORDER_READY_TEXT,order.getUser().getName(), order.getCustomerOrderId(), order.getShop().getShopName()));
+			Util.sendSMS(Constants.ADMIN_NO, String.format(Constants.SMS_ORDER_READY_TEXT,order.getUser().getName(), order.getCustomerOrderId(), order.getShop().getShopName()));
 		}
 
 		orderStatus.setSuccess(true);
@@ -75,6 +81,9 @@ public class VorderService extends IService {
 	}
 
 	public FetchOrderTo retrieveOrders(FetchOrderTo fetchOrder) {
+		ReqResLog log = new ReqResLog();
+		log.setRequest(Util.toJson(fetchOrder));
+		
 		List<Order> orders = orderDao.retrieveOrdersByStates(fetchOrder.getShopId(), fetchOrder.getOrderStates());
 
 		List<OrderVo> orderVos = new ArrayList<OrderVo>();
@@ -88,7 +97,32 @@ public class VorderService extends IService {
 		}
 
 		fetchOrder.setSuccess(true);
+		log.setResponse(Util.toJson(fetchOrder));
+		log.setCreateTimestamp(Util.getCurrentDateTimeIndia());
+		log.setActionName("FetchOrdersAction.execute");
+		log.setShopId(fetchOrder.getShopId());
+		orderDao.saveReqResLog(log);
 		return fetchOrder;
+	}
+	
+	public FetchOrderWebTo retrieveOrdersAndFinishedOrders(FetchOrderWebTo fetchOrderWebTo){
+
+		fetchOrderWebTo = (FetchOrderWebTo) retrieveOrders(fetchOrderWebTo);
+		
+		List<Order> orders = orderDao.retrieveFinishedOrders(fetchOrderWebTo.getShopId());
+
+		List<OrderVo> orderVos = new ArrayList<OrderVo>();
+		fetchOrderWebTo.setFinishedOrders(orderVos);
+
+		if (orders != null) {
+			for (Order order : orders) {
+				OrderVo vo = OrderTranslator.convert(order, OrderVo.class);
+				Collections.sort(vo.getOrderProducts(), new SortOrderProductByName());
+				orderVos.add(vo);
+			}
+		}
+		
+		return fetchOrderWebTo;
 	}
 	
 	private OrderVo toOrderVo(Order order) {
@@ -216,6 +250,7 @@ public class VorderService extends IService {
 	public OrderStatusTo notifyUserPartialOrder(OrderStatusTo orderStatus) {
 		Order order = orderDao.getOrder(orderStatus.getOrderId());
 		Util.sendSMS(order.getUser().getPhone(), String.format(Constants.SMS_ORDER_READY_TEXT,order.getUser().getName(), order.getCustomerOrderId(), order.getShop().getShopName()));
+		Util.sendSMS(Constants.ADMIN_NO, String.format(Constants.SMS_ORDER_READY_TEXT,order.getUser().getName(), order.getCustomerOrderId(), order.getShop().getShopName()));
 		orderStatus.setSuccess(true);
 		return orderStatus;
 	}
