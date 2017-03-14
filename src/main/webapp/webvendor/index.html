@@ -14,12 +14,12 @@
 
 <body ng-app="mainApp" ng-controller="MainCtrl">
 	<div
-		style="background: #be1e2d; width: 100%; height: 50px; position: fixed; top: 0; left: 0;z-index: 999">
+		style="background: #be1e2d; width: 100%; height: 50px; position: fixed; top: 0; left: 0; z-index: 999">
 		<div>
 			<div>
 
 				<div
-					style="color: white; margin-left: 15px; font-size: 18px; font-family: 'Asap', sans-serif; margin-top: 12px;">
+					style="color: white; margin-left: 15px; font-size: 18px; font-family: 'Asap', sans-serif; margin-top: 12px;" ng-click="notify()">
 					<b>HOPLINE</b>
 				</div>
 
@@ -33,7 +33,7 @@
 		</div>
 		<div style="height: 10px; background: white; width: 100%; float: left">
 		</div>
-		<div style="border: 3px solid black; clear: both;margin-top:20px;"
+		<div style="border: 3px solid black; clear: both; margin-top: 20px;"
 			ng-repeat="order in allOrders.data.orders">
 			<div
 				style="height: 50px; background: grey; padding-top: 10px; padding-left: 10px;">
@@ -54,7 +54,7 @@
 					<td style="background: white">{{prod.product.quantity}}</td>
 				</tr>
 			</table>
-			<div style="height:100px;width:100%;">
+			<div style="height: 100px; width: 100%;">
 				<div
 					style="background: #6fcf8a; width: 33.5%; height: 100px; float: left">
 					<div
@@ -63,12 +63,16 @@
 					<div style="color: white; text-align: center">
 						<b>Step 1</b>
 					</div>
-
+					<a style="float: left; margin-left: 110px; margin-top: 25px"
+						href="http://www.picgifs.com/graphics/"
+						ng-show="order.orderState=='BIG_ORDER_PAY' || order.orderState=='BIG_ORDER_CALL' || order.orderState=='OK_ORDER'"><img
+						src="http://www.picgifs.com/graphics/h/hands/graphics-hands-909435.gif"
+						border="0" /></a>
 					<div
-						style="box-shadow:0px 0px  3px #888888;cursor:pointer;color: white; text-align: center; height: 20px; width: 70px; background: #70b6db; margin-left: 182px; border-radius: 3px; padding: 6px;"
+						style="box-shadow: 0px 0px 3px #888888; cursor: pointer; color: white; text-align: center; height: 20px; width: 70px; background: #70b6db; margin-left: 182px; border-radius: 3px; padding: 6px;"
 						ng-click="markPreparing(order.idorder)">Confirm</div>
 					<div
-						style="box-shadow:0px 0px  3px #888888;cursor:pointer;color: white; text-align: center; height: 20px; width: 70px; background: #f65959; margin-left: 182px; border-radius: 3px; padding: 6px; margin-top: 5px"
+						style="box-shadow: 0px 0px 3px #888888; cursor: pointer; color: white; text-align: center; height: 20px; width: 70px; background: #f65959; margin-left: 182px; border-radius: 3px; padding: 6px; margin-top: 5px"
 						ng-click="cancelOrder(order.idorder)">Cancel</div>
 
 				</div>
@@ -80,9 +84,13 @@
 					<div style="color: white; text-align: center">
 						<b>Step 2</b>
 					</div>
-					<a style="float:left;margin-left:110px;margin-top:25px" href="http://www.picgifs.com/graphics/" ng-show="order.orderState=='PREPARING'"><img src="http://www.picgifs.com/graphics/h/hands/graphics-hands-909435.gif" border="0" /></a>
+					<a style="float: left; margin-left: 110px; margin-top: 25px"
+						href="http://www.picgifs.com/graphics/"
+						ng-show="order.orderState=='PREPARING'"><img
+						src="http://www.picgifs.com/graphics/h/hands/graphics-hands-909435.gif"
+						border="0" /></a>
 					<div
-						style="box-shadow:0px 0px  3px #888888;cursor:pointer;color: white; text-align: center; height: 40px; width: 100px; background: #329d69; margin-left: 168px; border-radius: 3px; padding: 6px; margin-top: 10px;"
+						style="box-shadow: 0px 0px 3px #888888; cursor: pointer; color: white; text-align: center; height: 40px; width: 100px; background: #329d69; margin-left: 168px; border-radius: 3px; padding: 6px; margin-top: 10px;"
 						ng-click="readyForPickup(order.idorder)">Click when food is
 						ready</div>
 				</div>
@@ -94,11 +102,16 @@
 					<div style="color: white; text-align: center">
 						<b>Step 3</b>
 					</div>
+					<a style="float: left; margin-left: 110px; margin-top: 25px"
+						href="http://www.picgifs.com/graphics/"
+						ng-show="order.orderState=='READY_FOR_PICKUP'"><img
+						src="http://www.picgifs.com/graphics/h/hands/graphics-hands-909435.gif"
+						border="0" /></a>
 					<div
-						style="box-shadow:0px 0px  3px #888888;cursor:pointer;color: white; text-align: center; height: 20px; width: 80px; background: #77cb9a; margin-left: 182px; border-radius: 3px; padding: 6px;"
+						style="box-shadow: 0px 0px 3px #888888; cursor: pointer; color: white; text-align: center; height: 20px; width: 80px; background: #77cb9a; margin-left: 182px; border-radius: 3px; padding: 6px;"
 						ng-click="markCompleted(order.idorder)">Completed</div>
 					<div
-						style="box-shadow:0px 0px  3px #888888;cursor:pointer;color: white; text-align: center; height: 20px; width: 70px; background: #e48a1f; margin-left: 186px; border-radius: 3px; padding: 6px; margin-top: 5px"
+						style="box-shadow: 0px 0px 3px #888888; cursor: pointer; color: white; text-align: center; height: 20px; width: 70px; background: #e48a1f; margin-left: 186px; border-radius: 3px; padding: 6px; margin-top: 5px"
 						ng-click="markUnpicked(order.idorder)">Unpicked</div>
 				</div>
 			</div>
@@ -110,8 +123,8 @@
 		</div>
 		<div style="height: 10px; background: white; width: 100%; float: left">
 		</div>
-		<div style="border: 3px solid black; clear: both;margin-top:20px;"
-			ng-repeat="order in allOrders.data.orders">
+		<div style="border: 3px solid black; clear: both; margin-top: 20px;"
+			ng-repeat="order in allOrders.data.finishedOrders">
 			<div
 				style="height: 50px; background: grey; padding-top: 10px; padding-left: 10px;">
 				<div style="color: white;">Name: {{order.user.name}}</div>
@@ -137,5 +150,7 @@
 	<script src="./app/angular-route.js"></script>
 	<script src="./app/mainApp.js"></script>
 	<script src="./app/ui.router.js"></script>
+	<script type="text/javascript" src="./app/web-notification.js"></script>
+	<script type="text/javascript" src="./app/angular-web-notification.js"></script>
 </body>
 </html>
