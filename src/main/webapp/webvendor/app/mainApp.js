@@ -66,8 +66,7 @@ mainApp.controller('MainCtrl', [
 									}									
 								}
 								if(count<response.data.orders.length){
-									$scope.notify();
-									
+									$scope.notify();									
 								}
 								else if(count==response.data.orders.length){
 									console.log(count);
